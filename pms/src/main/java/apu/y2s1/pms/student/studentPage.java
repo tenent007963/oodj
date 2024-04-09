@@ -68,6 +68,11 @@ public class studentPage extends javax.swing.JFrame {
         BTstatus.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         BTstatus.setForeground(new java.awt.Color(0, 0, 0));
         BTstatus.setText("SUBMISSION STATUS");
+        BTstatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTstatusActionPerformed(evt);
+            }
+        });
 
         BTlogout.setBackground(new java.awt.Color(255, 255, 255));
         BTlogout.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -127,6 +132,12 @@ public class studentPage extends javax.swing.JFrame {
         home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BTrequestActionPerformed
+
+    private void BTstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTstatusActionPerformed
+        statusPage home = new statusPage();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BTstatusActionPerformed
 
     /**
      * @param args the command line arguments
