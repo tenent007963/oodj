@@ -58,6 +58,11 @@ public class studentPage extends javax.swing.JFrame {
         BTrequest.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         BTrequest.setForeground(new java.awt.Color(0, 0, 0));
         BTrequest.setText("REQUEST PRESENTATION DATE");
+        BTrequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTrequestActionPerformed(evt);
+            }
+        });
 
         BTstatus.setBackground(new java.awt.Color(255, 255, 255));
         BTstatus.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -116,6 +121,12 @@ public class studentPage extends javax.swing.JFrame {
         home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BTsubmitActionPerformed
+
+    private void BTrequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTrequestActionPerformed
+        presentationPage home = new presentationPage();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BTrequestActionPerformed
 
     /**
      * @param args the command line arguments
