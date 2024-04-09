@@ -54,6 +54,11 @@ public class submitPage extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("HOME");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 40));
 
         jTextField3.setBackground(new java.awt.Color(0, 102, 102));
@@ -122,6 +127,12 @@ public class submitPage extends javax.swing.JFrame {
     private void BTsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTsubmitActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BTsubmitActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        studentPage home = new studentPage();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

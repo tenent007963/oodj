@@ -48,6 +48,11 @@ public class studentPage extends javax.swing.JFrame {
         BTsubmit.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         BTsubmit.setForeground(new java.awt.Color(0, 0, 0));
         BTsubmit.setText("SUBMIT REPORT");
+        BTsubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTsubmitActionPerformed(evt);
+            }
+        });
 
         BTrequest.setBackground(new java.awt.Color(255, 255, 255));
         BTrequest.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -105,6 +110,12 @@ public class studentPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BTsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTsubmitActionPerformed
+        submitPage home = new submitPage();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BTsubmitActionPerformed
 
     /**
      * @param args the command line arguments
