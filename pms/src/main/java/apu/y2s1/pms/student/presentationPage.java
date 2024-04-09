@@ -52,7 +52,7 @@ public class presentationPage extends javax.swing.JFrame {
                 btHomeActionPerformed(evt);
             }
         });
-        getContentPane().add(btHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 40));
+        getContentPane().add(btHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 40));
 
         jTextField1.setBackground(new java.awt.Color(0, 102, 102));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
