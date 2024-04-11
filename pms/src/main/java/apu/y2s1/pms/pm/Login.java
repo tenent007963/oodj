@@ -1,4 +1,4 @@
-package apu.y2s1.pms;
+package apu.y2s1.pms.pm;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
