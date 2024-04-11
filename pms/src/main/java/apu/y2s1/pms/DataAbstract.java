@@ -1,8 +1,11 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * Reusing this class for easier text file I/O operations, customized to meet current requirements
+ * To use this class, use:
+ * import apu.y2s1.pms.DataAbstract;
+ * at the beginning of the file, following a normal initialization of:
+ * DataAbstract db = new DataAbstract(filename.txt);
  */
-package my.edu.apu.jp;
+package apu.y2s1.pms;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -15,7 +18,6 @@ import java.util.List;
 public class DataAbstract {
     String fileName; 
 
-    // Create a class constructor for the Main class
     public DataAbstract(String arg) {
       fileName = arg;
     }
