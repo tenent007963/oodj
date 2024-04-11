@@ -10,7 +10,9 @@ package apu.y2s1.pms;
  */
 public class Pms {
 
-    public static void main(String[] args) {
-        System.out.println("Hello World!");
+    public static void main() {
+        // calling main UI for role selection
+        role_selection role = new role_selection();
+        role.setVisible(true);
     }
 }
