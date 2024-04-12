@@ -93,7 +93,7 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_ModStudentBtn1ActionPerformed
 
     private void LogOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutBtnActionPerformed
-        apu.y2s1.pms.pm.Login add = new apu.y2s1.pms.pm.Login();
+        apu.y2s1.pms.Login add = new apu.y2s1.pms.Login();
         add.setVisible(true);
         dispose();
     }//GEN-LAST:event_LogOutBtnActionPerformed
