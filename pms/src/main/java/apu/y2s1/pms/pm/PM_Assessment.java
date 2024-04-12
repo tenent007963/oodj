@@ -4,17 +4,40 @@
  */
 package apu.y2s1.pms.pm;
 
+import apu.y2s1.pms.DataAbstract;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Jeslyn
  */
 public class PM_Assessment extends javax.swing.JFrame {
-
+    private DataAbstract dataabstract;
+    
     /**
      * Creates new form PM_Project
      */
     public PM_Assessment() {
         initComponents();
+        dataabstract = new DataAbstract("Assessment.txt");
+        Table();
+    }
+    
+    private void Table() {
+        DefaultTableModel model = (DefaultTableModel) AssessmentTable.getModel();
+        model.setRowCount(0);
+        
+        List<String[]> allRows = dataabstract.getAllRows();
+        
+        if (!allRows.isEmpty()) {
+            String[] headers = allRows.get(0);
+            model.setColumnIdentifiers(headers);
+            
+            for (int i = 1; i < allRows.size(); i++) {
+                model.addRow(allRows.get(i));
+            }
+        }
     }
 
     /**
@@ -28,7 +51,7 @@ public class PM_Assessment extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        AssessmentTable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -49,7 +72,7 @@ public class PM_Assessment extends javax.swing.JFrame {
         jLabel2.setText("ASSESSMENT MANAGEMENT");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        AssessmentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -60,7 +83,7 @@ public class PM_Assessment extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(AssessmentTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 60, 400, 400));
 
@@ -141,6 +164,7 @@ public class PM_Assessment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable AssessmentTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -154,7 +178,6 @@ public class PM_Assessment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
