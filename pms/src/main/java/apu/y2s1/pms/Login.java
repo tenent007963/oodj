@@ -1,11 +1,7 @@
 package apu.y2s1.pms;
 
-import apu.y2s1.pms.pm.PM_FunctionPage;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
