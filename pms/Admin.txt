@@ -1,0 +1,3 @@
+Admin ID ; Name ; Pwd
+A001;Johnny;Johnny12#
+A002;Queenie;Queen@5678
