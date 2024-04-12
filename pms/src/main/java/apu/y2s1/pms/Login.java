@@ -2,7 +2,10 @@ package apu.y2s1.pms;
 
 import apu.y2s1.pms.pm.PM_FunctionPage;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -175,27 +178,31 @@ public class Login extends javax.swing.JFrame {
                         newuser.setUsername(username);
                         
                         if ("Admin".equals(role)) {
-                            JOptionPane.showMessageDialog(null,"Staff Login Successful");
-                            AdminMenu Ahome = new AdminMenu();
+                            JOptionPane.showMessageDialog(null,"Admin Login Successful");
+                            apu.y2s1.pms.admin.AdminMenu Ahome = new apu.y2s1.pms.admin.AdminMenu();
                             Ahome.setVisible(true);
                         } else if ("Lecturer".equals(role)) {
                             JOptionPane.showMessageDialog(null,"Student Login Successful");
-                            LecturerMenu Lhome = new LecturerMenu();
+                            apu.y2s1.pms.lecturer.LecturerMenu Lhome = new apu.y2s1.pms.lecturer.LecturerMenu();
                             Lhome.setVisible(true);
                         } else if ("Project Manager".equals(role)) {
                             JOptionPane.showMessageDialog(null,"Project Manager Login Successful");
-                            PM_FunctionPage PMhome = new PM_FunctionPage();
+                            apu.y2s1.pms.pm.PM_FunctionPage PMhome = new apu.y2s1.pms.pm.PM_FunctionPage();
                             PMhome.setVisible(true);
                         } else if ("Student".equals(role)) {
                             JOptionPane.showMessageDialog(null,"Student Login Successful");
-                            studentPage Shome = new studentPage();
+                            apu.y2s1.pms.student.studentPage Shome = new apu.y2s1.pms.student.studentPage();
                             Shome.setVisible(true);
                         }
                         this.dispose();
                         return;
                     }
-                    }
                 }
+            }
+            JOptionPane.showMessageDialog(null, "Login Unsuccessful.Please try again.");
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null,"An Error Occured.");
+        }
     }//GEN-LAST:event_LoginActionPerformed
 
     /**
