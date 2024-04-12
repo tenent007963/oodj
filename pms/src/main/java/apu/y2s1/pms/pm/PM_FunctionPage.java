@@ -28,11 +28,11 @@ public class PM_FunctionPage extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        Project = new javax.swing.JButton();
+        Allotment = new javax.swing.JButton();
+        Assignment = new javax.swing.JButton();
+        Report = new javax.swing.JButton();
+        Logout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,20 +42,45 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel2.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTINUE:");
 
-        jButton1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        jButton1.setText("VIEW PROJECT");
+        Project.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        Project.setText("VIEW PROJECT");
+        Project.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProjectActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        jButton2.setText("STUDENTS ALLOTMENT");
+        Allotment.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        Allotment.setText("STUDENTS ALLOTMENT");
+        Allotment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AllotmentActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        jButton3.setText("SUPERVISOR ASSIGNMENT");
+        Assignment.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        Assignment.setText("SUPERVISOR ASSIGNMENT");
+        Assignment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AssignmentActionPerformed(evt);
+            }
+        });
 
-        jButton4.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        jButton4.setText("DASHBOARD");
+        Report.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        Report.setText("REPORT STATUS");
+        Report.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReportActionPerformed(evt);
+            }
+        });
 
-        jButton5.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        jButton5.setText("LOG OUT");
+        Logout.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        Logout.setText("LOG OUT");
+        Logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,11 +97,11 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(241, 241, 241)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Allotment, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Project, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Report, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Assignment, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(156, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -87,20 +112,50 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(28, 28, 28)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Project, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Allotment, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Assignment, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Report, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProjectActionPerformed
+        PM_Project project = new PM_Project();
+        project.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_ProjectActionPerformed
+
+    private void AllotmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllotmentActionPerformed
+        PM_Allotment allotment = new PM_Allotment();
+        allotment.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_AllotmentActionPerformed
+
+    private void AssignmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AssignmentActionPerformed
+        PM_Assignment assignment = new PM_Assignment();
+        assignment.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_AssignmentActionPerformed
+
+    private void ReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportActionPerformed
+        PM_ReportStatus report = new PM_ReportStatus();
+        report.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_ReportActionPerformed
+
+    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
+        apu.y2s1.pms.Login login = new apu.y2s1.pms.Login();
+        login.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_LogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,11 +194,11 @@ public class PM_FunctionPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton Allotment;
+    private javax.swing.JButton Assignment;
+    private javax.swing.JButton Logout;
+    private javax.swing.JButton Project;
+    private javax.swing.JButton Report;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

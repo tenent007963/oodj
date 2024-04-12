@@ -36,11 +36,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButton2" min="-2" pref="210" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="210" max="-2" attributes="0"/>
-                          <Component id="jButton4" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
-                          <Component id="jButton5" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
-                          <Component id="jButton3" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                          <Component id="Allotment" min="-2" pref="210" max="-2" attributes="0"/>
+                          <Component id="Project" min="-2" pref="210" max="-2" attributes="0"/>
+                          <Component id="Report" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                          <Component id="Logout" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
+                          <Component id="Assignment" alignment="1" min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -56,15 +56,15 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="Project" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton2" min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="Allotment" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton3" min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="Assignment" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton4" min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="Report" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton5" min="-2" pref="50" max="-2" attributes="0"/>
+              <Component id="Logout" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -87,45 +87,60 @@
         <Property name="text" type="java.lang.String" value="PLEASE SELECT AN ACTION YOU WANT TO CONTINUE:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="Project">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe Print" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="VIEW PROJECT"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ProjectActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="Allotment">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe Print" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="STUDENTS ALLOTMENT"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AllotmentActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="Assignment">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe Print" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="SUPERVISOR ASSIGNMENT"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AssignmentActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="Report">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe Print" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="DASHBOARD"/>
+        <Property name="text" type="java.lang.String" value="REPORT STATUS"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReportActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="Logout">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe Print" size="12" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="LOG OUT"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LogoutActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
