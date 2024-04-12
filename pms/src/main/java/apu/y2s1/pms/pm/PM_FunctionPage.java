@@ -43,7 +43,7 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         jLabel2.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTINUE:");
 
         Project.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        Project.setText("VIEW PROJECT");
+        Project.setText("CREATE ASSESSMENT");
         Project.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ProjectActionPerformed(evt);
@@ -128,7 +128,7 @@ public class PM_FunctionPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProjectActionPerformed
-        PM_Project project = new PM_Project();
+        PM_Assessment project = new PM_Assessment();
         project.setVisible(true);
         dispose();
     }//GEN-LAST:event_ProjectActionPerformed
