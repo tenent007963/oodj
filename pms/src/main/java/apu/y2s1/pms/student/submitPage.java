@@ -39,6 +39,7 @@ public class submitPage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableReport = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(720, 480));
@@ -107,7 +108,7 @@ public class submitPage extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "DATE", "Assessment Type"
+                "Date", "Assessment Type"
             }
         ));
         jScrollPane1.setViewportView(tableReport);
@@ -116,6 +117,9 @@ public class submitPage extends javax.swing.JFrame {
 
         jTextField1.setBackground(new java.awt.Color(0, 153, 153));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 620, 100));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\OneDrive - Asia Pacific University\\Desktop\\Object Oriented Development with Java\\pexels-anna-tarazevich-5936283.jpg")); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -178,6 +182,7 @@ public class submitPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
