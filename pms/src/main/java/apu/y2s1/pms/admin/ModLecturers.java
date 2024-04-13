@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -40,10 +41,10 @@ public class ModLecturers extends javax.swing.JFrame {
     private void initComponents() {
 
         HomeBtn = new javax.swing.JButton();
+        ID = new javax.swing.JTextField();
         Title = new javax.swing.JLabel();
         TopBG = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        ID = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         Name = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -51,20 +52,24 @@ public class ModLecturers extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         Password = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
-        Role = new javax.swing.JComboBox<>();
         AddBtn = new javax.swing.JButton();
         EditBtn = new javax.swing.JButton();
         DelBtn = new javax.swing.JButton();
         SearchTxt = new javax.swing.JTextField();
         SearchBtn = new javax.swing.JButton();
+        SelectFile = new javax.swing.JButton();
         ResetBtn = new javax.swing.JButton();
         RefBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         LecturerTable = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        AddFileBtn = new javax.swing.JButton();
+        SelFilePath = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        PMRole = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         HomeBtn.setBackground(new java.awt.Color(153, 204, 255));
@@ -76,6 +81,7 @@ public class ModLecturers extends javax.swing.JFrame {
             }
         });
         getContentPane().add(HomeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
+        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 99, -1));
 
         Title.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         Title.setText("MODIFY LECTURERS");
@@ -88,30 +94,26 @@ public class ModLecturers extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel1.setText("Lecturer ID Number:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
-        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 99, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel2.setText("Lecturer Name:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, -1, -1));
-        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 99, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
+        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 99, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel7.setText("Lecturer Email:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, -1));
-        getContentPane().add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 99, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
+        getContentPane().add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 99, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel3.setText("Lecturer Password:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
-        getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 99, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 99, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel4.setText("Lecturer Role:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, -1, -1));
-
-        Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Project Manager", "Supervisor", "Second Marker" }));
-        getContentPane().add(Role, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 130, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
 
         AddBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         AddBtn.setText("Add");
@@ -120,7 +122,7 @@ public class ModLecturers extends javax.swing.JFrame {
                 AddBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(AddBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 70, -1));
+        getContentPane().add(AddBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 70, -1));
 
         EditBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         EditBtn.setText("Edit");
@@ -129,7 +131,7 @@ public class ModLecturers extends javax.swing.JFrame {
                 EditBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(EditBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 230, 70, -1));
+        getContentPane().add(EditBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 80, -1));
 
         DelBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         DelBtn.setText("Delete");
@@ -138,10 +140,10 @@ public class ModLecturers extends javax.swing.JFrame {
                 DelBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(DelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, -1));
+        getContentPane().add(DelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
 
         SearchTxt.setText("T000");
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, -1));
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
 
         SearchBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         SearchBtn.setText("Search");
@@ -150,7 +152,16 @@ public class ModLecturers extends javax.swing.JFrame {
                 SearchBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 80, -1));
+        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 80, -1));
+
+        SelectFile.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
+        SelectFile.setText("Select File");
+        SelectFile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SelectFileMouseClicked(evt);
+            }
+        });
+        getContentPane().add(SelectFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
 
         ResetBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         ResetBtn.setText("Reset");
@@ -159,7 +170,7 @@ public class ModLecturers extends javax.swing.JFrame {
                 ResetBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(ResetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, -1, -1));
+        getContentPane().add(ResetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, -1));
 
         RefBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         RefBtn.setText("Refresh");
@@ -168,22 +179,22 @@ public class ModLecturers extends javax.swing.JFrame {
                 RefBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(RefBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, -1, -1));
+        getContentPane().add(RefBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
 
         LecturerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID Number", "Name", "Email", "Password", "Role"
+                "ID Number", "Name", "Email", "Password"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -192,7 +203,28 @@ public class ModLecturers extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(LecturerTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 310, 590, 160));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 590, 150));
+
+        jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        jLabel6.setText("Individual New Lecturer:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, -1, -1));
+
+        AddFileBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
+        AddFileBtn.setText("Add File");
+        AddFileBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddFileBtnMouseClicked(evt);
+            }
+        });
+        getContentPane().add(AddFileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, -1, -1));
+        getContentPane().add(SelFilePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 269, -1));
+
+        jLabel8.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
+        jLabel8.setText("Lecturers List Text File:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
+
+        PMRole.setText("Project Manager");
+        getContentPane().add(PMRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/AdminModifyBG.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 730, 440));
@@ -211,66 +243,72 @@ public class ModLecturers extends javax.swing.JFrame {
         String name = Name.getText();
         String email = Email.getText();
         char[] pwd = Password.getPassword();
-        String role = (String)Role.getSelectedItem();
         String pass = new String(pwd);
+        boolean roleval;
+        roleval = PMRole.isSelected();
 
-        if (id.isEmpty() || name.isEmpty() || email.isEmpty() || pwd.length==0 || role.isEmpty()) {
+        if (id.isEmpty() || name.isEmpty() || email.isEmpty() || pwd.length == 0) {
             JOptionPane.showMessageDialog(null, "Error! Please ensure that all text fields are not empty.");
             return;
         }
 
-        try {
-            FileWriter file = new FileWriter("Lecturers.txt", true);
-            BufferedWriter writer = new BufferedWriter(file);
+        if (roleval = false) {
+            try {
+                FileWriter file = new FileWriter("Lecturers.txt", true);
+                BufferedWriter writer = new BufferedWriter(file);
 
-            writer.write(id + ";" + name + ";" + email + ";" + pass + ";" + role + "\n");
-            writer.close();
-            JOptionPane.showMessageDialog(null,"New Lecturer user has successfully been added!");
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
+                writer.write(id + ";" + name + ";" + email + ";" + pass + ";" + "\n");
+                writer.close();
+                JOptionPane.showMessageDialog(null, "New Lecturer user has successfully been added!");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (roleval = true) {
+            try {
+                FileWriter file = new FileWriter("ProjectManagers.txt", true);
+                BufferedWriter writer = new BufferedWriter(file);
+
+                writer.write(id + ";" + name + ";" + email + ";" + pass + ";" + "\n");
+                writer.close();
+                JOptionPane.showMessageDialog(null, "New Project Manager user has successfully been added!");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }//GEN-LAST:event_AddBtnMouseClicked
 
     private void EditBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditBtnMouseClicked
         DefaultTableModel model = (DefaultTableModel) LecturerTable.getModel();
-        if (LecturerTable.getSelectedRowCount()==1) {
+        if (LecturerTable.getSelectedRowCount() == 1) {
             String id = ID.getText();
             String name = Name.getText();
             String email = Email.getText();
             char[] pwd = Password.getPassword();
-            String role = (String)Role.getSelectedItem();
 
-            model.setValueAt(id, LecturerTable.getSelectedRow(),0);
-            model.setValueAt(name, LecturerTable.getSelectedRow(),1);
-            model.setValueAt(email, LecturerTable.getSelectedRow(),2);
-            model.setValueAt(pwd, LecturerTable.getSelectedRow(),3);
-            model.setValueAt(role, LecturerTable.getSelectedRow(),4);
+            model.setValueAt(id, LecturerTable.getSelectedRow(), 0);
+            model.setValueAt(name, LecturerTable.getSelectedRow(), 1);
+            model.setValueAt(email, LecturerTable.getSelectedRow(), 2);
+            model.setValueAt(pwd, LecturerTable.getSelectedRow(), 3);
 
             JOptionPane.showMessageDialog(this, "Trainer Details have been edited succesfully!");
             Save(model);
-        }
-
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "Please select the column you wish to edit before typing.");
         }
     }//GEN-LAST:event_EditBtnMouseClicked
 
     private void DelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelBtnMouseClicked
         DefaultTableModel model = (DefaultTableModel) LecturerTable.getModel();
-        if (LecturerTable.getSelectedRowCount()==1) {
+        if (LecturerTable.getSelectedRowCount() == 1) {
             String id = ID.getText();
             String name = Name.getText();
             String email = Email.getText();
             char[] pwd = Password.getPassword();
-            String role = (String)Role.getSelectedItem();
 
-            model.setValueAt(id, LecturerTable.getSelectedRow(),0);
-            model.setValueAt(name, LecturerTable.getSelectedRow(),1);
-            model.setValueAt(email, LecturerTable.getSelectedRow(),2);
-            model.setValueAt(pwd, LecturerTable.getSelectedRow(),3);
-            model.setValueAt(role, LecturerTable.getSelectedRow(),4);
+            model.setValueAt(id, LecturerTable.getSelectedRow(), 0);
+            model.setValueAt(name, LecturerTable.getSelectedRow(), 1);
+            model.setValueAt(email, LecturerTable.getSelectedRow(), 2);
+            model.setValueAt(pwd, LecturerTable.getSelectedRow(), 3);
 
             model.removeRow(LecturerTable.getSelectedRow());
             JOptionPane.showMessageDialog(this, "Lecturer Details have been deleted succesfully!");
@@ -314,8 +352,18 @@ public class ModLecturers extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_RefBtnMouseClicked
 
-    
-    
+    private void SelectFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SelectFileMouseClicked
+        JFileChooser fchooser = new JFileChooser();
+        fchooser.showOpenDialog(null);
+        File f = fchooser.getSelectedFile();
+        String fname = f.getAbsolutePath();
+        SelFilePath.setText(fname);
+    }//GEN-LAST:event_SelectFileMouseClicked
+
+    private void AddFileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddFileBtnMouseClicked
+        //TO-DO
+    }//GEN-LAST:event_AddFileBtnMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -357,32 +405,33 @@ public class ModLecturers extends javax.swing.JFrame {
             }
         });
     }
-    
+
     private void Save(DefaultTableModel model) {
-       try {
-           BufferedWriter writer = new BufferedWriter(new FileWriter("Lecturers.txt"));
-           
-           for (int row = 0; row < model.getRowCount(); row++) {
-               for (int col = 0; col < model.getColumnCount(); col++) {
-                   Object cellValue = model.getValueAt(row, col);
-                   if (cellValue != null) {
-                       String cellString = cellValue.toString();
-                       writer.write(cellString);
-                   }
-                   if (col < model.getColumnCount() - 1) {
-                       writer.write(";");
-                   }
-               }
-               writer.newLine();
-                   }
-           writer.close();
-       } catch (IOException e) {
-           e.printStackTrace();
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("Lecturers.txt"));
+
+            for (int row = 0; row < model.getRowCount(); row++) {
+                for (int col = 0; col < model.getColumnCount(); col++) {
+                    Object cellValue = model.getValueAt(row, col);
+                    if (cellValue != null) {
+                        String cellString = cellValue.toString();
+                        writer.write(cellString);
+                    }
+                    if (col < model.getColumnCount() - 1) {
+                        writer.write(";");
+                    }
+                }
+                writer.newLine();
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;
+    private javax.swing.JButton AddFileBtn;
     private javax.swing.JButton DelBtn;
     private javax.swing.JButton EditBtn;
     private javax.swing.JTextField Email;
@@ -390,12 +439,14 @@ public class ModLecturers extends javax.swing.JFrame {
     private javax.swing.JTextField ID;
     private javax.swing.JTable LecturerTable;
     private javax.swing.JTextField Name;
+    private javax.swing.JCheckBox PMRole;
     private javax.swing.JPasswordField Password;
     private javax.swing.JButton RefBtn;
     private javax.swing.JButton ResetBtn;
-    private javax.swing.JComboBox<String> Role;
     private javax.swing.JButton SearchBtn;
     private javax.swing.JTextField SearchTxt;
+    private javax.swing.JTextField SelFilePath;
+    private javax.swing.JButton SelectFile;
     private javax.swing.JLabel Title;
     private javax.swing.JTextField TopBG;
     private javax.swing.JLabel jLabel1;
@@ -403,7 +454,9 @@ public class ModLecturers extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
