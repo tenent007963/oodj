@@ -32,17 +32,21 @@ public class studentPage extends javax.swing.JFrame {
         BTrequest = new javax.swing.JButton();
         BTstatus = new javax.swing.JButton();
         BTlogout = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 153, 153));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(242, 242, 242));
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Heavy", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Student Login");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 6, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel2.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTINUE");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 53, 429, -1));
 
         BTsubmit.setBackground(new java.awt.Color(255, 255, 255));
         BTsubmit.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -53,6 +57,7 @@ public class studentPage extends javax.swing.JFrame {
                 BTsubmitActionPerformed(evt);
             }
         });
+        getContentPane().add(BTsubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 123, 210, 50));
 
         BTrequest.setBackground(new java.awt.Color(255, 255, 255));
         BTrequest.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -63,6 +68,7 @@ public class studentPage extends javax.swing.JFrame {
                 BTrequestActionPerformed(evt);
             }
         });
+        getContentPane().add(BTrequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 191, 210, 50));
 
         BTstatus.setBackground(new java.awt.Color(255, 255, 255));
         BTstatus.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -73,50 +79,16 @@ public class studentPage extends javax.swing.JFrame {
                 BTstatusActionPerformed(evt);
             }
         });
+        getContentPane().add(BTstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 259, 210, 50));
 
         BTlogout.setBackground(new java.awt.Color(255, 255, 255));
         BTlogout.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         BTlogout.setForeground(new java.awt.Color(0, 0, 0));
         BTlogout.setText("LOGOUT");
+        getContentPane().add(BTlogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 327, 210, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(154, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(137, 137, 137))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(228, 228, 228))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BTrequest, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BTsubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BTstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BTlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(251, 251, 251))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(49, 49, 49)
-                .addComponent(BTsubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(BTrequest, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(BTstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(BTlogout, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\OneDrive - Asia Pacific University\\Desktop\\Object Oriented Development with Java\\pexels-anna-tarazevich-5936283.jpg")); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -182,5 +154,6 @@ public class studentPage extends javax.swing.JFrame {
     private javax.swing.JButton BTsubmit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
