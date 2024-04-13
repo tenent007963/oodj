@@ -85,6 +85,11 @@ public class studentPage extends javax.swing.JFrame {
         BTlogout.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         BTlogout.setForeground(new java.awt.Color(0, 0, 0));
         BTlogout.setText("LOGOUT");
+        BTlogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTlogoutActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTlogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 327, 210, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\OneDrive - Asia Pacific University\\Desktop\\Object Oriented Development with Java\\pexels-anna-tarazevich-5936283.jpg")); // NOI18N
@@ -110,6 +115,12 @@ public class studentPage extends javax.swing.JFrame {
         home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BTstatusActionPerformed
+
+    private void BTlogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTlogoutActionPerformed
+        apu.y2s1.pms.Login login = new apu.y2s1.pms.Login();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BTlogoutActionPerformed
 
     /**
      * @param args the command line arguments
