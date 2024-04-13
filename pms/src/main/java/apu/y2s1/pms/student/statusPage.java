@@ -48,6 +48,11 @@ public class statusPage extends javax.swing.JFrame {
         btHOME.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         btHOME.setForeground(new java.awt.Color(0, 0, 0));
         btHOME.setText("HOME");
+        btHOME.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btHOMEActionPerformed(evt);
+            }
+        });
         getContentPane().add(btHOME, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 40));
 
         jTextField1.setBackground(new java.awt.Color(0, 102, 102));
@@ -71,6 +76,11 @@ public class statusPage extends javax.swing.JFrame {
         btSubmit.setBackground(new java.awt.Color(102, 102, 102));
         btSubmit.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         btSubmit.setText("SUBMIT YOUR REPORT");
+        btSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSubmitActionPerformed(evt);
+            }
+        });
         getContentPane().add(btSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 190, 40));
 
         btRefresh.setBackground(new java.awt.Color(102, 102, 102));
@@ -83,6 +93,18 @@ public class statusPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btHOMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHOMEActionPerformed
+        studentPage home = new studentPage();
+        home.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btHOMEActionPerformed
+
+    private void btSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSubmitActionPerformed
+        submitPage submit = new submitPage();
+        submit.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btSubmitActionPerformed
 
     /**
      * @param args the command line arguments
