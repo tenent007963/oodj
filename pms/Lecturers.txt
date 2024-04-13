@@ -1,4 +1,3 @@
-
 ID Number ; Name ; Email ; Pwd
 T001;Luni;Luni00;luni@mail.com;miku
 T002;Uki;Uki Gazer;stargazer@violeta.com;ukinya

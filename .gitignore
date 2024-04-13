@@ -25,3 +25,4 @@ replay_pid*
 
 # other files
 pom.xml
+/pms/target/

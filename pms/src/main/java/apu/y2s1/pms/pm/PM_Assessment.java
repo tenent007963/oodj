@@ -13,22 +13,32 @@ import javax.swing.table.DefaultTableModel;
  * @author Jeslyn
  */
 public class PM_Assessment extends javax.swing.JFrame {
-    private DataAbstract dataabstract;
+    private DataAbstract table = new DataAbstract("Assessments.txt");
+    private DataAbstract combobox = new DataAbstract("Lecturers.txt");
     
     /**
      * Creates new form PM_Project
      */
     public PM_Assessment() {
         initComponents();
-        dataabstract = new DataAbstract("Assessment.txt");
+        LoadData();
         Table();
+    }
+    
+    private void LoadData() {
+        for (int i = 3; i <= 10; i++) {
+            String[] row = combobox.getRow(i);
+            if (row != null && row.length > 1) {
+                Supervisor.addItem(row[1]);
+            }
+        }
     }
     
     private void Table() {
         DefaultTableModel model = (DefaultTableModel) AssessmentTable.getModel();
         model.setRowCount(0);
         
-        List<String[]> allRows = dataabstract.getAllRows();
+        List<String[]> allRows = table.getAllRows();
         
         if (!allRows.isEmpty()) {
             String[] headers = allRows.get(0);
@@ -60,10 +70,10 @@ public class PM_Assessment extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        Supervisor = new javax.swing.JComboBox<>();
+        FirstM = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        SecondM = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -112,17 +122,16 @@ public class PM_Assessment extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
+        getContentPane().add(Supervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
+        FirstM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(FirstM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
 
         jLabel7.setText("Second Marker:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
+        SecondM.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(SecondM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -165,11 +174,11 @@ public class PM_Assessment extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AssessmentTable;
+    private javax.swing.JComboBox<String> FirstM;
+    private javax.swing.JComboBox<String> SecondM;
+    private javax.swing.JComboBox<String> Supervisor;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
