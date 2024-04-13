@@ -1,2 +1,4 @@
 Assessment ID ; Name ; Type ; Supervisor ; First Marker ; Second Marker
 A001;JavaGo;RMCP;Elyn;James;Ryan
+A367;DevNetwork;CP2;Luni;Uki;Ninym
+A750;SocialKing;Investigation Report;Ninym;Sinon;Luni
