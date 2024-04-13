@@ -1,5 +1,4 @@
 TP Num ; Full Name  ;         Email          ; Pwd ; Intake Code
-
 TP06111;Freeda Goldman;urfreetogomam@mail.com;trickie; UCDF2111ICT(SE)
 TP06222;Alberto Robb;alb.ert.@ymail.com;mywife<3; APD2F2402CS
 TP06333;Ganyu Adepti;coco@goat.maaail;q1q1;UCD1F2309ME

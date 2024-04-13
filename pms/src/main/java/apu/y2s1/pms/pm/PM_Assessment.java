@@ -13,22 +13,34 @@ import javax.swing.table.DefaultTableModel;
  * @author Jeslyn
  */
 public class PM_Assessment extends javax.swing.JFrame {
-    private DataAbstract dataabstract;
+    DataAbstract table = new DataAbstract("Assessments.txt");
+    DataAbstract combobox = new DataAbstract("Lecturers.txt");
     
     /**
      * Creates new form PM_Project
      */
     public PM_Assessment() {
         initComponents();
-        dataabstract = new DataAbstract("Assessment.txt");
+        LoadData();
         Table();
+    }
+    
+    private void LoadData() {
+        for (int i = 2; i <= 10; i++) {
+            String[] row = combobox.getRow(i);
+            if (row != null && row.length > 1) {
+                Supervisor.addItem(row[1]);
+                FirstM.addItem(row[1]);
+                SecondM.addItem(row[1]);
+            }
+        }
     }
     
     private void Table() {
         DefaultTableModel model = (DefaultTableModel) AssessmentTable.getModel();
         model.setRowCount(0);
         
-        List<String[]> allRows = dataabstract.getAllRows();
+        List<String[]> allRows = table.getAllRows();
         
         if (!allRows.isEmpty()) {
             String[] headers = allRows.get(0);
@@ -58,12 +70,13 @@ public class PM_Assessment extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        Name = new javax.swing.JTextField();
+        Type = new javax.swing.JComboBox<>();
+        Supervisor = new javax.swing.JComboBox<>();
+        FirstM = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        SecondM = new javax.swing.JComboBox<>();
+        Create = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -107,26 +120,54 @@ public class PM_Assessment extends javax.swing.JFrame {
 
         jLabel6.setText("First Marker:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
+        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
+        Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
+        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
+        getContentPane().add(Supervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 80, -1));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, -1, -1));
+        getContentPane().add(FirstM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 80, -1));
 
         jLabel7.setText("Second Marker:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
+        getContentPane().add(SecondM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 80, -1));
+
+        Create.setText("CREATE");
+        Create.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CreateActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Create, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void CreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateActionPerformed
+        String name = Name.getText();
+        String type = Type.getSelectedItem().toString();
+        String supervisor = Supervisor.getSelectedItem().toString();
+        String fmarker = FirstM.getSelectedItem().toString();
+        String smarker = SecondM.getSelectedItem().toString();
+        String id = AssessmentID();
+        
+        String[] newData = {id, name, type, supervisor, fmarker, smarker};
+        
+        if (table.writeTo(newData)) {
+            Table();
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null,"An error occured while writing to file.");
+        }
+    }//GEN-LAST:event_CreateActionPerformed
+
+    private String AssessmentID() {
+        String id = "A" + String.format("%03d", (int)(Math.random() * 1000));
+        
+        return id;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -165,11 +206,13 @@ public class PM_Assessment extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AssessmentTable;
+    private javax.swing.JButton Create;
+    private javax.swing.JComboBox<String> FirstM;
+    private javax.swing.JTextField Name;
+    private javax.swing.JComboBox<String> SecondM;
+    private javax.swing.JComboBox<String> Supervisor;
+    private javax.swing.JComboBox<String> Type;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -178,6 +221,5 @@ public class PM_Assessment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

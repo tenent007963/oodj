@@ -63,7 +63,7 @@ public class ModStudents extends javax.swing.JFrame {
         ResetBtn = new javax.swing.JButton();
         RefBtn = new javax.swing.JButton();
         SelectFile = new javax.swing.JButton();
-        FilePath = new javax.swing.JTextField();
+        SelFilePath = new javax.swing.JTextField();
         HomeBtn = new javax.swing.JButton();
         TopBG = new javax.swing.JTextField();
         AddFileBtn = new javax.swing.JButton();
@@ -71,7 +71,6 @@ public class ModStudents extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(720, 480));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Title.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
@@ -200,7 +199,7 @@ public class ModStudents extends javax.swing.JFrame {
             }
         });
         getContentPane().add(SelectFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
-        getContentPane().add(FilePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 269, -1));
+        getContentPane().add(SelFilePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 269, -1));
 
         HomeBtn.setBackground(new java.awt.Color(153, 204, 255));
         HomeBtn.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
@@ -346,7 +345,7 @@ public class ModStudents extends javax.swing.JFrame {
         fchooser.showOpenDialog(null);
         File f = fchooser.getSelectedFile();
         String fname = f.getAbsolutePath();
-        FilePath.setText(fname); 
+        SelFilePath.setText(fname); 
     }//GEN-LAST:event_SelectFileMouseClicked
 
     private void AddFileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddFileBtnMouseClicked
@@ -432,7 +431,6 @@ public class ModStudents extends javax.swing.JFrame {
     private javax.swing.JButton AddFileBtn;
     private javax.swing.JButton DelBtn;
     private javax.swing.JButton EditBtn;
-    private javax.swing.JTextField FilePath;
     private javax.swing.JButton HomeBtn;
     private javax.swing.JButton RefBtn;
     private javax.swing.JButton ResetBtn;
@@ -443,6 +441,7 @@ public class ModStudents extends javax.swing.JFrame {
     private javax.swing.JTable STable;
     private javax.swing.JButton SearchBtn;
     private javax.swing.JTextField SearchTxt;
+    private javax.swing.JTextField SelFilePath;
     private javax.swing.JButton SelectFile;
     private javax.swing.JTextField TP;
     private javax.swing.JLabel Title;
