@@ -13,8 +13,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Jeslyn
  */
 public class PM_Assessment extends javax.swing.JFrame {
-    private DataAbstract table = new DataAbstract("Assessments.txt");
-    private DataAbstract combobox = new DataAbstract("Lecturers.txt");
+    DataAbstract table = new DataAbstract("Assessments.txt");
+    DataAbstract combobox = new DataAbstract("Lecturers.txt");
+
     
     /**
      * Creates new form PM_Project
