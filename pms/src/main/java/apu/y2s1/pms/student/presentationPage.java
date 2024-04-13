@@ -33,6 +33,7 @@ public class presentationPage extends javax.swing.JFrame {
         textDate = new javax.swing.JTextField();
         btReq = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -58,18 +59,21 @@ public class presentationPage extends javax.swing.JFrame {
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
 
         jLabel2.setText("ENTER PREFERRED DATE FOR PRESENTATION:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
 
         textDate.setBackground(new java.awt.Color(242, 242, 242));
-        getContentPane().add(textDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, 210, -1));
+        getContentPane().add(textDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 210, -1));
 
         btReq.setBackground(new java.awt.Color(102, 102, 102));
         btReq.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         btReq.setText("REQUEST");
-        getContentPane().add(btReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, 210, 40));
+        getContentPane().add(btReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 210, 40));
 
         jTextField3.setBackground(new java.awt.Color(0, 153, 153));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 540, 130));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 540, 130));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\OneDrive - Asia Pacific University\\Desktop\\Object Oriented Development with Java\\pexels-anna-tarazevich-5936283.jpg")); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -120,6 +124,7 @@ public class presentationPage extends javax.swing.JFrame {
     private javax.swing.JButton btReq;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField textDate;
