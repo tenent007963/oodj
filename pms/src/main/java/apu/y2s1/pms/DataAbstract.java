@@ -8,6 +8,9 @@
 package apu.y2s1.pms;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,38 +133,30 @@ public class DataAbstract {
 
     /*
      * updateRow() requires an integer rowIndex(id) and a String[] array data as arguments, and updates the row with that index with the new data.
-     */
+     */    
     public boolean updateRow(int rowIndex, String[] data) {
-        try {
-            BufferedReader reader;
-            reader = new BufferedReader(new FileReader(this.fileName));
-            List<String> lines = new ArrayList<>();
-            String line;
-            int currentRow = 1;
-            while ((line = reader.readLine()) != null) {
-                if (currentRow == rowIndex) {
-                    lines.add(String.join(this.regEx, data));
-                } else {
-                    lines.add(line);
-                }
-                currentRow++;
-            }
-            reader.close();
+    try {
+        // Read the existing content of the file
+        List<String> lines = Files.readAllLines(Paths.get(this.fileName), StandardCharsets.UTF_8);
 
-            BufferedWriter writer;
-            writer = new BufferedWriter(new FileWriter(this.fileName));
-            for (String updatedLine : lines) {
-                writer.write(updatedLine);
-                writer.newLine();
-            }
-            writer.close();
-            return true;
-        } catch (IOException e) {
-            javax.swing.JOptionPane.showMessageDialog(null,"An error occurred." + e.getMessage());
-            e.printStackTrace();
+        // Update the specific row with new data
+        if (rowIndex >= 0 && rowIndex < lines.size()) {
+            lines.set(rowIndex, String.join(this.regEx, data));
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Invalid row index.");
             return false;
         }
+
+        // Write the updated content back to the file
+        Files.write(Paths.get(this.fileName), lines, StandardCharsets.UTF_8);
+
+        return true;
+    } catch (IOException e) {
+        javax.swing.JOptionPane.showMessageDialog(null, "An error occurred: " + e.getMessage());
+        e.printStackTrace();
+        return false;
     }
+}
     
     /*
      * getIndex() requires a string searchString as an argument, and returns the line number(id) where the string is found.

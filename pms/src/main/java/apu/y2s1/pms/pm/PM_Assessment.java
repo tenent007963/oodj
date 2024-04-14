@@ -199,7 +199,8 @@ public class PM_Assessment extends javax.swing.JFrame {
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         int selected = AssessmentTable.getSelectedRow();
-        if (selected != -1) {
+        
+        if (selected != -1) {           
             String id = ID.getText();
             String name = Name.getText();
             String type = Type.getSelectedItem().toString();
@@ -209,7 +210,7 @@ public class PM_Assessment extends javax.swing.JFrame {
             
             String[] update = {id, name, type, supervisor, fmarker, smarker};
             
-            if (table.updateRow(selected, update)) {
+            if (table.updateRow(selected + 1, update)) {
                 Table();
             } else {
                 javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
