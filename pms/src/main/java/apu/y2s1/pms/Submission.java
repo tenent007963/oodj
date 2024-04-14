@@ -29,7 +29,18 @@ public class Submission {
     }
 
     // constructor for creating a new empty submission
-    public Submission() {}
+    public Submission() {
+        this.submissionID = 0;
+        this.submission_status = "";
+        this.submission_result = "";
+        this.submission_date = "";
+        this.marking_feedback = "";
+        this.submission_1st_marked = "";
+        this.submission_2nd_marked = "";
+        this.presentation_DateTime = "";
+        this.presentation_slot_accepted = "";
+        this.student_TP = "";
+    }
     
     // getting all the details for specific assessment
     public String[] viewDetails() {
@@ -58,4 +69,30 @@ public class Submission {
         basicInfo[5] = this.presentation_slot_accepted;
         return basicInfo;
     }
+
+    // boring getters and setters section ==========
+    public void setSubmissionID(int id) {
+        this.submissionID = id;
+    }
+
+    public int getSubmissionID() {
+        return this.submissionID;
+    }
+
+    public void setStatus(String status) {
+        this.submission_status = status;
+    }
+
+    public String getStatus() {
+        return this.submission_status;
+    }
+
+    public void setResult(String result) {
+        this.submission_result = result;
+    }
+
+    public String getResult() {
+        return this.submission_result;
+    }
+
 }
