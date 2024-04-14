@@ -53,7 +53,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Search = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         ReportTable = new javax.swing.JTable();
 
@@ -74,14 +74,14 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
 
         jLabel3.setText("Sort By:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Intake", "Individual" }));
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, -1, -1));
 
         jLabel4.setText("Search Name:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 140, -1));
+        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 140, -1));
 
         ReportTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -139,6 +139,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ReportTable;
+    private javax.swing.JTextField Search;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -146,6 +147,5 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
