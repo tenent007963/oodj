@@ -30,7 +30,6 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Project = new javax.swing.JButton();
         Allotment = new javax.swing.JButton();
-        Assignment = new javax.swing.JButton();
         Report = new javax.swing.JButton();
         Logout = new javax.swing.JButton();
 
@@ -43,7 +42,7 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         jLabel2.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTINUE:");
 
         Project.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        Project.setText("CREATE ASSESSMENT");
+        Project.setText("ASSESSMENT MANAGEMENT");
         Project.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ProjectActionPerformed(evt);
@@ -55,14 +54,6 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         Allotment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AllotmentActionPerformed(evt);
-            }
-        });
-
-        Assignment.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        Assignment.setText("SUPERVISOR ASSIGNMENT");
-        Assignment.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AssignmentActionPerformed(evt);
             }
         });
 
@@ -97,11 +88,10 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(241, 241, 241)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Allotment, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Project, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Report, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Assignment, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Allotment, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Project, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(156, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -111,17 +101,15 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addGap(28, 28, 28)
-                .addComponent(Project, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(Allotment, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Assignment, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
+                .addComponent(Project, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(Report, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -138,12 +126,6 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         allotment.setVisible(true);
         dispose();
     }//GEN-LAST:event_AllotmentActionPerformed
-
-    private void AssignmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AssignmentActionPerformed
-        PM_Assignment assignment = new PM_Assignment();
-        assignment.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_AssignmentActionPerformed
 
     private void ReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportActionPerformed
         PM_ReportStatus report = new PM_ReportStatus();
@@ -195,7 +177,6 @@ public class PM_FunctionPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Allotment;
-    private javax.swing.JButton Assignment;
     private javax.swing.JButton Logout;
     private javax.swing.JButton Project;
     private javax.swing.JButton Report;
