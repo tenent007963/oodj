@@ -22,6 +22,8 @@ public class PM_Assessment extends javax.swing.JFrame {
      */
     public PM_Assessment() {
         initComponents();
+        ID.setEditable(false);
+        ID.setFocusable(false);
         LoadData();
         Table();
     }
@@ -78,6 +80,9 @@ public class PM_Assessment extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         SecondM = new javax.swing.JComboBox<>();
         Create = new javax.swing.JButton();
+        Edit = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        ID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -97,15 +102,20 @@ public class PM_Assessment extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        AssessmentTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AssessmentTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(AssessmentTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 60, 400, 400));
 
-        jLabel3.setText("Project Name:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        jLabel3.setText("Assessment Name:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jLabel4.setText("Assessment Type:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 204, 102));
         jButton1.setFont(new java.awt.Font("Georgia", 2, 18)); // NOI18N
@@ -117,23 +127,23 @@ public class PM_Assessment extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
 
         jLabel5.setText("Supervisor:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
         jLabel6.setText("First Marker:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
-        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 140, -1));
 
         Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
-        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, -1));
+        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
 
-        getContentPane().add(Supervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 80, -1));
+        getContentPane().add(Supervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 80, -1));
 
-        getContentPane().add(FirstM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 80, -1));
+        getContentPane().add(FirstM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 80, -1));
 
         jLabel7.setText("Second Marker:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
-        getContentPane().add(SecondM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 80, -1));
+        getContentPane().add(SecondM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 80, -1));
 
         Create.setText("CREATE");
         Create.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +151,19 @@ public class PM_Assessment extends javax.swing.JFrame {
                 CreateActionPerformed(evt);
             }
         });
-        getContentPane().add(Create, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, -1, -1));
+        getContentPane().add(Create, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, -1, -1));
+
+        Edit.setText("EDIT");
+        Edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, -1, -1));
+
+        jLabel8.setText("Assessment ID:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 140, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -162,6 +184,40 @@ public class PM_Assessment extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(null,"An error occured while writing to file.");
         }
     }//GEN-LAST:event_CreateActionPerformed
+
+    private void AssessmentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AssessmentTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel) AssessmentTable.getModel();
+        int row = AssessmentTable.getSelectedRow();
+        
+        ID.setText(model.getValueAt(row, 0).toString());
+        Name.setText(model.getValueAt(row,1).toString());
+        Type.setSelectedItem(model.getValueAt(row, 2).toString());
+        Supervisor.setSelectedItem(model.getValueAt(row, 3).toString());
+        FirstM.setSelectedItem(model.getValueAt(row, 4).toString());
+        SecondM.setSelectedItem(model.getValueAt(row,5).toString());
+    }//GEN-LAST:event_AssessmentTableMouseClicked
+
+    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
+        int selected = AssessmentTable.getSelectedRow();
+        if (selected != -1) {
+            String id = ID.getText();
+            String name = Name.getText();
+            String type = Type.getSelectedItem().toString();
+            String supervisor = Supervisor.getSelectedItem().toString();
+            String fmarker = FirstM.getSelectedItem().toString();
+            String smarker = SecondM.getSelectedItem().toString();
+            
+            String[] update = {id, name, type, supervisor, fmarker, smarker};
+            
+            if (table.updateRow(selected, update)) {
+                Table();
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
+        }
+    }//GEN-LAST:event_EditActionPerformed
 
     private String AssessmentID() {
         String id = "A" + String.format("%03d", (int)(Math.random() * 1000));
@@ -208,7 +264,9 @@ public class PM_Assessment extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AssessmentTable;
     private javax.swing.JButton Create;
+    private javax.swing.JButton Edit;
     private javax.swing.JComboBox<String> FirstM;
+    private javax.swing.JTextField ID;
     private javax.swing.JTextField Name;
     private javax.swing.JComboBox<String> SecondM;
     private javax.swing.JComboBox<String> Supervisor;
@@ -221,6 +279,7 @@ public class PM_Assessment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
