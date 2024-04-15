@@ -245,7 +245,7 @@ public class ModStudents extends javax.swing.JFrame {
         }
 
         try {
-            FileWriter file = new FileWriter("Student.txt", true);
+            FileWriter file = new FileWriter("Students.txt", true);
             BufferedWriter writer = new BufferedWriter(file);
 
             writer.write(tp + ";" + name + ";" + email + ";" + pass + ";" + intake + ";" + "\n");
@@ -320,7 +320,7 @@ public class ModStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_ResetBtnMouseClicked
 
     private void RefBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefBtnMouseClicked
-        String filePath = "Student.txt";
+        String filePath = "Students.txt";
         File file = new File(filePath);
 
         try {
@@ -405,7 +405,7 @@ public class ModStudents extends javax.swing.JFrame {
     
     private void Save(DefaultTableModel model) {
        try {
-           BufferedWriter writer = new BufferedWriter(new FileWriter("Student.txt"));
+           BufferedWriter writer = new BufferedWriter(new FileWriter("Students.txt"));
            
            for (int row = 0; row < model.getRowCount(); row++) {
                for (int col = 0; col < model.getColumnCount(); col++) {
