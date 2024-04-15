@@ -150,7 +150,7 @@ public class ModStudents extends javax.swing.JFrame {
                 EditBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(EditBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 66, -1));
+        getContentPane().add(EditBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 70, -1));
 
         DelBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         DelBtn.setText("Delete");
@@ -226,7 +226,7 @@ public class ModStudents extends javax.swing.JFrame {
         getContentPane().add(SIntake, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 80, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/AdminModifyBG.jpg"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 730, 480));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 720, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

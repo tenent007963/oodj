@@ -99,12 +99,12 @@ public class ModLecturers extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel2.setText("Lecturer Name:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
-        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 99, -1));
+        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 120, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel7.setText("Lecturer Email:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
-        getContentPane().add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 99, -1));
+        getContentPane().add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel3.setText("Lecturer Password:");
@@ -122,7 +122,7 @@ public class ModLecturers extends javax.swing.JFrame {
                 AddBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(AddBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 70, -1));
+        getContentPane().add(AddBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 60, -1));
 
         EditBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         EditBtn.setText("Edit");
@@ -143,7 +143,7 @@ public class ModLecturers extends javax.swing.JFrame {
         getContentPane().add(DelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
 
         SearchTxt.setText("T000");
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, 30));
 
         SearchBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         SearchBtn.setText("Search");
@@ -179,7 +179,7 @@ public class ModLecturers extends javax.swing.JFrame {
                 RefBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(RefBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
+        getContentPane().add(RefBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, -1, -1));
 
         LecturerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -203,7 +203,7 @@ public class ModLecturers extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(LecturerTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 590, 150));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 610, 150));
 
         jLabel6.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel6.setText("Individual New Lecturer:");
@@ -227,7 +227,7 @@ public class ModLecturers extends javax.swing.JFrame {
         getContentPane().add(PMRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/AdminModifyBG.jpg"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 730, 440));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 730, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
