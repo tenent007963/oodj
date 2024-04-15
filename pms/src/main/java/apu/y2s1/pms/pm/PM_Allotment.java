@@ -87,6 +87,8 @@ public class PM_Allotment extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         StudentTable = new javax.swing.JTable();
         Search = new javax.swing.JTextField();
+        Allot = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -154,6 +156,17 @@ public class PM_Allotment extends javax.swing.JFrame {
         });
         getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
 
+        Allot.setText("ALLOT");
+        Allot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AllotActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Allot, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jeslyn\\Downloads\\Functionpage.png")); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -172,6 +185,10 @@ public class PM_Allotment extends javax.swing.JFrame {
         Name.setText(model.getValueAt(row,1).toString());
         Intake.setText(model.getValueAt(row,4).toString());
     }//GEN-LAST:event_StudentTableMouseClicked
+
+    private void AllotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllotActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AllotActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,6 +226,7 @@ public class PM_Allotment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Allot;
     private javax.swing.JTextField Intake;
     private javax.swing.JTextField Name;
     private javax.swing.JTextField Search;
@@ -223,6 +241,7 @@ public class PM_Allotment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

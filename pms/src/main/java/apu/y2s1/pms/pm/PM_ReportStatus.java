@@ -130,7 +130,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
         getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 70, 140, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Functionpage.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jeslyn\\Downloads\\Functionpage.png")); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
 
         pack();
