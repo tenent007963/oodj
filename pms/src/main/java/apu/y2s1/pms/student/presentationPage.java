@@ -33,6 +33,8 @@ public class presentationPage extends javax.swing.JFrame {
         textDate = new javax.swing.JTextField();
         btReq = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,18 +61,36 @@ public class presentationPage extends javax.swing.JFrame {
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
 
         jLabel2.setText("ENTER PREFERRED DATE FOR PRESENTATION:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, -1));
 
         textDate.setBackground(new java.awt.Color(242, 242, 242));
-        getContentPane().add(textDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 210, -1));
+        getContentPane().add(textDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 210, -1));
 
         btReq.setBackground(new java.awt.Color(102, 102, 102));
         btReq.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         btReq.setText("REQUEST");
-        getContentPane().add(btReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 250, 210, 40));
+        getContentPane().add(btReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 210, 40));
 
         jTextField3.setBackground(new java.awt.Color(0, 153, 153));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 540, 130));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 540, 100));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "PRESENTATION DATE/TIME", "STATUS"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(1).setResizable(false);
+        }
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 540, 250));
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\OneDrive - Asia Pacific University\\Desktop\\Object Oriented Development with Java\\pexels-anna-tarazevich-5936283.jpg")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
@@ -125,6 +145,8 @@ public class presentationPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField textDate;
