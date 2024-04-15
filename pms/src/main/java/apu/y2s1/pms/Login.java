@@ -36,7 +36,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        Name = new javax.swing.JTextField();
+        ID = new javax.swing.JTextField();
         Pwd = new javax.swing.JPasswordField();
         Role = new javax.swing.JComboBox<>();
         Login = new javax.swing.JButton();
@@ -47,7 +47,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setText("PROJECT MANAGEMENT SYSTEM");
 
-        jLabel3.setText("USERNAME:");
+        jLabel3.setText("USER ID:");
 
         jLabel4.setText("PASSWORD:");
 
@@ -86,7 +86,7 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(Role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(Pwd)
-                            .addComponent(Name))))
+                            .addComponent(ID))))
                 .addGap(267, 267, 267))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(272, Short.MAX_VALUE)
@@ -108,7 +108,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -126,7 +126,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginActionPerformed
-        String username = Name.getText();
+        String userid = ID.getText();
         char[] pwdchar = Pwd.getPassword();
         String password = new String(pwdchar);
         String role = (String) Role.getSelectedItem();
@@ -159,7 +159,7 @@ public class Login extends javax.swing.JFrame {
                         pwd = parts[2].trim();
                     } else if ("Lecturer".equals(role)) {
                         name = parts[1].trim();
-                        pwd = parts[4].trim();
+                        pwd = parts[3].trim();
                     } else if ("Project Manager".equals(role)) {
                         name = parts[2].trim();
                         pwd = parts[3].trim();
@@ -168,10 +168,10 @@ public class Login extends javax.swing.JFrame {
                         pwd = parts[3].trim();
                     }
                     
-                    if(username.equals(name) && password.equals(pwd)) {
+                    if(userid.equals(uid) && password.equals(pwd)) {
                         User newuser = User.getInstance();
                         newuser.setUserID(uid);
-                        newuser.setUsername(username);
+                        newuser.setUsername(name);
                         
                         if ("Admin".equals(role)) {
                             JOptionPane.showMessageDialog(null,"Admin Login Successful");
@@ -237,8 +237,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ID;
     private javax.swing.JButton Login;
-    private javax.swing.JTextField Name;
     private javax.swing.JPasswordField Pwd;
     private javax.swing.JComboBox<String> Role;
     private javax.swing.JLabel jLabel1;

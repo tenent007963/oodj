@@ -45,7 +45,7 @@
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Component id="Pwd" alignment="0" max="32767" attributes="0"/>
-                          <Component id="Name" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ID" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -76,7 +76,7 @@
               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Name" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ID" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -108,7 +108,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="USERNAME:"/>
+        <Property name="text" type="java.lang.String" value="USER ID:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -121,7 +121,7 @@
         <Property name="text" type="java.lang.String" value="ROLE:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="Name">
+    <Component class="javax.swing.JTextField" name="ID">
     </Component>
     <Component class="javax.swing.JPasswordField" name="Pwd">
       <Properties>
