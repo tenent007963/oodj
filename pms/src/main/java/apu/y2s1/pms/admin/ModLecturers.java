@@ -290,7 +290,7 @@ public class ModLecturers extends javax.swing.JFrame {
             model.setValueAt(email, LecturerTable.getSelectedRow(), 2);
             model.setValueAt(pwd, LecturerTable.getSelectedRow(), 3);
 
-            JOptionPane.showMessageDialog(this, "Trainer Details have been edited succesfully!");
+            JOptionPane.showMessageDialog(this, "Lecturer Details have been edited succesfully!");
             Save(model);
         } else {
             JOptionPane.showMessageDialog(this, "Please select the column you wish to edit before typing.");
