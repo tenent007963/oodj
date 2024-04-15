@@ -4,17 +4,63 @@
  */
 package apu.y2s1.pms.pm;
 
+import apu.y2s1.pms.DataAbstract;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author Jeslyn
  */
 public class PM_Allotment extends javax.swing.JFrame {
-
+    DataAbstract table = new DataAbstract("Students.txt");
+    
     /**
      * Creates new form PM_Allotment
      */
     public PM_Allotment() {
         initComponents();
+        Sort.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Table();
+            }
+    });
+        LoadData();
+        Table();
+    }
+    
+    private void LoadData() {
+        for (int i = 2; i <= 10; i++) {
+            String[] row = table.getRow(i);
+            if (row != null && row.length > 1) {
+                Sort.addItem(row[4]);
+            }
+        }
+    }
+    
+    private void Table() {
+        DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
+        model.setRowCount(0);
+        
+        String sort = (String) Sort.getSelectedItem();
+        
+        List<String[]> allRows = table.getAllRows();
+        
+        if (!allRows.isEmpty()) {
+            String[] headers = allRows.get(0);
+            model.setColumnIdentifiers(headers);
+            
+            for (int i = 1; i < allRows.size(); i++) {
+                String[] row = allRows.get(i);
+                if (sort.equals("All") || (row.length > 4 && row[4].equals(sort))) {
+                    model.addRow(row);
+                }
+            }
+        }
     }
 
     /**
@@ -30,18 +76,17 @@ public class PM_Allotment extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        Sort = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        Type = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        Name = new javax.swing.JTextField();
+        Intake = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        StudentTable = new javax.swing.JTable();
+        Search = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -62,8 +107,8 @@ public class PM_Allotment extends javax.swing.JFrame {
         jLabel3.setText("Sort By:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Intake", "Individual" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 140, -1));
+        Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
+        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 140, -1));
 
         jLabel4.setText("Search Name:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
@@ -71,18 +116,18 @@ public class PM_Allotment extends javax.swing.JFrame {
         jLabel5.setText("Assessment Type:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
+        Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
+        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
 
         jLabel6.setText("Student Name:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
         jLabel7.setText("Student Intake:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 140, -1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, -1));
+        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 140, -1));
+        getContentPane().add(Intake, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        StudentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -93,16 +138,40 @@ public class PM_Allotment extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        StudentTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                StudentTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(StudentTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 60, 410, 400));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Functionpage.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        DefaultTableModel table = (DefaultTableModel) StudentTable.getModel();
+        TableRowSorter<DefaultTableModel> search = new TableRowSorter<>(table);
+        StudentTable.setRowSorter(search);
+        String field = Search.getText().toLowerCase();
+        search.setRowFilter(RowFilter.regexFilter("(?i)" + field));
+    }//GEN-LAST:event_SearchActionPerformed
+
+    private void StudentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StudentTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
+        int row = StudentTable.getSelectedRow();
+        
+        Name.setText(model.getValueAt(row,1).toString());
+        Intake.setText(model.getValueAt(row,4).toString());
+    }//GEN-LAST:event_StudentTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -140,9 +209,13 @@ public class PM_Allotment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Intake;
+    private javax.swing.JTextField Name;
+    private javax.swing.JTextField Search;
+    private javax.swing.JComboBox<String> Sort;
+    private javax.swing.JTable StudentTable;
+    private javax.swing.JComboBox<String> Type;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -150,11 +223,6 @@ public class PM_Allotment extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
