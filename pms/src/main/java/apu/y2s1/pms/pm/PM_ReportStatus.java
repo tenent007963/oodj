@@ -89,12 +89,12 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jLabel2.setText("STATUS OF REPORT");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 102));
+        jButton1.setBackground(new java.awt.Color(255, 190, 152));
         jButton1.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
         jButton1.setText("HOME");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
 
-        jLabel1.setBackground(new java.awt.Color(255, 204, 102));
+        jLabel1.setBackground(new java.awt.Color(255, 190, 152));
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
 

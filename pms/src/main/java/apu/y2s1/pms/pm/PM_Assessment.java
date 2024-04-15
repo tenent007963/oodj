@@ -117,12 +117,12 @@ public class PM_Assessment extends javax.swing.JFrame {
         jLabel4.setText("Assessment Type:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 102));
+        jButton1.setBackground(new java.awt.Color(255, 190, 152));
         jButton1.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
         jButton1.setText("HOME");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
 
-        jLabel1.setBackground(new java.awt.Color(255, 204, 102));
+        jLabel1.setBackground(new java.awt.Color(255, 190, 152));
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
 
