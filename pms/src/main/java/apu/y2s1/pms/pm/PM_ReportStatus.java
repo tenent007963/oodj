@@ -5,8 +5,12 @@
 package apu.y2s1.pms.pm;
 
 import apu.y2s1.pms.DataAbstract;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -20,6 +24,11 @@ public class PM_ReportStatus extends javax.swing.JFrame {
      */
     public PM_ReportStatus() {
         initComponents();
+        Sort.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Table();
+            }
+    });
         LoadData();
         Table();
     }
@@ -51,7 +60,6 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                     model.addRow(row);
                 }
             }
-            model.fireTableDataChanged();
         }
     }
 
@@ -93,9 +101,15 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jLabel3.setText("Sort By:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
 
-        jLabel4.setText("Search Name:");
+        jLabel4.setText("Search:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
-        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 140, -1));
+
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 140, -1));
 
         ReportTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,6 +131,14 @@ public class PM_ReportStatus extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        DefaultTableModel table = (DefaultTableModel) ReportTable.getModel();
+        TableRowSorter<DefaultTableModel> search = new TableRowSorter<>(table);
+        ReportTable.setRowSorter(search);
+        String field = Search.getText().toLowerCase();
+        search.setRowFilter(RowFilter.regexFilter("(?i)" + field));
+    }//GEN-LAST:event_SearchActionPerformed
 
     /**
      * @param args the command line arguments
