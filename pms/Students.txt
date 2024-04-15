@@ -1,10 +1,10 @@
-TP Num ; Full Name  ;         Email          ; Pwd ; Intake Code
-TP06111;Freeda Goldman;urfreetogomam@mail.com;trickie; UCDF2111ICT(SE)
-TP06222;Alberto Robb;alb.ert.@ymail.com;mywife<3; APD2F2402CS
-TP06333;Ganyu Adepti;coco@goat.maaail;q1q1;UCD1F2309ME
-TP06444;Luciana;fae@guild.com;n4t5u;APD1F2307(BAF)
-TP06555;Jessi;jesdes@gmail.com;wakuwaku;APD3F2308BM(E-BUS)
-TP06666;Shiro Meda;shiro@mail.com;whitepetals;UCD1F2311ME
-TP06777;Elia Martino;dev@martino.com;zahra;AFCF2303AS
-TP06888;Archer Morales;archermorales@mail.com;hailey;UCDF2204ACC
-TP06999;Annabeth;anna@yahoo.com;jamesifer;APUFEFREI2401
+TP Num ; Full Name  ;         Email          ; Pwd ; Intake Code ; Assessment Type
+TP06111;Freeda Goldman;urfreetogomam@mail.com;trickie;UCDF2111ICT(SE);RMCP
+TP06222;Alberto Robb;alb.ert.@ymail.com;mywife<3;APD2F2402CS;CP1
+TP06333;Ganyu Adepti;coco@goat.maaail;q1q1;UCD1F2309ME;CP2
+TP06444;Luciana;fae@guild.com;n4t5u;APD1F2307(BAF);Investigation Report
+TP06555;Jessi;jesdes@gmail.com;wakuwaku;APD3F2308BM(E-BUS);Internship
+TP06666;Shiro Meda;shiro@mail.com;whitepetals;UCD1F2311ME;CP1
+TP06777;Elia Martino;dev@martino.com;zahra;AFCF2303AS;CP1
+TP06888;Archer Morales;archermorales@mail.com;hailey;UCDF2204ACC;Internship
+TP06999;Annabeth;anna@yahoo.com;jamesifer;APUFEFREI2401;Investigation Report

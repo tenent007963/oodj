@@ -116,18 +116,18 @@ public class PM_Allotment extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         jLabel5.setText("Assessment Type:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
 
         Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
-        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
+        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
 
         jLabel6.setText("Student Name:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         jLabel7.setText("Student Intake:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
-        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 140, -1));
-        getContentPane().add(Intake, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 140, -1));
+        getContentPane().add(Intake, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 140, -1));
 
         StudentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -187,7 +187,27 @@ public class PM_Allotment extends javax.swing.JFrame {
     }//GEN-LAST:event_StudentTableMouseClicked
 
     private void AllotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllotActionPerformed
-        // TODO add your handling code here:
+        int selected = StudentTable.getSelectedRow();
+        
+        if (selected != -1) { 
+            DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
+            String id = model.getValueAt(selected, 0).toString();
+            String name = Name.getText();
+            String email = model.getValueAt(selected, 2).toString();
+            String pwd = model.getValueAt(selected, 3).toString();
+            String intake = Intake.getText();
+            String type = Type.getSelectedItem().toString();
+            
+            String[] update = {id, name, email, pwd, intake, type};
+            
+            if (table.updateRow(selected + 1, update)) {
+                Table();
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
+        }
     }//GEN-LAST:event_AllotActionPerformed
 
     /**
