@@ -93,7 +93,7 @@
           <Color blue="66" green="cc" red="ff" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Georgia" size="18" style="2"/>
+          <Font name="Georgia" size="14" style="2"/>
         </Property>
         <Property name="text" type="java.lang.String" value="HOME"/>
       </Properties>

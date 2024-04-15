@@ -36,16 +36,22 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     private void Table() {
         DefaultTableModel model = (DefaultTableModel) ReportTable.getModel();
         model.setRowCount(0);
-        
+
+        String sort = (String) Sort.getSelectedItem();
+
         List<String[]> allRows = table.getAllRows();
-        
+
         if (!allRows.isEmpty()) {
             String[] headers = allRows.get(0);
             model.setColumnIdentifiers(headers);
-            
+
             for (int i = 1; i < allRows.size(); i++) {
-                model.addRow(allRows.get(i));
+                String[] row = allRows.get(i);
+                if (sort.equals("All") || (row.length > 10 && row[10].equals(sort))) {
+                    model.addRow(row);
+                }
             }
+            model.fireTableDataChanged();
         }
     }
 
@@ -62,11 +68,11 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        Sort = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         Search = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         ReportTable = new javax.swing.JTable();
+        Sort = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,7 +82,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 204, 102));
-        jButton1.setFont(new java.awt.Font("Georgia", 2, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
         jButton1.setText("HOME");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
 
@@ -85,10 +91,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
 
         jLabel3.setText("Sort By:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, -1, -1));
-
-        Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
-        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 90, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
 
         jLabel4.setText("Search Name:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
@@ -108,6 +111,9 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jScrollPane1.setViewportView(ReportTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 660, 340));
+
+        Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
+        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 70, 140, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
