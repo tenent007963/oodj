@@ -14,12 +14,23 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PM_ReportStatus extends javax.swing.JFrame {
     DataAbstract table = new DataAbstract("Reports.txt");
+    DataAbstract combobox = new DataAbstract("Students.txt");
     /**
      * Creates new form PM_Dashboard
      */
     public PM_ReportStatus() {
         initComponents();
+        LoadData();
         Table();
+    }
+    
+    private void LoadData() {
+        for (int i = 2; i<= 10; i++) {
+            String[] row = combobox.getRow(i);
+            if (row != null && row.length > 1) {
+                Sort.addItem(row[4]);
+            }
+        }
     }
     
     private void Table() {
@@ -51,7 +62,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        Sort = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         Search = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -76,8 +87,8 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jLabel3.setText("Sort By:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 90, -1));
+        Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
+        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, 90, -1));
 
         jLabel4.setText("Search Name:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
@@ -140,8 +151,8 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ReportTable;
     private javax.swing.JTextField Search;
+    private javax.swing.JComboBox<String> Sort;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
