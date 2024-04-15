@@ -32,14 +32,18 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         Allotment = new javax.swing.JButton();
         Report = new javax.swing.JButton();
         Logout = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Heavy", 1, 36)); // NOI18N
         jLabel1.setText("FUNCTION PAGE");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 31, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel2.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTINUE:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
 
         Project.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         Project.setText("ASSESSMENT MANAGEMENT");
@@ -48,6 +52,7 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                 ProjectActionPerformed(evt);
             }
         });
+        getContentPane().add(Project, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 226, 210, 50));
 
         Allotment.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         Allotment.setText("STUDENTS ALLOTMENT");
@@ -56,6 +61,7 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                 AllotmentActionPerformed(evt);
             }
         });
+        getContentPane().add(Allotment, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 138, 210, 50));
 
         Report.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         Report.setText("REPORT STATUS");
@@ -64,6 +70,7 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                 ReportActionPerformed(evt);
             }
         });
+        getContentPane().add(Report, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 314, 210, 50));
 
         Logout.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         Logout.setText("LOG OUT");
@@ -72,45 +79,10 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                 LogoutActionPerformed(evt);
             }
         });
+        getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 400, 210, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(241, 241, 241)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Report, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Allotment, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Project, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(156, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(27, 27, 27)
-                .addComponent(Allotment, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(Project, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(Report, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(Logout, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Homepage.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 716, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -182,5 +154,6 @@ public class PM_FunctionPage extends javax.swing.JFrame {
     private javax.swing.JButton Report;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

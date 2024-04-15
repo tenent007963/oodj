@@ -81,6 +81,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         ReportTable = new javax.swing.JTable();
         Sort = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -128,6 +129,9 @@ public class PM_ReportStatus extends javax.swing.JFrame {
 
         Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
         getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 70, 140, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Functionpage.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -185,6 +189,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
