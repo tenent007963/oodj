@@ -225,7 +225,7 @@ public class ModStudents extends javax.swing.JFrame {
         getContentPane().add(AddFileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, -1, -1));
         getContentPane().add(SIntake, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 80, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/AdminModifyBG.jpg"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Thinkpad\\Documents\\NetBeansProjects\\oodj\\pms\\src\\main\\java\\apu\\y2s1\\pms\\admin\\Img\\AdminModifyBG.jpg")); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 720, 480));
 
         pack();
