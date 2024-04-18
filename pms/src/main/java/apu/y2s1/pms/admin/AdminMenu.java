@@ -74,6 +74,8 @@ public class AdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(LogOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 347, 210, 50));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Thinkpad\\Documents\\NetBeansProjects\\oodj\\pms\\src\\main\\java\\apu\\y2s1\\pms\\admin\\Img\\MenuBG.jpg")); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-140, -150, 880, 640));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/MenuBG.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 490));
 
@@ -131,19 +133,15 @@ public class AdminMenu extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            
-            @Override
-            public void run() {
-                AdminMenu frame = new AdminMenu();
-                frame.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                frame.setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            AdminMenu frame = new AdminMenu();
+            frame.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            frame.setVisible(true);
         });
     }
 
