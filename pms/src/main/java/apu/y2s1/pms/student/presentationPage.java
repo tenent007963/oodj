@@ -25,33 +25,32 @@ public class presentationPage extends javax.swing.JFrame {
         initComponents();
         Table();
     }
-    
-    private void Table() {
-    DefaultTableModel model = (DefaultTableModel) reqTable.getModel();
-    model.setRowCount(0);
-    List<String[]> allRows = table.getAllRows();
 
-    String currentStudentTP = user.getUserID(); 
-    
-    for (int i = 1; i < allRows.size(); i++) {
-        String[] rowData = allRows.get(i);
-        String[] newData = new String[]{rowData[1], rowData[7]};
-        
-        String[] studentTPs = rowData[9].split(","); 
-        boolean matchFound = false;
-        for (String studentTP : studentTPs) {
-            if (studentTP.trim().equals(currentStudentTP)) {
-                matchFound = true;
-                break;
+    private void Table() {
+        DefaultTableModel model = (DefaultTableModel) reqTable.getModel();
+        model.setRowCount(0);
+        List<String[]> allRows = table.getAllRows();
+
+        String currentStudentTP = user.getUserID();
+
+        for (int i = 1; i < allRows.size(); i++) {
+            String[] rowData = allRows.get(i);
+            String[] newData = new String[]{rowData[1], rowData[7]};
+
+            String[] studentTPs = rowData[9].split(",");
+            boolean matchFound = false;
+            for (String TP : studentTPs) {
+                if (TP.trim().equals(currentStudentTP)) {
+                    matchFound = true;
+                    break;
+                }
+            }
+
+            if (matchFound) {
+                model.addRow(newData);
             }
         }
-        
-        if (matchFound) {
-            model.addRow(newData);
-        }
     }
-}
-
 
     /**
      * This method is called from within the constructor to initialize the form.
