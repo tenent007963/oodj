@@ -4,17 +4,36 @@
  */
 package apu.y2s1.pms.student;
 
+import apu.y2s1.pms.DataAbstract;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author User
  */
 public class presentationPage extends javax.swing.JFrame {
 
+    DataAbstract table = new DataAbstract("Reports.txt");
+
     /**
      * Creates new form presentationPage
      */
     public presentationPage() {
         initComponents();
+        Table();
+    }
+
+    private void Table() {
+        DefaultTableModel model = (DefaultTableModel) reqTable.getModel();
+        model.setRowCount(0);
+        List<String[]> allRows = table.getAllRows();
+
+        for (int i = 1; i < allRows.size(); i++) {
+            String[] rowData = allRows.get(i);
+            String[] newData = new String[]{rowData[0], rowData[7]};
+            model.addRow(newData);
+        }
     }
 
     /**
@@ -34,7 +53,7 @@ public class presentationPage extends javax.swing.JFrame {
         btReq = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        reqTable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,12 +89,17 @@ public class presentationPage extends javax.swing.JFrame {
         btReq.setBackground(new java.awt.Color(102, 102, 102));
         btReq.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         btReq.setText("REQUEST");
+        btReq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btReqActionPerformed(evt);
+            }
+        });
         getContentPane().add(btReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 210, 40));
 
         jTextField3.setBackground(new java.awt.Color(0, 153, 153));
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 540, 100));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        reqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -83,12 +107,12 @@ public class presentationPage extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "PRESENTATION DATE/TIME", "STATUS"
+                "STATUS", "PRESENTATION DATE/TIME"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
+        jScrollPane1.setViewportView(reqTable);
+        if (reqTable.getColumnModel().getColumnCount() > 0) {
+            reqTable.getColumnModel().getColumn(0).setResizable(false);
         }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 540, 250));
@@ -104,6 +128,11 @@ public class presentationPage extends javax.swing.JFrame {
         home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btHomeActionPerformed
+
+
+    private void btReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReqActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btReqActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,9 +176,9 @@ public class presentationPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable reqTable;
     private javax.swing.JTextField textDate;
     // End of variables declaration//GEN-END:variables
 }
