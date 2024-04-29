@@ -25,32 +25,19 @@ public class presentationPage extends javax.swing.JFrame {
         initComponents();
         Table();
     }
-/*
-    private void Table() {
-        DefaultTableModel model = (DefaultTableModel) reqTable.getModel();
-        model.setRowCount(0);
-        List<String[]> allRows = table.getAllRows();
-
-        for (int i = 1; i < allRows.size(); i++) {
-            String[] rowData = allRows.get(i);
-            String[] newData = new String[]{rowData[1], rowData[7]};
-            model.addRow(newData);
-        }
-    }
-*/
+    
     private void Table() {
     DefaultTableModel model = (DefaultTableModel) reqTable.getModel();
     model.setRowCount(0);
     List<String[]> allRows = table.getAllRows();
 
-    String currentStudentTP = user.getUserID(); // Assuming getUserID() returns the current student TP
+    String currentStudentTP = user.getUserID(); 
     
     for (int i = 1; i < allRows.size(); i++) {
         String[] rowData = allRows.get(i);
         String[] newData = new String[]{rowData[1], rowData[7]};
         
-        // Check if the current student TP matches the student TP in column 9
-        String[] studentTPs = rowData[9].split(","); // Split student TP column by comma
+        String[] studentTPs = rowData[9].split(","); 
         boolean matchFound = false;
         for (String studentTP : studentTPs) {
             if (studentTP.trim().equals(currentStudentTP)) {
@@ -59,7 +46,6 @@ public class presentationPage extends javax.swing.JFrame {
             }
         }
         
-        // If match found, add the row to the table model
         if (matchFound) {
             model.addRow(newData);
         }
