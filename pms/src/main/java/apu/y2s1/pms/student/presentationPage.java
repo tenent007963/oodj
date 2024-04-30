@@ -224,7 +224,7 @@ public class presentationPage extends javax.swing.JFrame {
     }//GEN-LAST:event_textTimeActionPerformed
 
     private void textTimeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textTimeFocusGained
-        if(textTime.getText().equals("DD/MM/YYYY")) 
+        if(textTime.getText().equals("00:00")) 
         {
             textTime.setText("");
             textTime.setForeground(new Color(153,153,153));
@@ -234,7 +234,7 @@ public class presentationPage extends javax.swing.JFrame {
     private void textTimeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textTimeFocusLost
         if (textTime.getText().equals(""))
         {
-            textTime.setText("DD/MM/YYYY");
+            textTime.setText("00:00");
             textTime.setForeground(new Color(153,153,153));
         }
     }//GEN-LAST:event_textTimeFocusLost
