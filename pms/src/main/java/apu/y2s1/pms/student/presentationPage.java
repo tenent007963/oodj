@@ -8,6 +8,7 @@ import apu.y2s1.pms.DataAbstract;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import apu.y2s1.pms.User;
+import java.awt.Color;
 
 /**
  *
@@ -105,6 +106,14 @@ public class presentationPage extends javax.swing.JFrame {
         textDate.setBackground(new java.awt.Color(242, 242, 242));
         textDate.setForeground(new java.awt.Color(204, 204, 204));
         textDate.setText("DD/MM/YYYY");
+        textDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textDateFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                textDateFocusLost(evt);
+            }
+        });
         textDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textDateActionPerformed(evt);
@@ -128,6 +137,19 @@ public class presentationPage extends javax.swing.JFrame {
         textTime.setBackground(new java.awt.Color(242, 242, 242));
         textTime.setForeground(new java.awt.Color(204, 204, 204));
         textTime.setText("00:00");
+        textTime.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textTimeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                textTimeFocusLost(evt);
+            }
+        });
+        textTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textTimeActionPerformed(evt);
+            }
+        });
         getContentPane().add(textTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 210, -1));
 
         jTextField3.setBackground(new java.awt.Color(0, 153, 153));
@@ -178,8 +200,44 @@ public class presentationPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void textDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDateActionPerformed
-        textDate.setPlace
+
     }//GEN-LAST:event_textDateActionPerformed
+
+    private void textDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textDateFocusGained
+        if(textDate.getText().equals("DD/MM/YYYY")) 
+        {
+            textDate.setText("");
+            textDate.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_textDateFocusGained
+
+    private void textDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textDateFocusLost
+        if (textDate.getText().equals(""))
+        {
+            textDate.setText("DD/MM/YYYY");
+            textDate.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_textDateFocusLost
+
+    private void textTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textTimeActionPerformed
+
+    private void textTimeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textTimeFocusGained
+        if(textTime.getText().equals("DD/MM/YYYY")) 
+        {
+            textTime.setText("");
+            textTime.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_textTimeFocusGained
+
+    private void textTimeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textTimeFocusLost
+        if (textTime.getText().equals(""))
+        {
+            textTime.setText("DD/MM/YYYY");
+            textTime.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_textTimeFocusLost
 
     /**
      * @param args the command line arguments
