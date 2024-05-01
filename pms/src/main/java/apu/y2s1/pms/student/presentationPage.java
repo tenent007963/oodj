@@ -9,6 +9,10 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import apu.y2s1.pms.User;
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,7 +41,7 @@ public class presentationPage extends javax.swing.JFrame {
 
         for (int i = 1; i < allRows.size(); i++) {
             String[] rowData = allRows.get(i);
-            String[] newData = new String[]{rowData[1], rowData[7]};
+            String[] newData = new String[]{rowData[1], rowData[7], rowData[8]};
 
             String[] studentTPs = rowData[9].split(",");
             boolean matchFound = false;
@@ -162,13 +166,13 @@ public class presentationPage extends javax.swing.JFrame {
 
         reqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "STATUS", "PRESENTATION DATE/TIME"
+                "STATUS", "PRESENTATION DATE", "PRESENTATION TIME"
             }
         ));
         jScrollPane1.setViewportView(reqTable);
@@ -196,7 +200,21 @@ public class presentationPage extends javax.swing.JFrame {
     }//GEN-LAST:event_btReqActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) reqTable.getModel();
+        String[] add = {textDate.getText(), textTime.getText()};
+        String currentStudentTP = user.getUserID();
+        model.addRow(add);
+        String filename = "Reports.txt";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
+            String updateReport = ";" + ";" + ";" + ";" + ";" + ";"
+                    + ";" + textDate.getText() + textTime.getText() + ";"
+                    + currentStudentTP + ";";
+            writer.write(updateReport);
+            writer.newLine();
+            JOptionPane.showMessageDialog(this, "User info updated successfully");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "User info updated unsuccessfully");
+        }
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void textDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDateActionPerformed
@@ -204,18 +222,16 @@ public class presentationPage extends javax.swing.JFrame {
     }//GEN-LAST:event_textDateActionPerformed
 
     private void textDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textDateFocusGained
-        if(textDate.getText().equals("DD/MM/YYYY")) 
-        {
+        if (textDate.getText().equals("DD/MM/YYYY")) {
             textDate.setText("");
-            textDate.setForeground(new Color(153,153,153));
+            textDate.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_textDateFocusGained
 
     private void textDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textDateFocusLost
-        if (textDate.getText().equals(""))
-        {
+        if (textDate.getText().equals("")) {
             textDate.setText("DD/MM/YYYY");
-            textDate.setForeground(new Color(153,153,153));
+            textDate.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_textDateFocusLost
 
@@ -224,18 +240,16 @@ public class presentationPage extends javax.swing.JFrame {
     }//GEN-LAST:event_textTimeActionPerformed
 
     private void textTimeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textTimeFocusGained
-        if(textTime.getText().equals("00:00")) 
-        {
+        if (textTime.getText().equals("00:00")) {
             textTime.setText("");
-            textTime.setForeground(new Color(153,153,153));
+            textTime.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_textTimeFocusGained
 
     private void textTimeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textTimeFocusLost
-        if (textTime.getText().equals(""))
-        {
+        if (textTime.getText().equals("")) {
             textTime.setText("00:00");
-            textTime.setForeground(new Color(153,153,153));
+            textTime.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_textTimeFocusLost
 
