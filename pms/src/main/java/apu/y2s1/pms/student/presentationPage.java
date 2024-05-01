@@ -43,7 +43,7 @@ public class presentationPage extends javax.swing.JFrame {
             String[] rowData = allRows.get(i);
             String[] newData = new String[]{rowData[1], rowData[7], rowData[8]};
 
-            String[] studentTPs = rowData[9].split(",");
+            String[] studentTPs = rowData[10].split(",");
             boolean matchFound = false;
             for (String TP : studentTPs) {
                 if (TP.trim().equals(currentStudentTP)) {
