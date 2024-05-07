@@ -28,9 +28,10 @@ public class AdminMenu extends javax.swing.JFrame {
 
         Title = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        ModLecturersBtn = new javax.swing.JButton();
+        GenStatisticsBtn = new javax.swing.JButton();
         ModStudentBtn1 = new javax.swing.JButton();
         LogOutBtn = new javax.swing.JButton();
+        ModLecturersBtn1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,14 +47,14 @@ public class AdminMenu extends javax.swing.JFrame {
         jLabel1.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTNUE:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 97, -1, -1));
 
-        ModLecturersBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        ModLecturersBtn.setText("Modify Lecturers");
-        ModLecturersBtn.addActionListener(new java.awt.event.ActionListener() {
+        GenStatisticsBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        GenStatisticsBtn.setText("Generate Statistics");
+        GenStatisticsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModLecturersBtnActionPerformed(evt);
+                GenStatisticsBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(ModLecturersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 251, 210, 50));
+        getContentPane().add(GenStatisticsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 210, 50));
 
         ModStudentBtn1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         ModStudentBtn1.setText("Modify Students");
@@ -71,16 +72,25 @@ public class AdminMenu extends javax.swing.JFrame {
                 LogOutBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(LogOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 347, 210, 50));
+        getContentPane().add(LogOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 210, 50));
+
+        ModLecturersBtn1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        ModLecturersBtn1.setText("Modify Lecturers");
+        ModLecturersBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModLecturersBtn1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ModLecturersBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 210, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ModLecturersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModLecturersBtnActionPerformed
-        apu.y2s1.pms.admin.ModLecturers add = new apu.y2s1.pms.admin.ModLecturers();
+    private void GenStatisticsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenStatisticsBtnActionPerformed
+        apu.y2s1.pms.admin.GenStatistics add = new apu.y2s1.pms.admin.GenStatistics();
         add.setVisible(true);
         dispose();
-    }//GEN-LAST:event_ModLecturersBtnActionPerformed
+    }//GEN-LAST:event_GenStatisticsBtnActionPerformed
 
     private void ModStudentBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModStudentBtn1ActionPerformed
         apu.y2s1.pms.admin.ModStudents add = new apu.y2s1.pms.admin.ModStudents();
@@ -93,6 +103,10 @@ public class AdminMenu extends javax.swing.JFrame {
         add.setVisible(true);
         dispose();
     }//GEN-LAST:event_LogOutBtnActionPerformed
+
+    private void ModLecturersBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModLecturersBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ModLecturersBtn1ActionPerformed
 
     
     
@@ -140,8 +154,9 @@ public class AdminMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton GenStatisticsBtn;
     private javax.swing.JButton LogOutBtn;
-    private javax.swing.JButton ModLecturersBtn;
+    private javax.swing.JButton ModLecturersBtn1;
     private javax.swing.JButton ModStudentBtn1;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel jLabel1;
