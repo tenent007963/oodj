@@ -4,10 +4,16 @@
  */
 package apu.y2s1.pms.admin;
 
+import apu.y2s1.pms.DataAbstract;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 /**
  *
@@ -36,14 +42,19 @@ public class GenStatistics extends javax.swing.JFrame {
         StudentAmt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         TrainerAmt = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        StaffAmt = new javax.swing.JTextField();
         GenTotalStudNum = new javax.swing.JButton();
+        ReportAmt = new javax.swing.JTextField();
         GenTotalLectNum = new javax.swing.JButton();
-        GenTotalAdmNum = new javax.swing.JButton();
+        GenTotalGRepNum = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         HomeBtn = new javax.swing.JButton();
         Title = new javax.swing.JLabel();
         TopBG = new javax.swing.JTextField();
+        GenTotalAdmNum = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        StaffAmt1 = new javax.swing.JTextField();
+        Status = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -58,11 +69,6 @@ public class GenStatistics extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
         getContentPane().add(TrainerAmt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, 99, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
-        jLabel4.setText("Total Number of  Administrators:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, 30));
-        getContentPane().add(StaffAmt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 99, -1));
-
         GenTotalStudNum.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         GenTotalStudNum.setText("Generate");
         GenTotalStudNum.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -71,6 +77,7 @@ public class GenStatistics extends javax.swing.JFrame {
             }
         });
         getContentPane().add(GenTotalStudNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, -1, -1));
+        getContentPane().add(ReportAmt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 99, -1));
 
         GenTotalLectNum.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         GenTotalLectNum.setText("Generate");
@@ -81,14 +88,18 @@ public class GenStatistics extends javax.swing.JFrame {
         });
         getContentPane().add(GenTotalLectNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, -1, -1));
 
-        GenTotalAdmNum.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
-        GenTotalAdmNum.setText("Generate");
-        GenTotalAdmNum.addMouseListener(new java.awt.event.MouseAdapter() {
+        GenTotalGRepNum.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
+        GenTotalGRepNum.setText("Generate");
+        GenTotalGRepNum.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                GenTotalAdmNumMouseClicked(evt);
+                GenTotalGRepNumMouseClicked(evt);
             }
         });
-        getContentPane().add(GenTotalAdmNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, -1));
+        getContentPane().add(GenTotalGRepNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
+        jLabel4.setText("Total Number of Reports:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, -1, 30));
 
         HomeBtn.setBackground(new java.awt.Color(153, 204, 255));
         HomeBtn.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
@@ -101,7 +112,7 @@ public class GenStatistics extends javax.swing.JFrame {
         getContentPane().add(HomeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
 
         Title.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        Title.setText("MODIFY STUDENTS");
+        Title.setText("GENERATE STATISTICS");
         Title.setToolTipText("");
         getContentPane().add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, 40));
 
@@ -109,31 +120,42 @@ public class GenStatistics extends javax.swing.JFrame {
         TopBG.setForeground(new java.awt.Color(153, 204, 255));
         getContentPane().add(TopBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 40));
 
+        GenTotalAdmNum.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
+        GenTotalAdmNum.setText("Generate");
+        GenTotalAdmNum.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GenTotalAdmNumMouseClicked(evt);
+            }
+        });
+        getContentPane().add(GenTotalAdmNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 260, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
+        jLabel5.setText("Total Number of Administrators:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, -1, 40));
+        getContentPane().add(StaffAmt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 99, -1));
+
+        Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Graded", "Submitted", "Processing" }));
+        getContentPane().add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/AdminModifyBG.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 730, 440));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void GenTotalStudNumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenTotalStudNumMouseClicked
-        Integer linelen = 0;
-
-        String filePath = "Student.txt";
-        File file = new File(filePath);
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            while (reader.readLine() != null) {
-                linelen++;
-            }
-            String len = Integer.toString(linelen);
-
-            StudentAmt.setText(len);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        /*Integer linelen = 0;
+        String filePath = "Students.txt";
+        int linelen = countLines("Students.txt");
+        StudentAmt.setText(len);*/
+        
     }//GEN-LAST:event_GenTotalStudNumMouseClicked
 
     private void GenTotalLectNumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenTotalLectNumMouseClicked
         Integer linelen = 0;
 
-        String filePath = "Lecturer.txt";
+        String filePath = "Lecturers.txt";
         File file = new File(filePath);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -148,10 +170,40 @@ public class GenStatistics extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_GenTotalLectNumMouseClicked
 
+    private void GenTotalGRepNumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenTotalGRepNumMouseClicked
+        ReportAmt.setText("Calculating...");
+        String line;
+        int matches = 0;
+        String search = (String) "\\b"+ Status.getSelectedItem();
+        Pattern pattern = Pattern.compile(search, Pattern.CASE_INSENSITIVE);
+        
+        String filePath = "Reports.txt";
+        File file = new File(filePath);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            while ((line = reader.readLine()) != null) {
+                Matcher matcher = pattern.matcher(line);
+                while (matcher.find()) {
+                    matches++;
+                }
+            }
+            ReportAmt.setText(Integer.toString(matches));
+        } catch (IOException ex) {
+            Logger.getLogger(GenStatistics.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_GenTotalGRepNumMouseClicked
+
+    private void HomeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBtnMouseClicked
+        apu.y2s1.pms.admin.AdminMenu add = new apu.y2s1.pms.admin.AdminMenu();
+        add.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_HomeBtnMouseClicked
+
     private void GenTotalAdmNumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenTotalAdmNumMouseClicked
         Integer linelen = 0;
 
-        String filePath = "StaffData.txt";
+        String filePath = "Admins.txt";
         File file = new File(filePath);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
@@ -160,17 +212,11 @@ public class GenStatistics extends javax.swing.JFrame {
             }
             String len = Integer.toString(linelen);
 
-            StaffAmt.setText(len);
+            ReportAmt.setText(len);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_GenTotalAdmNumMouseClicked
-
-    private void HomeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBtnMouseClicked
-        apu.y2s1.pms.admin.AdminMenu add = new apu.y2s1.pms.admin.AdminMenu();
-        add.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_HomeBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -209,17 +255,22 @@ public class GenStatistics extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton GenTotalAdmNum;
+    private javax.swing.JButton GenTotalGRepNum;
     private javax.swing.JButton GenTotalLectNum;
     private javax.swing.JButton GenTotalStudNum;
     private javax.swing.JButton HomeBtn;
-    private javax.swing.JTextField StaffAmt;
+    private javax.swing.JTextField ReportAmt;
+    private javax.swing.JTextField StaffAmt1;
+    private javax.swing.JComboBox<String> Status;
     private javax.swing.JTextField StudentAmt;
     private javax.swing.JLabel Title;
     private javax.swing.JTextField TopBG;
     private javax.swing.JTextField TrainerAmt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables
 }
