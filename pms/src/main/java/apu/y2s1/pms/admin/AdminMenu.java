@@ -32,6 +32,7 @@ public class AdminMenu extends javax.swing.JFrame {
         ModStudentBtn1 = new javax.swing.JButton();
         LogOutBtn = new javax.swing.JButton();
         ModLecturersBtn1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,6 +83,9 @@ public class AdminMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ModLecturersBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 210, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/MenuBG.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-140, -140, 880, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,5 +164,6 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton ModStudentBtn1;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
