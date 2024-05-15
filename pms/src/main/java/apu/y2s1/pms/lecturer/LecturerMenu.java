@@ -28,9 +28,11 @@ public class LecturerMenu extends javax.swing.JFrame {
 
         Title = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        ModLecturersBtn = new javax.swing.JButton();
-        ModStudentBtn1 = new javax.swing.JButton();
+        SecondMarking = new javax.swing.JButton();
+        FirstMarking = new javax.swing.JButton();
         LogOutBtn = new javax.swing.JButton();
+        ViewMarkFeedback = new javax.swing.JButton();
+        CfmPresentReq = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,19 +43,19 @@ public class LecturerMenu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel1.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTINUE:");
 
-        ModLecturersBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        ModLecturersBtn.setText("Modify Lecturers");
-        ModLecturersBtn.addActionListener(new java.awt.event.ActionListener() {
+        SecondMarking.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        SecondMarking.setText("Second Marking");
+        SecondMarking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModLecturersBtnActionPerformed(evt);
+                SecondMarkingActionPerformed(evt);
             }
         });
 
-        ModStudentBtn1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        ModStudentBtn1.setText("Modify Students");
-        ModStudentBtn1.addActionListener(new java.awt.event.ActionListener() {
+        FirstMarking.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        FirstMarking.setText("First Marking");
+        FirstMarking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModStudentBtn1ActionPerformed(evt);
+                FirstMarkingActionPerformed(evt);
             }
         });
 
@@ -65,25 +67,45 @@ public class LecturerMenu extends javax.swing.JFrame {
             }
         });
 
+        ViewMarkFeedback.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        ViewMarkFeedback.setText("View Marking Feedback");
+        ViewMarkFeedback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewMarkFeedbackActionPerformed(evt);
+            }
+        });
+
+        CfmPresentReq.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        CfmPresentReq.setText("Confirm Presentation Request");
+        CfmPresentReq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CfmPresentReqActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
-                        .addComponent(Title))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(187, 187, 187)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ModLecturersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ModStudentBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LogOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(233, 233, 233)
+                .addComponent(Title)
                 .addGap(236, 236, 236))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(165, 165, 165))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LogOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SecondMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FirstMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ViewMarkFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CfmPresentReq, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(136, 136, 136))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,35 +114,49 @@ public class LecturerMenu extends javax.swing.JFrame {
                 .addComponent(Title)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
-                .addComponent(ModStudentBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
-                .addComponent(ModLecturersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(FirstMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(SecondMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(CfmPresentReq, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(ViewMarkFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(97, 97, 97)
                 .addComponent(LogOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ModLecturersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModLecturersBtnActionPerformed
+    private void SecondMarkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SecondMarkingActionPerformed
         apu.y2s1.pms.admin.ModLecturers add = new apu.y2s1.pms.admin.ModLecturers();
         add.setVisible(true);
         dispose();
-    }//GEN-LAST:event_ModLecturersBtnActionPerformed
+    }//GEN-LAST:event_SecondMarkingActionPerformed
 
-    private void ModStudentBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModStudentBtn1ActionPerformed
+    private void FirstMarkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FirstMarkingActionPerformed
         apu.y2s1.pms.admin.ModStudents add = new apu.y2s1.pms.admin.ModStudents();
         add.setVisible(true);
         dispose();
-    }//GEN-LAST:event_ModStudentBtn1ActionPerformed
+    }//GEN-LAST:event_FirstMarkingActionPerformed
 
     private void LogOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutBtnActionPerformed
         apu.y2s1.pms.Login add = new apu.y2s1.pms.Login();
         add.setVisible(true);
         dispose();
     }//GEN-LAST:event_LogOutBtnActionPerformed
+
+    private void ViewMarkFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewMarkFeedbackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ViewMarkFeedbackActionPerformed
+
+    private void CfmPresentReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CfmPresentReqActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CfmPresentReqActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,10 +194,12 @@ public class LecturerMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CfmPresentReq;
+    private javax.swing.JButton FirstMarking;
     private javax.swing.JButton LogOutBtn;
-    private javax.swing.JButton ModLecturersBtn;
-    private javax.swing.JButton ModStudentBtn1;
+    private javax.swing.JButton SecondMarking;
     private javax.swing.JLabel Title;
+    private javax.swing.JButton ViewMarkFeedback;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
