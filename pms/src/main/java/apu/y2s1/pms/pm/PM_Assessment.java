@@ -167,8 +167,8 @@ public class PM_Assessment extends javax.swing.JFrame {
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
         getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 140, -1));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jeslyn\\Downloads\\Functionpage.png")); // NOI18N
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/PM_Function.png"))); // NOI18N
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -82,8 +82,8 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         });
         getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 400, 210, 50));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jeslyn\\Downloads\\Homepage.png")); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/PM_Home.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
