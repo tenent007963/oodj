@@ -55,7 +55,11 @@ public class Login extends javax.swing.JFrame {
 
         jLabel5.setText("ROLE:");
 
-        Pwd.setText("jPasswordField1");
+        Pwd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PwdActionPerformed(evt);
+            }
+        });
 
         Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Lecturer", "Project Manager", "Student" }));
 
@@ -201,6 +205,10 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"An Error Occured.");
         }
     }//GEN-LAST:event_LoginActionPerformed
+
+    private void PwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PwdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PwdActionPerformed
 
     /**
      * @param args the command line arguments
