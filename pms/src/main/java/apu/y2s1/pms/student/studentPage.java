@@ -43,11 +43,11 @@ public class studentPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Heavy", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Student Login");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 6, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel2.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTINUE");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 53, 429, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 429, -1));
 
         BTsubmit.setBackground(new java.awt.Color(255, 255, 255));
         BTsubmit.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -58,7 +58,7 @@ public class studentPage extends javax.swing.JFrame {
                 BTsubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(BTsubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 123, 210, 50));
+        getContentPane().add(BTsubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 210, 50));
 
         BTrequest.setBackground(new java.awt.Color(255, 255, 255));
         BTrequest.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -69,7 +69,7 @@ public class studentPage extends javax.swing.JFrame {
                 BTrequestActionPerformed(evt);
             }
         });
-        getContentPane().add(BTrequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 191, 210, 50));
+        getContentPane().add(BTrequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 210, 50));
 
         BTstatus.setBackground(new java.awt.Color(255, 255, 255));
         BTstatus.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -80,7 +80,7 @@ public class studentPage extends javax.swing.JFrame {
                 BTstatusActionPerformed(evt);
             }
         });
-        getContentPane().add(BTstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 259, 210, 50));
+        getContentPane().add(BTstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 210, 50));
 
         BTlogout.setBackground(new java.awt.Color(255, 255, 255));
         BTlogout.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -91,10 +91,10 @@ public class studentPage extends javax.swing.JFrame {
                 BTlogoutActionPerformed(evt);
             }
         });
-        getContentPane().add(BTlogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 327, 210, 50));
+        getContentPane().add(BTlogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, 210, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\OneDrive - Asia Pacific University\\Desktop\\Object Oriented Development with Java\\pexels-anna-tarazevich-5936283.jpg")); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
