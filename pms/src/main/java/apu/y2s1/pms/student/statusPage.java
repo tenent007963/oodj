@@ -43,7 +43,7 @@ public class statusPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("REPORT STATUS");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, -1));
 
         btHOME.setBackground(new java.awt.Color(0, 102, 102));
         btHOME.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
@@ -57,7 +57,7 @@ public class statusPage extends javax.swing.JFrame {
         getContentPane().add(btHOME, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 40));
 
         jTextField1.setBackground(new java.awt.Color(0, 102, 102));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -72,7 +72,7 @@ public class statusPage extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 610, 340));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 860, 520));
 
         btSubmit.setBackground(new java.awt.Color(102, 102, 102));
         btSubmit.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -82,15 +82,15 @@ public class statusPage extends javax.swing.JFrame {
                 btSubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(btSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 190, 40));
+        getContentPane().add(btSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, 190, 40));
 
         btRefresh.setBackground(new java.awt.Color(102, 102, 102));
         btRefresh.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         btRefresh.setText("REFRESH");
-        getContentPane().add(btRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 100, 40));
+        getContentPane().add(btRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 570, 100, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\OneDrive - Asia Pacific University\\Desktop\\Object Oriented Development with Java\\pexels-anna-tarazevich-5936283.jpg")); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
