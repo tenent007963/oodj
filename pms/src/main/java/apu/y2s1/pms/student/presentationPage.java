@@ -88,7 +88,7 @@ public class presentationPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("REQUEST PRESENTATION");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         btHome.setBackground(new java.awt.Color(0, 102, 102));
         btHome.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
@@ -102,7 +102,7 @@ public class presentationPage extends javax.swing.JFrame {
         getContentPane().add(btHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 100, 40));
 
         jTextField1.setBackground(new java.awt.Color(0, 102, 102));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
         jLabel2.setText("ENTER PREFERRED DATE:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
@@ -123,7 +123,7 @@ public class presentationPage extends javax.swing.JFrame {
                 textDateActionPerformed(evt);
             }
         });
-        getContentPane().add(textDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 210, -1));
+        getContentPane().add(textDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 350, -1));
 
         btReq.setBackground(new java.awt.Color(102, 102, 102));
         btReq.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -133,7 +133,7 @@ public class presentationPage extends javax.swing.JFrame {
                 btReqActionPerformed(evt);
             }
         });
-        getContentPane().add(btReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 370, 40));
+        getContentPane().add(btReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 370, 40));
 
         jLabel4.setText("ENTER PREFFERED TIME:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
@@ -154,7 +154,7 @@ public class presentationPage extends javax.swing.JFrame {
                 textTimeActionPerformed(evt);
             }
         });
-        getContentPane().add(textTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 210, -1));
+        getContentPane().add(textTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 350, -1));
 
         jTextField3.setBackground(new java.awt.Color(0, 153, 153));
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +162,7 @@ public class presentationPage extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 540, 150));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 880, 170));
 
         reqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -180,10 +180,10 @@ public class presentationPage extends javax.swing.JFrame {
             reqTable.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 540, 250));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 890, 360));
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\OneDrive - Asia Pacific University\\Desktop\\Object Oriented Development with Java\\pexels-anna-tarazevich-5936283.jpg")); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
