@@ -1,4 +1,4 @@
-Assessment ID; Name ; Type ; Intake Code ; Supervisor ; First Marker ; Second Marker ; Hand Out Date ; Submission Date
-A242;JavaGo;CP1;UCDF2111ICT(SE);Sinon;Uki;Luni;23/2/2024;25/6/2024
-A367;DevNetwork;CP2;APD1F2307(BAF);Luni;Uki;Ninym;15/3/2024;21/7/2024
-A750;SocialKing;Investigation Report;AFCF2303AS;Ninym;Sinon;Luni;2/4/2024;7/8/2024
+Assessment ID; Name ; Type ; Supervisor ; First Marker ; Second Marker ; Hand Out Date ; Submission Date
+A242;JavaGo;CP1;Sinon;Uki;Luni;23/2/2024;25/6/2024
+A367;DevNetwork;CP2;Luni;Uki;Ninym;15/3/2024;21/7/2024
+A750;SocialKing;Investigation Report;Ninym;Sinon;Luni;2/4/2024;7/8/2024
