@@ -50,7 +50,7 @@ public class submitPage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("REPORT SUBMISSION");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 102, 102));
         jButton1.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
@@ -69,7 +69,7 @@ public class submitPage extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 40));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
         jLabel2.setText("CURRENT DATE:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
@@ -85,23 +85,28 @@ public class submitPage extends javax.swing.JFrame {
                 BTsubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(BTsubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 200, 40));
+        getContentPane().add(BTsubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 380, 40));
 
         BTedit.setBackground(new java.awt.Color(102, 102, 102));
         BTedit.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         BTedit.setText("EDIT");
-        getContentPane().add(BTedit, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 100, 40));
+        BTedit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTeditActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BTedit, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 80, 190, 40));
 
         BTdelete.setBackground(new java.awt.Color(102, 102, 102));
         BTdelete.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         BTdelete.setText("DELETE");
-        getContentPane().add(BTdelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, 100, 40));
+        getContentPane().add(BTdelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 80, 180, 40));
 
         DDAssessment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Reports", "CP1", "CP2", "RMCP", "FYP " }));
-        getContentPane().add(DDAssessment, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 130, -1));
+        getContentPane().add(DDAssessment, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 230, -1));
 
         textDate.setBackground(new java.awt.Color(242, 242, 242));
-        getContentPane().add(textDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 130, -1));
+        getContentPane().add(textDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 230, -1));
 
         tableReport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,13 +119,13 @@ public class submitPage extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableReport);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 620, 300));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 930, 430));
 
         jTextField1.setBackground(new java.awt.Color(0, 153, 153));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 620, 100));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 930, 110));
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\OneDrive - Asia Pacific University\\Desktop\\Object Oriented Development with Java\\pexels-anna-tarazevich-5936283.jpg")); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 480));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -138,6 +143,10 @@ public class submitPage extends javax.swing.JFrame {
         home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BTeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTeditActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTeditActionPerformed
 
     /**
      * @param args the command line arguments
