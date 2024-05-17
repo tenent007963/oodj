@@ -226,7 +226,7 @@ public class ModLecturers extends javax.swing.JFrame {
         PMRole.setText("Project Manager");
         getContentPane().add(PMRole, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Thinkpad\\Documents\\NetBeansProjects\\oodj\\pms\\src\\main\\java\\apu\\y2s1\\pms\\admin\\Img\\AdminModifyBG.jpg")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/AdminFnBG.jpg"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 730, 460));
 
         pack();
