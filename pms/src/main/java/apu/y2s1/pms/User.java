@@ -19,16 +19,16 @@ public class User {
         this.role = role;
         switch(this.role) {
             case "student":
-                this.filename = "student.txt";
+                this.filename = "Students.txt";
                 break;
             case "lecturer":
-                this.filename = "student.txt";
+                this.filename = "Lecturers.txt";
                 break;
             case "admin":
-                this.filename = "student.txt";
+                this.filename = "Admins.txt";
                 break;
             case "pm":
-                this.filename = "student.txt";
+                this.filename = "ProjectManagers.txt";
                 break;
             default:
                 break;
@@ -38,9 +38,11 @@ public class User {
     
 
     // This object should be created upon successful login
+    // seting default user for the sake of development
     public static User getInstance() {
         if (instance == null) {
-            instance = new User(null,null);
+            // using default user devid
+            instance = new User("U999","student");
        }
         return instance;
     }
