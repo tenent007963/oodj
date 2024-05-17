@@ -68,10 +68,10 @@ public class FeedbackPage extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 830, 400));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 830, 400));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/student/img/pexels-anna-tarazevich-5936283.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 630));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1024, 624));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
