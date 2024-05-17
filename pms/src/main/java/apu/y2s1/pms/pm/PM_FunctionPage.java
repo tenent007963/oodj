@@ -40,11 +40,11 @@ public class PM_FunctionPage extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Heavy", 1, 36)); // NOI18N
         jLabel1.setText("FUNCTION PAGE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(211, 31, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel2.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTINUE:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, -1, -1));
 
         Project.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         Project.setText("ASSESSMENT MANAGEMENT");
@@ -53,7 +53,7 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                 ProjectActionPerformed(evt);
             }
         });
-        getContentPane().add(Project, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 226, 210, 50));
+        getContentPane().add(Project, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 250, 50));
 
         Allotment.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         Allotment.setText("STUDENTS ALLOTMENT");
@@ -62,7 +62,7 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                 AllotmentActionPerformed(evt);
             }
         });
-        getContentPane().add(Allotment, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 138, 210, 50));
+        getContentPane().add(Allotment, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 250, 50));
 
         Report.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         Report.setText("REPORT STATUS");
@@ -71,7 +71,7 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                 ReportActionPerformed(evt);
             }
         });
-        getContentPane().add(Report, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 314, 210, 50));
+        getContentPane().add(Report, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 250, 50));
 
         Logout.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         Logout.setText("LOG OUT");
@@ -80,9 +80,9 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                 LogoutActionPerformed(evt);
             }
         });
-        getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 400, 210, 50));
+        getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 530, 250, 50));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/PM_Home.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Homepage.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
