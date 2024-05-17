@@ -137,8 +137,7 @@ public class GenStatistics extends javax.swing.JFrame {
         Status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Graded", "Submitted", "Processing" }));
         getContentPane().add(Status, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/AdminModifyBG.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/AdminFnBG.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 730, 440));
 
         pack();
