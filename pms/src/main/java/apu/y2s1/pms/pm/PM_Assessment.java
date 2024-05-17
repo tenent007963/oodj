@@ -204,7 +204,7 @@ public class PM_Assessment extends javax.swing.JFrame {
         Submission.setDateFormatString("dd/MM/yyyy");
         getContentPane().add(Submission, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 170, -1));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/img/Functionpage.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
