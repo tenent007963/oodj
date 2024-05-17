@@ -17,7 +17,7 @@ import javax.swing.table.TableRowSorter;
  * @author Jeslyn
  */
 public class PM_ReportStatus extends javax.swing.JFrame {
-    DataAbstract table = new DataAbstract("Reports.txt");
+    DataAbstract table = new DataAbstract("Submissions.txt");
     DataAbstract combobox = new DataAbstract("Students.txt");
     /**
      * Creates new form PM_Dashboard
@@ -43,7 +43,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     }
     
     private void Table() {
-        DefaultTableModel model = (DefaultTableModel) ReportTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) SubmissionTable.getModel();
         model.setRowCount(0);
 
         String sort = (String) Sort.getSelectedItem();
@@ -78,7 +78,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Search = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ReportTable = new javax.swing.JTable();
+        SubmissionTable = new javax.swing.JTable();
         Sort = new javax.swing.JComboBox<>();
         jProgressBar1 = new javax.swing.JProgressBar();
         jLabel6 = new javax.swing.JLabel();
@@ -118,7 +118,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         });
         getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 140, -1));
 
-        ReportTable.setModel(new javax.swing.table.DefaultTableModel(
+        SubmissionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -129,7 +129,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(ReportTable);
+        jScrollPane1.setViewportView(SubmissionTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 930, 340));
 
@@ -150,9 +150,9 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
-        DefaultTableModel table = (DefaultTableModel) ReportTable.getModel();
+        DefaultTableModel table = (DefaultTableModel) SubmissionTable.getModel();
         TableRowSorter<DefaultTableModel> search = new TableRowSorter<>(table);
-        ReportTable.setRowSorter(search);
+        SubmissionTable.setRowSorter(search);
         String field = Search.getText().toLowerCase();
         search.setRowFilter(RowFilter.regexFilter("(?i)" + field));
     }//GEN-LAST:event_SearchActionPerformed
@@ -201,9 +201,9 @@ public class PM_ReportStatus extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Home;
-    private javax.swing.JTable ReportTable;
     private javax.swing.JTextField Search;
     private javax.swing.JComboBox<String> Sort;
+    private javax.swing.JTable SubmissionTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
