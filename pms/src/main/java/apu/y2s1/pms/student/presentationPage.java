@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class presentationPage extends javax.swing.JFrame {
 
-    DataAbstract table = new DataAbstract("Reports.txt");
+    DataAbstract table = new DataAbstract("Submissions.txt");
     User user = User.getInstance();
 
     /**
