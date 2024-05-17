@@ -26,7 +26,7 @@ public class PM_Calendar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        Home = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         Calendar = new com.toedter.calendar.JCalendar();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -38,10 +38,15 @@ public class PM_Calendar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(255, 190, 152));
-        jButton1.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
-        jButton1.setText("HOME");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
+        Home.setBackground(new java.awt.Color(255, 190, 152));
+        Home.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
+        Home.setText("HOME");
+        Home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
 
         jLabel1.setBackground(new java.awt.Color(255, 190, 152));
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
@@ -69,11 +74,17 @@ public class PM_Calendar extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 460, 160));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Functionpage.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
+        PM_FunctionPage home = new PM_FunctionPage();
+        home.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_HomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,8 +125,8 @@ public class PM_Calendar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JCalendar Calendar;
     private javax.swing.JList<String> Event;
+    private javax.swing.JButton Home;
     private javax.swing.JList<String> Notification;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;

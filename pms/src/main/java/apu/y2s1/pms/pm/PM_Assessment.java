@@ -68,7 +68,7 @@ public class PM_Assessment extends javax.swing.JFrame {
         AssessmentTable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Home = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -84,8 +84,8 @@ public class PM_Assessment extends javax.swing.JFrame {
         ID = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        HandOut = new com.toedter.calendar.JDateChooser();
+        Submission = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,23 +94,41 @@ public class PM_Assessment extends javax.swing.JFrame {
 
         AssessmentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Name", "Type", "Supervisor", "First.M.", "Second.M.", "Hand Out.D.", "Submission.D."
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         AssessmentTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AssessmentTableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(AssessmentTable);
+        if (AssessmentTable.getColumnModel().getColumnCount() > 0) {
+            AssessmentTable.getColumnModel().getColumn(0).setResizable(false);
+            AssessmentTable.getColumnModel().getColumn(1).setResizable(false);
+            AssessmentTable.getColumnModel().getColumn(2).setResizable(false);
+            AssessmentTable.getColumnModel().getColumn(3).setResizable(false);
+            AssessmentTable.getColumnModel().getColumn(4).setResizable(false);
+            AssessmentTable.getColumnModel().getColumn(5).setResizable(false);
+            AssessmentTable.getColumnModel().getColumn(6).setResizable(false);
+            AssessmentTable.getColumnModel().getColumn(7).setResizable(false);
+        }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 630, 520));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 650, 520));
 
         jLabel3.setText("Assessment Name:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
@@ -118,10 +136,15 @@ public class PM_Assessment extends javax.swing.JFrame {
         jLabel4.setText("Assessment Type:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 190, 152));
-        jButton1.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
-        jButton1.setText("HOME");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
+        Home.setBackground(new java.awt.Color(255, 190, 152));
+        Home.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
+        Home.setText("HOME");
+        Home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
 
         jLabel1.setBackground(new java.awt.Color(255, 190, 152));
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
@@ -135,19 +158,19 @@ public class PM_Assessment extends javax.swing.JFrame {
 
         jLabel6.setText("First Marker:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
-        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 140, -1));
+        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 130, -1));
 
         Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
-        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
+        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 130, -1));
 
-        getContentPane().add(Supervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 80, -1));
+        getContentPane().add(Supervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 130, -1));
 
-        getContentPane().add(FirstM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 80, -1));
+        getContentPane().add(FirstM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 130, -1));
 
         jLabel7.setText("Second Marker:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
-        getContentPane().add(SecondM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 80, -1));
+        getContentPane().add(SecondM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 130, -1));
 
         Create.setText("CREATE");
         Create.addActionListener(new java.awt.event.ActionListener() {
@@ -167,17 +190,21 @@ public class PM_Assessment extends javax.swing.JFrame {
 
         jLabel8.setText("Assessment ID:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
-        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 140, -1));
+        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 130, -1));
 
         jLabel2.setText("Hand Out Date:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
         jLabel10.setText("Submission Date:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 140, -1));
-        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 140, -1));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Functionpage.png"))); // NOI18N
+        HandOut.setDateFormatString("dd/MM/yyyy");
+        getContentPane().add(HandOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 170, -1));
+
+        Submission.setDateFormatString("dd/MM/yyyy");
+        getContentPane().add(Submission, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 170, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
@@ -235,6 +262,12 @@ public class PM_Assessment extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_EditActionPerformed
 
+    private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
+        PM_FunctionPage home = new PM_FunctionPage();
+        home.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_HomeActionPerformed
+
     private String AssessmentID() {
         String id = "A" + String.format("%03d", (int)(Math.random() * 1000));
         
@@ -282,14 +315,14 @@ public class PM_Assessment extends javax.swing.JFrame {
     private javax.swing.JButton Create;
     private javax.swing.JButton Edit;
     private javax.swing.JComboBox<String> FirstM;
+    private com.toedter.calendar.JDateChooser HandOut;
+    private javax.swing.JButton Home;
     private javax.swing.JTextField ID;
     private javax.swing.JTextField Name;
     private javax.swing.JComboBox<String> SecondM;
+    private com.toedter.calendar.JDateChooser Submission;
     private javax.swing.JComboBox<String> Supervisor;
     private javax.swing.JComboBox<String> Type;
-    private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

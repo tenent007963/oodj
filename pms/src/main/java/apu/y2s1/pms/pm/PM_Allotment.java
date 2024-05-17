@@ -72,7 +72,7 @@ public class PM_Allotment extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        Home = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         Sort = new javax.swing.JComboBox<>();
@@ -83,22 +83,27 @@ public class PM_Allotment extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         Name = new javax.swing.JTextField();
         Intake = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        StudentTable = new javax.swing.JTable();
         Search = new javax.swing.JTextField();
         Allot = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         AssessmentTable = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        StudentTable = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(255, 190, 152));
-        jButton1.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
-        jButton1.setText("HOME");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
+        Home.setBackground(new java.awt.Color(255, 190, 152));
+        Home.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
+        Home.setText("HOME");
+        Home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
 
         jLabel1.setBackground(new java.awt.Color(255, 190, 152));
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
@@ -130,26 +135,6 @@ public class PM_Allotment extends javax.swing.JFrame {
         getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 140, -1));
         getContentPane().add(Intake, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 140, -1));
 
-        StudentTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        StudentTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                StudentTableMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(StudentTable);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 630, 240));
-
         Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchActionPerformed(evt);
@@ -178,9 +163,24 @@ public class PM_Allotment extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(AssessmentTable);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 630, 260));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 630, 250));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Functionpage.png"))); // NOI18N
+        StudentTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(StudentTable);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 630, 230));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
@@ -193,14 +193,6 @@ public class PM_Allotment extends javax.swing.JFrame {
         String field = Search.getText().toLowerCase();
         search.setRowFilter(RowFilter.regexFilter("(?i)" + field));
     }//GEN-LAST:event_SearchActionPerformed
-
-    private void StudentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StudentTableMouseClicked
-        DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
-        int row = StudentTable.getSelectedRow();
-        
-        Name.setText(model.getValueAt(row,1).toString());
-        Intake.setText(model.getValueAt(row,4).toString());
-    }//GEN-LAST:event_StudentTableMouseClicked
 
     private void AllotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllotActionPerformed
         int selected = StudentTable.getSelectedRow();
@@ -225,6 +217,12 @@ public class PM_Allotment extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
         }
     }//GEN-LAST:event_AllotActionPerformed
+
+    private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
+        PM_FunctionPage home = new PM_FunctionPage();
+        home.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_HomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,13 +262,13 @@ public class PM_Allotment extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Allot;
     private javax.swing.JTable AssessmentTable;
+    private javax.swing.JButton Home;
     private javax.swing.JTextField Intake;
     private javax.swing.JTextField Name;
     private javax.swing.JTextField Search;
     private javax.swing.JComboBox<String> Sort;
     private javax.swing.JTable StudentTable;
     private javax.swing.JComboBox<String> Type;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
