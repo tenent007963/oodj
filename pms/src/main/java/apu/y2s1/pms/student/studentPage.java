@@ -32,6 +32,8 @@ public class studentPage extends javax.swing.JFrame {
         BTrequest = new javax.swing.JButton();
         BTstatus = new javax.swing.JButton();
         BTlogout = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,7 +60,7 @@ public class studentPage extends javax.swing.JFrame {
                 BTsubmitActionPerformed(evt);
             }
         });
-        getContentPane().add(BTsubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 210, 50));
+        getContentPane().add(BTsubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 210, 50));
 
         BTrequest.setBackground(new java.awt.Color(255, 255, 255));
         BTrequest.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -69,7 +71,7 @@ public class studentPage extends javax.swing.JFrame {
                 BTrequestActionPerformed(evt);
             }
         });
-        getContentPane().add(BTrequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 210, 50));
+        getContentPane().add(BTrequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 210, 50));
 
         BTstatus.setBackground(new java.awt.Color(255, 255, 255));
         BTstatus.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -80,7 +82,7 @@ public class studentPage extends javax.swing.JFrame {
                 BTstatusActionPerformed(evt);
             }
         });
-        getContentPane().add(BTstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, 210, 50));
+        getContentPane().add(BTstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 300, 210, 50));
 
         BTlogout.setBackground(new java.awt.Color(255, 255, 255));
         BTlogout.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -91,7 +93,19 @@ public class studentPage extends javax.swing.JFrame {
                 BTlogoutActionPerformed(evt);
             }
         });
-        getContentPane().add(BTlogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 440, 210, 50));
+        getContentPane().add(BTlogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 550, 210, 50));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("REQUEST EXTENSION");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 210, 50));
+
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setText("VIEW FEEDBACK");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 210, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\OneDrive - Asia Pacific University\\Desktop\\Object Oriented Development with Java\\pexels-anna-tarazevich-5936283.jpg")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
@@ -164,6 +178,8 @@ public class studentPage extends javax.swing.JFrame {
     private javax.swing.JButton BTrequest;
     private javax.swing.JButton BTstatus;
     private javax.swing.JButton BTsubmit;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
