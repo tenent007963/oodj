@@ -72,7 +72,6 @@ public class PM_Allotment extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -94,41 +93,40 @@ public class PM_Allotment extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
-        jLabel2.setText("STUDENTS ALLOTMENT");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
-
         jButton1.setBackground(new java.awt.Color(255, 190, 152));
         jButton1.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
         jButton1.setText("HOME");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
 
         jLabel1.setBackground(new java.awt.Color(255, 190, 152));
+        jLabel1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("STUDENTS ALLOTMENT");
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
         jLabel3.setText("Sort By:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
         Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
-        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 140, -1));
+        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 140, -1));
 
         jLabel4.setText("Search Name:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
 
         jLabel5.setText("Assessment Type:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
 
         Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
-        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, -1, -1));
+        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, -1, -1));
 
         jLabel6.setText("Student Name:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
 
         jLabel7.setText("Student Intake:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
-        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 140, -1));
-        getContentPane().add(Intake, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 140, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
+        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 140, -1));
+        getContentPane().add(Intake, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 140, -1));
 
         StudentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -148,14 +146,14 @@ public class PM_Allotment extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(StudentTable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 60, 410, 400));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 550, 520));
 
         Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchActionPerformed(evt);
             }
         });
-        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
+        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 140, -1));
 
         Allot.setText("ALLOT");
         Allot.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +161,7 @@ public class PM_Allotment extends javax.swing.JFrame {
                 AllotActionPerformed(evt);
             }
         });
-        getContentPane().add(Allot, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, -1));
+        getContentPane().add(Allot, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/PM_Function.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
@@ -256,7 +254,6 @@ public class PM_Allotment extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Type;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
