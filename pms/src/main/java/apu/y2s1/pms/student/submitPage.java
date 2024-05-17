@@ -31,9 +31,6 @@ public class submitPage extends javax.swing.JFrame {
         List<String[]> allRows = table.getAllRows();
 
         if (!allRows.isEmpty()) {
-            String[] headers = allRows.get(0);
-            model.setColumnIdentifiers(headers);
-
             for (int i = 1; i < allRows.size(); i++) {
                 model.addRow(allRows.get(i));
             }
