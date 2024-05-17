@@ -72,7 +72,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        Home = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -88,10 +88,15 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setBackground(new java.awt.Color(255, 190, 152));
-        jButton1.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
-        jButton1.setText("HOME");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
+        Home.setBackground(new java.awt.Color(255, 190, 152));
+        Home.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
+        Home.setText("HOME");
+        Home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HomeActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
 
         jLabel1.setBackground(new java.awt.Color(255, 190, 152));
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
@@ -130,13 +135,15 @@ public class PM_ReportStatus extends javax.swing.JFrame {
 
         Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
         getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 70, 140, -1));
+
+        jProgressBar1.setBackground(new java.awt.Color(255, 178, 165));
         getContentPane().add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 850, 20));
 
-        jLabel6.setBackground(new java.awt.Color(255, 190, 152));
+        jLabel6.setBackground(new java.awt.Color(239, 207, 186));
         jLabel6.setOpaque(true);
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 930, 130));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Functionpage.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
@@ -149,6 +156,12 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         String field = Search.getText().toLowerCase();
         search.setRowFilter(RowFilter.regexFilter("(?i)" + field));
     }//GEN-LAST:event_SearchActionPerformed
+
+    private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
+        PM_FunctionPage home = new PM_FunctionPage();
+        home.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_HomeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,10 +200,10 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Home;
     private javax.swing.JTable ReportTable;
     private javax.swing.JTextField Search;
     private javax.swing.JComboBox<String> Sort;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

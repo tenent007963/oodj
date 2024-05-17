@@ -102,7 +102,7 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         });
         getContentPane().add(Calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 250, 50));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Homepage.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Homepage.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
