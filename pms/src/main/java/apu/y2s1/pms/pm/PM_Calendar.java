@@ -28,6 +28,11 @@ public class PM_Calendar extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        Calendar = new com.toedter.calendar.JCalendar();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Notification = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        Event = new javax.swing.JList<>();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,6 +49,25 @@ public class PM_Calendar extends javax.swing.JFrame {
         jLabel1.setText("EVENT CALENDAR");
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
+        getContentPane().add(Calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 460, 300));
+
+        Notification.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "notification" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(Notification);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 380, 500));
+
+        Event.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "upcoming event" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(Event);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 460, 160));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
@@ -88,8 +112,13 @@ public class PM_Calendar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JCalendar Calendar;
+    private javax.swing.JList<String> Event;
+    private javax.swing.JList<String> Notification;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

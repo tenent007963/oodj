@@ -84,8 +84,8 @@ public class PM_Assessment extends javax.swing.JFrame {
         ID = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        HandOut = new javax.swing.JTextField();
         Submission = new javax.swing.JTextField();
+        HandOut = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -174,8 +174,8 @@ public class PM_Assessment extends javax.swing.JFrame {
 
         jLabel10.setText("Submission Date:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
-        getContentPane().add(HandOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 140, -1));
         getContentPane().add(Submission, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 140, -1));
+        getContentPane().add(HandOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 140, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
@@ -282,7 +282,7 @@ public class PM_Assessment extends javax.swing.JFrame {
     private javax.swing.JButton Create;
     private javax.swing.JButton Edit;
     private javax.swing.JComboBox<String> FirstM;
-    private javax.swing.JTextField HandOut;
+    private com.toedter.calendar.JDateChooser HandOut;
     private javax.swing.JTextField ID;
     private javax.swing.JTextField Name;
     private javax.swing.JComboBox<String> SecondM;
