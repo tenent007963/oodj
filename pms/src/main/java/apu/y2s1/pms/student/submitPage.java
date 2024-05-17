@@ -4,17 +4,40 @@
  */
 package apu.y2s1.pms.student;
 
+import apu.y2s1.pms.DataAbstract;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author User
  */
 public class submitPage extends javax.swing.JFrame {
 
+    DataAbstract table = new DataAbstract("Assessments.txt");
+
     /**
      * Creates new form submitPage
      */
     public submitPage() {
         initComponents();
+        table();
+    }
+
+    private void table() {
+        DefaultTableModel model = (DefaultTableModel) tableReport.getModel();
+        model.setRowCount(0);
+
+        List<String[]> allRows = table.getAllRows();
+
+        if (!allRows.isEmpty()) {
+            String[] headers = allRows.get(0);
+            model.setColumnIdentifiers(headers);
+
+            for (int i = 1; i < allRows.size(); i++) {
+                model.addRow(allRows.get(i));
+            }
+        }
     }
 
     /**
@@ -106,6 +129,11 @@ public class submitPage extends javax.swing.JFrame {
         getContentPane().add(DDAssessment, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 230, -1));
 
         textDate.setBackground(new java.awt.Color(242, 242, 242));
+        textDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textDateActionPerformed(evt);
+            }
+        });
         getContentPane().add(textDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 230, -1));
 
         tableReport.setModel(new javax.swing.table.DefaultTableModel(
@@ -147,6 +175,10 @@ public class submitPage extends javax.swing.JFrame {
     private void BTeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTeditActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BTeditActionPerformed
+
+    private void textDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textDateActionPerformed
 
     /**
      * @param args the command line arguments
