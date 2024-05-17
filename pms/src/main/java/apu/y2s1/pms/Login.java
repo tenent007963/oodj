@@ -176,7 +176,6 @@ public class Login extends javax.swing.JFrame {
                     if(userid.equals(uid) && password.equals(pwd)) {
                         User newuser = User.getInstance();
                         newuser.setUserID(uid);
-                        newuser.setUsername(name);
                         
                         if ("Admin".equals(role)) {
                             JOptionPane.showMessageDialog(null,"Admin Login Successful");

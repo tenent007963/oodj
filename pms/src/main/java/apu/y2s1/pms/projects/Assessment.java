@@ -1,4 +1,5 @@
-package apu.y2s1.pms;
+package apu.y2s1.pms.projects;
+import apu.y2s1.pms.DataAbstract;
 import apu.y2s1.pms.DataAbstract;
 
 public class Assessment {

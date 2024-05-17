@@ -11,17 +11,45 @@ package apu.y2s1.pms;
 public class User {
     private static User instance;
     private String userID;
-    private String username;
+    private String role;
+    private String filename;
+    private DataAbstract db;
     
-    private User() {
-        
+    private User(String ID, String role) {
+        this.role = role;
+        switch(this.role) {
+            case "student":
+                this.filename = "student.txt";
+                break;
+            case "lecturer":
+                this.filename = "student.txt";
+                break;
+            case "admin":
+                this.filename = "student.txt";
+                break;
+            case "pm":
+                this.filename = "student.txt";
+                break;
+            default:
+                break;
+        }
+        db = new DataAbstract(this.filename);
     }
     
+
+    // This object should be created upon successful login
     public static User getInstance() {
         if (instance == null) {
-            instance = new User();
+            instance = new User(null,null);
        }
         return instance;
+    }
+    
+    private void getUserData(String ID){
+        int intID = db.getIndex(userID);
+        String[] rawdata = db.getRow(intID);
+        setUserID(rawdata[0]);
+        
     }
     
     public String getUserID() {
@@ -31,12 +59,5 @@ public class User {
     public void setUserID(String userID) {
         this.userID = userID;
     }
-    
-    public String getUsername() {
-        return username;
-    }
-    
-    public void setUsername(String username) {
-        this.username = username;
-    }
+
 }
