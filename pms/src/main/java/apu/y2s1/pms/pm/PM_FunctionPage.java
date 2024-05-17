@@ -30,10 +30,10 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         Project = new javax.swing.JButton();
         Allotment = new javax.swing.JButton();
+        Feedback = new javax.swing.JButton();
         Report = new javax.swing.JButton();
-        Report2 = new javax.swing.JButton();
         Logout = new javax.swing.JButton();
-        Report1 = new javax.swing.JButton();
+        Calendar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -66,23 +66,23 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         });
         getContentPane().add(Allotment, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 250, 50));
 
+        Feedback.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        Feedback.setText("GENERATE FEEDBACK REPORT");
+        Feedback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FeedbackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Feedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, 250, 50));
+
         Report.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        Report.setText("GENERATE FEEDBACK REPORT");
+        Report.setText("REPORT STATUS");
         Report.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReportActionPerformed(evt);
             }
         });
-        getContentPane().add(Report, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, 250, 50));
-
-        Report2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        Report2.setText("REPORT STATUS");
-        Report2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Report2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Report2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 250, 50));
+        getContentPane().add(Report, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 250, 50));
 
         Logout.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         Logout.setText("LOG OUT");
@@ -93,14 +93,14 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         });
         getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 250, 50));
 
-        Report1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        Report1.setText("EVENT CALENDER");
-        Report1.addActionListener(new java.awt.event.ActionListener() {
+        Calendar.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        Calendar.setText("EVENT CALENDAR");
+        Calendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Report1ActionPerformed(evt);
+                CalendarActionPerformed(evt);
             }
         });
-        getContentPane().add(Report1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 250, 50));
+        getContentPane().add(Calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 250, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Home.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
@@ -120,11 +120,11 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_AllotmentActionPerformed
 
-    private void ReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportActionPerformed
-        PM_ReportStatus report = new PM_ReportStatus();
-        report.setVisible(true);
+    private void FeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FeedbackActionPerformed
+        PM_FeedbackReport feedback = new PM_FeedbackReport();
+        feedback.setVisible(true);
         dispose();
-    }//GEN-LAST:event_ReportActionPerformed
+    }//GEN-LAST:event_FeedbackActionPerformed
 
     private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
         apu.y2s1.pms.Login login = new apu.y2s1.pms.Login();
@@ -132,13 +132,17 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_LogoutActionPerformed
 
-    private void Report1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Report1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Report1ActionPerformed
+    private void CalendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalendarActionPerformed
+        PM_Calendar calendar = new PM_Calendar();
+        calendar.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_CalendarActionPerformed
 
-    private void Report2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Report2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Report2ActionPerformed
+    private void ReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportActionPerformed
+        PM_ReportStatus report = new PM_ReportStatus();
+        report.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_ReportActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,11 +182,11 @@ public class PM_FunctionPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Allotment;
+    private javax.swing.JButton Calendar;
+    private javax.swing.JButton Feedback;
     private javax.swing.JButton Logout;
     private javax.swing.JButton Project;
     private javax.swing.JButton Report;
-    private javax.swing.JButton Report1;
-    private javax.swing.JButton Report2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

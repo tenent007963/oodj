@@ -8,12 +8,12 @@ package apu.y2s1.pms.pm;
  *
  * @author Jeslyn
  */
-public class PM_Calender extends javax.swing.JFrame {
+public class PM_Calendar extends javax.swing.JFrame {
 
     /**
      * Creates new form PM_Calender
      */
-    public PM_Calender() {
+    public PM_Calendar() {
         initComponents();
     }
 
@@ -41,7 +41,7 @@ public class PM_Calender extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 190, 152));
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("EVENT CALENDER");
+        jLabel1.setText("EVENT CALENDAR");
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
@@ -68,20 +68,21 @@ public class PM_Calender extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PM_Calender.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PM_Calendar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PM_Calender.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PM_Calendar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PM_Calender.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PM_Calendar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PM_Calender.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PM_Calendar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PM_Calender().setVisible(true);
+                new PM_Calendar().setVisible(true);
             }
         });
     }
