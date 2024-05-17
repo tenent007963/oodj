@@ -163,7 +163,7 @@ public class PM_Allotment extends javax.swing.JFrame {
         });
         getContentPane().add(Allot, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 480, -1, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Functionpage.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Function.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();

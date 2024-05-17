@@ -31,7 +31,9 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         Project = new javax.swing.JButton();
         Allotment = new javax.swing.JButton();
         Report = new javax.swing.JButton();
+        Report2 = new javax.swing.JButton();
         Logout = new javax.swing.JButton();
+        Report1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,7 +46,7 @@ public class PM_FunctionPage extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel2.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTINUE:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, -1, -1));
 
         Project.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         Project.setText("ASSESSMENT MANAGEMENT");
@@ -53,7 +55,7 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                 ProjectActionPerformed(evt);
             }
         });
-        getContentPane().add(Project, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 250, 50));
+        getContentPane().add(Project, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 250, 50));
 
         Allotment.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         Allotment.setText("STUDENTS ALLOTMENT");
@@ -62,16 +64,25 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                 AllotmentActionPerformed(evt);
             }
         });
-        getContentPane().add(Allotment, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 250, 50));
+        getContentPane().add(Allotment, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 250, 50));
 
         Report.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        Report.setText("REPORT STATUS");
+        Report.setText("GENERATE FEEDBACK REPORT");
         Report.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReportActionPerformed(evt);
             }
         });
-        getContentPane().add(Report, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 420, 250, 50));
+        getContentPane().add(Report, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, 250, 50));
+
+        Report2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        Report2.setText("REPORT STATUS");
+        Report2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Report2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Report2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 480, 250, 50));
 
         Logout.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         Logout.setText("LOG OUT");
@@ -80,9 +91,18 @@ public class PM_FunctionPage extends javax.swing.JFrame {
                 LogoutActionPerformed(evt);
             }
         });
-        getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 530, 250, 50));
+        getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 250, 50));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Homepage.png"))); // NOI18N
+        Report1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        Report1.setText("EVENT CALENDER");
+        Report1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Report1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Report1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 250, 50));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/Home.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
@@ -111,6 +131,14 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         login.setVisible(true);
         dispose();
     }//GEN-LAST:event_LogoutActionPerformed
+
+    private void Report1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Report1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Report1ActionPerformed
+
+    private void Report2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Report2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Report2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,6 +181,8 @@ public class PM_FunctionPage extends javax.swing.JFrame {
     private javax.swing.JButton Logout;
     private javax.swing.JButton Project;
     private javax.swing.JButton Report;
+    private javax.swing.JButton Report1;
+    private javax.swing.JButton Report2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
