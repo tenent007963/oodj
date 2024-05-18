@@ -6,15 +6,17 @@ package apu.y2s1.pms.student;
 
 import apu.y2s1.pms.User;
 import apu.y2s1.pms.DataAbstract;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
  * @author User
  */
 public class FeedbackPage extends javax.swing.JFrame {
+
     DataAbstract table = new DataAbstract("Submissions.txt");
     User user = User.getInstance();
 
@@ -40,6 +42,8 @@ public class FeedbackPage extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         feedbackTable = new javax.swing.JTable();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,13 +83,24 @@ public class FeedbackPage extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 830, 400));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ascending ", "Descending" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 160, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel3.setText("Filter result by:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/student/img/pexels-anna-tarazevich-5936283.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1024, 624));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     private void Table() {
         DefaultTableModel model = (DefaultTableModel) feedbackTable.getModel();
         model.setRowCount(0);
@@ -111,12 +126,49 @@ public class FeedbackPage extends javax.swing.JFrame {
             }
         }
     }
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         studentPage home = new studentPage();
         home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        String selection = (String) jComboBox1.getSelectedItem();
+
+        // Check if an item is selected and it's either "Ascending" or "Descending"
+        if (selection != null && (selection.equals("Ascending") || selection.equals("Descending"))) {
+            // Get the data model from the feedbackTable
+            DefaultTableModel model = (DefaultTableModel) feedbackTable.getModel();
+
+            // Extract data as a list of String arrays for sorting
+            List<String[]> data = new ArrayList<>();
+            for (int i = 0; i < model.getRowCount(); i++) {
+                String[] row = new String[model.getColumnCount()];
+                for (int j = 0; j < model.getColumnCount(); j++) {
+                    row[j] = (String) model.getValueAt(i, j);
+                }
+                data.add(row);
+            }
+
+            // Sort the data based on the selected option (result column index assumed to be 2)
+            int resultColumnIndex = 2; // Assuming "Result" is at index 2
+            if (selection.equals("Ascending")) {
+                Collections.sort(data, (row1, row2) -> Double.compare(Double.parseDouble(row1[resultColumnIndex]), Double.parseDouble(row2[resultColumnIndex])));
+            } else {
+                Collections.sort(data, (row1, row2) -> Double.compare(Double.parseDouble(row2[resultColumnIndex]), Double.parseDouble(row1[resultColumnIndex])));
+            }
+
+            // Clear the existing data and repopulate with sorted data
+            model.setRowCount(0);
+            for (String[] row : data) {
+                model.addRow(row);
+            }
+
+            // Update the table to reflect the sorted data
+            feedbackTable.setModel(model);
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,8 +208,10 @@ public class FeedbackPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable feedbackTable;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
