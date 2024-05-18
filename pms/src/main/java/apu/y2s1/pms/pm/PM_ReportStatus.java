@@ -80,7 +80,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         SubmissionTable = new javax.swing.JTable();
         Sort = new javax.swing.JComboBox<>();
-        jProgressBar1 = new javax.swing.JProgressBar();
+        StatusBar = new javax.swing.JProgressBar();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -153,8 +153,8 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
         getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 70, 140, -1));
 
-        jProgressBar1.setBackground(new java.awt.Color(255, 178, 165));
-        getContentPane().add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 850, 20));
+        StatusBar.setBackground(new java.awt.Color(255, 178, 165));
+        getContentPane().add(StatusBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 850, 20));
 
         jLabel6.setBackground(new java.awt.Color(239, 207, 186));
         jLabel6.setOpaque(true);
@@ -220,13 +220,13 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     private javax.swing.JButton Home;
     private javax.swing.JTextField Search;
     private javax.swing.JComboBox<String> Sort;
+    private javax.swing.JProgressBar StatusBar;
     private javax.swing.JTable SubmissionTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
