@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author User
  */
 public class FeedbackPage extends javax.swing.JFrame {
-    DataAbstract table = new DataAbstract("Submission.txt");
+    DataAbstract table = new DataAbstract("Submissions.txt");
     User user = User.getInstance();
 
     /**
