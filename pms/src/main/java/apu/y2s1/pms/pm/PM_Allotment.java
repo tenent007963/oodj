@@ -213,7 +213,7 @@ public class PM_Allotment extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> search = new TableRowSorter<>(table);
         StudentTable.setRowSorter(search);
         String field = Search.getText().toLowerCase();
-        search.setRowFilter(RowFilter.regexFilter("(?i)" + field));
+        search.setRowFilter(RowFilter.regexFilter("(?i)" + field, 1));
     }//GEN-LAST:event_SearchActionPerformed
 
     private void AllotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllotActionPerformed
