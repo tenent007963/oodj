@@ -5,7 +5,15 @@
 package apu.y2s1.pms.pm;
 
 import apu.y2s1.pms.DataAbstract;
+import com.toedter.calendar.JDateChooser;
+import java.awt.Component;
+import java.awt.Container;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -84,6 +92,7 @@ public class PM_Assessment extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         HandOut = new com.toedter.calendar.JDateChooser();
         Submission = new com.toedter.calendar.JDateChooser();
+        Clear = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -176,7 +185,7 @@ public class PM_Assessment extends javax.swing.JFrame {
                 CreateActionPerformed(evt);
             }
         });
-        getContentPane().add(Create, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 450, -1, -1));
+        getContentPane().add(Create, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
         Edit.setText("EDIT");
         Edit.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +193,7 @@ public class PM_Assessment extends javax.swing.JFrame {
                 EditActionPerformed(evt);
             }
         });
-        getContentPane().add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, -1, -1));
+        getContentPane().add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, -1, -1));
 
         jLabel8.setText("Assessment ID:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
@@ -202,6 +211,14 @@ public class PM_Assessment extends javax.swing.JFrame {
         Submission.setDateFormatString("dd/MM/yyyy");
         getContentPane().add(Submission, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 170, -1));
 
+        Clear.setText("CLEAR");
+        Clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClearActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, -1, -1));
+
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
@@ -216,7 +233,15 @@ public class PM_Assessment extends javax.swing.JFrame {
         String smarker = SecondM.getSelectedItem().toString();
         String id = AssessmentID();
         
-        String[] newData = {id, name, type, supervisor, fmarker, smarker};
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    
+        Date outDate = HandOut.getDate();
+        String outD = (outDate != null) ? sdf.format(outDate) : "";
+
+        Date submissionDate = Submission.getDate();
+        String submission = (submissionDate != null) ? sdf.format(submissionDate) : "";
+        
+        String[] newData = {id, name, type, supervisor, fmarker, smarker, outD, submission};
         
         if (table.writeTo(newData)) {
             Table();
@@ -235,6 +260,26 @@ public class PM_Assessment extends javax.swing.JFrame {
         Supervisor.setSelectedItem(model.getValueAt(row, 3).toString());
         FirstM.setSelectedItem(model.getValueAt(row, 4).toString());
         SecondM.setSelectedItem(model.getValueAt(row,5).toString());
+        
+        String handOutDS = model.getValueAt(row, 6).toString();
+        String submissionDS = model.getValueAt(row, 7).toString();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        
+        try {
+            Date handOutDate = format.parse(handOutDS);
+            HandOut.setDate(handOutDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            HandOut.setDate(null);
+        }
+        
+        try {
+            Date submissionDate = format.parse(submissionDS);
+            Submission.setDate(submissionDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Submission.setDate(null);
+        }
     }//GEN-LAST:event_AssessmentTableMouseClicked
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
@@ -248,9 +293,17 @@ public class PM_Assessment extends javax.swing.JFrame {
             String fmarker = FirstM.getSelectedItem().toString();
             String smarker = SecondM.getSelectedItem().toString();
             
-            String[] update = {id, name, type, supervisor, fmarker, smarker};
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+    
+            Date outDate = HandOut.getDate();
+            String outD = (outDate != null) ? sdf.format(outDate) : "";
+
+            Date submissionDate = Submission.getDate();
+            String submission = (submissionDate != null) ? sdf.format(submissionDate) : "";
             
-            if (table.updateRow(selected + 1, update)) {
+            String[] update = {id, name, type, supervisor, fmarker, smarker, outD, submission};
+            
+            if (table.updateRow(selected, update)) {
                 Table();
             } else {
                 javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
@@ -266,8 +319,39 @@ public class PM_Assessment extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_HomeActionPerformed
 
+    private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
+        ClearTextFields(ID);
+        ClearTextFields(Name);
+        ClearTextFields(Type);
+        ClearTextFields(Supervisor);
+        ClearTextFields(FirstM);
+        ClearTextFields(SecondM);
+        ClearTextFields(HandOut);
+        ClearTextFields(Submission);
+    }//GEN-LAST:event_ClearActionPerformed
+
+    private void ClearTextFields(Component component) {
+        if (component instanceof JTextField) {
+            JTextField textField = (JTextField) component;
+            textField.setText("");
+        } else if (component instanceof JComboBox) {
+            JComboBox<?> comboBox = (JComboBox<?>) component;
+            if (comboBox.getItemCount() > 0) {
+                comboBox.setSelectedIndex(0);
+            }
+        } else if (component instanceof JDateChooser) {
+            JDateChooser dateChooser = (JDateChooser) component;
+            dateChooser.setDate(null);
+        } else if (component instanceof Container) {
+            Component[] subComponents = ((Container) component).getComponents();
+            for (Component subComponent : subComponents) {
+                ClearTextFields(subComponent);
+            }
+        }
+    }
+    
     private String AssessmentID() {
-        String id = "A" + String.format("%03d", (int)(Math.random() * 1000));
+        String id = "A" + String.format("%05d", (int)(Math.random() * 100000));
         
         return id;
     }
@@ -310,6 +394,7 @@ public class PM_Assessment extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable AssessmentTable;
+    private javax.swing.JButton Clear;
     private javax.swing.JButton Create;
     private javax.swing.JButton Edit;
     private javax.swing.JComboBox<String> FirstM;
