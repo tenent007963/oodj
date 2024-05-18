@@ -4,17 +4,26 @@
  */
 package apu.y2s1.pms.student;
 
+import apu.y2s1.pms.User;
+import apu.y2s1.pms.DataAbstract;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author User
  */
 public class FeedbackPage extends javax.swing.JFrame {
+    DataAbstract table = new DataAbstract("Submission.txt");
+    User user = User.getInstance();
 
     /**
      * Creates new form FeedbackPage
      */
     public FeedbackPage() {
         initComponents();
+        table();
     }
 
     /**
@@ -30,7 +39,7 @@ public class FeedbackPage extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        feedbackTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,18 +64,18 @@ public class FeedbackPage extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(0, 102, 102));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        feedbackTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Report ID", "Submission Date", "Feedback"
+                "Report ID", "Assessment ID", "Result", "Feedback"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(feedbackTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 830, 400));
 
@@ -76,6 +85,33 @@ public class FeedbackPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void Table() {
+        DefaultTableModel model = (DefaultTableModel) feedbackTable.getModel();
+        model.setRowCount(0);
+        List<String[]> allRows = table.getAllRows();
+
+        String currentStudentTP = user.getUserID();
+
+        for (int i = 1; i < allRows.size(); i++) {
+            String[] rowData = allRows.get(i);
+            String[] newData = new String[]{rowData[0], rowData[7], rowData[8]};
+
+            String[] studentTPs = rowData[10].split(",");
+            boolean matchFound = false;
+            for (String TP : studentTPs) {
+                if (TP.trim().equals(currentStudentTP)) {
+                    matchFound = true;
+                    break;
+                }
+            }
+
+            if (matchFound) {
+                model.addRow(newData);
+            }
+        }
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         studentPage home = new studentPage();
         home.setVisible(true);
@@ -118,11 +154,11 @@ public class FeedbackPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable feedbackTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
