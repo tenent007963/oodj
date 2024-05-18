@@ -97,7 +97,7 @@ public class FeedbackPage extends javax.swing.JFrame {
             String[] rowData = allRows.get(i);
             String[] newData = new String[]{rowData[0], rowData[2], rowData[7], rowData[8]};
 
-            String[] studentTPs = rowData[10].split(",");
+            String[] studentTPs = rowData[1].split(",");
             boolean matchFound = false;
             for (String TP : studentTPs) {
                 if (TP.trim().equals(currentStudentTP)) {
