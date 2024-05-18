@@ -1,4 +1,3 @@
-TP Num ; Name  ; Pwd ;         Email          ; Intake Code ; Assessment Type
 TP06111;Freeda Goldman;free*4722;urfreetogomam@gmail.com;UCDF2111ICT(SE);RMCP
 TP06222;Alberto Robb;robb#18298;alb.ert.@yahoo.com;APD2F2402CS;CP1
 TP06333;Ganyu Adepti;ganyu@123;coco@goat.mail;UCD1F2309ME;CP2
