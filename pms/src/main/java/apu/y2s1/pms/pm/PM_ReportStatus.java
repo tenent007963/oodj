@@ -34,10 +34,10 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     }
     
     private void LoadData() {
-        for (int i = 1; i<= 10; i++) {
+        for (int i = 1; i<= 20; i++) {
             String[] row = combobox.getRow(i);
-            if (row != null && row.length > 1) {
-                Sort.addItem(row[3]);
+            if (row != null && row.length > 4) {
+                Sort.addItem(row[4]);
             }
         }
     }
@@ -51,11 +51,13 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         List<String[]> allRows = table.getAllRows();
 
         if (!allRows.isEmpty()) {
-
             for (int i = 0; i < allRows.size(); i++) {
                 String[] row = allRows.get(i);
-                if (sort.equals("All") || (row.length > 9 && row[9].equals(sort))) {
-                    model.addRow(row);
+                if (sort.equals("All") || (row.length > 11 && row[11].equals(sort))) {
+                    String[] rowData = new String[9];
+                    System.arraycopy(row, 0, rowData, 0, 7);
+                    System.arraycopy(row, 11, rowData, 7, 2);
+                    model.addRow(rowData);
                 }
             }
         }
@@ -106,7 +108,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jLabel3.setText("Sort By:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, -1, -1));
 
-        jLabel4.setText("Search:");
+        jLabel4.setText("Search ID:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
         Search.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +116,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                 SearchActionPerformed(evt);
             }
         });
-        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 140, -1));
+        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 140, -1));
 
         SubmissionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,7 +126,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Submission.ID", "Student.ID", "Assessement.ID", "Submission.D", "Presentation.DT", "Presentation.Slot", "Status", "Req.Extension", "Extended.D"
+                "Submission.ID", "Student.ID", "Assessement.ID", "Submission.D", "Presentation.DT", "Presentation.Slot", "Status", "Req.Extension", "Extend.D.Given"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -138,10 +140,8 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jScrollPane1.setViewportView(SubmissionTable);
         if (SubmissionTable.getColumnModel().getColumnCount() > 0) {
             SubmissionTable.getColumnModel().getColumn(0).setResizable(false);
-            SubmissionTable.getColumnModel().getColumn(1).setResizable(false);
             SubmissionTable.getColumnModel().getColumn(2).setResizable(false);
             SubmissionTable.getColumnModel().getColumn(3).setResizable(false);
-            SubmissionTable.getColumnModel().getColumn(4).setResizable(false);
             SubmissionTable.getColumnModel().getColumn(5).setResizable(false);
             SubmissionTable.getColumnModel().getColumn(6).setResizable(false);
             SubmissionTable.getColumnModel().getColumn(7).setResizable(false);
@@ -171,7 +171,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> search = new TableRowSorter<>(table);
         SubmissionTable.setRowSorter(search);
         String field = Search.getText().toLowerCase();
-        search.setRowFilter(RowFilter.regexFilter("(?i)" + field));
+        search.setRowFilter(RowFilter.regexFilter("(?i)" + field,0,1,2));
     }//GEN-LAST:event_SearchActionPerformed
 
     private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
