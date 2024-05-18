@@ -91,7 +91,7 @@ public class PM_Assessment extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         HandOut = new com.toedter.calendar.JDateChooser();
-        Submission = new com.toedter.calendar.JDateChooser();
+        Duedate = new com.toedter.calendar.JDateChooser();
         Clear = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
@@ -202,14 +202,14 @@ public class PM_Assessment extends javax.swing.JFrame {
         jLabel2.setText("Hand Out Date:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
-        jLabel10.setText("Submission Date:");
+        jLabel10.setText("Due Date:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
         HandOut.setDateFormatString("dd/MM/yyyy");
         getContentPane().add(HandOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 170, -1));
 
-        Submission.setDateFormatString("dd/MM/yyyy");
-        getContentPane().add(Submission, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 170, -1));
+        Duedate.setDateFormatString("dd/MM/yyyy");
+        getContentPane().add(Duedate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 170, -1));
 
         Clear.setText("CLEAR");
         Clear.addActionListener(new java.awt.event.ActionListener() {
@@ -238,10 +238,10 @@ public class PM_Assessment extends javax.swing.JFrame {
         Date outDate = HandOut.getDate();
         String outD = (outDate != null) ? sdf.format(outDate) : "";
 
-        Date submissionDate = Submission.getDate();
-        String submission = (submissionDate != null) ? sdf.format(submissionDate) : "";
+        Date dueDate = Duedate.getDate();
+        String due = (dueDate != null) ? sdf.format(dueDate) : "";
         
-        String[] newData = {id, name, type, supervisor, fmarker, smarker, outD, submission};
+        String[] newData = {id, name, type, supervisor, fmarker, smarker, outD, due};
         
         if (table.writeTo(newData)) {
             Table();
@@ -262,7 +262,7 @@ public class PM_Assessment extends javax.swing.JFrame {
         SecondM.setSelectedItem(model.getValueAt(row,5).toString());
         
         String handOutDS = model.getValueAt(row, 6).toString();
-        String submissionDS = model.getValueAt(row, 7).toString();
+        String duedateDS = model.getValueAt(row, 7).toString();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         
         try {
@@ -274,11 +274,11 @@ public class PM_Assessment extends javax.swing.JFrame {
         }
         
         try {
-            Date submissionDate = format.parse(submissionDS);
-            Submission.setDate(submissionDate);
+            Date dueDate = format.parse(duedateDS);
+            Duedate.setDate(dueDate);
         } catch (ParseException e) {
             e.printStackTrace();
-            Submission.setDate(null);
+            Duedate.setDate(null);
         }
     }//GEN-LAST:event_AssessmentTableMouseClicked
 
@@ -298,10 +298,10 @@ public class PM_Assessment extends javax.swing.JFrame {
             Date outDate = HandOut.getDate();
             String outD = (outDate != null) ? sdf.format(outDate) : "";
 
-            Date submissionDate = Submission.getDate();
-            String submission = (submissionDate != null) ? sdf.format(submissionDate) : "";
+            Date dueDate = Duedate.getDate();
+            String due = (dueDate != null) ? sdf.format(dueDate) : "";
             
-            String[] update = {id, name, type, supervisor, fmarker, smarker, outD, submission};
+            String[] update = {id, name, type, supervisor, fmarker, smarker, outD, due};
             
             if (table.updateRow(selected, update)) {
                 Table();
@@ -327,7 +327,7 @@ public class PM_Assessment extends javax.swing.JFrame {
         ClearTextFields(FirstM);
         ClearTextFields(SecondM);
         ClearTextFields(HandOut);
-        ClearTextFields(Submission);
+        ClearTextFields(Duedate);
     }//GEN-LAST:event_ClearActionPerformed
 
     private void ClearTextFields(Component component) {
@@ -396,6 +396,7 @@ public class PM_Assessment extends javax.swing.JFrame {
     private javax.swing.JTable AssessmentTable;
     private javax.swing.JButton Clear;
     private javax.swing.JButton Create;
+    private com.toedter.calendar.JDateChooser Duedate;
     private javax.swing.JButton Edit;
     private javax.swing.JComboBox<String> FirstM;
     private com.toedter.calendar.JDateChooser HandOut;
@@ -403,7 +404,6 @@ public class PM_Assessment extends javax.swing.JFrame {
     private javax.swing.JTextField ID;
     private javax.swing.JTextField Name;
     private javax.swing.JComboBox<String> SecondM;
-    private com.toedter.calendar.JDateChooser Submission;
     private javax.swing.JComboBox<String> Supervisor;
     private javax.swing.JComboBox<String> Type;
     private javax.swing.JLabel jLabel1;
