@@ -21,21 +21,10 @@ public class submitPage extends javax.swing.JFrame {
      */
     public submitPage() {
         initComponents();
-        table();
+
     }
 
-    private void table() {
-        DefaultTableModel model = (DefaultTableModel) tableReport.getModel();
-        model.setRowCount(0);
 
-        List<String[]> allRows = table.getAllRows();
-
-        if (!allRows.isEmpty()) {
-            for (int i = 1; i < allRows.size(); i++) {
-                model.addRow(allRows.get(i));
-            }
-        }
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,11 +39,9 @@ public class submitPage extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         BTsubmit = new javax.swing.JButton();
         BTedit = new javax.swing.JButton();
         BTdelete = new javax.swing.JButton();
-        DDAssessment = new javax.swing.JComboBox<>();
         textDate = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableReport = new javax.swing.JTable();
@@ -91,11 +78,8 @@ public class submitPage extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
-        jLabel2.setText("CURRENT DATE:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
-
-        jLabel3.setText("ASSESSMENT TYPE:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
+        jLabel2.setText("TEAM MEMBERS:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
         BTsubmit.setBackground(new java.awt.Color(102, 102, 102));
         BTsubmit.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -122,9 +106,6 @@ public class submitPage extends javax.swing.JFrame {
         BTdelete.setText("DELETE");
         getContentPane().add(BTdelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 80, 180, 40));
 
-        DDAssessment.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Reports", "CP1", "CP2", "RMCP", "FYP " }));
-        getContentPane().add(DDAssessment, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 230, -1));
-
         textDate.setBackground(new java.awt.Color(242, 242, 242));
         textDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,11 +116,11 @@ public class submitPage extends javax.swing.JFrame {
 
         tableReport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Assessment Type", "Due Date"
+                "Team Members", "Assessment Type", "Submission Date", "Due Date"
             }
         ));
         jScrollPane1.setViewportView(tableReport);
@@ -216,11 +197,9 @@ public class submitPage extends javax.swing.JFrame {
     private javax.swing.JButton BTdelete;
     private javax.swing.JButton BTedit;
     private javax.swing.JButton BTsubmit;
-    private javax.swing.JComboBox<String> DDAssessment;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
