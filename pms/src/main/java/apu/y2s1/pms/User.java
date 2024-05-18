@@ -9,11 +9,11 @@ package apu.y2s1.pms;
  * @author Jeslyn
  */
 class User {
-    protected static User instance;
-    protected String userID;
-    protected String role;
-    protected String filename;
-    protected DataAbstract db;
+    private static User instance;
+    private String userID;
+    private String role;
+    private String filename;
+    private DataAbstract db;
     
     public User(String ID, String role) {
         this.role = role;
