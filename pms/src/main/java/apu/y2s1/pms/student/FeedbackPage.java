@@ -23,7 +23,7 @@ public class FeedbackPage extends javax.swing.JFrame {
      */
     public FeedbackPage() {
         initComponents();
-        table();
+        Table();
     }
 
     /**
