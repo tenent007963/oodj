@@ -34,10 +34,15 @@ public class PM_Allotment extends javax.swing.JFrame {
     }
     
     private void LoadData() {
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 1; i <= 20; i++) {
             String[] row = table.getRow(i);
             if (row != null && row.length > 1) {
-                Sort.addItem(row[3]);
+                String[] data = new String[4];
+                data[0] = (row.length > 0) ? row[0] : "";
+                data[1] = (row.length > 1) ? row[1] : "";
+                data[2] = (row.length > 4) ? row[4] : "";
+                data[3] = (row.length > 5) ? row[5] : "";
+                Sort.addItem(data[2]);
             }
         }
     }
@@ -51,11 +56,16 @@ public class PM_Allotment extends javax.swing.JFrame {
         List<String[]> allRows = table.getAllRows();
         
         if (!allRows.isEmpty()) {
-            
-            for (int i = 0; i < allRows.size(); i++) {
-                String[] row = allRows.get(i);
-                if (sort.equals("All") || (row.length > 3 && row[3].equals(sort))) {
-                    model.addRow(row);
+            for (String[] row : allRows) {
+                if (row.length > 1) {
+                    String[] data = new String[4];
+                    data[0] = (row.length > 0) ? row[0] : "";
+                    data[1] = (row.length > 1) ? row[1] : "";
+                    data[2] = (row.length > 4) ? row[4] : "";
+                    data[3] = (row.length > 5) ? row[5] : "";
+                    if (sort.equals("All") || (!data[2].isEmpty() && data[2].equals(sort))) {
+                        model.addRow(data);
+                    }
                 }
             }
         }
@@ -111,34 +121,38 @@ public class PM_Allotment extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
         jLabel3.setText("Sort By:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
 
         Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
-        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 140, -1));
+        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 150, -1));
 
         jLabel4.setText("Search Name:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
         jLabel5.setText("Assessment Type:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, -1, -1));
 
         Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
-        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, -1, -1));
+        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 150, -1));
 
         jLabel6.setText("Student Name:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
 
         jLabel7.setText("Student Intake:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
-        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 140, -1));
-        getContentPane().add(Intake, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 140, -1));
+
+        Name.setFocusable(false);
+        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 150, -1));
+
+        Intake.setFocusable(false);
+        getContentPane().add(Intake, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 150, -1));
 
         Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchActionPerformed(evt);
             }
         });
-        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 140, -1));
+        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 150, -1));
 
         Allot.setText("ALLOT");
         Allot.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +160,7 @@ public class PM_Allotment extends javax.swing.JFrame {
                 AllotActionPerformed(evt);
             }
         });
-        getContentPane().add(Allot, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, -1, -1));
+        getContentPane().add(Allot, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 500, -1, -1));
 
         StudentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,6 +181,11 @@ public class PM_Allotment extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        StudentTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                StudentTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(StudentTable);
         if (StudentTable.getColumnModel().getColumnCount() > 0) {
             StudentTable.getColumnModel().getColumn(0).setResizable(false);
@@ -179,7 +198,9 @@ public class PM_Allotment extends javax.swing.JFrame {
 
         jLabel2.setText("Student ID:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
-        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 140, -1));
+
+        ID.setFocusable(false);
+        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 150, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
@@ -201,15 +222,18 @@ public class PM_Allotment extends javax.swing.JFrame {
         if (selected != -1) { 
             DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
             String id = model.getValueAt(selected, 0).toString();
-            String name = Name.getText();
-            String email = model.getValueAt(selected, 2).toString();
-            String pwd = model.getValueAt(selected, 3).toString();
-            String intake = Intake.getText();
+            String name = model.getValueAt(selected, 1).toString();
+            String intake = model.getValueAt(selected, 2).toString();
             String type = Type.getSelectedItem().toString();
             
-            String[] update = {id, name, email, pwd, intake, type};
+            String[] existed = table.getRow(selected + 1);
             
-            if (table.updateRow(selected + 1, update)) {
+            String pwd = existed[2];
+            String email = existed[3];
+            
+            String[] update = {id, name, pwd, email, intake, type};
+            
+            if (table.updateRow(selected, update)) {
                 Table();
             } else {
                 javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
@@ -224,6 +248,16 @@ public class PM_Allotment extends javax.swing.JFrame {
         home.setVisible(true);
         dispose();
     }//GEN-LAST:event_HomeActionPerformed
+
+    private void StudentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StudentTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
+        int row = StudentTable.getSelectedRow();
+        
+        ID.setText(model.getValueAt(row, 0).toString());
+        Name.setText(model.getValueAt(row,1).toString());
+        Intake.setText(model.getValueAt(row, 2).toString());
+        Type.setSelectedItem(model.getValueAt(row, 3).toString());
+    }//GEN-LAST:event_StudentTableMouseClicked
 
     /**
      * @param args the command line arguments
