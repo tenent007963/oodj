@@ -1,8 +1,8 @@
 package apu.y2s1.pms;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import javax.swing.JOptionPane;
+import apu.y2s1.pms.lecturer.*;
+import apu.y2s1.pms.student.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -63,7 +63,9 @@ public class Login extends javax.swing.JFrame {
 
         Role.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Lecturer", "Project Manager", "Student" }));
 
+        Login.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         Login.setText("LOGIN");
+        Login.setAlignmentY(15.0F);
         Login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LoginActionPerformed(evt);
@@ -74,16 +76,9 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(511, Short.MAX_VALUE)
-                .addComponent(Login)
-                .addGap(176, 176, 176))
             .addGroup(layout.createSequentialGroup()
                 .addGap(207, 207, 207)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -97,10 +92,18 @@ public class Login extends javax.swing.JFrame {
                                 .addGap(0, 73, Short.MAX_VALUE))
                             .addComponent(Pwd)
                             .addComponent(ID))
-                        .addGap(267, 267, 267))))
+                        .addGap(267, 267, 267))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(175, 175, 175)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(285, 285, 285)
+                        .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,9 +125,9 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(Role, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addComponent(Login)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(Login, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
@@ -135,74 +138,49 @@ public class Login extends javax.swing.JFrame {
         char[] pwdchar = Pwd.getPassword();
         String password = new String(pwdchar);
         String role = (String) Role.getSelectedItem();
+
+        User session = new User(userid, role);
         
-        String file = "";
-        
-        if ("Admin".equals(role)) {
-            file = "Admins.txt";
-        } else if ("Lecturer".equals(role)) {
-            file = "Lecturers.txt";
-        } else if ("Project Manager".equals(role)) {
-            file = "ProjectManagers.txt";
-        } else if ("Student".equals(role)) {
-            file = "Students.txt";
-        } else {
-            JOptionPane.showMessageDialog(null,"Role Not Found.");
-        }
-        
-        try (BufferedReader read = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = read.readLine()) != null) {
-                String[] parts = line.split(";");
-                if (parts.length >= 3) {
-                    String uid = parts[0].trim();
-                    String name = "";
-                    String pwd = "";
-                    
-                    if ("Admin".equals(role)) {
-                        name = parts[1].trim();
-                        pwd = parts[2].trim();
-                    } else if ("Lecturer".equals(role)) {
-                        name = parts[1].trim();
-                        pwd = parts[3].trim();
-                    } else if ("Project Manager".equals(role)) {
-                        name = parts[2].trim();
-                        pwd = parts[3].trim();
-                    } else if ("Student".equals(role)) {
-                        name = parts[0].trim();
-                        pwd = parts[2].trim();
-                    }
-                    
-                    if(userid.equals(uid) && password.equals(pwd)) {
-                        User newuser = User.getInstance();
-                        newuser.setUserID(uid);
-                        
-                        if ("Admin".equals(role)) {
-                            JOptionPane.showMessageDialog(null,"Admin Login Successful");
-                            apu.y2s1.pms.admin.AdminMenu Ahome = new apu.y2s1.pms.admin.AdminMenu();
-                            Ahome.setVisible(true);
-                        } else if ("Lecturer".equals(role)) {
-                            JOptionPane.showMessageDialog(null,"Student Login Successful");
-                            apu.y2s1.pms.lecturer.LecturerMenu Lhome = new apu.y2s1.pms.lecturer.LecturerMenu();
-                            Lhome.setVisible(true);
-                        } else if ("Project Manager".equals(role)) {
-                            JOptionPane.showMessageDialog(null,"Project Manager Login Successful");
-                            apu.y2s1.pms.pm.PM_FunctionPage PMhome = new apu.y2s1.pms.pm.PM_FunctionPage();
-                            PMhome.setVisible(true);
-                        } else if ("Student".equals(role)) {
-                            JOptionPane.showMessageDialog(null,"Student Login Successful");
-                            apu.y2s1.pms.student.studentPage Shome = new apu.y2s1.pms.student.studentPage();
-                            Shome.setVisible(true);
-                        }
-                        this.dispose();
-                        return;
-                    }
-                }
+        if(session.PwdCheck(password)){
+            switch(role){
+                case "Admin":
+                    JOptionPane.showMessageDialog(null,"Admin Login Successful");
+                    apu.y2s1.pms.admin.AdminMenu Ahome = new apu.y2s1.pms.admin.AdminMenu();
+                    Ahome.setVisible(true);
+                    break;
+                case "Lecturer":
+                    session = null;
+                    new apu.y2s1.pms.lecturer.Lecturer(userid);
+                    JOptionPane.showMessageDialog(null,"Student Login Successful");
+                    apu.y2s1.pms.lecturer.LecturerMenu Lhome = new apu.y2s1.pms.lecturer.LecturerMenu();
+                    Lhome.setVisible(true);
+                    break;
+                case "Project Manager":
+                    JOptionPane.showMessageDialog(null,"Project Manager Login Successful");
+                    apu.y2s1.pms.pm.PM_FunctionPage PMhome = new apu.y2s1.pms.pm.PM_FunctionPage();
+                    PMhome.setVisible(true);
+                    break;
+                case "Student":
+                    //session = new apu.y2s1.pms.student.Student(userid);;
+                    //Student student = new apu.y2s1.pms.student.Student(userid);
+                    JOptionPane.showMessageDialog(null,"Student Login Successful");
+                    apu.y2s1.pms.student.studentPage Shome = new apu.y2s1.pms.student.studentPage();
+                    Shome.setVisible(true);
+                    break;
+                default:
+                    break;
             }
-            JOptionPane.showMessageDialog(null, "Login Unsuccessful.Please try again.");
-        } catch(Exception e) {
-            JOptionPane.showMessageDialog(null,"An Error Occured.");
+            this.dispose();
+            System.gc();
+            return;
+        } else {
+            // Clear user object and force GC on failed login
+            JOptionPane.showMessageDialog(null, "Invalid credentials, please check your input.");
+            session = null;
+            System.gc();
         }
+        JOptionPane.showMessageDialog(null, "Login Unsuccessful. Contact admin for support.");
+
     }//GEN-LAST:event_LoginActionPerformed
 
     private void PwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PwdActionPerformed
