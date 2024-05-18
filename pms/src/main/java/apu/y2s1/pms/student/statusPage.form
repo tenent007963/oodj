@@ -91,14 +91,14 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="jTable1">
+        <Component class="javax.swing.JTable" name="statusTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
                 <Column editable="true" title="DATE" type="java.lang.Object"/>
-                <Column editable="true" title="ASSIGNMENT TYPE" type="java.lang.Object"/>
-                <Column editable="true" title="GRADE" type="java.lang.Object"/>
+                <Column editable="true" title="ASSESSMENT ID" type="java.lang.Object"/>
                 <Column editable="true" title="STATUS" type="java.lang.Object"/>
+                <Column editable="true" title="RESULT" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

@@ -4,17 +4,28 @@
  */
 package apu.y2s1.pms.student;
 
+import apu.y2s1.pms.User;
+import apu.y2s1.pms.DataAbstract;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Jeslyn
  */
 public class statusPage extends javax.swing.JFrame {
 
+    DataAbstract table = new DataAbstract("Submissions.txt");
+    User user = User.getInstance();
+    
     /**
      * Creates new form statusPage
      */
     public statusPage() {
         initComponents();
+        Table();
     }
 
     /**
@@ -30,7 +41,7 @@ public class statusPage extends javax.swing.JFrame {
         btHOME = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        statusTable = new javax.swing.JTable();
         btSubmit = new javax.swing.JButton();
         btRefresh = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -59,7 +70,7 @@ public class statusPage extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(0, 102, 102));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        statusTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -67,10 +78,10 @@ public class statusPage extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "DATE", "ASSIGNMENT TYPE", "GRADE", "STATUS"
+                "DATE", "ASSESSMENT ID", "STATUS", "RESULT"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(statusTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 860, 520));
 
@@ -95,6 +106,33 @@ public class statusPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void Table() {
+        DefaultTableModel model = (DefaultTableModel) statusTable.getModel();
+        model.setRowCount(0);
+        List<String[]> allRows = table.getAllRows();
+
+        String currentStudentTP = user.getUserID();
+
+        for (int i = 0; i < allRows.size(); i++) {
+            String[] rowData = allRows.get(i);
+            String[] newData = new String[]{rowData[3], rowData[2], rowData[6], rowData[7]};
+
+            String[] studentTPs = rowData[1].split(",");
+            boolean matchFound = false;
+            for (String TP : studentTPs) {
+                if (TP.trim().equals(currentStudentTP)) {
+                    matchFound = true;
+                    break;
+                }
+            }
+
+            if (matchFound) {
+                model.addRow(newData);
+            }
+        }
+    }
+    
     private void btHOMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHOMEActionPerformed
         studentPage home = new studentPage();
         home.setVisible(true);
@@ -149,7 +187,7 @@ public class statusPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable statusTable;
     // End of variables declaration//GEN-END:variables
 }
