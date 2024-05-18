@@ -139,7 +139,7 @@ public class submitPage extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "Date", "Assessment Type"
+                "Assessment Type", "Due Date"
             }
         ));
         jScrollPane1.setViewportView(tableReport);
