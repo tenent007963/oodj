@@ -29,7 +29,7 @@ public class PM_Assessment extends javax.swing.JFrame {
     }
     
     private void LoadData() {
-        for (int i = 2; i <= 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             String[] row = combobox.getRow(i);
             if (row != null && row.length > 1) {
                 Supervisor.addItem(row[1]);
@@ -46,10 +46,8 @@ public class PM_Assessment extends javax.swing.JFrame {
         List<String[]> allRows = table.getAllRows();
         
         if (!allRows.isEmpty()) {
-            String[] headers = allRows.get(0);
-            model.setColumnIdentifiers(headers);
-            
-            for (int i = 1; i < allRows.size(); i++) {
+
+            for (int i = 0; i < allRows.size(); i++) {
                 model.addRow(allRows.get(i));
             }
         }

@@ -11,7 +11,7 @@ package apu.y2s1.pms.pm;
 public class PM_FunctionPage extends javax.swing.JFrame {
 
     /**
-     * Creates new form Lec_FunctionPage
+     * Creates new form PM_FunctionPage
      */
     public PM_FunctionPage() {
         initComponents();

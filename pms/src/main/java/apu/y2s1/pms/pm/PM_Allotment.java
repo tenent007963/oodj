@@ -34,10 +34,10 @@ public class PM_Allotment extends javax.swing.JFrame {
     }
     
     private void LoadData() {
-        for (int i = 2; i <= 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             String[] row = table.getRow(i);
             if (row != null && row.length > 1) {
-                Sort.addItem(row[4]);
+                Sort.addItem(row[3]);
             }
         }
     }
@@ -51,12 +51,10 @@ public class PM_Allotment extends javax.swing.JFrame {
         List<String[]> allRows = table.getAllRows();
         
         if (!allRows.isEmpty()) {
-            String[] headers = allRows.get(0);
-            model.setColumnIdentifiers(headers);
             
-            for (int i = 1; i < allRows.size(); i++) {
+            for (int i = 0; i < allRows.size(); i++) {
                 String[] row = allRows.get(i);
-                if (sort.equals("All") || (row.length > 4 && row[4].equals(sort))) {
+                if (sort.equals("All") || (row.length > 3 && row[3].equals(sort))) {
                     model.addRow(row);
                 }
             }
