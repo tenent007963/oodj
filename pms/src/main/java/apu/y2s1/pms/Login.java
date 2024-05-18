@@ -169,8 +169,8 @@ public class Login extends javax.swing.JFrame {
                         name = parts[2].trim();
                         pwd = parts[3].trim();
                     } else if ("Student".equals(role)) {
-                        name = parts[1].trim();
-                        pwd = parts[3].trim();
+                        name = parts[0].trim();
+                        pwd = parts[2].trim();
                     }
                     
                     if(userid.equals(uid) && password.equals(pwd)) {
