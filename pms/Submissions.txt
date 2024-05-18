@@ -1,2 +1,2 @@
 S495;TP06111,TP06222,TP06333;A242;12/06/2024;26/06/2024;Accepted;Pass;70;Overall good report;some parts can be improve;meet the overall requirement of assessment;-;-
-S496;TP06111,TP06888;A367;-;-;-;-;-;-;-;-;01/07/2024;02/07/2024
+S496;TP06111,TP06888;A367;-;-;-;-;-;-;-;-;yes;5
