@@ -1,0 +1,17 @@
+Admins.txt
+Admin ID ; Name ; Pwd ; Email
+
+Assessments.txt
+Assessment ID; Name ; Type ; Supervisor ; First Marker ; Second Marker ; Hand Out Date ; Submission Date
+
+Lecturers.txt
+ID Number ; Name ; Pwd ; Email ; Supervisor ; First Marker ; Second Marker
+
+ProjectManagers.txt
+PM ID ; Lecturer ID ; Password
+
+Students.txt
+TP Num ; Name  ; Pwd ;         Email          ; Intake Code ; Assessment Type
+
+Submissions.txt
+Submission ID ; Student ID ; Assessment ID ; Submission Date ; Presentation DateTime ; Presentation slot accepted ; Status ; Feedback ; 1st marker cmt ; 2nd marker cmt ; Result ; Request Extension ; Extended Deadline
