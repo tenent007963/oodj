@@ -2,7 +2,7 @@ Admins.txt
 Admin ID ; Name ; Pwd ; Email
 
 Assessments.txt
-Assessment ID; Name ; Type ; Supervisor ; First Marker ; Second Marker ; Hand Out Date ; Submission Date
+Assessment ID; Name ; Type ; Supervisor ; First Marker ; Second Marker ; Hand Out Date ; Due Date
 
 Lecturers.txt
 ID Number ; Name ; Pwd ; Email ; Supervisor ; First Marker ; Second Marker
