@@ -134,40 +134,7 @@ public class FeedbackPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        String selection = (String) jComboBox1.getSelectedItem();
 
-        // Check if an item is selected and it's either "Ascending" or "Descending"
-        if (selection != null && (selection.equals("Ascending") || selection.equals("Descending"))) {
-            // Get the data model from the feedbackTable
-            DefaultTableModel model = (DefaultTableModel) feedbackTable.getModel();
-
-            // Extract data as a list of String arrays for sorting
-            List<String[]> data = new ArrayList<>();
-            for (int i = 0; i < model.getRowCount(); i++) {
-                String[] row = new String[model.getColumnCount()];
-                for (int j = 0; j < model.getColumnCount(); j++) {
-                    row[j] = (String) model.getValueAt(i, j);
-                }
-                data.add(row);
-            }
-
-            // Sort the data based on the selected option (result column index assumed to be 2)
-            int resultColumnIndex = 2; // Assuming "Result" is at index 2
-            if (selection.equals("Ascending")) {
-                Collections.sort(data, (row1, row2) -> Double.compare(Double.parseDouble(row1[resultColumnIndex]), Double.parseDouble(row2[resultColumnIndex])));
-            } else {
-                Collections.sort(data, (row1, row2) -> Double.compare(Double.parseDouble(row2[resultColumnIndex]), Double.parseDouble(row1[resultColumnIndex])));
-            }
-
-            // Clear the existing data and repopulate with sorted data
-            model.setRowCount(0);
-            for (String[] row : data) {
-                model.addRow(row);
-            }
-
-            // Update the table to reflect the sorted data
-            feedbackTable.setModel(model);
-        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
