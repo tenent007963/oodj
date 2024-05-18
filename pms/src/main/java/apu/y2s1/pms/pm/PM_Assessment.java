@@ -98,7 +98,7 @@ public class PM_Assessment extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Type", "Supervisor", "First.M.", "Second.M.", "Hand Out.D.", "Submission.D."
+                "ID", "Name", "Type", "Supervisor", "First.M", "Second.M", "Hand Out.D", "Submission.D"
             }
         ) {
             boolean[] canEdit = new boolean [] {
