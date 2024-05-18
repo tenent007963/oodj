@@ -93,9 +93,9 @@ public class FeedbackPage extends javax.swing.JFrame {
 
         String currentStudentTP = user.getUserID();
 
-        for (int i = 1; i < allRows.size(); i++) {
+        for (int i = 0; i < allRows.size(); i++) {
             String[] rowData = allRows.get(i);
-            String[] newData = new String[]{rowData[0], rowData[7], rowData[8]};
+            String[] newData = new String[]{rowData[0], rowData[2], rowData[7], rowData[8]};
 
             String[] studentTPs = rowData[10].split(",");
             boolean matchFound = false;
