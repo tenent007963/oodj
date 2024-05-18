@@ -41,7 +41,7 @@ public class presentationPage extends javax.swing.JFrame {
 
         for (int i = 1; i < allRows.size(); i++) {
             String[] rowData = allRows.get(i);
-            String[] newData = new String[]{rowData[1], rowData[2], rowData[7], rowData[8]};
+            String[] newData = new String[]{rowData[1], rowData[7], rowData[8]};
 
             String[] studentTPs = rowData[10].split(",");
             boolean matchFound = false;
