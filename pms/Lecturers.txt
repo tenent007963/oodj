@@ -1,4 +1,3 @@
-ID Number ; Name ; Pwd ; Email ; Supervisor ; First Marker ; Second Marker
 T001;Luni Larry;larry%3821;luni@mail.com;Yes;No;Yes
 T002;Uki Gazer;gazer112$:stargazer@hotmail.com;No;Yes;No
 T003;Ninym Hart;ninym&3829;ninym@yahoo.com;Yes;No;Yes
