@@ -8,14 +8,14 @@ package apu.y2s1.pms;
  *
  * @author Jeslyn
  */
-public class User {
-    private static User instance;
-    private String userID;
-    private String role;
-    private String filename;
-    private DataAbstract db;
+class User {
+    protected static User instance;
+    protected String userID;
+    protected String role;
+    protected String filename;
+    protected DataAbstract db;
     
-    private User(String ID, String role) {
+    public User(String ID, String role) {
         this.role = role;
         switch(this.role) {
             case "student":
@@ -47,11 +47,10 @@ public class User {
         return instance;
     }
     
-    private void getUserData(String ID){
+    public void getUserData(String ID){
         int intID = db.getIndex(userID);
         String[] rawdata = db.getRow(intID);
         setUserID(rawdata[0]);
-        
     }
     
     public String getUserID() {
@@ -62,4 +61,92 @@ public class User {
         this.userID = userID;
     }
 
+}
+
+class Lecturer extends User {
+    private String is_first_marker;
+    private String is_second_marker;
+    private String is_supervisor;
+    
+    public Lecturer(String ID) {
+        super(ID, "admin");
+        getUserData(ID);
+    }
+
+    public static void main(String ID){
+        Lecturer user = new Lecturer(ID);
+    }
+
+    @Override
+    public void getUserData(String ID){
+        int intID = db.getIndex(userID);
+        String[] rawdata = db.getRow(intID);
+        setUserID(rawdata[0]);
+        setIsFirstMarker(rawdata[1]);
+        setIsSecondMarker(rawdata[2]);
+        setIsSupervisor(rawdata[3]);
+    }
+
+    public String getIsFirstMarker() {
+        return is_first_marker;
+    }
+
+    public void setIsFirstMarker(String is_first_marker) {
+        this.is_first_marker = is_first_marker;
+    }
+
+    public String getIsSecondMarker() {
+        return is_second_marker;
+    }
+
+    public void setIsSecondMarker(String is_second_marker) {
+        this.is_second_marker = is_second_marker;
+    }
+
+    public String getIsSupervisor() {
+        return is_supervisor;
+    }
+
+    public void setIsSupervisor(String is_supervisor) {
+        this.is_supervisor = is_supervisor;
+    }
+}
+
+class Student extends User {
+    private String intake_code;
+    private String assessment_assigned;
+    
+    public Student(String ID) {
+        super(ID, "student");
+        getUserData(ID);
+    }
+
+    public static void main(String ID){
+        Student user = new Student(ID);
+    }
+
+    @Override
+    public void getUserData(String ID){
+        int intID = db.getIndex(userID);
+        String[] rawdata = db.getRow(intID);
+        setUserID(rawdata[0]);
+        setIntakeCode(rawdata[1]);
+        setAssessmentAssigned(rawdata[2]);
+    }
+
+    public String getIntakeCode() {
+        return intake_code;
+    }
+
+    public void setIntakeCode(String intake_code) {
+        this.intake_code = intake_code;
+    }
+
+    public String getAssessmentAssigned() {
+        return assessment_assigned;
+    }
+
+    public void setAssessmentAssigned(String assessment_assigned) {
+        this.assessment_assigned = assessment_assigned;
+    }
 }
