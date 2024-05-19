@@ -42,8 +42,8 @@ public class extensionPage extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        extensionBox = new javax.swing.JComboBox<>();
+        submitButton = new javax.swing.JButton();
         assessmentText = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -74,17 +74,22 @@ public class extensionPage extends javax.swing.JFrame {
         jTextField2.setBackground(new java.awt.Color(0, 102, 102));
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        extensionBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7" }));
+        extensionBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                extensionBoxActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 350, -1));
+        getContentPane().add(extensionBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 350, -1));
 
-        jButton2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        jButton2.setText("Submit");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 240, 80));
+        submitButton.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(submitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 240, 80));
 
         assessmentText.setEditable(false);
         assessmentText.setBackground(new java.awt.Color(242, 242, 242));
@@ -156,23 +161,35 @@ public class extensionPage extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void extensionBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extensionBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_extensionBoxActionPerformed
 
- 
-    
     private void extensionTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_extensionTableMouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_extensionTableMouseEntered
 
     private void extensionTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_extensionTableMouseClicked
         int selectedRow = extensionTable.getSelectedRow();
-                if (selectedRow != -1) {
-                    String selectedAssessment = (String) extensionTable.getValueAt(selectedRow, 0);
-                    assessmentText.setText(selectedAssessment);
-                }
+        if (selectedRow != -1) {
+            String selectedAssessment = (String) extensionTable.getValueAt(selectedRow, 0);
+            assessmentText.setText(selectedAssessment);
+        }
     }//GEN-LAST:event_extensionTableMouseClicked
+
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        String selectedChoice = (String) extensionBox.getSelectedItem();
+        if (selectedChoice != null) {
+            DefaultTableModel model = (DefaultTableModel) extensionTable.getModel();
+            int selectedRow = extensionTable.getSelectedRow();
+            if (selectedRow != -1) {
+                String assessmentID = (String) model.getValueAt(selectedRow, 0);
+                model.setValueAt(selectedChoice, selectedRow, 1); // Update the table with the new value
+                String[] rowData = new String[]{selectedChoice}; // Update only the "Extension status"
+                table.updateRow(11, rowData); // Update row 11 in the Submissions.txt file with the new data
+            }
+        }
+    }//GEN-LAST:event_submitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,15 +228,15 @@ public class extensionPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField assessmentText;
+    private javax.swing.JComboBox<String> extensionBox;
     private javax.swing.JTable extensionTable;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton submitButton;
     // End of variables declaration//GEN-END:variables
 }
