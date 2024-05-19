@@ -76,7 +76,7 @@ public class FeedbackPage extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Report ID", "Assessment ID", "Result", "Feedback"
+                "Submission ID", "Assessment ID", "Result", "Feedback"
             }
         ));
         jScrollPane1.setViewportView(feedbackTable);
