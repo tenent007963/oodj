@@ -218,12 +218,7 @@ public class extensionPage extends javax.swing.JFrame {
                 String newDueDate = existed[12];
 
                 String[] update = {submissionID, studentID, AssessmentID, SubmissionDate, PresentationDateTime, PresentationSlotAccepted, Status, Result, Feedback, firstMarker, secondMarker, aftdays, newDueDate};
-
-                if (table.updateRow(selected, update)) {
-                    Table();
-                } else {
-                    javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
-                }
+                javax.swing.JOptionPane.showMessageDialog(null, "Data updated successfully.");
             } else {
                 javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
             }
