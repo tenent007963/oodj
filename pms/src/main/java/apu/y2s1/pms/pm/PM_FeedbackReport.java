@@ -4,17 +4,25 @@
  */
 package apu.y2s1.pms.pm;
 
+import apu.y2s1.pms.DataAbstract;
+import java.awt.print.PrinterException;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Jeslyn
  */
 public class PM_FeedbackReport extends javax.swing.JFrame {
+    DataAbstract table = new DataAbstract("Submissions.txt");
 
     /**
      * Creates new form PM_FeedbackReport
      */
     public PM_FeedbackReport() {
         initComponents();
+        Table();
     }
 
     /**
@@ -29,12 +37,10 @@ public class PM_FeedbackReport extends javax.swing.JFrame {
         Home = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        ReportTable = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        Generate = new javax.swing.JButton();
+        Report = new javax.swing.JTextArea();
         Print = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,7 +63,7 @@ public class PM_FeedbackReport extends javax.swing.JFrame {
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ReportTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -65,41 +71,132 @@ public class PM_FeedbackReport extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Submission ID", "Student ID", "Assessment ID", "Status"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 470, 360));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        ReportTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ReportTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(ReportTable);
+        if (ReportTable.getColumnModel().getColumnCount() > 0) {
+            ReportTable.getColumnModel().getColumn(0).setResizable(false);
+            ReportTable.getColumnModel().getColumn(2).setResizable(false);
+            ReportTable.getColumnModel().getColumn(3).setResizable(false);
+        }
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 480, 440));
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, 360, 490));
+        Report.setEditable(false);
+        Report.setColumns(20);
+        Report.setRows(5);
+        Report.setFocusable(false);
+        jScrollPane2.setViewportView(Report);
 
-        Generate.setText("GENERATE");
-        getContentPane().add(Generate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, -1, -1));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, 370, 490));
 
         Print.setText("PRINT");
-        getContentPane().add(Print, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, -1, -1));
-
-        jLabel2.setBackground(new java.awt.Color(239, 207, 186));
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setOpaque(true);
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 470, 470, 110));
+        Print.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrintActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Print, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 550, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void Table() {
+        DefaultTableModel model = (DefaultTableModel) ReportTable.getModel();
+        model.setRowCount(0);
+        
+        List<String[]> allRows = table.getAllRows();
+        
+        if (!allRows.isEmpty()) {
+            for (String[] row : allRows) {
+                if (row.length > 1) {
+                    String[] data = new String[4];
+                    data[0] = (row.length > 0) ? row[0] : "";
+                    data[1] = (row.length > 1) ? row[1] : "";
+                    data[2] = (row.length > 2) ? row[2] : "";
+                    data[3] = (row.length > 6) ? row[6] : "";
+                    if (data[3].equals("Graded")) {
+                        model.addRow(data);
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    private String[] getFullData(String submissionId) {
+        List<String[]> allRows = table.getAllRows();
+        for (String[] row : allRows) {
+            if (row.length > 0 && row[0].equals(submissionId)) {
+                return row;
+            }
+        }
+        return new String[0];
+    }
+    
+    private void displayFullData(String submissionId) {
+        String[] data = getFullData(submissionId);
+        if (data.length > 0) {
+            Report.setText("");
+            Report.append("                      APU PROJECT MANAGEMENT SYSTEM                \n");
+            Report.append("      -----------------------------------------------------------------------------\n");
+            Report.append("                                     FEEDBACK REPORT                    \n");
+            Report.append("      -----------------------------------------------------------------------------\n");
+            Report.append("\n Submission ID: " + data[0] + "\n");
+            Report.append("\n Student ID: " + data[1] + "\n");
+            Report.append("\n Assessment ID: " + data[2] + "\n");
+            Report.append("\n Submission Date: " + data[3] + "\n");
+            Report.append("\n Presentation DateTime: " + data[4] + "\n");
+            Report.append("\n Status: " + data[6] + "\n");
+            Report.append("\n Result: " + data[7] + "\n");
+            Report.append("\n Feedback: " + data[8] + "\n");
+            Report.append("\n 1st marker Comment: " + data[9] + "\n");
+            Report.append("\n 2nd marker Comment: " + data[10] + "\n");
+            Report.append("\n Request Extension: " + data[11] + "\n");
+            Report.append("\n Days of Extension: " + data[12]);
+        }
+    }
+    
     private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
         PM_FunctionPage home = new PM_FunctionPage();
         home.setVisible(true);
         dispose();
     }//GEN-LAST:event_HomeActionPerformed
+
+    private void PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintActionPerformed
+        try {
+            Report.print();
+        } catch (PrinterException ex){
+            JOptionPane.showMessageDialog(null, "An error occurred.");
+        }
+    }//GEN-LAST:event_PrintActionPerformed
+
+    private void ReportTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReportTableMouseClicked
+        int selectedRow = ReportTable.getSelectedRow();
+        if (selectedRow != -1) {
+            DefaultTableModel model = (DefaultTableModel) ReportTable.getModel();
+            String submissionId = (String) model.getValueAt(selectedRow, 0);
+            displayFullData(submissionId);
+        }
+    }//GEN-LAST:event_ReportTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -137,15 +234,13 @@ public class PM_FeedbackReport extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Generate;
     private javax.swing.JButton Home;
     private javax.swing.JButton Print;
+    private javax.swing.JTextArea Report;
+    private javax.swing.JTable ReportTable;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
