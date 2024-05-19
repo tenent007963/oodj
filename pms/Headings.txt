@@ -14,4 +14,4 @@ Students.txt
 TP Num ; Name  ; Pwd ;         Email          ; Intake Code ; Assessment Type
 
 Submissions.txt
-Submission ID ; Student ID ; Assessment ID ; Submission Date ; Presentation DateTime ; Presentation slot accepted ; Status ; Result ; Feedback ; 1st marker cmt ; 2nd marker cmt ; Request Extension ; Days of Extension
+Submission ID ; Student ID ; Assessment ID ; Submission Date ; Presentation DateTime ; Presentation slot accepted ; Status ; Result ; Feedback ; 1st marker cmt ; 2nd marker cmt ; Request Extension ; New Due Date
