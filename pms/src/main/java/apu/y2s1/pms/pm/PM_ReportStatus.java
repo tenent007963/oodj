@@ -31,7 +31,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                 Table(SubmissionTable.getSelectedRow());
             }
     });
-        LoadData();
+//       LoadData();
         Table(-1);
     }
     
@@ -52,20 +52,20 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         return (int) Math.round(((double) nonNullCount / (allRows.size() * totalColumnsToCheck)) * 100);
     }
     
-    private void LoadData() {
-        for (int i = 1; i<= 20; i++) {
-            String[] row = combobox.getRow(i);
-            if (row != null && row.length > 4) {
-                Sort.addItem(row[4]);
-            }
-        }
-    }
+    //private void LoadData() {
+      //  for (int i = 1; i<= 20; i++) {
+        //    String[] row = combobox.getRow(i);
+          //  if (row != null && row.length > 4) {
+            //    Sort.addItem(row[4]);
+            //}
+        //}
+    //}
     
     private void Table(int selected) {
         DefaultTableModel model = (DefaultTableModel) SubmissionTable.getModel();
         model.setRowCount(0);
         
-        String sort = (String) Sort.getSelectedItem();
+        //String sort = (String) Sort.getSelectedItem();
 
         List<String[]> allRows = table.getAllRows();
         
@@ -84,10 +84,12 @@ public class PM_ReportStatus extends javax.swing.JFrame {
             
             for (int i = 0; i < allRows.size(); i++) {
                 String[] row = allRows.get(i);
-                if (sort.equals("All") || (row.length > 11 && row[11].equals(sort))) {
+                if (!allRows.isEmpty()) {
                     String[] rowData = new String[9];
-                    System.arraycopy(row, 0, rowData, 0, 7);
-                    System.arraycopy(row, 11, rowData, 7, 2);
+                    System.arraycopy(row, 0, rowData, 0, Math.min(7, row.length)); // Copy first 7 elements or until the end of row
+                    if (row.length > 11) {
+                        System.arraycopy(row, 11, rowData, 7, Math.min(2, row.length - 11)); // Copy 2 elements starting from index 11 or until the end of row
+                    }
                     model.addRow(rowData);
                 }
             }
