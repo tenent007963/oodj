@@ -8,6 +8,7 @@ import apu.y2s1.pms.DataAbstract;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.ArrayList;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -19,6 +20,7 @@ import javax.swing.table.TableRowSorter;
 public class PM_ReportStatus extends javax.swing.JFrame {
     DataAbstract table = new DataAbstract("Submissions.txt");
     DataAbstract combobox = new DataAbstract("Students.txt");
+    
     /**
      * Creates new form PM_Dashboard
      */
@@ -31,7 +33,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                 Table(SubmissionTable.getSelectedRow());
             }
     });
-//       LoadData();
+        LoadData();
         Table(-1);
     }
     
@@ -52,22 +54,21 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         return (int) Math.round(((double) nonNullCount / (allRows.size() * totalColumnsToCheck)) * 100);
     }
     
-    //private void LoadData() {
-      //  for (int i = 1; i<= 20; i++) {
-        //    String[] row = combobox.getRow(i);
-          //  if (row != null && row.length > 4) {
-            //    Sort.addItem(row[4]);
-            //}
-        //}
-    //}
+    private void LoadData() {
+        for (int i = 1; i<= 20; i++) {
+            String[] row = combobox.getRow(i);
+            if (row != null && row.length > 4) {
+                Sort.addItem(row[4]);
+            }
+        }
+    }
     
     private void Table(int selected) {
         DefaultTableModel model = (DefaultTableModel) SubmissionTable.getModel();
         model.setRowCount(0);
-        
-        //String sort = (String) Sort.getSelectedItem();
 
         List<String[]> allRows = table.getAllRows();
+        
         
         if (!allRows.isEmpty()) {
             int progress;
@@ -86,10 +87,8 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                 String[] row = allRows.get(i);
                 if (!allRows.isEmpty()) {
                     String[] rowData = new String[9];
-                    System.arraycopy(row, 0, rowData, 0, Math.min(7, row.length)); // Copy first 7 elements or until the end of row
-                    if (row.length > 11) {
-                        System.arraycopy(row, 11, rowData, 7, Math.min(2, row.length - 11)); // Copy 2 elements starting from index 11 or until the end of row
-                    }
+                    System.arraycopy(row, 0, rowData, 0, 7);
+                    System.arraycopy(row, 11, rowData, 7, 2);
                     model.addRow(rowData);
                 }
             }
@@ -98,8 +97,8 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     
     private int calculateProgressForSelectedRow(String[] selectedRowData) {
         int totalColumnsToCheck = 11;
-        
         int nonNullCount = 0;
+        
         if(selectedRowData.length > totalColumnsToCheck) {
             for (int i = 0; i < totalColumnsToCheck;i++) {
                 if (selectedRowData[i] != null && !selectedRowData[i].equals("-")) {
