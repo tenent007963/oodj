@@ -192,29 +192,40 @@ public class extensionPage extends javax.swing.JFrame {
     }//GEN-LAST:event_extensionTableMouseClicked
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        String selectedChoice = (String) extensionBox.getSelectedItem();
-        if (selectedChoice != null) {
+        int selected = extensionTable.getSelectedRow();
+
+        if (selected != -1) {
             DefaultTableModel model = (DefaultTableModel) extensionTable.getModel();
-            int selectedRow = extensionTable.getSelectedRow();
-            if (selectedRow != -1) {
-                // Get the Extension Status from the selected row in extensionTable
-                String extensionStatus = (String) model.getValueAt(selectedRow, 1); // Assuming Extension Status is at index 1
+            //String appendTable = model.
+            String bfrdays = model.getValueAt(selected, 1).toString();
+            String aftdays = extensionBox.getSelectedItem().toString();
 
-                // Update row 11 in Submissions.txt with the Extension Status
-                DataAbstract dataHandler = new DataAbstract("Submissions.txt", ";");
-                String[] newData = {extensionStatus}; // Create an array with the Extension Status
-                boolean success = dataHandler.updateRow(11, newData); // Remember, row indices start from 0, so row 11 is index 10
+            String[] existed = table.getRow(selected);
 
-                if (success) {
-                    JOptionPane.showMessageDialog(null, "Row 11 in Submissions.txt updated successfully.");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Failed to update row 11 in Submissions.txt.");
-                }
+            String submissionID = existed[0];
+            String studentID = existed[1];
+            String AssessmentID = existed[2];
+            String SubmissionDate = existed[3];
+            String PresentationDateTime = existed[4];
+            String PresentationSlotAccepted = existed[5];
+            String Status = existed[6];
+            String Result = existed[7];
+            String Feedback = existed[8];
+            String firstMarker = existed[9];
+            String secondMarker = existed[10];
+            String newDueDate = existed[12];
+            
+            
+
+            String[] update = {submissionID, studentID, AssessmentID, SubmissionDate, PresentationDateTime, PresentationSlotAccepted, Status, Result, Feedback, firstMarker, secondMarker, aftdays, newDueDate};
+
+            if (table.updateRow(selected, update)) {
+                Table();
             } else {
-                JOptionPane.showMessageDialog(null, "No row selected in extensionTable.");
+                javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No choice selected in extensionBox.");
+            javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
         }
     }//GEN-LAST:event_submitButtonActionPerformed
 
