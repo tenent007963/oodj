@@ -1,6 +1,4 @@
 package apu.y2s1.pms.lecturer;
-import javax.swing.JOptionPane;
-
 import apu.y2s1.pms.User;
 
 public class Lecturer extends User {
@@ -10,7 +8,7 @@ public class Lecturer extends User {
     private final String regex = "(?i)^(true|yes|1)$";
     
     public Lecturer(String ID) {
-        super(ID, "admin");
+        super(ID, "Admin");
         getAddiData(ID);
     }
 
