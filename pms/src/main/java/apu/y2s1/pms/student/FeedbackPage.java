@@ -6,9 +6,8 @@ package apu.y2s1.pms.student;
 
 import apu.y2s1.pms.User;
 import apu.y2s1.pms.DataAbstract;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -112,10 +111,11 @@ public class FeedbackPage extends javax.swing.JFrame {
             String[] rowData = allRows.get(i);
             String[] newData = new String[]{rowData[0], rowData[2], rowData[7], rowData[8]};
 
-            String[] studentTPs = rowData[1].split(",");
+            String[] studentTPs = rowData[1].split(";");
             boolean matchFound = false;
             for (String TP : studentTPs) {
                 if (TP.trim().equals(currentStudentTP)) {
+                    JOptionPane.showMessageDialog(null,"ok");
                     matchFound = true;
                     break;
                 }
