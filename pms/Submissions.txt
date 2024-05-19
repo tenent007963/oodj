@@ -1,3 +1,3 @@
 S495;TP06111;A23442;12/06/2024;26/06/2024;Accepted;Graded;70;Overall good report;some parts can be improve;meet the overall requirement of assessment;No;-
-S495;TP06111;A23442;12/06/2024;26/06/2024;Accepted;Graded;70;Overall good report;some parts can be improve;meet the overall requirement of assessment;7;-
+S496;TP06222;A23442;22/06/2024;25/06/2024;Accepted;Graded;50;average report;average;meet the overall requirement of assessment;No;-
 S497;TP06111;A74050;29/05/2024;03/06/2024;Accepted;Graded;65;Average report;some grammar mistakes;contents are not enough;No;-
