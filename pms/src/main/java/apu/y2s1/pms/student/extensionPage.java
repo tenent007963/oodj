@@ -227,6 +227,7 @@ public class extensionPage extends javax.swing.JFrame {
             } else {
                 javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
             }
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     /**
