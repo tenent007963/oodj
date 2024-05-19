@@ -33,7 +33,7 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         Feedback = new javax.swing.JButton();
         Report = new javax.swing.JButton();
         Logout = new javax.swing.JButton();
-        Calendar = new javax.swing.JButton();
+        Notification = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -93,14 +93,14 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         });
         getContentPane().add(Logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 250, 50));
 
-        Calendar.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        Calendar.setText("EVENT CALENDAR");
-        Calendar.addActionListener(new java.awt.event.ActionListener() {
+        Notification.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        Notification.setText("EVENT NOTIFICATION");
+        Notification.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CalendarActionPerformed(evt);
+                NotificationActionPerformed(evt);
             }
         });
-        getContentPane().add(Calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 250, 50));
+        getContentPane().add(Notification, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 340, 250, 50));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Homepage.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
@@ -132,11 +132,11 @@ public class PM_FunctionPage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_LogoutActionPerformed
 
-    private void CalendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CalendarActionPerformed
-        PM_Calendar calendar = new PM_Calendar();
-        calendar.setVisible(true);
+    private void NotificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NotificationActionPerformed
+        PM_EventNotification notification = new PM_EventNotification();
+        notification.setVisible(true);
         dispose();
-    }//GEN-LAST:event_CalendarActionPerformed
+    }//GEN-LAST:event_NotificationActionPerformed
 
     private void ReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportActionPerformed
         PM_ReportStatus report = new PM_ReportStatus();
@@ -182,9 +182,9 @@ public class PM_FunctionPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Allotment;
-    private javax.swing.JButton Calendar;
     private javax.swing.JButton Feedback;
     private javax.swing.JButton Logout;
+    private javax.swing.JButton Notification;
     private javax.swing.JButton Project;
     private javax.swing.JButton Report;
     private javax.swing.JLabel jLabel1;

@@ -4,16 +4,20 @@
  */
 package apu.y2s1.pms.pm;
 
+import apu.y2s1.pms.DataAbstract;
+
 /**
  *
  * @author Jeslyn
  */
-public class PM_Calendar extends javax.swing.JFrame {
-
+public class PM_EventNotification extends javax.swing.JFrame {
+    DataAbstract assessment = new DataAbstract("Assessments.txt");
+    DataAbstract submission = new DataAbstract("Submissions.txt");
+    
     /**
      * Creates new form PM_Calender
      */
-    public PM_Calendar() {
+    public PM_EventNotification() {
         initComponents();
     }
 
@@ -28,7 +32,6 @@ public class PM_Calendar extends javax.swing.JFrame {
 
         Home = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        Calendar = new com.toedter.calendar.JCalendar();
         jScrollPane1 = new javax.swing.JScrollPane();
         Notification = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -51,10 +54,9 @@ public class PM_Calendar extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 190, 152));
         jLabel1.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("EVENT CALENDAR");
+        jLabel1.setText("EVENT NOTIFICATION");
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
-        getContentPane().add(Calendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 460, 300));
 
         Notification.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "notification" };
@@ -63,7 +65,7 @@ public class PM_Calendar extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Notification);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, 380, 500));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 90, 410, 500));
 
         Event.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "upcoming event" };
@@ -72,14 +74,14 @@ public class PM_Calendar extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(Event);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 460, 160));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 420, 500));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
         PM_FunctionPage home = new PM_FunctionPage();
         home.setVisible(true);
@@ -103,27 +105,28 @@ public class PM_Calendar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PM_Calendar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PM_EventNotification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PM_Calendar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PM_EventNotification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PM_Calendar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PM_EventNotification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PM_Calendar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PM_EventNotification.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PM_Calendar().setVisible(true);
+                new PM_EventNotification().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JCalendar Calendar;
     private javax.swing.JList<String> Event;
     private javax.swing.JButton Home;
     private javax.swing.JList<String> Notification;
