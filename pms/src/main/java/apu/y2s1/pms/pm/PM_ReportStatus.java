@@ -24,13 +24,32 @@ public class PM_ReportStatus extends javax.swing.JFrame {
      */
     public PM_ReportStatus() {
         initComponents();
+        StatusBar.setMinimum(0);
+        StatusBar.setMaximum(100);
         Sort.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Table();
+                Table(SubmissionTable.getSelectedRow());
             }
     });
         LoadData();
-        Table();
+        Table(-1);
+    }
+    
+    public int calculateProgress(List<String[]> allRows) {
+        int totalColumnsToCheck = 11;
+        int nonNullCount = 0;
+
+        for (String[] row : allRows) {
+            if (row.length > totalColumnsToCheck) {
+                for (int i = 0; i < totalColumnsToCheck; i++) {
+                    if (row[i] != null && !row[i].equals("-")) {
+                        nonNullCount++;
+                    }
+                }
+            }
+        }
+
+        return (int) Math.round(((double) nonNullCount / (allRows.size() * totalColumnsToCheck)) * 100);
     }
     
     private void LoadData() {
@@ -42,15 +61,27 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         }
     }
     
-    private void Table() {
+    private void Table(int selected) {
         DefaultTableModel model = (DefaultTableModel) SubmissionTable.getModel();
         model.setRowCount(0);
-
+        
         String sort = (String) Sort.getSelectedItem();
 
         List<String[]> allRows = table.getAllRows();
-
+        
         if (!allRows.isEmpty()) {
+            int progress;
+            if (selected != -1) {
+                String[] selectedRowData = allRows.get(selected);
+                progress = calculateProgressForSelectedRow(selectedRowData);
+                Percentage.setText(progress + "%");
+            } else {
+                progress = 0; 
+                Percentage.setText("0%");
+            }
+
+            StatusBar.setValue(progress);
+            
             for (int i = 0; i < allRows.size(); i++) {
                 String[] row = allRows.get(i);
                 if (sort.equals("All") || (row.length > 11 && row[11].equals(sort))) {
@@ -61,6 +92,20 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                 }
             }
         }
+    }
+    
+    private int calculateProgressForSelectedRow(String[] selectedRowData) {
+        int totalColumnsToCheck = 11;
+        
+        int nonNullCount = 0;
+        if(selectedRowData.length > totalColumnsToCheck) {
+            for (int i = 0; i < totalColumnsToCheck;i++) {
+                if (selectedRowData[i] != null && !selectedRowData[i].equals("-")) {
+                    nonNullCount++;
+                }
+            }
+        }
+        return (int) Math.round(((double)nonNullCount / totalColumnsToCheck) * 100);
     }
 
     /**
@@ -81,6 +126,8 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         SubmissionTable = new javax.swing.JTable();
         Sort = new javax.swing.JComboBox<>();
         StatusBar = new javax.swing.JProgressBar();
+        Percentage = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -137,6 +184,11 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        SubmissionTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SubmissionTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(SubmissionTable);
         if (SubmissionTable.getColumnModel().getColumnCount() > 0) {
             SubmissionTable.getColumnModel().getColumn(0).setResizable(false);
@@ -154,7 +206,15 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 70, 140, -1));
 
         StatusBar.setBackground(new java.awt.Color(255, 178, 165));
-        getContentPane().add(StatusBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 850, 20));
+        StatusBar.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
+        getContentPane().add(StatusBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 540, 850, 20));
+
+        Percentage.setBackground(new java.awt.Color(239, 207, 186));
+        getContentPane().add(Percentage, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 570, 70, -1));
+
+        jLabel2.setFont(new java.awt.Font("Baskerville Old Face", 1, 18)); // NOI18N
+        jLabel2.setText("SELECTED REPORT PROGRESS");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, -1, -1));
 
         jLabel6.setBackground(new java.awt.Color(239, 207, 186));
         jLabel6.setOpaque(true);
@@ -180,6 +240,13 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_HomeActionPerformed
 
+    private void SubmissionTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmissionTableMouseClicked
+        int selectedRow = SubmissionTable.getSelectedRow();
+        if (selectedRow != -1) {
+            Table(selectedRow); 
+        }
+    }//GEN-LAST:event_SubmissionTableMouseClicked
+    
     /**
      * @param args the command line arguments
      */
@@ -218,11 +285,13 @@ public class PM_ReportStatus extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Home;
+    private javax.swing.JTextField Percentage;
     private javax.swing.JTextField Search;
     private javax.swing.JComboBox<String> Sort;
     private javax.swing.JProgressBar StatusBar;
     private javax.swing.JTable SubmissionTable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
