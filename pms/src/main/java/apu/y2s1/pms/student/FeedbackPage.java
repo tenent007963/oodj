@@ -4,7 +4,6 @@
  */
 package apu.y2s1.pms.student;
 
-import apu.y2s1.pms.User;
 import apu.y2s1.pms.DataAbstract;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -15,16 +14,15 @@ import javax.swing.table.DefaultTableModel;
  * @author User
  */
 public class FeedbackPage extends javax.swing.JFrame {
-
+    Student currentStudent;
     DataAbstract table = new DataAbstract("Submissions.txt");
-    User currentUser;
 
     /**
      * Creates new form FeedbackPage
      */
-    public FeedbackPage(User user) {
+    public FeedbackPage() {
+        currentStudent = (Student) Student.getInstance();
         initComponents();
-        currentUser=user;
         Table();
     }
 
@@ -106,7 +104,7 @@ public class FeedbackPage extends javax.swing.JFrame {
         model.setRowCount(0);
         List<String[]> allRows = table.getAllRows();
 
-        String currentStudentTP = user.getUserID();
+        String currentStudentTP = currentStudent.getUserID();
 
         for (int i = 0; i < allRows.size(); i++) {
             String[] rowData = allRows.get(i);

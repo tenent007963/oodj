@@ -12,7 +12,7 @@ public class Lecturer extends User {
         getAddiData(ID);
     }
 
-    public void getAddiData(String ID){
+    public final void getAddiData(String ID){
         String[] rawdata = db.getRow(intID);
         setIsFirstMarker(rawdata[4]);
         setIsSecondMarker(rawdata[5]);

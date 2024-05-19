@@ -4,20 +4,19 @@
  */
 package apu.y2s1.pms.student;
 
-import apu.y2s1.pms.User;
 /**
  *
  * @author User
  */
 public class studentPage extends javax.swing.JFrame {
     
-    User currentUser;
+    Student currentUser;
 
     /**
      * Creates new form login
      */
-    public studentPage(User user) {
-        currentUser=user;
+    public studentPage() {
+        currentUser = (Student) Student.getInstance();
     }
 
     /**
