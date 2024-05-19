@@ -140,22 +140,6 @@ public class extensionPage extends javax.swing.JFrame {
         }
     }
 
-    private void addTableSelectionListener() {
-        extensionTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent event) {
-                if (!event.getValueIsAdjusting()) {
-                    int selectedRow = extensionTable.getSelectedRow();
-                    if (selectedRow != -1) {
-                        String assessmentID = extensionTable.getValueAt(selectedRow, 0).toString();
-                        int index = table.getIndex(assessmentID);
-                        if (index != -1) {
-                            assessmentText.setText(assessmentID);
-                        }
-                    }
-                }
-            }
-        });
-    }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         studentPage home = new studentPage();
