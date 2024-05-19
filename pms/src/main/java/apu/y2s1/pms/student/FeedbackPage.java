@@ -17,13 +17,14 @@ import javax.swing.table.DefaultTableModel;
 public class FeedbackPage extends javax.swing.JFrame {
 
     DataAbstract table = new DataAbstract("Submissions.txt");
-    User user = User.getInstance();
+    User currentUser;
 
     /**
      * Creates new form FeedbackPage
      */
-    public FeedbackPage() {
+    public FeedbackPage(User user) {
         initComponents();
+        currentUser=user;
         Table();
     }
 
@@ -115,7 +116,6 @@ public class FeedbackPage extends javax.swing.JFrame {
             boolean matchFound = false;
             for (String TP : studentTPs) {
                 if (TP.trim().equals(currentStudentTP)) {
-                    JOptionPane.showMessageDialog(null,"ok");
                     matchFound = true;
                     break;
                 }
