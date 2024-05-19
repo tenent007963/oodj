@@ -86,6 +86,7 @@ public class extensionPage extends javax.swing.JFrame {
         jButton2.setText("Submit");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 240, 80));
 
+        assessmentText.setEditable(false);
         assessmentText.setBackground(new java.awt.Color(242, 242, 242));
         getContentPane().add(assessmentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 350, 30));
 
@@ -104,6 +105,14 @@ public class extensionPage extends javax.swing.JFrame {
                 "Assessment ID", "Extension status", "Extended Deadline"
             }
         ));
+        extensionTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                extensionTableMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                extensionTableMouseEntered(evt);
+            }
+        });
         jScrollPane1.setViewportView(extensionTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 880, 400));
@@ -150,6 +159,20 @@ public class extensionPage extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+ 
+    
+    private void extensionTableMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_extensionTableMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_extensionTableMouseEntered
+
+    private void extensionTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_extensionTableMouseClicked
+        int selectedRow = extensionTable.getSelectedRow();
+                if (selectedRow != -1) {
+                    String selectedAssessment = (String) extensionTable.getValueAt(selectedRow, 0);
+                    assessmentText.setText(selectedAssessment);
+                }
+    }//GEN-LAST:event_extensionTableMouseClicked
 
     /**
      * @param args the command line arguments
