@@ -197,14 +197,24 @@ public class extensionPage extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) extensionTable.getModel();
             int selectedRow = extensionTable.getSelectedRow();
             if (selectedRow != -1) {
-                String assessmentID = (String) model.getValueAt(selectedRow, 0);
-                model.setValueAt(selectedChoice, selectedRow, 1);
-                String[] rowData = new String[]{selectedChoice}; 
-                table.updateRow(11, rowData); 
-                JOptionPane.showMessageDialog(null, "adsssssssssssssssssssssssssssssssssssssssssssss");
+                // Get the Extension Status from the selected row in extensionTable
+                String extensionStatus = (String) model.getValueAt(selectedRow, 1); // Assuming Extension Status is at index 1
+
+                // Update row 11 in Submissions.txt with the Extension Status
+                DataAbstract dataHandler = new DataAbstract("Submissions.txt", ";");
+                String[] newData = {extensionStatus}; // Create an array with the Extension Status
+                boolean success = dataHandler.updateRow(11, newData); // Remember, row indices start from 0, so row 11 is index 10
+
+                if (success) {
+                    JOptionPane.showMessageDialog(null, "Row 11 in Submissions.txt updated successfully.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to update row 11 in Submissions.txt.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No row selected in extensionTable.");
             }
-            else
-                JOptionPane.showMessageDialog(null, "File not found");
+        } else {
+            JOptionPane.showMessageDialog(null, "No choice selected in extensionBox.");
         }
     }//GEN-LAST:event_submitButtonActionPerformed
 
