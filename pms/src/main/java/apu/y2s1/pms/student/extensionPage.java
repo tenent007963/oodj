@@ -110,7 +110,15 @@ public class extensionPage extends javax.swing.JFrame {
             new String [] {
                 "Assessment ID", "Extension status", "Extended Deadline"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         extensionTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 extensionTableMouseClicked(evt);
@@ -120,6 +128,11 @@ public class extensionPage extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(extensionTable);
+        if (extensionTable.getColumnModel().getColumnCount() > 0) {
+            extensionTable.getColumnModel().getColumn(0).setResizable(false);
+            extensionTable.getColumnModel().getColumn(1).setResizable(false);
+            extensionTable.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 880, 400));
 
