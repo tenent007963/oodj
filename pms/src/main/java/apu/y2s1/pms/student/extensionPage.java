@@ -199,7 +199,7 @@ public class extensionPage extends javax.swing.JFrame {
             int selectedRow = extensionTable.getSelectedRow();
             if (selectedRow != -1) {
                 String aftdays = extensionBox.getSelectedItem().toString();
-                model.setValueAt(aftdays, selectedRow, 1);
+               // model.setValueAt(aftdays, selectedRow, 1);
                 String extensionStatus = (String) model.getValueAt(selectedRow, 1);
 
                 String[] existed = table.getRow(selected);
@@ -218,7 +218,12 @@ public class extensionPage extends javax.swing.JFrame {
                 String newDueDate = existed[12];
 
                 String[] update = {submissionID, studentID, AssessmentID, SubmissionDate, PresentationDateTime, PresentationSlotAccepted, Status, Result, Feedback, firstMarker, secondMarker, aftdays, newDueDate};
-                javax.swing.JOptionPane.showMessageDialog(null, "Data updated successfully.");
+                if (table.updateRow(selected, update)) {
+                    Table();
+                    javax.swing.JOptionPane.showMessageDialog(null, "Data updated successfully.");
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
+                }
             } else {
                 javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
             }
@@ -226,8 +231,8 @@ public class extensionPage extends javax.swing.JFrame {
     }//GEN-LAST:event_submitButtonActionPerformed
 
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
