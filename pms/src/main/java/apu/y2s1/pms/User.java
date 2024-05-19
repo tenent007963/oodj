@@ -14,13 +14,13 @@ public class User {
     private static User instance;
     protected final String userID;
     protected final int intID;
-    protected static String filename;
+    protected String filename;
     protected String userName;
-    protected String password;
+    protected String password; 
     protected String role;
     protected DataAbstract db;
     
-    private User(String sid, String role) {
+    public User(String sid, String role) {
         this.userID = sid;
         this.role = role;
         switch(this.role.toLowerCase()) {
@@ -30,14 +30,14 @@ public class User {
             case "project manager" -> setFilename("ProjectManagers.txt");
             default -> System.out.println("Role empty. What is your role?");
         }
-        db = new DataAbstract(User.filename);
+        db = new DataAbstract(filename);
         intID = db.getIndex(this.userID);
         getUserData();
     }
 
     // This object should be created upon successful login
     // seting default user for the sake of development
-    public static synchronized User getInstance() {
+    public static User getInstance() {
         if (instance == null) {
             instance = new User("U999","Student");
             JOptionPane.showMessageDialog(null,"Hint: Default user devid (UID U999) is used. Make sure to remove this in final release");
@@ -45,14 +45,14 @@ public class User {
         return instance;
     }
     
-    public static synchronized void setInstance(String sid, String role){
+    public static void setInstance(String sid, String role){
         if (instance == null) {
                 instance = new User(sid, role);
         }
     }
 
     private void setFilename(String fn){
-        User.filename = fn;
+        filename = fn;
     }
     
     public final void getUserData(){
@@ -72,59 +72,14 @@ public class User {
     }
 
     public String getDBFile() {
-        return User.filename;
+        return filename;
     }
 
     public boolean PwdCheck(String pwd) {
         return this.password.equals(pwd);
     }
 
-    static public class Lecturer extends apu.y2s1.pms.User {
-        private boolean is_first_marker;
-        private boolean is_second_marker;
-        private boolean is_supervisor;
-        private final String regex = "(?i)^(true|yes|1)$";
-
-        public Lecturer(String ID) {
-            super(ID, "Admin");
-            getAddiData(ID);
-        }
-
-        public final void getAddiData(String ID){
-            String[] rawdata = db.getRow(intID);
-            setIsFirstMarker(rawdata[4]);
-            setIsSecondMarker(rawdata[5]);
-            setIsSupervisor(rawdata[6]);
-        }
-
-        public boolean getIsFirstMarker() {
-            return is_first_marker;
-        }
-
-        public boolean getIsSecondMarker() {
-            return is_second_marker;
-        }
-
-        public boolean getIsSupervisor() {
-            return is_supervisor;
-        }
-
-        private void setIsFirstMarker(String lowFirst) {
-            this.is_first_marker = lowFirst.matches(this.regex);
-        }
-
-        private void setIsSecondMarker(String lowSecond) {
-            this.is_second_marker = lowSecond.matches(this.regex);
-        }
-
-        private void setIsSupervisor(String lowThird) {
-            this.is_supervisor = lowThird.matches(this.regex);
-        }
-
-        public void removePassword(){
-            super.password = null;
-        }
-    }
+    
     
     static public class Student extends apu.y2s1.pms.User { /*inherit user class*/
         private static Student instance;
@@ -163,4 +118,5 @@ public class User {
     }
 
 }
+
 

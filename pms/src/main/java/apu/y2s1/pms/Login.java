@@ -137,7 +137,7 @@ public class Login extends javax.swing.JFrame {
         String password = new String(pwdchar);
         String role = (String) Role.getSelectedItem();
 
-        User session = new apu.y2s1.pms.User.getInstance(userid, role);
+        User session = new User(userid, role);
         
         if(session.PwdCheck(password)){
             switch(role){
