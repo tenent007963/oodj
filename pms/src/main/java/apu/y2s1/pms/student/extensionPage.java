@@ -20,12 +20,13 @@ import javax.swing.table.DefaultTableModel;
 public class extensionPage extends javax.swing.JFrame {
 
     DataAbstract table = new DataAbstract("Submissions.txt");
-    User user = User.getInstance();
+    Student currentStudent;
 
     /**
      * Creates new form extensionPage
      */
     public extensionPage() {
+        currentStudent = (Student) Student.getInstance();
         initComponents();
         Table();
     }
@@ -147,7 +148,7 @@ public class extensionPage extends javax.swing.JFrame {
         model.setRowCount(0);
         List<String[]> allRows = table.getAllRows();
 
-        String currentStudentTP = user.getUserID();
+        String currentStudentTP = currentStudent.getUserID();
 
         for (int i = 0; i < allRows.size(); i++) {
             String[] rowData = allRows.get(i);
@@ -193,41 +194,39 @@ public class extensionPage extends javax.swing.JFrame {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         int selected = extensionTable.getSelectedRow();
+        String currentStudentTP = currentStudent.getUserID();
 
         if (selected != -1) {
             DefaultTableModel model = (DefaultTableModel) extensionTable.getModel();
             int selectedRow = extensionTable.getSelectedRow();
             if (selectedRow != -1) {
                 String aftdays = extensionBox.getSelectedItem().toString();
-               // model.setValueAt(aftdays, selectedRow, 1);
+                // model.setValueAt(aftdays, selectedRow, 1);
                 String extensionStatus = (String) model.getValueAt(selectedRow, 1);
 
-                String[] existed = table.getRow(selected);
+                // Get the submission data based on user input
+                String[] existed = table.getRow(selectedRow + 1);
 
-                String submissionID = existed[0];
-                String studentID = existed[1];
-                String AssessmentID = existed[2];
-                String SubmissionDate = existed[3];
-                String PresentationDateTime = existed[4];
-                String PresentationSlotAccepted = existed[5];
-                String Status = existed[6];
-                String Result = existed[7];
-                String Feedback = existed[8];
-                String firstMarker = existed[9];
-                String secondMarker = existed[10];
-                String newDueDate = existed[12];
-
-                String[] update = {submissionID, studentID, AssessmentID, SubmissionDate, PresentationDateTime, PresentationSlotAccepted, Status, Result, Feedback, firstMarker, secondMarker, aftdays, newDueDate};
-                if (table.updateRow(selected, update)) {
-                    Table();
-                    javax.swing.JOptionPane.showMessageDialog(null, "Data updated successfully.");
-                } else {
-                    javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
+                // Check if the submission belongs to the current student
+                String[] studentTPs = existed[1].split(";");
+                boolean matchFound = false;
+                for (String TP : studentTPs) {
+                    if (TP.trim().equals(currentStudentTP)) {
+                        matchFound = true;
+                        break;
+                    }
+                }
+                    existed[existed.length - 2] = aftdays;
+                    if (table.updateRow(selectedRow + 1, existed)) {
+                        Table();
+                        javax.swing.JOptionPane.showMessageDialog(null, "Data updated successfully.");
+                    } else {
+                        javax.swing.JOptionPane.showMessageDialog(null, "An error occurred while updating data.");
+                    }
                 }
             } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
-            }
-        }
+                javax.swing.JOptionPane.showMessageDialog(null, "An error occurred while updating data.");
+            }  
     }//GEN-LAST:event_submitButtonActionPerformed
 
     /**
