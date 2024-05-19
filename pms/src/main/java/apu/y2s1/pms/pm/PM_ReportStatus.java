@@ -7,8 +7,8 @@ package apu.y2s1.pms.pm;
 import apu.y2s1.pms.DataAbstract;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -69,6 +69,8 @@ public class PM_ReportStatus extends javax.swing.JFrame {
 
         List<String[]> allRows = table.getAllRows();
         
+        String selectedSortItem = Sort.getSelectedItem().toString();
+        List<String> matchedValues = new ArrayList<>();
         
         if (!allRows.isEmpty()) {
             int progress;
@@ -83,13 +85,29 @@ public class PM_ReportStatus extends javax.swing.JFrame {
 
             StatusBar.setValue(progress);
             
-            for (int i = 0; i < allRows.size(); i++) {
-                String[] row = allRows.get(i);
-                if (!allRows.isEmpty()) {
-                    String[] rowData = new String[9];
-                    System.arraycopy(row, 0, rowData, 0, 7);
-                    System.arraycopy(row, 11, rowData, 7, 2);
-                    model.addRow(rowData);
+
+            if (!allRows.isEmpty() && selectedSortItem.equals("All")) {
+                for (String[] row : allRows) {
+                String[] rowData = new String[9];
+                System.arraycopy(row, 0, rowData, 0, 7);
+                System.arraycopy(row, 11, rowData, 7, 2);
+                model.addRow(rowData);
+                }
+            } else {
+                for (int i = 1; i <= 20; i++) {
+                    String[] row = combobox.getRow(i);
+                    if (row != null && row.length > 4 && row[4].equals(selectedSortItem)) {
+                        matchedValues.add(row[0]);
+                    }
+                }
+            
+                for (String[] rowData : allRows) {
+                    if (matchedValues.contains(rowData[1])) {
+                        String[] data = new String[9];
+                        System.arraycopy(rowData, 0, data, 0, 7);
+                        System.arraycopy(rowData, 11, data, 7, 2);
+                        model.addRow(data);
+                    }
                 }
             }
         }
