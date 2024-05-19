@@ -19,11 +19,11 @@ import java.util.List;
  * @author tenen
  */
 public class DataAbstract {
-    private static String fileName; 
-    private String regEx;
+    String fileName; 
+    String regEx;
 
     public DataAbstract(String arg, String ch) {
-        DataAbstract.fileName = arg;
+        this.fileName = arg;
         this.regEx = ch;
     }
 
