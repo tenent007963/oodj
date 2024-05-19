@@ -185,9 +185,9 @@ public class extensionPage extends javax.swing.JFrame {
             int selectedRow = extensionTable.getSelectedRow();
             if (selectedRow != -1) {
                 String assessmentID = (String) model.getValueAt(selectedRow, 0);
-                model.setValueAt(selectedChoice, selectedRow, 1); // Update the table with the new value
-                String[] rowData = new String[]{selectedChoice}; // Update only the "Extension status"
-                table.updateRow(11, rowData); // Update row 11 in the Submissions.txt file with the new data
+                model.setValueAt(selectedChoice, selectedRow, 1);
+                String[] rowData = new String[]{selectedChoice}; 
+                table.updateRow(11, rowData); 
                 JOptionPane.showMessageDialog(null, "adsssssssssssssssssssssssssssssssssssssssssssss");
             }
             else
