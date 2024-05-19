@@ -9,13 +9,13 @@ package apu.y2s1.pms.student;
  * @author User
  */
 public class studentPage extends javax.swing.JFrame {
-    
     Student currentUser;
 
     /**
      * Creates new form login
      */
     public studentPage() {
+        initComponents();
         currentUser = (Student) Student.getInstance();
     }
 
