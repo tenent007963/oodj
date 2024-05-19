@@ -171,7 +171,7 @@ public class PM_FeedbackReport extends javax.swing.JFrame {
             Report.append("\n 1st marker Comment: " + data[9] + "\n");
             Report.append("\n 2nd marker Comment: " + data[10] + "\n");
             Report.append("\n Request Extension: " + data[11] + "\n");
-            Report.append("\n Days of Extension: " + data[12]);
+            Report.append("\n New Submission Date: " + data[12]);
         }
     }
     

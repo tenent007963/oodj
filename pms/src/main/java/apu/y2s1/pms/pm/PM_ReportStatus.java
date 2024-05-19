@@ -173,7 +173,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Submission.ID", "Student.ID", "Assessement.ID", "Submission.D", "Presentation.DT", "Presentation.Slot", "Status", "Req.Extension", "Extend.D.Given"
+                "Submission.ID", "Student.ID", "Assessement.ID", "Submission.D", "Presentation.DT", "Presentation.Slot", "Status", "Req.Extension", "NewSub.Date"
             }
         ) {
             boolean[] canEdit = new boolean [] {
