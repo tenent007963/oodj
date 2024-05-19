@@ -162,7 +162,7 @@ public class Login extends javax.swing.JFrame {
                     break;
                 case "Student":
                     session = new apu.y2s1.pms.student.Student(userid);;
-                    User.instance = session;
+                    User.instance = session; //get the static instance
                     JOptionPane.showMessageDialog(null,"Student Login Successful");
                     apu.y2s1.pms.student.studentPage Shome = new apu.y2s1.pms.student.studentPage();
                     Shome.setVisible(true);
