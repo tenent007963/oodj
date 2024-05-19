@@ -4,17 +4,28 @@
  */
 package apu.y2s1.pms.student;
 
+import apu.y2s1.pms.User;
+import apu.y2s1.pms.DataAbstract;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author User
  */
 public class extensionPage extends javax.swing.JFrame {
 
+    DataAbstract table = new DataAbstract("Submissions.txt");
+    User user = User.getInstance();
+
     /**
      * Creates new form extensionPage
      */
     public extensionPage() {
         initComponents();
+        Table();
     }
 
     /**
@@ -35,7 +46,7 @@ public class extensionPage extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        extensionTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,13 +67,18 @@ public class extensionPage extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 220, 40));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("SELECTED REPORT:");
+        jLabel3.setText("SELECTED ASSESSMENT:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, 20));
 
         jTextField2.setBackground(new java.awt.Color(0, 102, 102));
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 350, -1));
 
         jButton2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -76,7 +92,7 @@ public class extensionPage extends javax.swing.JFrame {
         jLabel4.setText("SELECT EXTENSION PERIOD:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        extensionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -84,10 +100,10 @@ public class extensionPage extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Report ID", "Extension status", "Extended Deadline"
+                "Assessment ID", "Extension status", "Extended Deadline"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(extensionTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 880, 400));
 
@@ -97,11 +113,41 @@ public class extensionPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Table() {
+        DefaultTableModel model = (DefaultTableModel) extensionTable.getModel();
+        model.setRowCount(0);
+        List<String[]> allRows = table.getAllRows();
+
+        String currentStudentTP = user.getUserID();
+
+        for (int i = 0; i < allRows.size(); i++) {
+            String[] rowData = allRows.get(i);
+            String[] newData = new String[]{rowData[0], rowData[11], rowData[12]};
+
+            String[] studentTPs = rowData[1].split(",");
+            boolean matchFound = false;
+            for (String TP : studentTPs) {
+                if (TP.trim().equals(currentStudentTP)) {
+                    matchFound = true;
+                    break;
+                }
+            }
+
+            if (matchFound) {
+                model.addRow(newData);
+            }
+        }
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         studentPage home = new studentPage();
         home.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,6 +185,7 @@ public class extensionPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable extensionTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -147,7 +194,6 @@ public class extensionPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
