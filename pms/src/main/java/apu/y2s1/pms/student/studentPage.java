@@ -4,17 +4,20 @@
  */
 package apu.y2s1.pms.student;
 
+import apu.y2s1.pms.User;
 /**
  *
  * @author User
  */
 public class studentPage extends javax.swing.JFrame {
+    
+    User currentUser;
 
     /**
      * Creates new form login
      */
-    public studentPage() {
-        initComponents();
+    public studentPage(User user) {
+        currentUser=user;
     }
 
     /**
@@ -190,7 +193,7 @@ public class studentPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new studentPage().setVisible(true);
+                new studentPage(user).setVisible(true);
             }
         });
     }
