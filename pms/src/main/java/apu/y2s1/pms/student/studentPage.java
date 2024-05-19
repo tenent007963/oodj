@@ -4,20 +4,30 @@
  */
 package apu.y2s1.pms.student;
 
+//import apu.y2s1.pms.User;
+
 /**
  *
  * @author User
  */
 public class studentPage extends javax.swing.JFrame {
-    
-    Student currentUser;
+    Student currentStudent = Student.getInstance();
 
     /**
      * Creates new form login
+     * @param sess
      */
-    public studentPage() {
-        currentUser = (Student) Student.getInstance();
+    public studentPage(Student sess) {
+        this.currentStudent = sess;
+        System.out.print("method1: " + this.currentStudent.getUserID());
+        initComponents();
     }
+    
+    public studentPage(){
+        System.out.print("method2: " + this.currentStudent.getUserID());
+        initComponents();
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -192,7 +202,7 @@ public class studentPage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new studentPage().setVisible(true);
+                //new studentPage().setVisible(true);
             }
         });
     }

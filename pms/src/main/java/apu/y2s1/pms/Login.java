@@ -1,8 +1,6 @@
 package apu.y2s1.pms;
 
 import javax.swing.JOptionPane;
-import apu.y2s1.pms.lecturer.*;
-import apu.y2s1.pms.student.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -139,7 +137,7 @@ public class Login extends javax.swing.JFrame {
         String password = new String(pwdchar);
         String role = (String) Role.getSelectedItem();
 
-        User session = new User(userid, role);
+        User session = new apu.y2s1.pms.User.getInstance(userid, role);
         
         if(session.PwdCheck(password)){
             switch(role){
@@ -149,8 +147,7 @@ public class Login extends javax.swing.JFrame {
                     Ahome.setVisible(true);
                     break;
                 case "Lecturer":
-                    session = null;
-                    new apu.y2s1.pms.lecturer.Lecturer(userid);
+                    //session = null;
                     JOptionPane.showMessageDialog(null,"Student Login Successful");
                     apu.y2s1.pms.lecturer.LecturerMenu Lhome = new apu.y2s1.pms.lecturer.LecturerMenu();
                     Lhome.setVisible(true);
@@ -161,7 +158,6 @@ public class Login extends javax.swing.JFrame {
                     PMhome.setVisible(true);
                     break;
                 case "Student":
-                    //session = new apu.y2s1.pms.student.Student(userid);;
                     //Student student = new apu.y2s1.pms.student.Student(userid);
                     JOptionPane.showMessageDialog(null,"Student Login Successful");
                     apu.y2s1.pms.student.studentPage Shome = new apu.y2s1.pms.student.studentPage();
@@ -171,7 +167,6 @@ public class Login extends javax.swing.JFrame {
                     break;
             }
             this.dispose();
-            System.gc();
             return;
         } else {
             // Clear user object and force GC on failed login

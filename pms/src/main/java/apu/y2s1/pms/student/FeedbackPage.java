@@ -14,14 +14,14 @@ import javax.swing.table.DefaultTableModel;
  * @author User
  */
 public class FeedbackPage extends javax.swing.JFrame {
-    Student currentStudent;
+    Student currentStudent = Student.getInstance();
     DataAbstract table = new DataAbstract("Submissions.txt");
 
     /**
      * Creates new form FeedbackPage
      */
     public FeedbackPage() {
-        currentStudent = (Student) Student.getInstance();
+        System.out.print("fb: " + this.currentStudent.getUserID());
         initComponents();
         Table();
     }

@@ -1,14 +1,13 @@
 package apu.y2s1.pms.lecturer;
-import apu.y2s1.pms.User;
 
-public class Lecturer extends User {
+public class Lecturer extends apu.y2s1.pms.User {
     private boolean is_first_marker;
     private boolean is_second_marker;
     private boolean is_supervisor;
     private final String regex = "(?i)^(true|yes|1)$";
     
     public Lecturer(String ID) {
-        super(ID, "Admin");
+        super.getInstance(ID, "Admin");
         getAddiData(ID);
     }
 
