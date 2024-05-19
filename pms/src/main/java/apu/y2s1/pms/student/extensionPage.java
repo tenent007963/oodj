@@ -196,42 +196,42 @@ public class extensionPage extends javax.swing.JFrame {
 
         if (selected != -1) {
             DefaultTableModel model = (DefaultTableModel) extensionTable.getModel();
-            //String appendTable = model.
-            String bfrdays = model.getValueAt(selected, 1).toString();
-            String aftdays = extensionBox.getSelectedItem().toString();
+            int selectedRow = extensionTable.getSelectedRow();
+            if (selectedRow != -1) {
+                String aftdays = extensionBox.getSelectedItem().toString();
+                model.setValueAt(aftdays, selectedRow, 1);
+                String extensionStatus = (String) model.getValueAt(selectedRow, 1);
 
-            String[] existed = table.getRow(selected);
+                String[] existed = table.getRow(selected);
 
-            String submissionID = existed[0];
-            String studentID = existed[1];
-            String AssessmentID = existed[2];
-            String SubmissionDate = existed[3];
-            String PresentationDateTime = existed[4];
-            String PresentationSlotAccepted = existed[5];
-            String Status = existed[6];
-            String Result = existed[7];
-            String Feedback = existed[8];
-            String firstMarker = existed[9];
-            String secondMarker = existed[10];
-            String newDueDate = existed[12];
-            
-            
+                String submissionID = existed[0];
+                String studentID = existed[1];
+                String AssessmentID = existed[2];
+                String SubmissionDate = existed[3];
+                String PresentationDateTime = existed[4];
+                String PresentationSlotAccepted = existed[5];
+                String Status = existed[6];
+                String Result = existed[7];
+                String Feedback = existed[8];
+                String firstMarker = existed[9];
+                String secondMarker = existed[10];
+                String newDueDate = existed[12];
 
-            String[] update = {submissionID, studentID, AssessmentID, SubmissionDate, PresentationDateTime, PresentationSlotAccepted, Status, Result, Feedback, firstMarker, secondMarker, aftdays, newDueDate};
+                String[] update = {submissionID, studentID, AssessmentID, SubmissionDate, PresentationDateTime, PresentationSlotAccepted, Status, Result, Feedback, firstMarker, secondMarker, aftdays, newDueDate};
 
-            if (table.updateRow(selected, update)) {
-                Table();
+                if (table.updateRow(selected, update)) {
+                    Table();
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
+                }
             } else {
                 javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
             }
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
-        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     /**
-     * @param args the command line arguments
-     */
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
