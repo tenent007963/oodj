@@ -70,14 +70,10 @@ public class presentationPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btHome = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        textDate = new javax.swing.JTextField();
-        btReq = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        textTime = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         reqTable = new javax.swing.JTable();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,66 +100,6 @@ public class presentationPage extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(0, 102, 102));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
-        jLabel2.setText("ENTER PREFERRED DATE:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
-
-        textDate.setBackground(new java.awt.Color(242, 242, 242));
-        textDate.setForeground(new java.awt.Color(204, 204, 204));
-        textDate.setText("DD/MM/YYYY");
-        textDate.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                textDateFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                textDateFocusLost(evt);
-            }
-        });
-        textDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textDateActionPerformed(evt);
-            }
-        });
-        getContentPane().add(textDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 350, -1));
-
-        btReq.setBackground(new java.awt.Color(102, 102, 102));
-        btReq.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        btReq.setText("REQUEST");
-        btReq.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btReqActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 370, 40));
-
-        jLabel4.setText("ENTER PREFFERED TIME:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
-
-        textTime.setBackground(new java.awt.Color(242, 242, 242));
-        textTime.setForeground(new java.awt.Color(204, 204, 204));
-        textTime.setText("00:00");
-        textTime.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                textTimeFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                textTimeFocusLost(evt);
-            }
-        });
-        textTime.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textTimeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(textTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 350, -1));
-
-        jTextField3.setBackground(new java.awt.Color(0, 153, 153));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 880, 170));
-
         reqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -180,7 +116,12 @@ public class presentationPage extends javax.swing.JFrame {
             reqTable.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 890, 360));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 570, 490));
+        getContentPane().add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 260, 370));
+
+        jLabel2.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        jLabel2.setText("Please select preferred day for presentation");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\OneDrive - Asia Pacific University\\Desktop\\Object Oriented Development with Java\\pexels-anna-tarazevich-5936283.jpg")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 640));
@@ -194,64 +135,6 @@ public class presentationPage extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btHomeActionPerformed
 
-
-    private void btReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btReqActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btReqActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        DefaultTableModel model = (DefaultTableModel) reqTable.getModel();
-        String[] add = {textDate.getText(), textTime.getText()};
-        String currentStudentTP = user.getUserID();
-        model.addRow(add);
-        String filename = "Reports.txt";
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
-            String updateReport = ";" + ";" + ";" + ";" + ";" + ";"
-                    + ";" + textDate.getText() + textTime.getText() + ";"
-                    + currentStudentTP + ";";
-            writer.write(updateReport);
-            writer.newLine();
-            JOptionPane.showMessageDialog(this, "User info updated successfully");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "User info updated unsuccessfully");
-        }
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void textDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDateActionPerformed
-
-    }//GEN-LAST:event_textDateActionPerformed
-
-    private void textDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textDateFocusGained
-        if (textDate.getText().equals("DD/MM/YYYY")) {
-            textDate.setText("");
-            textDate.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_textDateFocusGained
-
-    private void textDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textDateFocusLost
-        if (textDate.getText().equals("")) {
-            textDate.setText("DD/MM/YYYY");
-            textDate.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_textDateFocusLost
-
-    private void textTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textTimeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textTimeActionPerformed
-
-    private void textTimeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textTimeFocusGained
-        if (textTime.getText().equals("00:00")) {
-            textTime.setText("");
-            textTime.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_textTimeFocusGained
-
-    private void textTimeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textTimeFocusLost
-        if (textTime.getText().equals("")) {
-            textTime.setText("00:00");
-            textTime.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_textTimeFocusLost
 
     /**
      * @param args the command line arguments
@@ -290,16 +173,12 @@ public class presentationPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btHome;
-    private javax.swing.JButton btReq;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTable reqTable;
-    private javax.swing.JTextField textDate;
-    private javax.swing.JTextField textTime;
     // End of variables declaration//GEN-END:variables
 }
