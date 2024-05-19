@@ -9,6 +9,7 @@ import apu.y2s1.pms.DataAbstract;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
 
@@ -187,7 +188,10 @@ public class extensionPage extends javax.swing.JFrame {
                 model.setValueAt(selectedChoice, selectedRow, 1); // Update the table with the new value
                 String[] rowData = new String[]{selectedChoice}; // Update only the "Extension status"
                 table.updateRow(11, rowData); // Update row 11 in the Submissions.txt file with the new data
+                JOptionPane.showMessageDialog(null, "adsssssssssssssssssssssssssssssssssssssssssssss");
             }
+            else
+                JOptionPane.showMessageDialog(null, "File not found");
         }
     }//GEN-LAST:event_submitButtonActionPerformed
 
