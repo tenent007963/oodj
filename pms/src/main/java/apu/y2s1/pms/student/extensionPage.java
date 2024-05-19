@@ -9,6 +9,7 @@ import apu.y2s1.pms.DataAbstract;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -43,7 +44,7 @@ public class extensionPage extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        assessmentText = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         extensionTable = new javax.swing.JTable();
@@ -85,8 +86,8 @@ public class extensionPage extends javax.swing.JFrame {
         jButton2.setText("Submit");
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 240, 80));
 
-        jTextField1.setBackground(new java.awt.Color(242, 242, 242));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 350, 30));
+        assessmentText.setBackground(new java.awt.Color(242, 242, 242));
+        getContentPane().add(assessmentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 350, 30));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("SELECT EXTENSION PERIOD:");
@@ -139,6 +140,23 @@ public class extensionPage extends javax.swing.JFrame {
         }
     }
 
+    private void addTableSelectionListener() {
+        extensionTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                if (!event.getValueIsAdjusting()) {
+                    int selectedRow = extensionTable.getSelectedRow();
+                    if (selectedRow != -1) {
+                        String assessmentID = extensionTable.getValueAt(selectedRow, 0).toString();
+                        int index = table.getIndex(assessmentID);
+                        if (index != -1) {
+                            assessmentText.setText(assessmentID);
+                        }
+                    }
+                }
+            }
+        });
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         studentPage home = new studentPage();
         home.setVisible(true);
@@ -185,6 +203,7 @@ public class extensionPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField assessmentText;
     private javax.swing.JTable extensionTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -194,7 +213,6 @@ public class extensionPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
