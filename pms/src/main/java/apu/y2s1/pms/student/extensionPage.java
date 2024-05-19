@@ -78,13 +78,13 @@ public class extensionPage extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Report ID", "Submission Date", "Extension status", "Extended Deadline"
+                "Report ID", "Extension status", "Extended Deadline"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -92,7 +92,7 @@ public class extensionPage extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 880, 400));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/student/img/pexels-anna-tarazevich-5936283.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1030, 630));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1030, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
