@@ -26,15 +26,15 @@ import javax.swing.JOptionPane;
 public class presentationPage extends javax.swing.JFrame {
 
     DataAbstract table = new DataAbstract("Submissions.txt");
-    User user = User.getInstance();
+    Student currentStudent;
 
     /**
      * Creates new form presentationPage
      */
     public presentationPage() {
+        currentStudent = (Student) Student.getInstance();
         initComponents();
         Table();
-        reqTable.getTableHeader().setReorderingAllowed(false);
     }
 
     private void Table() {
@@ -42,9 +42,9 @@ public class presentationPage extends javax.swing.JFrame {
         model.setRowCount(0);
         List<String[]> allRows = table.getAllRows();
 
-        String currentStudentTP = user.getUserID();
+        String currentStudentTP = currentStudent.getUserID();
 
-        for (int i = 1; i < allRows.size(); i++) {
+        for (int i = 0; i < allRows.size(); i++) {
             String[] rowData = allRows.get(i);
             String[] newData = new String[]{rowData[2], rowData[4], rowData[5]};
 
