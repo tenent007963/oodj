@@ -79,8 +79,22 @@ public class statusPage extends javax.swing.JFrame {
             new String [] {
                 "SUBMITTED DATE", "ASSESSMENT ID", "STATUS", "RESULT"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(statusTable);
+        if (statusTable.getColumnModel().getColumnCount() > 0) {
+            statusTable.getColumnModel().getColumn(0).setResizable(false);
+            statusTable.getColumnModel().getColumn(1).setResizable(false);
+            statusTable.getColumnModel().getColumn(2).setResizable(false);
+            statusTable.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 860, 520));
 
