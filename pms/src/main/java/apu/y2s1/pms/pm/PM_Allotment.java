@@ -31,7 +31,7 @@ public class PM_Allotment extends javax.swing.JFrame {
     });
         LoadData();
         Table();
-        updateAssessmentTypeOptions();
+        AssessmentType();
     }
     
     private void LoadData() {
@@ -72,7 +72,7 @@ public class PM_Allotment extends javax.swing.JFrame {
         }
     }
     
-    private void updateAssessmentTypeOptions() {
+    private void AssessmentType() {
         String intake = Intake.getText().toUpperCase();
         Type.removeAllItems();
 
@@ -281,7 +281,7 @@ public class PM_Allotment extends javax.swing.JFrame {
         Intake.setText(model.getValueAt(row, 2).toString());
         Type.setSelectedItem(model.getValueAt(row, 3).toString());
         
-        updateAssessmentTypeOptions();
+        AssessmentType();
     }//GEN-LAST:event_StudentTableMouseClicked
 
     /**

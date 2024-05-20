@@ -244,13 +244,13 @@ public class PM_Assessment extends javax.swing.JFrame {
         String smarker = SecondM.getSelectedItem().toString();
         String id = AssessmentID();
         
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
     
         Date outDate = HandOut.getDate();
-        String outD = (outDate != null) ? sdf.format(outDate) : "";
+        String outD = (outDate != null) ? format.format(outDate) : "";
 
         Date dueDate = Duedate.getDate();
-        String due = (dueDate != null) ? sdf.format(dueDate) : "";
+        String due = (dueDate != null) ? format.format(dueDate) : "";
         
         String[] newData = {id, name, type, supervisor, fmarker, smarker, outD, due};
         
@@ -304,13 +304,13 @@ public class PM_Assessment extends javax.swing.JFrame {
             String fmarker = FirstM.getSelectedItem().toString();
             String smarker = SecondM.getSelectedItem().toString();
             
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat simple = new SimpleDateFormat("dd/MM/yyyy");
     
             Date outDate = HandOut.getDate();
-            String outD = (outDate != null) ? sdf.format(outDate) : "";
+            String outD = (outDate != null) ? simple.format(outDate) : "";
 
             Date dueDate = Duedate.getDate();
-            String due = (dueDate != null) ? sdf.format(dueDate) : "";
+            String due = (dueDate != null) ? simple.format(dueDate) : "";
             
             String[] update = {id, name, type, supervisor, fmarker, smarker, outD, due};
             

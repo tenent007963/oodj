@@ -37,23 +37,6 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         Table(-1);
     }
     
-    public int calculateProgress(List<String[]> allRows) {
-        int totalColumnsToCheck = 11;
-        int nonNullCount = 0;
-
-        for (String[] row : allRows) {
-            if (row.length > totalColumnsToCheck) {
-                for (int i = 0; i < totalColumnsToCheck; i++) {
-                    if (row[i] != null && !row[i].equals("-")) {
-                        nonNullCount++;
-                    }
-                }
-            }
-        }
-
-        return (int) Math.round(((double) nonNullCount / (allRows.size() * totalColumnsToCheck)) * 100);
-    }
-    
     private void LoadData() {
         for (int i = 1; i<= 20; i++) {
             String[] row = combobox.getRow(i);

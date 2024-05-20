@@ -144,18 +144,18 @@ public class PM_FeedbackReport extends javax.swing.JFrame {
     
     
     
-    private String[] getFullData(String submissionId) {
+    private String[] getFullData(String subID) {
         List<String[]> allRows = table.getAllRows();
         for (String[] row : allRows) {
-            if (row.length > 0 && row[0].equals(submissionId)) {
+            if (row.length > 0 && row[0].equals(subID)) {
                 return row;
             }
         }
         return new String[0];
     }
     
-    private void displayFullData(String submissionId) {
-        String[] data = getFullData(submissionId);
+    private void displayFullData(String subID) {
+        String[] data = getFullData(subID);
         if (data.length > 0) {
             Report.setText("");
             Report.append("                      APU PROJECT MANAGEMENT SYSTEM                \n");
@@ -195,8 +195,8 @@ public class PM_FeedbackReport extends javax.swing.JFrame {
         int selectedRow = ReportTable.getSelectedRow();
         if (selectedRow != -1) {
             DefaultTableModel model = (DefaultTableModel) ReportTable.getModel();
-            String submissionId = (String) model.getValueAt(selectedRow, 0);
-            displayFullData(submissionId);
+            String subID = (String) model.getValueAt(selectedRow, 0);
+            displayFullData(subID);
         }
     }//GEN-LAST:event_ReportTableMouseClicked
 
