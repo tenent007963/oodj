@@ -197,7 +197,7 @@ public class extensionPage extends javax.swing.JFrame {
         if (selected != -1) {
             DefaultTableModel model = (DefaultTableModel) extensionTable.getModel();
             String aftdays = extensionBox.getSelectedItem().toString();
-            String assessmentID = (String) model.getValueAt(selected, 0); // Assessment ID
+            String assessmentID = assessmentText.getText().trim(); // Assessment ID
 
             try {
                 DataAbstract db = new DataAbstract("Submission.txt");
