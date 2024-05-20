@@ -31,6 +31,7 @@ public class PM_Allotment extends javax.swing.JFrame {
     });
         LoadData();
         Table();
+        updateAssessmentTypeOptions();
     }
     
     private void LoadData() {
@@ -68,6 +69,22 @@ public class PM_Allotment extends javax.swing.JFrame {
                     }
                 }
             }
+        }
+    }
+    
+    private void updateAssessmentTypeOptions() {
+        String intake = Intake.getText().toUpperCase();
+        Type.removeAllItems();
+
+        if (intake.contains("APU3F") || intake.contains("APD3F")) {
+            Type.addItem("Investigation Report");
+            Type.addItem("FYP");
+        } else if (intake.contains("APU2F") || intake.contains("APD2F")) {
+            Type.addItem("Internship");
+        } else if (intake.contains("FT-TT")) {
+            Type.addItem("RMCP");
+            Type.addItem("CP1");
+            Type.addItem("CP2");
         }
     }
 
@@ -132,7 +149,6 @@ public class PM_Allotment extends javax.swing.JFrame {
         jLabel5.setText("Assessment Type:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, -1, -1));
 
-        Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
         getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 150, -1));
 
         jLabel6.setText("Student Name:");
@@ -257,6 +273,8 @@ public class PM_Allotment extends javax.swing.JFrame {
         Name.setText(model.getValueAt(row,1).toString());
         Intake.setText(model.getValueAt(row, 2).toString());
         Type.setSelectedItem(model.getValueAt(row, 3).toString());
+        
+        updateAssessmentTypeOptions();
     }//GEN-LAST:event_StudentTableMouseClicked
 
     /**
