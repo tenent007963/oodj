@@ -244,7 +244,7 @@ public class extensionPage extends javax.swing.JFrame {
                         parts[11] = aftdays;
                         lines.set(i, String.join(";", parts));
                         updated = true;
-                        break; // Exit the loop after the first match is found and updated
+                        break; 
                     }
                 }
 
