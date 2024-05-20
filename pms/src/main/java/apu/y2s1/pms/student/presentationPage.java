@@ -41,9 +41,9 @@ public class presentationPage extends javax.swing.JFrame {
 
         for (int i = 1; i < allRows.size(); i++) {
             String[] rowData = allRows.get(i);
-            String[] newData = new String[]{rowData[1], rowData[7], rowData[8]};
+            String[] newData = new String[]{rowData[4], rowData[5]};
 
-            String[] studentTPs = rowData[10].split(",");
+            String[] studentTPs = rowData[1].split(";");
             boolean matchFound = false;
             for (String TP : studentTPs) {
                 if (TP.trim().equals(currentStudentTP)) {
@@ -106,18 +106,27 @@ public class presentationPage extends javax.swing.JFrame {
 
         reqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "STATUS", "PRESENTATION DATE", "PRESENTATION TIME"
+                "PRESENTATION DATE & TIME", "SLOT"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(reqTable);
         if (reqTable.getColumnModel().getColumnCount() > 0) {
             reqTable.getColumnModel().getColumn(0).setResizable(false);
+            reqTable.getColumnModel().getColumn(1).setResizable(false);
         }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 570, 490));
