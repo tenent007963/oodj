@@ -6,6 +6,10 @@ package apu.y2s1.pms.student;
 
 import apu.y2s1.pms.User;
 import apu.y2s1.pms.DataAbstract;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -192,14 +196,12 @@ public class extensionPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_extensionTableMouseClicked
 
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        int selected = extensionTable.getSelectedRow();
+    /* int selected = extensionTable.getSelectedRow();
         if (selected != -1) {
             DefaultTableModel model = (DefaultTableModel) extensionTable.getModel();
             String assessmentID = model.getValueAt(selected, 0).toString();
             String aftdays = extensionBox.getSelectedItem().toString();
             String deadline = model.getValueAt(selected, 2).toString();
-            //String assessmentID = assessmentText.getText().trim(); // Assessment ID
             String[] existed = table.getRow(selected + 1);
             String submissionID = existed[0];
             String studentID = existed[1];
@@ -223,6 +225,57 @@ public class extensionPage extends javax.swing.JFrame {
             }
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row to update.");
+        }*/
+
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        int selected = extensionTable.getSelectedRow();
+        if (selected != -1) {
+            DefaultTableModel model = (DefaultTableModel) extensionTable.getModel();
+            String assessmentID = model.getValueAt(selected, 0).toString();
+            String aftdays = extensionBox.getSelectedItem().toString();
+
+            // Get the current student's user ID
+            String currentStudentTP = currentStudent.getUserID();
+
+            try {
+                List<String> lines = Files.readAllLines(Paths.get("Submission.txt"), StandardCharsets.UTF_8);
+
+                boolean updated = false;
+                for (int i = 0; i < lines.size(); i++) {
+                    String[] parts = lines.get(i).split(";");
+                    if (parts[2].equals(assessmentID)) { // Check for the correct assessment ID
+                        // Also check for the correct student ID
+                        String[] studentTPs = parts[1].split(",");
+                        boolean studentMatch = false;
+                        for (String TP : studentTPs) {
+                            if (TP.trim().equals(currentStudentTP)) {
+                                studentMatch = true;
+                                break;
+                            }
+                        }
+                        if (studentMatch) {
+                            // Update the Request Extension days column (12th column, index 11)
+                            parts[11] = aftdays;
+                            lines.set(i, String.join(";", parts));
+                            updated = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (updated) {
+                    Files.write(Paths.get("Submission.txt"), lines, StandardCharsets.UTF_8);
+                    Table(); // Refresh the table data
+                    javax.swing.JOptionPane.showMessageDialog(null, "Data updated successfully.");
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null, "An error occurred while updating data.");
+                }
+            } catch (IOException e) {
+                javax.swing.JOptionPane.showMessageDialog(null, "An error occurred: " + e.getMessage());
+                e.printStackTrace();
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please select a row to update.");
         }
     }//GEN-LAST:event_submitButtonActionPerformed
 
