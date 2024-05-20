@@ -1,5 +1,5 @@
-S495;TP06111;A23442;12/06/2024;26/06/2024;Accepted;Graded;70;Overall good report;some parts can be improve;meet the overall requirement of assessment;5;-;https://lms2.apiit.edu.my/mod/assign/view.php?id=496430
-S496;TP06111;A35367;15/06/2024;22/06/2024;Accepted;Graded;15;Overall bad report;vely joke;noob report;1;-;https://lms2.apiit.edu.my/course/view.php?id=39865
+S495;TP06111;A23442;12/06/2024;26/06/2024;Accepted;Graded;70;Overall good report;some parts can be improve;meet the overall requirement of assessment;7;-;https://lms2.apiit.edu.my/mod/assign/view.php?id=496430
+S496;TP06111;A35367;15/06/2024;22/06/2024;Accepted;Graded;15;Overall bad report;vely joke;noob report;2;-;https://lms2.apiit.edu.my/course/view.php?id=39865
 S497;TP06222;A74050;29/05/2024;03/06/2024;Accepted;Graded;65;Average report;some grammar mistakes;contents are not enough;No;-;https://lms2.apiit.edu.my/course/view.php?id=39966
 S498;TP06666;A70984;31/05/2024;05/06/2024;Accepted;Reviewing;-;-;-;-;No;-;https://lms2.apiit.edu.my/course/view.php?id=39402
 
