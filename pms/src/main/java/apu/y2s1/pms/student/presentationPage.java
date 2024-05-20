@@ -12,6 +12,9 @@ import java.awt.Color;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -72,9 +75,9 @@ public class presentationPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btHome = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        timeText = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel4 = new javax.swing.JLabel();
+        reqDate = new com.toedter.calendar.JDateChooser();
+        jLabel5 = new javax.swing.JLabel();
+        assessmentText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         reqTable = new javax.swing.JTable();
         presentationButton = new javax.swing.JButton();
@@ -104,20 +107,16 @@ public class presentationPage extends javax.swing.JFrame {
 
         jTextField1.setBackground(new java.awt.Color(0, 102, 102));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
+        getContentPane().add(reqDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 320, -1));
 
-        timeText.setBackground(new java.awt.Color(242, 242, 242));
-        timeText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                timeTextActionPerformed(evt);
-            }
-        });
-        getContentPane().add(timeText, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 320, -1));
-        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 320, -1));
+        jLabel5.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Assessment ID:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Enter preferred time for presentation:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+        assessmentText.setEditable(false);
+        assessmentText.setBackground(new java.awt.Color(242, 242, 242));
+        getContentPane().add(assessmentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 320, -1));
 
         reqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -127,7 +126,7 @@ public class presentationPage extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Assessment ID", "Presentation Date & Time", "Slot"
+                "Assessment ID", "Presentation Date", "Slot"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -136,6 +135,11 @@ public class presentationPage extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        reqTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reqTableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(reqTable);
@@ -154,12 +158,12 @@ public class presentationPage extends javax.swing.JFrame {
                 presentationButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(presentationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 320, 60));
+        getContentPane().add(presentationButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 320, 60));
 
         jLabel2.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Please select preferred day for presentation:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\OneDrive - Asia Pacific University\\Desktop\\Object Oriented Development with Java\\pexels-anna-tarazevich-5936283.jpg")); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 640));
@@ -174,15 +178,52 @@ public class presentationPage extends javax.swing.JFrame {
     }//GEN-LAST:event_btHomeActionPerformed
 
     private void presentationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_presentationButtonActionPerformed
+        int selectedRow = reqTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a row to submit presentation details.");
+            return;
+        }
+        String selectedAssessment = (String) reqTable.getValueAt(selectedRow, 0);
+        Date pptDate = reqDate.getDate();
+        if (pptDate == null) {
+            JOptionPane.showMessageDialog(this, "Please select a presentation date.");
+            return;
+        }
+        // Format the presentation date to dd/mm/yyyy
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String formattedPptDate = dateFormat.format(pptDate);
 
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("Submissions.txt"), StandardCharsets.UTF_8);
+            boolean updated = false;
+            for (int i = 0; i < lines.size(); i++) {
+                String[] parts = lines.get(i).split(";");
+                if (parts[2].equals(selectedAssessment)) {
+                    parts[4] = formattedPptDate;
+                    lines.set(i, String.join(";", parts));
+                    updated = true;
+                    break;
+                }
+            }
+            if (updated) {
+                Files.write(Paths.get("Submissions.txt"), lines, StandardCharsets.UTF_8);
+                JOptionPane.showMessageDialog(this, "Presentation details submitted successfully.");
+            } else {
+                JOptionPane.showMessageDialog(this, "An error occurred while updating data.");
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_presentationButtonActionPerformed
 
-    private void timeTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_timeTextActionPerformed
-
-     
-     
+    private void reqTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reqTableMouseClicked
+        int selectedRow = reqTable.getSelectedRow();
+        if (selectedRow != -1) {
+            String selectedAssessment = (String) reqTable.getValueAt(selectedRow, 0);
+            assessmentText.setText(selectedAssessment);
+        }
+    }//GEN-LAST:event_reqTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -220,16 +261,16 @@ public class presentationPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField assessmentText;
     private javax.swing.JButton btHome;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton presentationButton;
+    private com.toedter.calendar.JDateChooser reqDate;
     private javax.swing.JTable reqTable;
-    private javax.swing.JTextField timeText;
     // End of variables declaration//GEN-END:variables
 }
