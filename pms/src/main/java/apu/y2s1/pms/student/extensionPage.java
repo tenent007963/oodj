@@ -235,17 +235,13 @@ public class extensionPage extends javax.swing.JFrame {
             String aftdays = extensionBox.getSelectedItem().toString();
 
             try {
-                // Read all lines from Submissions.txt
                 List<String> lines = Files.readAllLines(Paths.get("Submissions.txt"), StandardCharsets.UTF_8);
 
                 boolean updated = false;
-                // Iterate through each line in the file
                 for (int i = 0; i < lines.size(); i++) {
                     String[] parts = lines.get(i).split(";");
-                    if (parts[2].equals(assessmentID)) { // Check for the correct assessment ID
-                        // Update the Request Extension days column (12th column, index 11)
+                    if (parts[2].equals(assessmentID)) { 
                         parts[11] = aftdays;
-                        // Rejoin the updated parts into a single string
                         lines.set(i, String.join(";", parts));
                         updated = true;
                         break; // Exit the loop after the first match is found and updated
@@ -253,10 +249,9 @@ public class extensionPage extends javax.swing.JFrame {
                 }
 
                 if (updated) {
-                    // Write the updated lines back to Submissions.txt
                     Files.write(Paths.get("Submissions.txt"), lines, StandardCharsets.UTF_8);
-                    Table(); // Refresh the table data
-                    javax.swing.JOptionPane.showMessageDialog(null, "Data updated successfully.");
+                    Table(); 
+                    javax.swing.JOptionPane.showMessageDialog(null, "Extension submitted successfully.");
                 } else {
                     JOptionPane.showMessageDialog(null, "An error occurred while updating data.");
                 }
