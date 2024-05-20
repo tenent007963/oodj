@@ -109,7 +109,7 @@ public class extensionPage extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Assessment ID", "Extension status", "Extended Deadline"
+                "Submission ID", "Extension status", "Extended Deadline"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -196,9 +196,25 @@ public class extensionPage extends javax.swing.JFrame {
         int selected = extensionTable.getSelectedRow();
         if (selected != -1) {
             DefaultTableModel model = (DefaultTableModel) extensionTable.getModel();
+            String submissionID = model.getValueAt(selected, 0).toString();
             String aftdays = extensionBox.getSelectedItem().toString();
-            String assessmentID = assessmentText.getText().trim(); // Assessment ID
-
+            String deadline = model.getValueAt(selected, 2).toString();
+            //String assessmentID = assessmentText.getText().trim(); // Assessment ID
+            
+            String[] existed = table.getRow(selected + 1);
+            
+            String studentID = existed[1];
+            String submissionDate = existed[3];
+            String presentationDate = existed[4];
+            String presentationSlot = existed[5];
+            String status = existed[6];
+            String result = existed[7];
+            String feedback = existed[8];
+            String firstMark = existed[9];
+            String secondMark = existed[10];
+            String moodle = existed[13];
+            
+           
             try {
                 DataAbstract db = new DataAbstract("Submission.txt");
                 List<String[]> allRows = db.getAllRows();
