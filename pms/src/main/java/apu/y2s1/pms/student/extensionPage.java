@@ -194,39 +194,41 @@ public class extensionPage extends javax.swing.JFrame {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         int selected = extensionTable.getSelectedRow();
-        String currentStudentTP = currentStudent.getUserID();
-
         if (selected != -1) {
             DefaultTableModel model = (DefaultTableModel) extensionTable.getModel();
-            int selectedRow = extensionTable.getSelectedRow();
-            if (selectedRow != -1) {
-                String aftdays = extensionBox.getSelectedItem().toString();
-                // model.setValueAt(aftdays, selectedRow, 1);
-                String extensionStatus = (String) model.getValueAt(selectedRow, 1);
+            String aftdays = extensionBox.getSelectedItem().toString();
+            String assessmentID = (String) model.getValueAt(selected, 0); // Assessment ID
 
-                // Get the submission data based on user input
-                String[] existed = table.getRow(selectedRow + 1);
+            try {
+                DataAbstract db = new DataAbstract("Submission.txt");
+                List<String[]> allRows = db.getAllRows();
 
-                // Check if the submission belongs to the current student
-                String[] studentTPs = existed[1].split(";");
-                boolean matchFound = false;
-                for (String TP : studentTPs) {
-                    if (TP.trim().equals(currentStudentTP)) {
-                        matchFound = true;
-                        break;
+                boolean updated = false;
+                for (int i = 0; i < allRows.size(); i++) {
+                    String[] parts = allRows.get(i);
+                    if (parts[2].equals(assessmentID)) {
+                        // Update the Request Extension days column (11th column) with the new value
+                        parts[11] = aftdays;
+                        if (db.updateRow(i + 1, parts)) { // Row index in DataAbstract is 1-based
+                            updated = true;
+                            break;
+                        }
                     }
                 }
-                    existed[existed.length - 2] = aftdays;
-                    if (table.updateRow(selectedRow + 1, existed)) {
-                        Table();
-                        javax.swing.JOptionPane.showMessageDialog(null, "Data updated successfully.");
-                    } else {
-                        javax.swing.JOptionPane.showMessageDialog(null, "An error occurred while updating data.");
-                    }
+
+                if (updated) {
+                    Table(); // Refresh the table data
+                    javax.swing.JOptionPane.showMessageDialog(null, "Data updated successfully.");
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null, "An error occurred while updating data.");
                 }
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "An error occurred while updating data.");
-            }  
+            } catch (Exception e) {
+                javax.swing.JOptionPane.showMessageDialog(null, "An error occurred: " + e.getMessage());
+                e.printStackTrace();
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please select a row to update.");
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     /**
