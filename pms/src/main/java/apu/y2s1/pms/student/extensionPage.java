@@ -209,9 +209,12 @@ public class extensionPage extends javax.swing.JFrame {
                     if (parts[2].equals(assessmentID)) {
                         // Update the Request Extension days column (11th column) with the new value
                         parts[11] = aftdays;
+                        System.out.println("Updating row " + i + ": " + String.join(";", parts));
                         if (db.updateRow(i + 1, parts)) { // Row index in DataAbstract is 1-based
                             updated = true;
                             break;
+                        } else {
+                            System.out.println("Failed to update row"+i);
                         }
                     }
                 }
