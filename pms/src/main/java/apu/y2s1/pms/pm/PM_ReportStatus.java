@@ -171,9 +171,11 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
+        jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel3.setText("Sort By:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 70, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel4.setText("Search ID:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
@@ -182,7 +184,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                 SearchActionPerformed(evt);
             }
         });
-        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 140, -1));
+        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 140, -1));
 
         SubmissionTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -211,8 +213,10 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jScrollPane1.setViewportView(SubmissionTable);
         if (SubmissionTable.getColumnModel().getColumnCount() > 0) {
             SubmissionTable.getColumnModel().getColumn(0).setResizable(false);
+            SubmissionTable.getColumnModel().getColumn(1).setResizable(false);
             SubmissionTable.getColumnModel().getColumn(2).setResizable(false);
             SubmissionTable.getColumnModel().getColumn(3).setResizable(false);
+            SubmissionTable.getColumnModel().getColumn(4).setResizable(false);
             SubmissionTable.getColumnModel().getColumn(5).setResizable(false);
             SubmissionTable.getColumnModel().getColumn(6).setResizable(false);
             SubmissionTable.getColumnModel().getColumn(7).setResizable(false);
@@ -229,6 +233,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         getContentPane().add(StatusBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 540, 850, 20));
 
         Percentage.setBackground(new java.awt.Color(239, 207, 186));
+        Percentage.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         getContentPane().add(Percentage, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 570, 70, -1));
 
         jLabel2.setFont(new java.awt.Font("Baskerville Old Face", 1, 18)); // NOI18N

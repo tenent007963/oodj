@@ -137,23 +137,28 @@ public class PM_Allotment extends javax.swing.JFrame {
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
+        jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel3.setText("Sort By:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
 
         Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
         getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 150, -1));
 
+        jLabel4.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel4.setText("Search Name:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel5.setText("Assessment Type:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, -1, -1));
 
         getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 150, -1));
 
+        jLabel6.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel6.setText("Student Name:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel7.setText("Student Intake:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
 
@@ -170,6 +175,7 @@ public class PM_Allotment extends javax.swing.JFrame {
         });
         getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 150, -1));
 
+        Allot.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
         Allot.setText("ALLOT");
         Allot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -212,6 +218,7 @@ public class PM_Allotment extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 600, 480));
 
+        jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel2.setText("Student ID:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
 

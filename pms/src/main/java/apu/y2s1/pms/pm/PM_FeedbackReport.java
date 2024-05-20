@@ -90,6 +90,7 @@ public class PM_FeedbackReport extends javax.swing.JFrame {
         jScrollPane1.setViewportView(ReportTable);
         if (ReportTable.getColumnModel().getColumnCount() > 0) {
             ReportTable.getColumnModel().getColumn(0).setResizable(false);
+            ReportTable.getColumnModel().getColumn(1).setResizable(false);
             ReportTable.getColumnModel().getColumn(2).setResizable(false);
             ReportTable.getColumnModel().getColumn(3).setResizable(false);
         }
@@ -104,6 +105,7 @@ public class PM_FeedbackReport extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 90, 370, 490));
 
+        Print.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
         Print.setText("PRINT");
         Print.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

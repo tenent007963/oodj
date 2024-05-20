@@ -137,9 +137,11 @@ public class PM_Assessment extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 650, 520));
 
+        jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel3.setText("Assessment Name:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel4.setText("Assessment Type:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
@@ -160,25 +162,29 @@ public class PM_Assessment extends javax.swing.JFrame {
         jLabel1.setOpaque(true);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
+        jLabel5.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel5.setText("Supervisor:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel6.setText("First Marker:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
-        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 130, -1));
+        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 130, -1));
 
         Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
-        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 130, -1));
+        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 130, -1));
 
-        getContentPane().add(Supervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 130, -1));
+        getContentPane().add(Supervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 130, -1));
 
-        getContentPane().add(FirstM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 130, -1));
+        getContentPane().add(FirstM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 130, -1));
 
+        jLabel7.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel7.setText("Second Marker:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
-        getContentPane().add(SecondM, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 130, -1));
+        getContentPane().add(SecondM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 130, -1));
 
+        Create.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
         Create.setText("CREATE");
         Create.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,6 +193,7 @@ public class PM_Assessment extends javax.swing.JFrame {
         });
         getContentPane().add(Create, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
+        Edit.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
         Edit.setText("EDIT");
         Edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,22 +202,26 @@ public class PM_Assessment extends javax.swing.JFrame {
         });
         getContentPane().add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel8.setText("Assessment ID:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
-        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 130, -1));
+        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 130, -1));
 
+        jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel2.setText("Hand Out Date:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel10.setText("Due Date:");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
 
         HandOut.setDateFormatString("dd/MM/yyyy");
-        getContentPane().add(HandOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 170, -1));
+        getContentPane().add(HandOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 170, -1));
 
         Duedate.setDateFormatString("dd/MM/yyyy");
-        getContentPane().add(Duedate, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 170, -1));
+        getContentPane().add(Duedate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 170, -1));
 
+        Clear.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
         Clear.setText("CLEAR");
         Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

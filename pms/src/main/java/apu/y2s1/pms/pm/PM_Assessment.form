@@ -108,6 +108,9 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Assessment Name:"/>
       </Properties>
       <Constraints>
@@ -118,6 +121,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Assessment Type:"/>
       </Properties>
       <Constraints>
@@ -165,6 +171,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Supervisor:"/>
       </Properties>
       <Constraints>
@@ -175,6 +184,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="First Marker:"/>
       </Properties>
       <Constraints>
@@ -186,7 +198,7 @@
     <Component class="javax.swing.JTextField" name="Name">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="140" width="130" height="-1"/>
+          <AbsoluteConstraints x="150" y="140" width="130" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -208,7 +220,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="180" width="130" height="-1"/>
+          <AbsoluteConstraints x="150" y="180" width="130" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -223,7 +235,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="220" width="130" height="-1"/>
+          <AbsoluteConstraints x="150" y="220" width="130" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -238,12 +250,15 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="260" width="130" height="-1"/>
+          <AbsoluteConstraints x="150" y="260" width="130" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Second Marker:"/>
       </Properties>
       <Constraints>
@@ -263,12 +278,15 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="300" width="130" height="-1"/>
+          <AbsoluteConstraints x="150" y="300" width="130" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="Create">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="10" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="CREATE"/>
       </Properties>
       <Events>
@@ -282,6 +300,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="Edit">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="10" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="EDIT"/>
       </Properties>
       <Events>
@@ -295,6 +316,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Assessment ID:"/>
       </Properties>
       <Constraints>
@@ -306,12 +330,15 @@
     <Component class="javax.swing.JTextField" name="ID">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="100" width="130" height="-1"/>
+          <AbsoluteConstraints x="150" y="100" width="130" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Hand Out Date:"/>
       </Properties>
       <Constraints>
@@ -322,6 +349,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Due Date:"/>
       </Properties>
       <Constraints>
@@ -336,7 +366,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="340" width="170" height="-1"/>
+          <AbsoluteConstraints x="150" y="340" width="170" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -346,12 +376,15 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="140" y="380" width="170" height="-1"/>
+          <AbsoluteConstraints x="150" y="380" width="170" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="Clear">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="10" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="CLEAR"/>
       </Properties>
       <Events>

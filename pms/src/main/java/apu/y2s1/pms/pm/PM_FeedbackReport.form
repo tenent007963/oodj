@@ -91,7 +91,7 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -142,6 +142,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="Print">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="10" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="PRINT"/>
       </Properties>
       <Events>

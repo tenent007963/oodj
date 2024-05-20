@@ -65,6 +65,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Sort By:"/>
       </Properties>
       <Constraints>
@@ -92,6 +95,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Search Name:"/>
       </Properties>
       <Constraints>
@@ -102,6 +108,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Assessment Type:"/>
       </Properties>
       <Constraints>
@@ -127,6 +136,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Student Name:"/>
       </Properties>
       <Constraints>
@@ -137,6 +149,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Student Intake:"/>
       </Properties>
       <Constraints>
@@ -177,6 +192,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="Allot">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="10" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="ALLOT"/>
       </Properties>
       <Events>
@@ -246,6 +264,9 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe Print" size="12" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Student ID:"/>
       </Properties>
       <Constraints>
