@@ -196,37 +196,6 @@ public class extensionPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_extensionTableMouseClicked
 
-    /* int selected = extensionTable.getSelectedRow();
-        if (selected != -1) {
-            DefaultTableModel model = (DefaultTableModel) extensionTable.getModel();
-            String assessmentID = model.getValueAt(selected, 0).toString();
-            String aftdays = extensionBox.getSelectedItem().toString();
-            String deadline = model.getValueAt(selected, 2).toString();
-            String[] existed = table.getRow(selected + 1);
-            String submissionID = existed[0];
-            String studentID = existed[1];
-            String submissionDate = existed[3];
-            String presentationDate = existed[4];
-            String presentationSlot = existed[5];
-            String status = existed[6];
-            String result = existed[7];
-            String feedback = existed[8];
-            String firstMark = existed[9];
-            String secondMark = existed[10];
-            String moodle = existed[13];
-
-            String[] update = {submissionID, studentID, assessmentID, submissionDate, presentationDate, presentationSlot, status, result, feedback, firstMark, secondMark, aftdays, deadline, moodle};
-
-            if (table.updateRow(selected, update)) {
-                Table();
-                JOptionPane.showMessageDialog(null, "Extension submitted successfully.");
-            } else {
-                JOptionPane.showMessageDialog(null, "An error occured while updating data.");
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a row to update.");
-        }*/
-
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         int selected = extensionTable.getSelectedRow();
         if (selected != -1) {
