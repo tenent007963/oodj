@@ -220,7 +220,7 @@ public class extensionPage extends javax.swing.JFrame {
                 if (updated) {
                     Files.write(Paths.get("Submissions.txt"), lines, StandardCharsets.UTF_8);
                     Table(); 
-                    javax.swing.JOptionPane.showMessageDialog(null, "Extension submitted successfully.");
+                    JOptionPane.showMessageDialog(null, "Extension submitted successfully.");
                 } else {
                     JOptionPane.showMessageDialog(null, "An error occurred while updating data.");
                 }
