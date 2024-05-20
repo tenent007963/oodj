@@ -43,7 +43,6 @@ public class statusPage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         statusTable = new javax.swing.JTable();
         btSubmit = new javax.swing.JButton();
-        btRefresh = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,7 +77,7 @@ public class statusPage extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "DATE", "ASSESSMENT ID", "STATUS", "RESULT"
+                "SUBMITTED DATE", "ASSESSMENT ID", "STATUS", "RESULT"
             }
         ));
         jScrollPane1.setViewportView(statusTable);
@@ -94,11 +93,6 @@ public class statusPage extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 570, 190, 40));
-
-        btRefresh.setBackground(new java.awt.Color(102, 102, 102));
-        btRefresh.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        btRefresh.setText("REFRESH");
-        getContentPane().add(btRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 570, 100, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\OneDrive - Asia Pacific University\\Desktop\\Object Oriented Development with Java\\pexels-anna-tarazevich-5936283.jpg")); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 640));
@@ -182,7 +176,6 @@ public class statusPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btHOME;
-    private javax.swing.JButton btRefresh;
     private javax.swing.JButton btSubmit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
