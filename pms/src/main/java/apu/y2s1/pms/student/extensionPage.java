@@ -109,7 +109,7 @@ public class extensionPage extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "Submission ID", "Extension status", "Extended Deadline"
+                "Assessment ID", "Extension status", "Extended Deadline"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -196,54 +196,32 @@ public class extensionPage extends javax.swing.JFrame {
         int selected = extensionTable.getSelectedRow();
         if (selected != -1) {
             DefaultTableModel model = (DefaultTableModel) extensionTable.getModel();
-            String submissionID = model.getValueAt(selected, 0).toString();
+            String assessmentID = model.getValueAt(selected, 0).toString();
             String aftdays = extensionBox.getSelectedItem().toString();
             String deadline = model.getValueAt(selected, 2).toString();
             //String assessmentID = assessmentText.getText().trim(); // Assessment ID
-            
-            String[] existed = table.getRow(selected + 1);
-            
-            String studentID = existed[1];
-            String submissionDate = existed[3];
-            String presentationDate = existed[4];
-            String presentationSlot = existed[5];
-            String status = existed[6];
-            String result = existed[7];
-            String feedback = existed[8];
-            String firstMark = existed[9];
-            String secondMark = existed[10];
-            String moodle = existed[13];
-            
-           
-            try {
-                DataAbstract db = new DataAbstract("Submission.txt");
-                List<String[]> allRows = db.getAllRows();
+                String[] existed = table.getRow(selected + 1);
+                String submissionID = existed[0];
+                String studentID = existed[1];
+                String submissionDate = existed[3];
+                String presentationDate = existed[4];
+                String presentationSlot = existed[5];
+                String status = existed[6];
+                String result = existed[7];
+                String feedback = existed[8];
+                String firstMark = existed[9];
+                String secondMark = existed[10];
+                String moodle = existed[13];
 
-                boolean updated = false;
-                for (int i = 0; i < allRows.size(); i++) {
-                    String[] parts = allRows.get(i);
-                    if (parts[2].equals(assessmentID)) {
-                        // Update the Request Extension days column (11th column) with the new value
-                        parts[11] = aftdays;
-                        if (db.updateRow(i + 1, parts)) { // Row index in DataAbstract is 1-based
-                            updated = true;
-                            break;
-                        }
-                    }
-                }
+                String[] update = {submissionID, studentID, assessmentID, submissionDate, presentationDate, presentationSlot, status, result, feedback, firstMark, secondMark, aftdays, deadline, moodle};
 
-                if (updated) {
-                    Table(); // Refresh the table data
-                    javax.swing.JOptionPane.showMessageDialog(null, "Data updated successfully.");
+                if (table.updateRow(selected, update)) {
+                    Table();
                 } else {
-                    javax.swing.JOptionPane.showMessageDialog(null, "An error occurred while updating data.");
+                    javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
                 }
-            } catch (Exception e) {
-                javax.swing.JOptionPane.showMessageDialog(null, "An error occurred: " + e.getMessage());
-                e.printStackTrace();
-            }
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(null, "Please select a row to update.");
+            }else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please select a row to update.");    
         }
     }//GEN-LAST:event_submitButtonActionPerformed
 
