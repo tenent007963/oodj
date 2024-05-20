@@ -156,7 +156,7 @@ public class extensionPage extends javax.swing.JFrame {
 
         for (int i = 0; i < allRows.size(); i++) {
             String[] rowData = allRows.get(i);
-            String[] newData = new String[]{rowData[0], rowData[11], rowData[12]};
+            String[] newData = new String[]{rowData[2], rowData[11], rowData[12]};
 
             String[] studentTPs = rowData[1].split(",");
             boolean matchFound = false;
@@ -234,44 +234,34 @@ public class extensionPage extends javax.swing.JFrame {
             String assessmentID = model.getValueAt(selected, 0).toString();
             String aftdays = extensionBox.getSelectedItem().toString();
 
-            // Get the current student's user ID
-            String currentStudentTP = currentStudent.getUserID();
-
             try {
-                List<String> lines = Files.readAllLines(Paths.get("Submission.txt"), StandardCharsets.UTF_8);
+                // Read all lines from Submissions.txt
+                List<String> lines = Files.readAllLines(Paths.get("Submissions.txt"), StandardCharsets.UTF_8);
 
                 boolean updated = false;
+                // Iterate through each line in the file
                 for (int i = 0; i < lines.size(); i++) {
                     String[] parts = lines.get(i).split(";");
                     if (parts[2].equals(assessmentID)) { // Check for the correct assessment ID
-                        // Also check for the correct student ID
-                        String[] studentTPs = parts[1].split(",");
-                        boolean studentMatch = false;
-                        for (String TP : studentTPs) {
-                            if (TP.trim().equals(currentStudentTP)) {
-                                studentMatch = true;
-                                break;
-                            }
-                        }
-                        if (studentMatch) {
-                            // Update the Request Extension days column (12th column, index 11)
-                            parts[11] = aftdays;
-                            lines.set(i, String.join(";", parts));
-                            updated = true;
-                            break;
-                        }
+                        // Update the Request Extension days column (12th column, index 11)
+                        parts[11] = aftdays;
+                        // Rejoin the updated parts into a single string
+                        lines.set(i, String.join(";", parts));
+                        updated = true;
+                        break; // Exit the loop after the first match is found and updated
                     }
                 }
 
                 if (updated) {
-                    Files.write(Paths.get("Submission.txt"), lines, StandardCharsets.UTF_8);
+                    // Write the updated lines back to Submissions.txt
+                    Files.write(Paths.get("Submissions.txt"), lines, StandardCharsets.UTF_8);
                     Table(); // Refresh the table data
                     javax.swing.JOptionPane.showMessageDialog(null, "Data updated successfully.");
                 } else {
-                    javax.swing.JOptionPane.showMessageDialog(null, "An error occurred while updating data.");
+                    JOptionPane.showMessageDialog(null, "An error occurred while updating data.");
                 }
             } catch (IOException e) {
-                javax.swing.JOptionPane.showMessageDialog(null, "An error occurred: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "An error occurred: " + e.getMessage());
                 e.printStackTrace();
             }
         } else {
