@@ -200,7 +200,7 @@ public class presentationPage extends javax.swing.JFrame {
                 String[] parts = lines.get(i).split(";");
                 if (parts[2].equals(selectedAssessment)) {
                     parts[4] = formattedPptDate;
-                    parts[5] = "-";  
+                    parts[5] = "Pending";  
                     lines.set(i, String.join(";", parts));
                     updated = true;
                     break;
