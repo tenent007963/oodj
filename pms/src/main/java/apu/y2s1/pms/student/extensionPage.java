@@ -158,7 +158,7 @@ public class extensionPage extends javax.swing.JFrame {
             String[] rowData = allRows.get(i);
             String[] newData = new String[]{rowData[2], rowData[11], rowData[12]};
 
-            String[] studentTPs = rowData[1].split(",");
+            String[] studentTPs = rowData[1].split(";");
             boolean matchFound = false;
             for (String TP : studentTPs) {
                 if (TP.trim().equals(currentStudentTP)) {
