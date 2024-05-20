@@ -185,8 +185,8 @@ public class presentationPage extends javax.swing.JFrame {
         }
         String selectedAssessment = (String) reqTable.getValueAt(selectedRow, 0);
         Date pptDate = reqDate.getDate();
-        if (pptDate == null) {
-            JOptionPane.showMessageDialog(this, "Please select a presentation date.");
+        if (pptDate == null || pptDate.before(new Date())) {
+            JOptionPane.showMessageDialog(this, "Please select an approriate presentation date.");
             return;
         }
         // Format the presentation date to dd/mm/yyyy
