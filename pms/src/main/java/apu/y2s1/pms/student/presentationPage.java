@@ -200,6 +200,7 @@ public class presentationPage extends javax.swing.JFrame {
                 String[] parts = lines.get(i).split(";");
                 if (parts[2].equals(selectedAssessment)) {
                     parts[4] = formattedPptDate;
+                    parts[5] = "-";  
                     lines.set(i, String.join(";", parts));
                     updated = true;
                     break;
@@ -208,6 +209,7 @@ public class presentationPage extends javax.swing.JFrame {
             if (updated) {
                 Files.write(Paths.get("Submissions.txt"), lines, StandardCharsets.UTF_8);
                 JOptionPane.showMessageDialog(this, "Presentation details submitted successfully.");
+                Table();
             } else {
                 JOptionPane.showMessageDialog(this, "An error occurred while updating data.");
             }
