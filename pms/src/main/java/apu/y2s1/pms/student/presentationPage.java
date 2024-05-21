@@ -103,6 +103,12 @@ public class presentationPage extends javax.swing.JFrame {
 
         jTextField1.setBackground(new java.awt.Color(0, 102, 102));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
+
+        reqDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                reqDateMouseExited(evt);
+            }
+        });
         getContentPane().add(reqDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 320, -1));
 
         jLabel5.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
@@ -222,6 +228,10 @@ public class presentationPage extends javax.swing.JFrame {
             assessmentText.setText(selectedAssessment);
         }
     }//GEN-LAST:event_reqTableMouseClicked
+
+    private void reqDateMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reqDateMouseExited
+
+    }//GEN-LAST:event_reqDateMouseExited
 
     /**
      * @param args the command line arguments
