@@ -211,6 +211,8 @@ public class presentationPage extends javax.swing.JFrame {
             if (updated) {
                 Files.write(Paths.get("Submissions.txt"), lines, StandardCharsets.UTF_8);
                 JOptionPane.showMessageDialog(this, "Presentation details submitted successfully.");
+                assessmentText.setText("");
+                reqDate.setDate(null);
                 Table();
             } else {
                 JOptionPane.showMessageDialog(this, "An error occurred while updating data.");
