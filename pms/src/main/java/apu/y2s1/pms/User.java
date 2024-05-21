@@ -23,7 +23,6 @@ public class User {
     public User(String sid, String role) {
         this.userID = sid;
         this.role = role;
-        System.out.println(role + ":" + this.role);
         switch(this.role.toLowerCase()) {
             case "student" -> setFilename("Students.txt");
             case "lecturer" -> setFilename("Lecturers.txt");
@@ -48,9 +47,7 @@ public class User {
     }
 
     private void setFilename(String fn){
-        System.out.println("Input"+fn);
         User.filename = fn;
-        System.out.println("Final"+User.filename);
     }
     
     public final void getUserData(){

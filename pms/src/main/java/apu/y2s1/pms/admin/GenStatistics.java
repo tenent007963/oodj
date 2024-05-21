@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
  * @author Thinkpad
  */
 public class GenStatistics extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form GenStatistics
      */
@@ -152,21 +152,14 @@ public class GenStatistics extends javax.swing.JFrame {
     }//GEN-LAST:event_GenTotalStudNumMouseClicked
 
     private void GenTotalLectNumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenTotalLectNumMouseClicked
-        Integer linelen = 0;
-
-        String filePath = "Lecturers.txt";
-        File file = new File(filePath);
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            while (reader.readLine() != null) {
-                linelen++;
-            }
-            String len = Integer.toString(linelen);
-
-            TrainerAmt.setText(len);
-        } catch (IOException e) {
-            e.printStackTrace();
+        int count;
+        DataAbstract db = new DataAbstract("Lecturers.txt");
+        if ((count = db.countLines()) != -1){
+            TrainerAmt.setText(Integer.toString(count));
+        } else {
+            TrainerAmt.setText("Error");
         }
+
     }//GEN-LAST:event_GenTotalLectNumMouseClicked
 
     private void GenTotalGRepNumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenTotalGRepNumMouseClicked
@@ -191,6 +184,12 @@ public class GenStatistics extends javax.swing.JFrame {
             Logger.getLogger(GenStatistics.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
         }
+
+        //Alternatively
+        /* 
+        DataAbstract db = new DataAbstract("Submissions.txt");
+        ReportAmt.setText(Integer.toString(db.getSearchCount(Status.getSelectedItem().toString())));
+        */
     }//GEN-LAST:event_GenTotalGRepNumMouseClicked
 
     private void HomeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBtnMouseClicked
@@ -200,21 +199,15 @@ public class GenStatistics extends javax.swing.JFrame {
     }//GEN-LAST:event_HomeBtnMouseClicked
 
     private void GenTotalAdmNumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenTotalAdmNumMouseClicked
-        Integer linelen = 0;
-
-        String filePath = "Admins.txt";
-        File file = new File(filePath);
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            while (reader.readLine() != null) {
-                linelen++;
-            }
-            String len = Integer.toString(linelen);
-
-            ReportAmt.setText(len);
-        } catch (IOException e) {
-            e.printStackTrace();
+        
+        int count;
+        DataAbstract db = new DataAbstract("Admins.txt");
+        if ((count = db.countLines()) != -1){
+            TrainerAmt.setText(Integer.toString(count));
+        } else {
+            TrainerAmt.setText("Error");
         }
+
     }//GEN-LAST:event_GenTotalAdmNumMouseClicked
 
     /**

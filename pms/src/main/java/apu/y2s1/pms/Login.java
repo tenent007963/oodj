@@ -149,8 +149,8 @@ public class Login extends javax.swing.JFrame {
                     Ahome.setVisible(true);
                     break;
                 case "Lecturer":
-                    session = null;
-                    new apu.y2s1.pms.lecturer.Lecturer(userid);
+                    session = new apu.y2s1.pms.lecturer.Lecturer(userid);
+                    User.instance = session; //get the static instance
                     JOptionPane.showMessageDialog(null,"Student Login Successful");
                     apu.y2s1.pms.lecturer.LecturerMenu Lhome = new apu.y2s1.pms.lecturer.LecturerMenu();
                     Lhome.setVisible(true);
@@ -161,7 +161,7 @@ public class Login extends javax.swing.JFrame {
                     PMhome.setVisible(true);
                     break;
                 case "Student":
-                    session = new apu.y2s1.pms.student.Student(userid);;
+                    session = new apu.y2s1.pms.student.Student(userid);
                     User.instance = session; //get the static instance
                     JOptionPane.showMessageDialog(null,"Student Login Successful");
                     apu.y2s1.pms.student.studentPage Shome = new apu.y2s1.pms.student.studentPage();

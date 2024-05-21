@@ -9,7 +9,7 @@ package apu.y2s1.pms.lecturer;
  * @author Jeslyn
  */
 public class LecturerMenu extends javax.swing.JFrame {
-    public Lecturer thisLec;
+    Lecturer thisLec;
 
     /**
      * Creates new form LecturerMenu

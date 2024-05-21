@@ -28,7 +28,7 @@ public class DataAbstract {
     }
 
     public DataAbstract(String arg) {
-            this(arg, ";");
+        this(arg, ";");
     }
 
     /*
@@ -176,6 +176,26 @@ public class DataAbstract {
             e.printStackTrace();
         }
         return -1; // Return -1 if the string is not found
+    }
+
+    /*
+     * getSearchCount() requires a string searchString as an argument, and returns the number of occurrences of the string in the file.
+     */
+    public int getSearchCount(String searchString) {
+        int count = 0;
+        try(BufferedReader reader = new BufferedReader(new FileReader(this.fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.contains(searchString)) {
+                    count++;
+                }
+            }
+        } catch (IOException e) {
+            javax.swing.JOptionPane.showMessageDialog(null,"An error occurred." + e.getMessage());
+            e.printStackTrace();
+            return -1;
+        }
+        return count;
     }
     
     /* 
