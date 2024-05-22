@@ -13,6 +13,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -192,6 +194,11 @@ public class submitPage extends javax.swing.JFrame {
             }
         });
         submitTable.getTableHeader().setReorderingAllowed(false);
+        submitTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                submitTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(submitTable);
         if (submitTable.getColumnModel().getColumnCount() > 0) {
             submitTable.getColumnModel().getColumn(0).setResizable(false);
@@ -242,6 +249,7 @@ public class submitPage extends javax.swing.JFrame {
                 if (parts[2].equals(selectedAssessment)) {
                     String link = parts[13].trim();
                     moodleText.setText(link);
+                    JOptionPane.showMessageDialog(this, "asdasdasdasdasddasdas.");
                     found = true;
                     break;
                 }
@@ -275,6 +283,41 @@ public class submitPage extends javax.swing.JFrame {
     private void moodleTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moodleTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_moodleTextActionPerformed
+
+    private void submitTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitTableMouseClicked
+        int selectedRow = submitTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a row to submit presentation details.");
+            return;
+        }
+
+        String selectedAssessment = (String) submitTable.getValueAt(selectedRow, 0);
+        assessmentText.setText(selectedAssessment);
+
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("Submissions.txt"), StandardCharsets.UTF_8);
+            boolean found = false;
+
+            for (String line : lines) {
+                String[] parts = line.split(";");
+                if (parts[2].trim().equals(selectedAssessment)) {
+                    String link = parts[13].trim();
+                    moodleText.setText(link);
+                    JOptionPane.showMessageDialog(this, "Assessment details loaded successfully.");
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                JOptionPane.showMessageDialog(this, "Assessment not assigned.");
+            }
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_submitTableMouseClicked
 
     /**
      * @param args the command line arguments
