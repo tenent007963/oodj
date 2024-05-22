@@ -49,6 +49,7 @@ public class LecturerMenu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel1.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTINUE:");
 
+        SecondMarking.setEnabled(thisLec.getIsSecondMarker());
         SecondMarking.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         SecondMarking.setText("Second Marking");
         SecondMarking.addActionListener(new java.awt.event.ActionListener() {
@@ -57,6 +58,7 @@ public class LecturerMenu extends javax.swing.JFrame {
             }
         });
 
+        FirstMarking.setEnabled(thisLec.getIsFirstMarker());
         FirstMarking.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         FirstMarking.setText("First Marking");
         FirstMarking.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +83,7 @@ public class LecturerMenu extends javax.swing.JFrame {
             }
         });
 
+        CfmPresentReq.setEnabled(thisLec.getIsSupervisor());
         CfmPresentReq.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         CfmPresentReq.setText("Confirm Presentation Request");
         CfmPresentReq.addActionListener(new java.awt.event.ActionListener() {
@@ -113,6 +116,7 @@ public class LecturerMenu extends javax.swing.JFrame {
             }
         });
 
+        viewSupervisees.setEnabled(thisLec.getIsSupervisor());
         viewSupervisees.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         viewSupervisees.setText("View Supervisees");
         viewSupervisees.addActionListener(new java.awt.event.ActionListener() {
