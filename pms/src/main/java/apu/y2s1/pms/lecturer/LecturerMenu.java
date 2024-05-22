@@ -35,8 +35,10 @@ public class LecturerMenu extends javax.swing.JFrame {
         LogOutBtn = new javax.swing.JButton();
         ViewMarkFeedback = new javax.swing.JButton();
         CfmPresentReq = new javax.swing.JButton();
-        ViewMarkFeedback1 = new javax.swing.JButton();
-        CfmPresentReq1 = new javax.swing.JButton();
+        subOp = new javax.swing.JButton();
+        assOp = new javax.swing.JButton();
+        viewPresentSlots = new javax.swing.JButton();
+        viewSupervisees = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,19 +89,35 @@ public class LecturerMenu extends javax.swing.JFrame {
             }
         });
 
-        ViewMarkFeedback1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        ViewMarkFeedback1.setText("Submission Operation");
-        ViewMarkFeedback1.addActionListener(new java.awt.event.ActionListener() {
+        subOp.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        subOp.setText("Submission Operation");
+        subOp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ViewMarkFeedback1ActionPerformed(evt);
+                subOpActionPerformed(evt);
             }
         });
 
-        CfmPresentReq1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        CfmPresentReq1.setText("Assessment Operations");
-        CfmPresentReq1.addActionListener(new java.awt.event.ActionListener() {
+        assOp.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        assOp.setText("Assessment Operations");
+        assOp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CfmPresentReq1ActionPerformed(evt);
+                assOpActionPerformed(evt);
+            }
+        });
+
+        viewPresentSlots.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        viewPresentSlots.setText("View Presentation Request");
+        viewPresentSlots.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPresentSlotsActionPerformed(evt);
+            }
+        });
+
+        viewSupervisees.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        viewSupervisees.setText("View Supervisees");
+        viewSupervisees.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewSuperviseesActionPerformed(evt);
             }
         });
 
@@ -107,34 +125,38 @@ public class LecturerMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(233, 233, 233)
-                .addComponent(Title)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 122, Short.MAX_VALUE)
+                .addGap(0, 147, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(165, 165, 165))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(165, 165, 165))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(LogOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(388, 388, 388))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(233, 233, 233)
+                        .addComponent(Title))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(LogOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(CfmPresentReq, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(viewPresentSlots, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(CfmPresentReq, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ViewMarkFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(FirstMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(SecondMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ViewMarkFeedback1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(subOp, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(CfmPresentReq1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(assOp, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(ViewMarkFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(viewSupervisees, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
@@ -143,22 +165,24 @@ public class LecturerMenu extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(Title)
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ViewMarkFeedback1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CfmPresentReq1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ViewMarkFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(131, 131, 131)))
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CfmPresentReq, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(subOp, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assOp, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewSupervisees, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FirstMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SecondMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(98, 98, 98)
+                    .addComponent(SecondMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ViewMarkFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewPresentSlots, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CfmPresentReq, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(LogOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addGap(128, 128, 128))
         );
 
         pack();
@@ -190,13 +214,21 @@ public class LecturerMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CfmPresentReqActionPerformed
 
-    private void ViewMarkFeedback1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewMarkFeedback1ActionPerformed
+    private void subOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subOpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ViewMarkFeedback1ActionPerformed
+    }//GEN-LAST:event_subOpActionPerformed
 
-    private void CfmPresentReq1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CfmPresentReq1ActionPerformed
+    private void assOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assOpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CfmPresentReq1ActionPerformed
+    }//GEN-LAST:event_assOpActionPerformed
+
+    private void viewPresentSlotsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPresentSlotsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewPresentSlotsActionPerformed
+
+    private void viewSuperviseesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSuperviseesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewSuperviseesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,13 +267,15 @@ public class LecturerMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CfmPresentReq;
-    private javax.swing.JButton CfmPresentReq1;
     private javax.swing.JButton FirstMarking;
     private javax.swing.JButton LogOutBtn;
     private javax.swing.JButton SecondMarking;
     private javax.swing.JLabel Title;
     private javax.swing.JButton ViewMarkFeedback;
-    private javax.swing.JButton ViewMarkFeedback1;
+    private javax.swing.JButton assOp;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton subOp;
+    private javax.swing.JButton viewPresentSlots;
+    private javax.swing.JButton viewSupervisees;
     // End of variables declaration//GEN-END:variables
 }

@@ -33,6 +33,7 @@ public class DataAbstract {
 
     /*
      * getRow() requires an integer rowIndex(id) as an argument, and returns a String[] array that contains all elements in that row.
+     * rowIndex starts from 1, where 1 is the first row, 2 is the second row, and so on.
      */
     public String[] getRow(int rowIndex) {
         BufferedReader reader = null;
@@ -67,6 +68,41 @@ public class DataAbstract {
             }
         }
     }
+
+    /*
+     * getCol() requires an integer colIndex(id) as an argument, and returns a String[] array that contains all elements in that column.
+     * colIndex starts from 0, where 0 is the first column, 1 is the second column, and so on.
+     */
+    public String[] getCol(int colIndex) {
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(this.fileName));
+            List<String> colData = new ArrayList<>();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] values = line.split(this.regEx);
+                if (colIndex >= 0 && colIndex < values.length) {
+                    colData.add(values[colIndex].trim());
+                }
+            }
+            // Convert the List<String> to a String[] array and return
+            return colData.toArray(new String[0]);
+        } catch (IOException e) {
+            javax.swing.JOptionPane.showMessageDialog(null,"An error occurred. Please try again, or check your input");
+            e.printStackTrace();
+            return new String[0]; // Return an empty array in case of an error
+            } finally {
+                if (reader!= null) {
+                    try {
+                        reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    return new String[0];
+                }
+            }
+        }
     
     /*
      * getAllRows() returns a List<String[]> array that contains all rows in the file. Each element of this list is itself an array with all elements in that row.

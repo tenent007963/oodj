@@ -6,21 +6,21 @@ public class Lecturer extends User {
     private boolean is_first_marker;
     private boolean is_second_marker;
     private boolean is_supervisor;
+    private String full_name;
     //private final String regex = "(?i)^(true|yes|1)$";
     
     public Lecturer(String ID) {
-        super(ID, "Admin");
+        super(ID, "Lecturer");
         getAddiData(ID);
     }
 
     public final void getAddiData(String ID){
+        this.full_name = db.getRow(this.intID)[1];
         DataAbstract db1 = new DataAbstract("Assessments.txt");
-        /*
-        String[] rawdata = db.getRow(intID);
-        setIsFirstMarker(rawdata[4]);
-        setIsSecondMarker(rawdata[5]);
-        setIsSupervisor(rawdata[6]);
-        */
+        setIsFirstMarker(db1.getCol(5));
+        setIsSecondMarker(db1.getCol(4));
+        setIsSupervisor(db1.getCol(3));
+        removePassword();
     }
 
     public boolean getIsFirstMarker() {
@@ -35,22 +35,34 @@ public class Lecturer extends User {
         return is_supervisor;
     }
 
-    //commenting this section bzc Jeslyn do extra stuffs so the logic makes no sense now
-    /*
-    private void setIsFirstMarker(String lowFirst) {
-        this.is_first_marker = lowFirst.matches(this.regex);
+
+    private void setIsFirstMarker(String[] rawFirst) {
+        for (String s : rawFirst) {
+            if (s.toLowerCase().matches(this.full_name.toLowerCase())) {
+                this.is_first_marker = true;
+                return;
+            }
+        }
     }
 
-    private void setIsSecondMarker(String lowSecond) {
-        this.is_second_marker = lowSecond.matches(this.regex);
+    private void setIsSecondMarker(String[] rawSecond) {
+        for (String s : rawSecond) {
+            if (s.toLowerCase().matches(this.full_name.toLowerCase())) {
+                this.is_second_marker = true;
+                return;
+            }
+        }
     }
 
-    private void setIsSupervisor(String lowThird) {
-        this.is_supervisor = lowThird.matches(this.regex);
+    private void setIsSupervisor(String[] rawThird) {
+        for (String s : rawThird) {
+            if (s.toLowerCase().matches(this.full_name.toLowerCase())) {
+                this.is_supervisor = true;
+                return;
+            }
+        }
     }
-     */
     
-
     public void removePassword(){
         super.password = null;
     }
