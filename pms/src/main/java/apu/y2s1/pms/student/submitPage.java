@@ -43,38 +43,35 @@ public class submitPage extends javax.swing.JFrame {
         String currentStudentTP = currentStudent.getUserID();
         DataAbstract studentData = new DataAbstract("Students.txt", ";");
         List<String[]> allStudents = studentData.getAllRows();
-
         for (String[] rowData : allStudents) {
-            String[] studentTPs = rowData[0].split(";"); // Split student TP values
-
-            // Check if current user ID matches any TP in the row
+            String[] studentTPs = rowData[0].split(";"); 
             boolean matchFound = false;
             String assessmentType = "";
             for (String TP : studentTPs) {
                 if (TP.trim().equals(currentStudentTP)) {
                     matchFound = true;
-                    assessmentType = rowData[5].trim(); // Get assessment type (5th place)                       
+                    assessmentType = rowData[5].trim();                    
                     break;
                 }
             }
-
-            // If match found, retrieve assessment details
             if (matchFound) {
-                // Read assessment data using DataAbstract
                 DataAbstract assessmentData = new DataAbstract("Assessments.txt", ";");
                 List<String[]> allAssessments = assessmentData.getAllRows();
                 for (String[] aRow : allAssessments) {
-                    if (aRow[2].trim().equals(assessmentType)) { // Match assessment type
-                        String assessmentID = aRow[0].trim();   // Get assessment ID (0th place)
-                        String handOutDate = aRow[6].trim();     // Get hand out date (6th place)
-                        String dueDate = aRow[7].trim();        // Get due date (7th place)
+                    if (aRow[2].trim().equals(assessmentType)) { 
+                        String assessmentID = aRow[0].trim();   
+                        String handOutDate = aRow[6].trim();     
+                        String dueDate = aRow[7].trim();       
                         model.addRow(new String[]{assessmentID, handOutDate, dueDate});
-                        break; // Only add data for the matching assessment type
+                        break; 
                     }
                 }
             }
         }
 
+    }
+    
+    private void generateID(){
     }
 
     @SuppressWarnings("unchecked")
