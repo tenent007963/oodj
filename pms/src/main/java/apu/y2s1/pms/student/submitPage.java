@@ -195,6 +195,11 @@ public class submitPage extends javax.swing.JFrame {
         BTdelete.setBackground(new java.awt.Color(102, 102, 102));
         BTdelete.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         BTdelete.setText("DELETE");
+        BTdelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTdeleteActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTdelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 80, 180, 40));
 
         moodleText.setBackground(new java.awt.Color(242, 242, 242));
@@ -264,7 +269,7 @@ public class submitPage extends javax.swing.JFrame {
     private void BTeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTeditActionPerformed
         int selectedRow = submitTable.getSelectedRow();
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a row to edit presentation details.");
+            JOptionPane.showMessageDialog(this, "Please select a row to edit report details.");
             return;
         }
         String ID = assessmentText.getText().trim();
@@ -308,7 +313,7 @@ public class submitPage extends javax.swing.JFrame {
     private void submitTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitTableMouseClicked
         int selectedRow = submitTable.getSelectedRow();
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a row to submit presentation details.");
+            JOptionPane.showMessageDialog(this, "Please select a row to submit report.");
             return;
         }
 
@@ -338,6 +343,42 @@ public class submitPage extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_submitTableMouseClicked
+
+    private void BTdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTdeleteActionPerformed
+        int selectedRow = submitTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete report details.");
+            return;
+        }
+        String ID = assessmentText.getText().trim();
+        String verifyLink = moodleText.getText().toLowerCase();
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("Submissions.txt"), StandardCharsets.UTF_8);
+            boolean updated = false;
+            for (int i = 0; i < lines.size(); i++) {
+                String[] parts = lines.get(i).split(";");
+                if (parts[2].equals(ID)) {
+                    parts[13] = "-";
+                    lines.set(i, String.join(";", parts));
+                    updated = true;
+                    break;
+                }
+            }
+            if (updated) {
+                Files.write(Paths.get("Submissions.txt"), lines, StandardCharsets.UTF_8);
+                JOptionPane.showMessageDialog(this, "Submission details deleted successfully.");
+                assessmentText.setText("");
+                moodleText.setText("");
+                Table();
+            } else {
+                JOptionPane.showMessageDialog(this, "An error occurred while updating data.");
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_BTdeleteActionPerformed
 
     /**
      * @param args the command line arguments
