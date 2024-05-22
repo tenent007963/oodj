@@ -197,7 +197,6 @@ public class submitPage extends javax.swing.JFrame {
         BTdelete.setText("DELETE");
         getContentPane().add(BTdelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 80, 180, 40));
 
-        moodleText.setEditable(false);
         moodleText.setBackground(new java.awt.Color(242, 242, 242));
         moodleText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -265,48 +264,40 @@ public class submitPage extends javax.swing.JFrame {
     private void BTeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTeditActionPerformed
         int selectedRow = submitTable.getSelectedRow();
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a row to submit presentation details.");
+            JOptionPane.showMessageDialog(this, "Please select a row to edit presentation details.");
             return;
         }
-        String selectedAssessment = (String) submitTable.getValueAt(selectedRow, 0);
-        assessmentText.setText(selectedAssessment);
-        try {
-            List<String> lines = Files.readAllLines(Paths.get("Submissions.txt"), StandardCharsets.UTF_8);
-            boolean found = false;
-            boolean updated = false;
-            for (String line : lines) {
-                String[] parts = line.split(";");
-                if (parts[2].equals(selectedAssessment)) {
-                    String link = parts[13].trim();
-                    moodleText.setText(link);
-                    JOptionPane.showMessageDialog(this, "asdasdasdasdasddasdas.");
-                    found = true;
-                    break;
+        String ID = assessmentText.getText().trim();
+        String verifyLink = moodleText.getText().toLowerCase();
+        if ((!verifyLink.startsWith("https://") || !verifyLink.contains("lms2.apiit.edu.my")) && verifyLink.length() > 0) {
+            JOptionPane.showMessageDialog(this, "The entered text should contain lms2.apiit.edu.my");
+            return;
+        } else {
+            try {
+                List<String> lines = Files.readAllLines(Paths.get("Submissions.txt"), StandardCharsets.UTF_8);
+                boolean updated = false;
+                for (int i = 0; i < lines.size(); i++) {
+                    String[] parts = lines.get(i).split(";");
+                    if (parts[2].equals(ID)) {
+                        parts[13] = verifyLink;
+                        lines.set(i, String.join(";", parts));
+                        updated = true;
+                        break;
+                    }
                 }
-            }
-            if (!found) {
-                JOptionPane.showMessageDialog(this, "Assessment not assigned.");
-                return;
-            }
-            String updatedLink = moodleText.getText().trim();
-            for (int i = 0; i < lines.size(); i++) {
-                String[] parts = lines.get(i).split(";");
-                if (parts[0].equals(selectedAssessment)) {
-                    parts[13] = updatedLink;
-                    lines.set(i, String.join(";", parts));
-                    updated = true;
-                    break;
+                if (updated) {
+                    Files.write(Paths.get("Submissions.txt"), lines, StandardCharsets.UTF_8);
+                    JOptionPane.showMessageDialog(this, "Submission details updated successfully.");
+                    assessmentText.setText("");
+                    moodleText.setText("");
+                    Table();
+                } else {
+                    JOptionPane.showMessageDialog(this, "An error occurred while updating data.");
                 }
+            } catch (IOException e) {
+                JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage());
+                e.printStackTrace();
             }
-            if (updated) {
-                Files.write(Paths.get("Submissions.txt"), lines, StandardCharsets.UTF_8);
-                JOptionPane.showMessageDialog(this, "Link updated successfully.");
-            } else {
-                JOptionPane.showMessageDialog(this, "An error occurred while updating data.");
-            }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage());
-            e.printStackTrace();
         }
     }//GEN-LAST:event_BTeditActionPerformed
 
