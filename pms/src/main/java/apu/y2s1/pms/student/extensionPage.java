@@ -120,6 +120,7 @@ public class extensionPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        extensionTable.getTableHeader().setReorderingAllowed(false);
         extensionTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 extensionTableMouseClicked(evt);
