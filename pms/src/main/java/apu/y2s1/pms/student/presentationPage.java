@@ -139,6 +139,7 @@ public class presentationPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        reqTable.getTableHeader().setReorderingAllowed(false);
         reqTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 reqTableMouseClicked(evt);
