@@ -324,14 +324,13 @@ public class submitPage extends javax.swing.JFrame {
                 if (parts.length >= 14 && parts[2].trim().equals(assessmentText.getText().trim())) {
                     String link = parts[13].trim();
                     moodleText.setText(link);
-                    JOptionPane.showMessageDialog(this, "Assessment details loaded successfully.");
                     found = true;
                     break;
                 }
             }
 
             if (!found) {
-                JOptionPane.showMessageDialog(this, "Assessment not assigned.");
+                JOptionPane.showMessageDialog(this, "Assessment not yet assigned.");
             }
 
         } catch (IOException e) {
