@@ -239,7 +239,7 @@ public class submitPage extends javax.swing.JFrame {
             boolean updated = false;
             for (String line : lines) {
                 String[] parts = line.split(";");
-                if (parts[0].equals(selectedAssessment)) {
+                if (parts[2].equals(selectedAssessment)) {
                     String link = parts[13].trim();
                     moodleText.setText(link);
                     found = true;
