@@ -86,6 +86,7 @@ public class statusPage extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        statusTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(statusTable);
         if (statusTable.getColumnModel().getColumnCount() > 0) {
             statusTable.getColumnModel().getColumn(0).setResizable(false);
