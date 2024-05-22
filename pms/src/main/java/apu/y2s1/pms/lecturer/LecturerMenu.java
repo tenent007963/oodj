@@ -4,6 +4,8 @@
  */
 package apu.y2s1.pms.lecturer;
 
+import apu.y2s1.pms.projects.TableViewWindow;
+
 /**
  *
  * @author Jeslyn
@@ -35,8 +37,8 @@ public class LecturerMenu extends javax.swing.JFrame {
         LogOutBtn = new javax.swing.JButton();
         ViewMarkFeedback = new javax.swing.JButton();
         CfmPresentReq = new javax.swing.JButton();
-        subOp = new javax.swing.JButton();
-        assOp = new javax.swing.JButton();
+        viewSubsBtn = new javax.swing.JButton();
+        viewAsssBtn = new javax.swing.JButton();
         viewPresentSlots = new javax.swing.JButton();
         viewSupervisees = new javax.swing.JButton();
 
@@ -49,7 +51,6 @@ public class LecturerMenu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel1.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTINUE:");
 
-        SecondMarking.setEnabled(thisLec.getIsSecondMarker());
         SecondMarking.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         SecondMarking.setText("Second Marking");
         SecondMarking.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +59,6 @@ public class LecturerMenu extends javax.swing.JFrame {
             }
         });
 
-        FirstMarking.setEnabled(thisLec.getIsFirstMarker());
         FirstMarking.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         FirstMarking.setText("First Marking");
         FirstMarking.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +83,6 @@ public class LecturerMenu extends javax.swing.JFrame {
             }
         });
 
-        CfmPresentReq.setEnabled(thisLec.getIsSupervisor());
         CfmPresentReq.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         CfmPresentReq.setText("Confirm Presentation Request");
         CfmPresentReq.addActionListener(new java.awt.event.ActionListener() {
@@ -92,19 +91,19 @@ public class LecturerMenu extends javax.swing.JFrame {
             }
         });
 
-        subOp.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        subOp.setText("Submission Operation");
-        subOp.addActionListener(new java.awt.event.ActionListener() {
+        viewSubsBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        viewSubsBtn.setText("View All Submissions");
+        viewSubsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                subOpActionPerformed(evt);
+                viewSubsBtnActionPerformed(evt);
             }
         });
 
-        assOp.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        assOp.setText("Assessment Operations");
-        assOp.addActionListener(new java.awt.event.ActionListener() {
+        viewAsssBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        viewAsssBtn.setText("View All Assessments");
+        viewAsssBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assOpActionPerformed(evt);
+                viewAsssBtnActionPerformed(evt);
             }
         });
 
@@ -116,7 +115,6 @@ public class LecturerMenu extends javax.swing.JFrame {
             }
         });
 
-        viewSupervisees.setEnabled(thisLec.getIsSupervisor());
         viewSupervisees.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         viewSupervisees.setText("View Supervisees");
         viewSupervisees.addActionListener(new java.awt.event.ActionListener() {
@@ -156,9 +154,9 @@ public class LecturerMenu extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(SecondMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(subOp, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(viewSubsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(assOp, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(viewAsssBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(viewSupervisees, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30))
@@ -172,8 +170,8 @@ public class LecturerMenu extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(subOp, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(assOp, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewSubsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewAsssBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewSupervisees, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -211,27 +209,33 @@ public class LecturerMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutBtnActionPerformed
 
     private void ViewMarkFeedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewMarkFeedbackActionPerformed
-        // TODO add your handling code here:
+        ViewFeedbackWindow fbwin = new ViewFeedbackWindow();
+        fbwin.setVisible(true);
     }//GEN-LAST:event_ViewMarkFeedbackActionPerformed
 
     private void CfmPresentReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CfmPresentReqActionPerformed
-        // TODO add your handling code here:
+        ReqConfirmWindow rqcfm = new ReqConfirmWindow();
+        rqcfm.setVisible(true);
     }//GEN-LAST:event_CfmPresentReqActionPerformed
 
-    private void subOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subOpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_subOpActionPerformed
+    private void viewSubsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSubsBtnActionPerformed
+        apu.y2s1.pms.projects.TableViewWindow viewSubs = new TableViewWindow();
+        viewSubs.setVisible(true);
+    }//GEN-LAST:event_viewSubsBtnActionPerformed
 
-    private void assOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assOpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_assOpActionPerformed
+    private void viewAsssBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAsssBtnActionPerformed
+        apu.y2s1.pms.projects.TableViewWindow viewAsss = new TableViewWindow();
+        viewAsss.setVisible(true);
+    }//GEN-LAST:event_viewAsssBtnActionPerformed
 
     private void viewPresentSlotsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPresentSlotsActionPerformed
-        // TODO add your handling code here:
+        apu.y2s1.pms.projects.TableViewWindow presentSlotTable = new TableViewWindow();
+        presentSlotTable.setVisible(true);
     }//GEN-LAST:event_viewPresentSlotsActionPerformed
 
     private void viewSuperviseesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSuperviseesActionPerformed
-        // TODO add your handling code here:
+        apu.y2s1.pms.projects.TableViewWindow supervisees = new TableViewWindow();
+        supervisees.setVisible(true);
     }//GEN-LAST:event_viewSuperviseesActionPerformed
 
     /**
@@ -276,10 +280,10 @@ public class LecturerMenu extends javax.swing.JFrame {
     private javax.swing.JButton SecondMarking;
     private javax.swing.JLabel Title;
     private javax.swing.JButton ViewMarkFeedback;
-    private javax.swing.JButton assOp;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton subOp;
+    private javax.swing.JButton viewAsssBtn;
     private javax.swing.JButton viewPresentSlots;
+    private javax.swing.JButton viewSubsBtn;
     private javax.swing.JButton viewSupervisees;
     // End of variables declaration//GEN-END:variables
 }

@@ -57,9 +57,9 @@
                       <Component id="SecondMarking" min="-2" pref="210" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="subOp" min="-2" pref="210" max="-2" attributes="0"/>
+                      <Component id="viewSubsBtn" min="-2" pref="210" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="assOp" min="-2" pref="210" max="-2" attributes="0"/>
+                      <Component id="viewAsssBtn" min="-2" pref="210" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="viewSupervisees" min="-2" pref="210" max="-2" attributes="0"/>
                   </Group>
@@ -77,8 +77,8 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="subOp" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="assOp" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="viewSubsBtn" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="viewAsssBtn" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="viewSupervisees" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -172,26 +172,26 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CfmPresentReqActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="subOp">
+    <Component class="javax.swing.JButton" name="viewSubsBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe Print" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Submission Operation"/>
+        <Property name="text" type="java.lang.String" value="View All Submissions"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subOpActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewSubsBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="assOp">
+    <Component class="javax.swing.JButton" name="viewAsssBtn">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe Print" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Assessment Operations"/>
+        <Property name="text" type="java.lang.String" value="View All Assessments"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="assOpActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewAsssBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="viewPresentSlots">
