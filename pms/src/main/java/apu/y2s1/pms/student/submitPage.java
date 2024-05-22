@@ -5,13 +5,10 @@
 package apu.y2s1.pms.student;
 
 import apu.y2s1.pms.DataAbstract;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.Random;
 
 /**
  *
@@ -71,8 +68,17 @@ public class submitPage extends javax.swing.JFrame {
 
     }
     
-    private void generateID(){
+    public class IDGenerator {
+        private static final Random random = new Random();
+        public String generateID(){
+            int randomNumber = random.nextInt(900)+100;
+            return "S" + randomNumber;
+        }
     }
+    
+    
+    
+   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -122,7 +128,7 @@ public class submitPage extends javax.swing.JFrame {
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
         jLabel2.setText("Moodle Link:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
 
         BTsubmit.setBackground(new java.awt.Color(102, 102, 102));
         BTsubmit.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -155,7 +161,7 @@ public class submitPage extends javax.swing.JFrame {
                 textDateActionPerformed(evt);
             }
         });
-        getContentPane().add(textDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 230, -1));
+        getContentPane().add(textDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 230, -1));
 
         submitTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
