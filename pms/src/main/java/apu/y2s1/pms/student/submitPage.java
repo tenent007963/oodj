@@ -5,6 +5,10 @@
 package apu.y2s1.pms.student;
 
 import apu.y2s1.pms.DataAbstract;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -41,13 +45,13 @@ public class submitPage extends javax.swing.JFrame {
         DataAbstract studentData = new DataAbstract("Students.txt", ";");
         List<String[]> allStudents = studentData.getAllRows();
         for (String[] rowData : allStudents) {
-            String[] studentTPs = rowData[0].split(";"); 
+            String[] studentTPs = rowData[0].split(";");
             boolean matchFound = false;
             String assessmentType = "";
             for (String TP : studentTPs) {
                 if (TP.trim().equals(currentStudentTP)) {
                     matchFound = true;
-                    assessmentType = rowData[5].trim();                    
+                    assessmentType = rowData[5].trim();
                     break;
                 }
             }
@@ -55,30 +59,29 @@ public class submitPage extends javax.swing.JFrame {
                 DataAbstract assessmentData = new DataAbstract("Assessments.txt", ";");
                 List<String[]> allAssessments = assessmentData.getAllRows();
                 for (String[] aRow : allAssessments) {
-                    if (aRow[2].trim().equals(assessmentType)) { 
-                        String assessmentID = aRow[0].trim();   
-                        String handOutDate = aRow[6].trim();     
-                        String dueDate = aRow[7].trim();       
-                        model.addRow(new String[]{assessmentID, handOutDate, dueDate});
-                        break; 
+                    if (aRow[2].trim().equals(assessmentType)) {
+                        String assessmentID = aRow[0].trim();
+                        String Type = aRow[2].trim();
+                        String handOutDate = aRow[6].trim();
+                        String dueDate = aRow[7].trim();
+                        model.addRow(new String[]{assessmentID, Type, handOutDate, dueDate});
+                        break;
                     }
                 }
             }
         }
 
     }
-    
+
     public class IDGenerator {
+
         private static final Random random = new Random();
-        public String generateID(){
-            int randomNumber = random.nextInt(900)+100;
+
+        public String generateID() {
+            int randomNumber = random.nextInt(900) + 100;
             return "S" + randomNumber;
         }
     }
-    
-    
-    
-   
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -87,11 +90,13 @@ public class submitPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jTextField3 = new javax.swing.JTextField();
+        assessmentText = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         BTsubmit = new javax.swing.JButton();
         BTedit = new javax.swing.JButton();
         BTdelete = new javax.swing.JButton();
-        textDate = new javax.swing.JTextField();
+        moodleText = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         submitTable = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
@@ -127,8 +132,14 @@ public class submitPage extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
+        assessmentText.setBackground(new java.awt.Color(242, 242, 242));
+        getContentPane().add(assessmentText, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 230, -1));
+
+        jLabel3.setText("Assessment ID:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
+
         jLabel2.setText("Moodle Link:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
         BTsubmit.setBackground(new java.awt.Color(102, 102, 102));
         BTsubmit.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -155,24 +166,39 @@ public class submitPage extends javax.swing.JFrame {
         BTdelete.setText("DELETE");
         getContentPane().add(BTdelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 80, 180, 40));
 
-        textDate.setBackground(new java.awt.Color(242, 242, 242));
-        textDate.addActionListener(new java.awt.event.ActionListener() {
+        moodleText.setBackground(new java.awt.Color(242, 242, 242));
+        moodleText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textDateActionPerformed(evt);
+                moodleTextActionPerformed(evt);
             }
         });
-        getContentPane().add(textDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 230, -1));
+        getContentPane().add(moodleText, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 230, -1));
 
         submitTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Assessment ID", "Hand Out Date", "Due Date"
+                "Assessment ID", "Assessment Type", "Hand Out Date", "Due Date"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        submitTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(submitTable);
+        if (submitTable.getColumnModel().getColumnCount() > 0) {
+            submitTable.getColumnModel().getColumn(0).setResizable(false);
+            submitTable.getColumnModel().getColumn(1).setResizable(false);
+            submitTable.getColumnModel().getColumn(2).setResizable(false);
+            submitTable.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 930, 430));
 
@@ -200,12 +226,55 @@ public class submitPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BTeditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTeditActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = submitTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a row to submit presentation details.");
+            return;
+        }
+        String selectedAssessment = (String) submitTable.getValueAt(selectedRow, 0);
+        assessmentText.setText(selectedAssessment);
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("Submissions.txt"), StandardCharsets.UTF_8);
+            boolean found = false;
+            boolean updated = false;
+            for (String line : lines) {
+                String[] parts = line.split(";");
+                if (parts[0].equals(selectedAssessment)) {
+                    String link = parts[13].trim();
+                    moodleText.setText(link);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                JOptionPane.showMessageDialog(this, "Assessment not assigned.");
+                return;
+            }
+            String updatedLink = moodleText.getText().trim();
+            for (int i = 0; i < lines.size(); i++) {
+                String[] parts = lines.get(i).split(";");
+                if (parts[0].equals(selectedAssessment)) {
+                    parts[13] = updatedLink;
+                    lines.set(i, String.join(";", parts));
+                    updated = true;
+                    break;
+                }
+            }
+            if (updated) {
+                Files.write(Paths.get("Submissions.txt"), lines, StandardCharsets.UTF_8);
+                JOptionPane.showMessageDialog(this, "Link updated successfully.");
+            } else {
+                JOptionPane.showMessageDialog(this, "An error occurred while updating data.");
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_BTeditActionPerformed
 
-    private void textDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textDateActionPerformed
+    private void moodleTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moodleTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textDateActionPerformed
+    }//GEN-LAST:event_moodleTextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,14 +323,16 @@ public class submitPage extends javax.swing.JFrame {
     private javax.swing.JButton BTdelete;
     private javax.swing.JButton BTedit;
     private javax.swing.JButton BTsubmit;
+    private javax.swing.JTextField assessmentText;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField moodleText;
     private javax.swing.JTable submitTable;
-    private javax.swing.JTextField textDate;
     // End of variables declaration//GEN-END:variables
 }
