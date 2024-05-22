@@ -14,7 +14,9 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -93,6 +95,9 @@ public class PM_Assessment extends javax.swing.JFrame {
         HandOut = new com.toedter.calendar.JDateChooser();
         Duedate = new com.toedter.calendar.JDateChooser();
         Clear = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        Search = new javax.swing.JTextField();
+        Delete = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -126,8 +131,6 @@ public class PM_Assessment extends javax.swing.JFrame {
         jScrollPane1.setViewportView(AssessmentTable);
         if (AssessmentTable.getColumnModel().getColumnCount() > 0) {
             AssessmentTable.getColumnModel().getColumn(0).setResizable(false);
-            AssessmentTable.getColumnModel().getColumn(1).setResizable(false);
-            AssessmentTable.getColumnModel().getColumn(2).setResizable(false);
             AssessmentTable.getColumnModel().getColumn(3).setResizable(false);
             AssessmentTable.getColumnModel().getColumn(4).setResizable(false);
             AssessmentTable.getColumnModel().getColumn(5).setResizable(false);
@@ -139,11 +142,11 @@ public class PM_Assessment extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel3.setText("Assessment Name:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel4.setText("Assessment Type:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         Home.setBackground(new java.awt.Color(255, 190, 152));
         Home.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
@@ -164,25 +167,25 @@ public class PM_Assessment extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel5.setText("Supervisor:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel6.setText("First Marker:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
-        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 130, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 130, -1));
 
         Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
-        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 130, -1));
+        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 130, -1));
 
-        getContentPane().add(Supervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 130, -1));
+        getContentPane().add(Supervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 130, -1));
 
-        getContentPane().add(FirstM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 130, -1));
+        getContentPane().add(FirstM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 130, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel7.setText("Second Marker:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
-        getContentPane().add(SecondM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, 130, -1));
+        getContentPane().add(SecondM, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 130, -1));
 
         Create.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
         Create.setText("CREATE");
@@ -191,7 +194,7 @@ public class PM_Assessment extends javax.swing.JFrame {
                 CreateActionPerformed(evt);
             }
         });
-        getContentPane().add(Create, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
+        getContentPane().add(Create, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, -1, -1));
 
         Edit.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
         Edit.setText("EDIT");
@@ -200,26 +203,26 @@ public class PM_Assessment extends javax.swing.JFrame {
                 EditActionPerformed(evt);
             }
         });
-        getContentPane().add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 450, -1, -1));
+        getContentPane().add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel8.setText("Assessment ID:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
-        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 130, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 130, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel2.setText("Hand Out Date:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel10.setText("Due Date:");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
 
         HandOut.setDateFormatString("dd/MM/yyyy");
-        getContentPane().add(HandOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 170, -1));
+        getContentPane().add(HandOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 170, -1));
 
         Duedate.setDateFormatString("dd/MM/yyyy");
-        getContentPane().add(Duedate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 170, -1));
+        getContentPane().add(Duedate, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 170, -1));
 
         Clear.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
         Clear.setText("CLEAR");
@@ -228,7 +231,27 @@ public class PM_Assessment extends javax.swing.JFrame {
                 ClearActionPerformed(evt);
             }
         });
-        getContentPane().add(Clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, -1, -1));
+        getContentPane().add(Clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        jLabel11.setText("Search ID:");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+
+        Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 130, -1));
+
+        Delete.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
+        Delete.setText("DELETE");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 550, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
@@ -244,6 +267,15 @@ public class PM_Assessment extends javax.swing.JFrame {
         String smarker = SecondM.getSelectedItem().toString();
         String id = AssessmentID();
         
+        if (NameDuplicate(name)) {
+            javax.swing.JOptionPane.showMessageDialog(null, "This name already exists.");
+            return;
+        }
+        
+        if (!ValidateLecturers(supervisor, fmarker, smarker)) {
+            return;
+        }
+        
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
     
         Date outDate = HandOut.getDate();
@@ -251,6 +283,10 @@ public class PM_Assessment extends javax.swing.JFrame {
 
         Date dueDate = Duedate.getDate();
         String due = (dueDate != null) ? format.format(dueDate) : "";
+        
+        if (!ValidateDates(outDate, dueDate)) {
+            return;
+        }
         
         String[] newData = {id, name, type, supervisor, fmarker, smarker, outD, due};
         
@@ -304,6 +340,15 @@ public class PM_Assessment extends javax.swing.JFrame {
             String fmarker = FirstM.getSelectedItem().toString();
             String smarker = SecondM.getSelectedItem().toString();
             
+            if (NameDuplicate(name)) {
+                javax.swing.JOptionPane.showMessageDialog(null, "This name already exists.");
+                return;
+            }
+            
+            if (!ValidateLecturers(supervisor, fmarker, smarker)) {
+                return;
+            }
+            
             SimpleDateFormat simple = new SimpleDateFormat("dd/MM/yyyy");
     
             Date outDate = HandOut.getDate();
@@ -311,6 +356,10 @@ public class PM_Assessment extends javax.swing.JFrame {
 
             Date dueDate = Duedate.getDate();
             String due = (dueDate != null) ? simple.format(dueDate) : "";
+            
+            if (!ValidateDates(outDate, dueDate)) {
+                return;
+            }
             
             String[] update = {id, name, type, supervisor, fmarker, smarker, outD, due};
             
@@ -341,6 +390,29 @@ public class PM_Assessment extends javax.swing.JFrame {
         ClearTextFields(Duedate);
     }//GEN-LAST:event_ClearActionPerformed
 
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
+        DefaultTableModel table = (DefaultTableModel) AssessmentTable.getModel();
+        TableRowSorter<DefaultTableModel> search = new TableRowSorter<>(table);
+        AssessmentTable.setRowSorter(search);
+        String field = Search.getText().toLowerCase();
+        search.setRowFilter(RowFilter.regexFilter("(?i)" + field,0));
+    }//GEN-LAST:event_SearchActionPerformed
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        int selectedRow = AssessmentTable.getSelectedRow();
+        
+        if (selectedRow != -1) {
+            if (table.deleteRow(selectedRow)) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Row deleted successfully.");
+            Table();
+            } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "An error occurred while deleting the row.");
+            }
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Please select a row to delete.");
+        }
+    }//GEN-LAST:event_DeleteActionPerformed
+
     private void ClearTextFields(Component component) {
         if (component instanceof JTextField) {
             JTextField textField = (JTextField) component;
@@ -362,9 +434,58 @@ public class PM_Assessment extends javax.swing.JFrame {
     }
     
     private String AssessmentID() {
-        String id = "A" + String.format("%05d", (int)(Math.random() * 100000));
-        
+        String id;
+        boolean isUnique;
+
+        do {
+            id = "A" + String.format("%05d", (int)(Math.random() * 100000));
+            isUnique = true;
+
+            List<String[]> allRows = table.getAllRows();
+            for (String[] row : allRows) {
+                if (row[0].equals(id)) {
+                    isUnique = false;
+                    break;
+                }
+            }
+        } while (!isUnique);
+
         return id;
+    }
+    
+    private boolean NameDuplicate(String name) {
+        DefaultTableModel model = (DefaultTableModel) AssessmentTable.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            String existingName = model.getValueAt(i, 1).toString();
+            if (existingName.equals(name)) {
+                return true; 
+            }
+        }
+        return false; 
+    }
+    
+    private boolean ValidateDates(Date outDate, Date dueDate) {
+        if (dueDate.before(outDate)) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Due date cannot be earlier than hand out date.");
+            return false;
+        }
+
+        long timeFrameMillis = dueDate.getTime() - outDate.getTime();
+        long halfYearMillis = 1000L * 60 * 60 * 24 * 365 / 2;
+        if (timeFrameMillis > halfYearMillis) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Time frame between submission date and due date cannot be more than half a year.");
+            return false;
+        }
+
+        return true;
+    }
+    
+    private boolean ValidateLecturers(String supervisor, String fmarker, String smarker) {
+        if (supervisor.equals(fmarker) || supervisor.equals(smarker) || fmarker.equals(smarker)) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Supervisor, first marker, and second marker cannot be the same person.");
+            return false;
+        }
+        return true;
     }
     
     /**
@@ -407,6 +528,7 @@ public class PM_Assessment extends javax.swing.JFrame {
     private javax.swing.JTable AssessmentTable;
     private javax.swing.JButton Clear;
     private javax.swing.JButton Create;
+    private javax.swing.JButton Delete;
     private com.toedter.calendar.JDateChooser Duedate;
     private javax.swing.JButton Edit;
     private javax.swing.JComboBox<String> FirstM;
@@ -414,11 +536,13 @@ public class PM_Assessment extends javax.swing.JFrame {
     private javax.swing.JButton Home;
     private javax.swing.JTextField ID;
     private javax.swing.JTextField Name;
+    private javax.swing.JTextField Search;
     private javax.swing.JComboBox<String> SecondM;
     private javax.swing.JComboBox<String> Supervisor;
     private javax.swing.JComboBox<String> Type;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
