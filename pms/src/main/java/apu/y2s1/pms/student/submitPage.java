@@ -270,7 +270,7 @@ public class submitPage extends javax.swing.JFrame {
         String ID = assessmentText.getText().trim();
         String verifyLink = moodleText.getText().toLowerCase();
         if ((!verifyLink.startsWith("https://") || !verifyLink.contains("lms2.apiit.edu.my")) && verifyLink.length() > 0) {
-            JOptionPane.showMessageDialog(this, "The entered text should contain lms2.apiit.edu.my");
+            JOptionPane.showMessageDialog(this, "The entered text should contain lms2.apiit.edu.my and starts with https://");
             return;
         } else {
             try {
