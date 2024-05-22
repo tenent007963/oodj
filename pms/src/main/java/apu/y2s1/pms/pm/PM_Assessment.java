@@ -402,7 +402,6 @@ public class PM_Assessment extends javax.swing.JFrame {
         int selectedRow = AssessmentTable.getSelectedRow();
         
         if (selectedRow != -1) {
-            //String idToDelete = AssessmentTable.getValueAt(selectedRow, 0).toString();
             if (table.deleteRow(selectedRow)) {
             javax.swing.JOptionPane.showMessageDialog(null, "Row deleted successfully.");
             Table();
@@ -443,7 +442,6 @@ public class PM_Assessment extends javax.swing.JFrame {
             isUnique = true;
 
             List<String[]> allRows = table.getAllRows();
-            System.out.println("all row"+allRows);
             for (String[] row : allRows) {
                 if (row[0].equals(id)) {
                     isUnique = false;
