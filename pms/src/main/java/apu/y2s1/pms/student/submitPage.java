@@ -13,10 +13,12 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.util.Random;
+import java.util.Set;
 
 /**
  *
@@ -48,25 +50,23 @@ public class submitPage extends javax.swing.JFrame {
         model.setRowCount(0);
         String currentStudentTP = currentStudent.getUserID();
         List<String[]> allStudents = studentID.getAllRows();
+        Set<String> uniqueAssessments = new HashSet<>();
         for (String[] rowData : allStudents) {
-            String[] studentTPs = rowData[0].split(";");
-            boolean matchFound = false;
-            String assessmentType = "";
-            for (String TP : studentTPs) {
-                if (TP.trim().equals(currentStudentTP)) {
-                    matchFound = true;
-                    assessmentType = rowData[5].trim();
-                }
-            }
-            if (matchFound) {
+            String studentTP = rowData[0].trim();
+            if (studentTP.equals(currentStudentTP)) {
+                String assessmentType = rowData[5].trim();
                 List<String[]> allAssessments = assessment.getAllRows();
                 for (String[] aRow : allAssessments) {
                     if (aRow[2].trim().equals(assessmentType)) {
                         String assessmentID = aRow[0].trim();
-                        String Type = aRow[2].trim();
+                        String type = aRow[2].trim();
                         String handOutDate = aRow[6].trim();
                         String dueDate = aRow[7].trim();
-                        model.addRow(new String[]{assessmentID, Type, handOutDate, dueDate});
+                        String uniqueKey = assessmentID + "-" + type + "-" + handOutDate + "-" + dueDate;
+                        if (!uniqueAssessments.contains(uniqueKey)) {
+                            uniqueAssessments.add(uniqueKey);
+                            model.addRow(new String[]{assessmentID, type, handOutDate, dueDate});
+                        }
                     }
                 }
             }
@@ -228,7 +228,7 @@ public class submitPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void BTsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTsubmitActionPerformed
-        int selectedRow = submitTable.getSelectedRow(); 
+        int selectedRow = submitTable.getSelectedRow();
         String currentStudentTP = currentStudent.getUserID();
         IDGenerator generator = new IDGenerator();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -261,7 +261,7 @@ public class submitPage extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "New submission added successfully.");
                         assessmentText.setText("");
                         moodleText.setText("");
-                        Table(); 
+                        Table();
                     } else {
                         JOptionPane.showMessageDialog(null, "An error occurred while writing to file.");
                     }
