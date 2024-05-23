@@ -115,7 +115,7 @@ public class PM_FeedbackReport extends javax.swing.JFrame {
         getContentPane().add(Print, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 550, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -186,6 +186,7 @@ public class PM_FeedbackReport extends javax.swing.JFrame {
     private void PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintActionPerformed
         try {
             Report.print();
+            JOptionPane.showMessageDialog(null, "The report has been printed successfully.");
         } catch (PrinterException ex){
             JOptionPane.showMessageDialog(null, "An error occurred.");
         }

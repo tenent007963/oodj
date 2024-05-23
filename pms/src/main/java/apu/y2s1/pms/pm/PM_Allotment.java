@@ -226,7 +226,7 @@ public class PM_Allotment extends javax.swing.JFrame {
         getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 150, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -258,6 +258,7 @@ public class PM_Allotment extends javax.swing.JFrame {
             
             if (table.updateRow(selected, update)) {
                 Table();
+                javax.swing.JOptionPane.showMessageDialog(null, "The data has been updated successfully.");
             } else {
                 javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
             }

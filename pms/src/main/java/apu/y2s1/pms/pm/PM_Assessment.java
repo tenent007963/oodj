@@ -254,7 +254,7 @@ public class PM_Assessment extends javax.swing.JFrame {
         getContentPane().add(Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 550, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -292,6 +292,7 @@ public class PM_Assessment extends javax.swing.JFrame {
         
         if (table.writeTo(newData)) {
             Table();
+            javax.swing.JOptionPane.showMessageDialog(null,"The new assessment has been created successfully.");
         } else {
             javax.swing.JOptionPane.showMessageDialog(null,"An error occured while writing to file.");
         }
@@ -365,6 +366,7 @@ public class PM_Assessment extends javax.swing.JFrame {
             
             if (table.updateRow(selected, update)) {
                 Table();
+                javax.swing.JOptionPane.showMessageDialog(null, "The data has been updated successfully.");
             } else {
                 javax.swing.JOptionPane.showMessageDialog(null, "An error occured while updating data.");
             }
@@ -403,7 +405,7 @@ public class PM_Assessment extends javax.swing.JFrame {
         
         if (selectedRow != -1) {
             if (table.deleteRow(selectedRow)) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Row deleted successfully.");
+            javax.swing.JOptionPane.showMessageDialog(null, "The row has been deleted successfully.");
             Table();
             } else {
             javax.swing.JOptionPane.showMessageDialog(null, "An error occurred while deleting the row.");
