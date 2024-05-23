@@ -228,7 +228,7 @@ public class submitPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void BTsubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTsubmitActionPerformed
-        int selectedRow = submitTable.getSelectedRow(); // Check for selected row (optional)
+        int selectedRow = submitTable.getSelectedRow(); 
         String currentStudentTP = currentStudent.getUserID();
         IDGenerator generator = new IDGenerator();
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -261,7 +261,7 @@ public class submitPage extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "New submission added successfully.");
                         assessmentText.setText("");
                         moodleText.setText("");
-                        Table(); // Refresh the table to show the new submission
+                        Table(); 
                     } else {
                         JOptionPane.showMessageDialog(null, "An error occurred while writing to file.");
                     }
