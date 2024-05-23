@@ -67,7 +67,7 @@ public class studentPage extends javax.swing.JFrame {
         BTrequest.setBackground(new java.awt.Color(255, 255, 255));
         BTrequest.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         BTrequest.setForeground(new java.awt.Color(0, 0, 0));
-        BTrequest.setText("REQUEST PRESENTATION DATE");
+        BTrequest.setText("REQUEST PRESENTATION ");
         BTrequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTrequestActionPerformed(evt);
