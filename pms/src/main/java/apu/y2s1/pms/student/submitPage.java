@@ -11,7 +11,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -238,38 +237,42 @@ public class submitPage extends javax.swing.JFrame {
         String ID = assessmentText.getText().trim();
         String verifyLink = moodleText.getText().toLowerCase();
 
-        if ((!verifyLink.startsWith("https://") || !verifyLink.contains("lms2.apiit.edu.my")) && verifyLink.length() > 0) {
+        if (verifyLink.length() == 0) {
+            JOptionPane.showMessageDialog(this, "The verification link cannot be empty.");
+            return;
+        }
+        if (!verifyLink.startsWith("https://") || !verifyLink.contains("lms2.apiit.edu.my")) {
             JOptionPane.showMessageDialog(this, "The entered text should contain lms2.apiit.edu.my and start with https://");
             return;
-        } else {
-            try {
-                Path filePath = Paths.get("Submissions.txt");
-                List<String> lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);
-                boolean duplicateFound = false;
-                for (String line : lines) {
-                    String[] parts = line.split(";");
-                    if (parts.length > 13 && parts[13].equals(verifyLink)) {
-                        duplicateFound = true;
-                        JOptionPane.showMessageDialog(this, "Assessment cannot be submitted twice.");
-                        break;
-                    }
+        }
+
+        try {
+            Path filePath = Paths.get("Submissions.txt");
+            List<String> lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);
+            boolean duplicateFound = false;
+            for (String line : lines) {
+                String[] parts = line.split(";");
+                if (parts.length > 13 && parts[13].equals(verifyLink)) {
+                    duplicateFound = true;
+                    JOptionPane.showMessageDialog(this, "Assessment cannot be submitted twice.");
+                    break;
                 }
-                if (!duplicateFound) {
-                    String newID = generator.generateID();
-                    String[] newData = {newID, currentStudentTP, ID, formattedDate, "-", "-", "-", "-", "-", "-", "-", "-", "-", verifyLink};
-                    if (submission.writeTo(newData)) {
-                        JOptionPane.showMessageDialog(this, "New submission added successfully.");
-                        assessmentText.setText("");
-                        moodleText.setText("");
-                        Table();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "An error occurred while writing to file.");
-                    }
-                }
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage());
-                e.printStackTrace();
             }
+            if (!duplicateFound) {
+                String newID = generator.generateID();
+                String[] newData = {newID, currentStudentTP, ID, formattedDate, "-", "-", "-", "-", "-", "-", "-", "-", "-", verifyLink};
+                if (submission.writeTo(newData)) {
+                    JOptionPane.showMessageDialog(this, "New submission added successfully.");
+                    assessmentText.setText("");
+                    moodleText.setText("");
+                    Table();
+                } else {
+                    JOptionPane.showMessageDialog(null, "An error occurred while writing to file.");
+                }
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage());
+            e.printStackTrace();
         }
     }//GEN-LAST:event_BTsubmitActionPerformed
 
