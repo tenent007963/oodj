@@ -138,7 +138,7 @@ public class PM_Allotment extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        jLabel3.setText("Sort By:");
+        jLabel3.setText("Filter By:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
 
         Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
