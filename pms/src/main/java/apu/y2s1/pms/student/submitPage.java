@@ -8,6 +8,7 @@ import apu.y2s1.pms.DataAbstract;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -238,27 +239,32 @@ public class submitPage extends javax.swing.JFrame {
         String verifyLink = moodleText.getText().toLowerCase();
 
         if ((!verifyLink.startsWith("https://") || !verifyLink.contains("lms2.apiit.edu.my")) && verifyLink.length() > 0) {
-            JOptionPane.showMessageDialog(this, "The entered text should contain lms2.apiit.edu.my and starts with https://");
+            JOptionPane.showMessageDialog(this, "The entered text should contain lms2.apiit.edu.my and start with https://");
             return;
         } else {
             try {
-                List<String> lines = Files.readAllLines(Paths.get("Submissions.txt"), StandardCharsets.UTF_8);
+                Path filePath = Paths.get("Submissions.txt");
+                List<String> lines = Files.readAllLines(filePath, StandardCharsets.UTF_8);
                 boolean duplicateFound = false;
-                for (String line : lines) { // Check each line for duplicate verification link
+                for (String line : lines) {
                     String[] parts = line.split(";");
-                    if (parts[13].equals(verifyLink)) {
+                    if (parts.length > 13 && parts[13].equals(verifyLink)) {
                         duplicateFound = true;
                         JOptionPane.showMessageDialog(this, "Assessment cannot be submitted twice.");
                         break;
                     }
                 }
                 if (!duplicateFound) {
-                String[] newEntry = {generator.generateID(), currentStudentTP, ID, formattedDate, "-", "-", "-", "-", "-", "-", "-", "-", "-", verifyLink};
-                lines.add(String.join(";", newEntry));
-                Files.write(Paths.get("Submissions.txt"), lines, StandardCharsets.UTF_8);
-                JOptionPane.showMessageDialog(this, "New submission added successfully.");
-                assessmentText.setText("");
-                moodleText.setText("");
+                    String newID = generator.generateID();
+                    String[] newData = {newID, currentStudentTP, ID, formattedDate, "-", "-", "-", "-", "-", "-", "-", "-", "-", verifyLink};
+                    if (submission.writeTo(newData)) {
+                        JOptionPane.showMessageDialog(this, "New submission added successfully.");
+                        assessmentText.setText("");
+                        moodleText.setText("");
+                        Table(); // Refresh the table to show the new submission
+                    } else {
+                        JOptionPane.showMessageDialog(null, "An error occurred while writing to file.");
+                    }
                 }
             } catch (IOException e) {
                 JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage());
