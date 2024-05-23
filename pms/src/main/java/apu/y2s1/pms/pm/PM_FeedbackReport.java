@@ -186,7 +186,6 @@ public class PM_FeedbackReport extends javax.swing.JFrame {
     private void PrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintActionPerformed
         try {
             Report.print();
-            JOptionPane.showMessageDialog(null, "The report has been printed successfully.");
         } catch (PrinterException ex){
             JOptionPane.showMessageDialog(null, "An error occurred.");
         }

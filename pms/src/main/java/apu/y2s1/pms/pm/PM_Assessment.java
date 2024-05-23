@@ -341,11 +341,6 @@ public class PM_Assessment extends javax.swing.JFrame {
             String fmarker = FirstM.getSelectedItem().toString();
             String smarker = SecondM.getSelectedItem().toString();
             
-            if (NameDuplicate(name)) {
-                javax.swing.JOptionPane.showMessageDialog(null, "This name already exists.");
-                return;
-            }
-            
             if (!ValidateLecturers(supervisor, fmarker, smarker)) {
                 return;
             }
