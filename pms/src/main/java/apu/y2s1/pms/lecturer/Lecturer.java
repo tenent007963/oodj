@@ -3,6 +3,7 @@ import apu.y2s1.pms.User;
 import apu.y2s1.pms.DataAbstract;
 
 public class Lecturer extends User {
+    private static Lecturer instance;
     private boolean is_first_marker;
     private boolean is_second_marker;
     private boolean is_supervisor;
@@ -33,6 +34,11 @@ public class Lecturer extends User {
 
     public boolean getIsSupervisor() {
         return is_supervisor;
+    }
+
+    // used only after login to get the only instance
+    public static Lecturer getInstance(){
+        return instance;
     }
 
 

@@ -3,18 +3,35 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package apu.y2s1.pms.lecturer;
+import apu.y2s1.pms.DataAbstract;
 
 /**
  *
  * @author tenen
  */
 public class MarkingWindow extends javax.swing.JFrame {
+    Lecturer thisLec = Lecturer.getInstance();
 
     /**
      * Creates new form MarkingWindow
      */
     public MarkingWindow() {
+        javax.swing.JOptionPane.showMessageDialog(null,"Direct initializing is not allowed. Please check your parameter and try again.");
+    }
+
+    public MarkingWindow(String step){
         initComponents();
+        switch(step){
+            case "1":
+                MarkingStageLabel.setText("First Marking");
+                break;
+            case "2":
+                MarkingStageLabel.setText("Second Marking");
+                break;
+            default:
+                MarkingStageLabel.setText("Error");
+                break;
+        }
     }
 
     /**
@@ -61,6 +78,11 @@ public class MarkingWindow extends javax.swing.JFrame {
         jLabel3.setText("Grading Mark:");
 
         cfmButton.setText("Confirm");
+        cfmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cfmButtonActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel4.setText("Current Submission ID:");
@@ -69,13 +91,28 @@ public class MarkingWindow extends javax.swing.JFrame {
         subID.setText("<subID>");
 
         prevBtn.setText("Prev Submission");
+        prevBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prevBtnActionPerformed(evt);
+            }
+        });
 
         nextBtn.setText("Next Submission");
+        nextBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextBtnActionPerformed(evt);
+            }
+        });
 
         marking.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         marking.setToolTipText("Set grading mark here");
 
         Close.setText("Close");
+        Close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CloseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -146,6 +183,22 @@ public class MarkingWindow extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cfmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cfmButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cfmButtonActionPerformed
+
+    private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nextBtnActionPerformed
+
+    private void prevBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevBtnActionPerformed
+        
+    }//GEN-LAST:event_prevBtnActionPerformed
+
+    private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_CloseActionPerformed
 
     /**
      * @param args the command line arguments

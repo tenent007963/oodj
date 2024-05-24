@@ -161,6 +161,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Confirm"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cfmButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
@@ -182,11 +185,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Prev Submission"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="prevBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="nextBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Next Submission"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="marking">
       <Properties>
@@ -200,6 +209,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Close"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CloseActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -191,14 +191,14 @@ public class LecturerMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SecondMarkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SecondMarkingActionPerformed
-        apu.y2s1.pms.admin.ModLecturers add = new apu.y2s1.pms.admin.ModLecturers();
-        add.setVisible(true);
+        MarkingWindow secondMark = new MarkingWindow("2");
+        secondMark.setVisible(true);
         dispose();
     }//GEN-LAST:event_SecondMarkingActionPerformed
 
     private void FirstMarkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FirstMarkingActionPerformed
-        apu.y2s1.pms.admin.ModStudents add = new apu.y2s1.pms.admin.ModStudents();
-        add.setVisible(true);
+        MarkingWindow firstMark = new MarkingWindow("1");
+        firstMark.setVisible(true);
         dispose();
     }//GEN-LAST:event_FirstMarkingActionPerformed
 
