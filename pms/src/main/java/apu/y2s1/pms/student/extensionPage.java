@@ -5,10 +5,6 @@
 package apu.y2s1.pms.student;
 
 import apu.y2s1.pms.DataAbstract;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -201,27 +197,24 @@ public class extensionPage extends javax.swing.JFrame {
             String aftdays = extensionBox.getSelectedItem().toString();
 
             try {
-                List<String> lines = Files.readAllLines(Paths.get("Submissions.txt"), StandardCharsets.UTF_8);
-
+                List<String[]> allRows = table.getAllRows();
                 boolean updated = false;
-                for (int i = 0; i < lines.size(); i++) {
-                    String[] parts = lines.get(i).split(";");
-                    if (parts[2].equals(assessmentID)) { 
+
+                for (int i = 0; i < allRows.size(); i++) {
+                    String[] parts = allRows.get(i);
+                    if (parts[2].equals(assessmentID)) {
                         parts[11] = aftdays;
-                        lines.set(i, String.join(";", parts));
-                        updated = true;
-                        break; 
+                        updated = table.updateRow(i, parts);
+                        break;
                     }
                 }
-
                 if (updated) {
-                    Files.write(Paths.get("Submissions.txt"), lines, StandardCharsets.UTF_8);
-                    Table(); 
+                    Table();
                     JOptionPane.showMessageDialog(null, "Extension submitted successfully.");
                 } else {
                     JOptionPane.showMessageDialog(null, "An error occurred while updating data.");
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "An error occurred: " + e.getMessage());
                 e.printStackTrace();
             }
