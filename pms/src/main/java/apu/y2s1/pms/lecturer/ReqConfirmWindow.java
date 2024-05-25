@@ -22,7 +22,10 @@ public class ReqConfirmWindow extends javax.swing.JFrame {
      */
     public ReqConfirmWindow() {
         initComponents();
+        load_table();
+    }
 
+    public void load_table() {
         DataAbstract db = new DataAbstract("Submissions.txt");
         List<String[]> db_list = db.getAllRows();
 
@@ -48,8 +51,6 @@ public class ReqConfirmWindow extends javax.swing.JFrame {
             tableModel.addRow(row);
         }
         jTable1.setModel(tableModel);
-
-
     }
 
     /**
@@ -152,15 +153,58 @@ public class ReqConfirmWindow extends javax.swing.JFrame {
 
     private void CloseActionPerformed(java.awt.event.ActionEvent evt) {                                      
         // TODO add your handling code here:
+        this.dispose();
     }    
     
     private void cfmBtnActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        // TODO add your handling code here:
+        // get the selected row
+        int row = jTable1.getSelectedRow();
+        System.out.println(row);
+        
+        // check if a row is selected
+        if (row != -1) {
+            // if the approval status is already rejected, do nothing
+            if (jTable1.getValueAt(row, 3).equals("Accepted")) {
+                return;
+            }
+            // set the approval status to accepted
+            jTable1.setValueAt("Accepted", row, 3);
+            // update the database
+            DataAbstract db = new DataAbstract("Submissions.txt");
+            String[] data = db.getRow(row+1);
+            for (String item: data) {
+                System.out.println(item);
+            }
+            data[5] = "Accepted";  // assuming the approval status is at index 5
+            db.updateRow(row, data);
+            load_table();
+        }
     }    
 
     private void rejBtnActionPerformed(java.awt.event.ActionEvent evt) {                                      
-        // TODO add your handling code here:
-    }    
+        // get the selected row
+        int row = jTable1.getSelectedRow();
+        System.out.println(row);
+        
+        // check if a row is selected
+        if (row != -1) {
+            // if the approval status is already rejected, do nothing
+            if (jTable1.getValueAt(row, 3).equals("Rejected")) {
+                return;
+            }
+            // set the approval status to rejected
+            jTable1.setValueAt("Rejected", row, 3);
+            // update the database
+            DataAbstract db = new DataAbstract("Submissions.txt");
+            String[] data = db.getRow(row+1);
+            for (String item: data) {
+                System.out.println(item);
+            }
+            data[5] = "Rejected";  // assuming the approval status is at index 5
+            db.updateRow(row, data);
+            load_table();
+        }
+    }
 
     /**
      * @param args the command line arguments
