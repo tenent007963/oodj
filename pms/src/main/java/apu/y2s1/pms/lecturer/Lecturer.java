@@ -38,6 +38,9 @@ public class Lecturer extends User {
 
     // used only after login to get the only instance
     public static Lecturer getInstance(){
+        if (instance == null){
+            return new Lecturer("T001");
+        }
         return instance;
     }
 
