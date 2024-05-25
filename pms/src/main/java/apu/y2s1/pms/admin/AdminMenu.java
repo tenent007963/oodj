@@ -109,7 +109,9 @@ public class AdminMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_LogOutBtnActionPerformed
 
     private void ModLecturersBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModLecturersBtn1ActionPerformed
-        // TODO add your handling code here:
+        apu.y2s1.pms.admin.ModLecturers add = new apu.y2s1.pms.admin.ModLecturers();
+        add.setVisible(true);
+        dispose();
     }//GEN-LAST:event_ModLecturersBtn1ActionPerformed
 
     
