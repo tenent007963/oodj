@@ -5,13 +5,13 @@ Assessments.txt
 Assessment ID; Name ; Type ; Supervisor ; First Marker ; Second Marker ; Hand Out Date ; Due Date
 
 Lecturers.txt
-ID Number ; Name ; Pwd ; Email ; Supervisor ; First Marker ; Second Marker
+ID Number ; Name ; Pwd ; Email
 
 ProjectManagers.txt
 PM ID ; Lecturer ID ; Password
 
 Students.txt
-TP Num ; Name  ; Pwd ;         Email          ; Intake Code ; Assessment Type
+TP Num ; Name  ; Pwd ;         Email          ; Intake Code ; Assessment ID
 
 Submissions.txt
 Submission ID ; Student ID ; Assessment ID ; Submission Date ; Presentation Date ; Presentation slot accepted ; Status ; Result ; Feedback ; 1st marker cmt ; 2nd marker cmt ; Request Extension days ; New Due Date ; Moodle Link
