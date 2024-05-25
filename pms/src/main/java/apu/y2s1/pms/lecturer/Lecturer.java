@@ -75,4 +75,9 @@ public class Lecturer extends User {
     public void removePassword(){
         super.password = null;
     }
+
+    // get the full name of the lecturer
+    public String getFullName(){
+        return this.full_name;
+    }
 }

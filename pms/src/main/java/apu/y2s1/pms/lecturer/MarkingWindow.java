@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package apu.y2s1.pms.lecturer;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 import apu.y2s1.pms.DataAbstract;
+import apu.y2s1.pms.projects.Assessment;
 
 /**
  *
@@ -11,6 +16,7 @@ import apu.y2s1.pms.DataAbstract;
  */
 public class MarkingWindow extends javax.swing.JFrame {
     Lecturer thisLec = Lecturer.getInstance();
+    int current_marker = 0;
 
     /**
      * Creates new form MarkingWindow
@@ -24,13 +30,58 @@ public class MarkingWindow extends javax.swing.JFrame {
         switch(step){
             case "1":
                 MarkingStageLabel.setText("First Marking");
+                current_marker = 4;
                 break;
             case "2":
                 MarkingStageLabel.setText("Second Marking");
+                current_marker = 5;
                 break;
             default:
                 MarkingStageLabel.setText("Error");
                 break;
+        }
+
+        getSubmissionID();
+    }
+
+    public void getSubmissionID(){
+        DataAbstract db_assessments = new DataAbstract("Assessments.txt");
+        DataAbstract db_submissions = new DataAbstract("Submissions.txt");
+        List<String[]> db_assessments_list = db_assessments.getAllRows();
+        List<String[]> db_submissions_list = db_submissions.getAllRows();
+        String[] db_assessments_row;
+        for (int i = 0; i < db_assessments_list.size(); i++)
+        {
+            db_assessments_row = db_assessments_list.get(i);
+            // check if the lecturer is the marker
+            if (db_assessments_row[current_marker].toLowerCase().equals(thisLec.getFullName().toLowerCase()))
+            {
+                // update the assessment id
+                String assessment_id = db_assessments_row[0];
+
+                boolean found = false;
+                // get the matching submission id 
+                for (int j = 0; j < db_assessments_list.size(); j++)
+                {
+                    String[] db_submissions_row = db_submissions_list.get(j);
+                    if (db_submissions_row[2].equals(assessment_id))
+                    {
+                        subID.setText(db_submissions_row[0]);
+                        jTextArea1.setText(db_submissions_row[9]);
+                        marking.setText(db_submissions_row[7]);
+
+                        found = true;
+                        prevBtn.setEnabled(false);
+                        return;
+                    }
+                }
+                if (!found)
+                {
+                    javax.swing.JOptionPane.showMessageDialog(null,"No submission found for marking.");
+                    this.dispose();
+                    return;
+                }   
+            }
         }
     }
 
@@ -187,14 +238,135 @@ public class MarkingWindow extends javax.swing.JFrame {
 
     private void cfmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cfmButtonActionPerformed
         // TODO add your handling code here:
+        // overwrite the current comment, mark to the submission.txt 
+        DataAbstract db_submissions = new DataAbstract("Submissions.txt");
+        List<String[]> db_submissions_list = db_submissions.getAllRows();
+        String[] db_submissions_row;
+        for (int i = 0; i < db_submissions_list.size(); i++)
+        {
+            db_submissions_row = db_submissions_list.get(i);
+            if (db_submissions_row[0].equals(subID.getText()))
+            {
+                db_submissions_row[7] = marking.getText();
+                db_submissions_row[8] = jTextArea1.getText();
+                db_submissions.updateRow(i, db_submissions_row);
+                return;
+            }
+        }
     }//GEN-LAST:event_cfmButtonActionPerformed
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         // TODO add your handling code here:
+        // get the next submission id based on the current lecturer name and update the comment, mark and submission id
+        DataAbstract db_assessments = new DataAbstract("Assessments.txt");
+        DataAbstract db_submissions = new DataAbstract("Submissions.txt");
+        List<String[]> db_assessments_list = db_assessments.getAllRows();
+        List<String[]> db_submissions_list = db_submissions.getAllRows();
+        String[] db_assessments_row;
+        String[] db_submissions_row;
+
+        // store the assessment ids that the lecturer is the first marker
+        // use array list to store the assessment ids
+        ArrayList<String> assessment_ids = new ArrayList<String>();
+        prevBtn.setEnabled(true);
+        for (int i = 0; i < db_assessments_list.size(); i++)
+        {
+            db_assessments_row = db_assessments_list.get(i);
+            // check if the lecturer is the first marker
+            if (db_assessments_row[current_marker].toLowerCase().equals(thisLec.getFullName().toLowerCase()))
+            {
+                // update the assessment id to the array list
+                assessment_ids.add(db_assessments_row[0]);
+            }   
+        } 
+        
+        // store the relevant db_submission row in a array list
+        ArrayList<String[]> db_submission_rows = new ArrayList<String[]>();
+        for (int i = 0; i < db_submissions_list.size(); i++)
+        {
+            db_submissions_row = db_submissions_list.get(i);
+            for (String assessment_id : assessment_ids)
+            {
+                if (db_submissions_row[2].equals(assessment_id))
+                {
+                    db_submission_rows.add(db_submissions_row);
+                }
+            }
+        }
+
+        // loop through the submission ids to get the next submission id
+        // update the submission id, comment and mark
+        for (int row_index = 0; row_index < db_submission_rows.size(); row_index++)
+        {
+            if (db_submission_rows.get(row_index)[0].equals(subID.getText()))
+            {
+                subID.setText(db_submission_rows.get(row_index + 1)[0]);
+                jTextArea1.setText(db_submission_rows.get(row_index + 1)[9]);
+                marking.setText(db_submission_rows.get(row_index + 1)[7]);
+                // disable the next button if the current submission id is the last one
+                if (row_index + 1 == db_submission_rows.size() - 1)
+                {
+                    nextBtn.setEnabled(false);
+                }
+                return;
+            }
+        }
     }//GEN-LAST:event_nextBtnActionPerformed
 
     private void prevBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevBtnActionPerformed
-        
+        DataAbstract db_assessments = new DataAbstract("Assessments.txt");
+        DataAbstract db_submissions = new DataAbstract("Submissions.txt");
+        List<String[]> db_assessments_list = db_assessments.getAllRows();
+        List<String[]> db_submissions_list = db_submissions.getAllRows();
+        String[] db_assessments_row;
+        String[] db_submissions_row;
+
+        // store the assessment ids that the lecturer is the first marker
+        // use array list to store the assessment ids
+        ArrayList<String> assessment_ids = new ArrayList<String>();
+        nextBtn.setEnabled(true);
+        for (int i = 0; i < db_assessments_list.size(); i++)
+        {
+            db_assessments_row = db_assessments_list.get(i);
+            // check if the lecturer is the first marker
+            if (db_assessments_row[current_marker].toLowerCase().equals(thisLec.getFullName().toLowerCase()))
+            {
+                // update the assessment id to the array list
+                assessment_ids.add(db_assessments_row[0]);
+            }
+        }
+
+        // store the relevant db_submission row in a array list
+        ArrayList<String[]> db_submission_rows = new ArrayList<String[]>();
+        for (int i = 0; i < db_submissions_list.size(); i++)
+        {
+            db_submissions_row = db_submissions_list.get(i);
+            for (String assessment_id : assessment_ids)
+            {
+                if (db_submissions_row[2].equals(assessment_id))
+                {
+                    db_submission_rows.add(db_submissions_row);
+                }
+            }
+        }
+
+        // loop through the submission ids to get the next submission id
+        // update the submission id, comment and mark
+        for (int row_index = 0; row_index < db_submission_rows.size(); row_index++)
+        {
+            if (db_submission_rows.get(row_index)[0].equals(subID.getText()))
+            {
+                subID.setText(db_submission_rows.get(row_index - 1)[0]);
+                jTextArea1.setText(db_submission_rows.get(row_index - 1)[9]);
+                marking.setText(db_submission_rows.get(row_index - 1)[7]);
+                // disable the next button if the current submission id is the last one
+                if (row_index - 1 == 0)
+                {
+                    prevBtn.setEnabled(false);
+                }
+                return;
+            }
+        }
     }//GEN-LAST:event_prevBtnActionPerformed
 
     private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
