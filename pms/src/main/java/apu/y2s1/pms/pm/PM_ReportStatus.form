@@ -122,7 +122,7 @@
                 <Column editable="false" title="Presentation.DT" type="java.lang.Object"/>
                 <Column editable="false" title="Presentation.Slot" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
-                <Column editable="false" title="Req.Extension" type="java.lang.Object"/>
+                <Column editable="false" title="Req.Extension.D" type="java.lang.Object"/>
                 <Column editable="false" title="NewSub.Date" type="java.lang.Object"/>
               </Table>
             </Property>
