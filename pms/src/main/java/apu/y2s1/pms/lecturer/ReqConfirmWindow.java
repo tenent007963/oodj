@@ -45,7 +45,7 @@ public class ReqConfirmWindow extends javax.swing.JFrame {
         }
 
         // Populate jTable1 with the desired data
-        String[] columnNames = {"Submission ID", "Student TP", "Submission Timestamp", "Approval Status"}; // Replace with your column names
+        String[] columnNames = {"Submission ID", "Student TP", "Submission Timestamp", "Approval Status"};
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
         for (String[] row : desiredData) {
             tableModel.addRow(row);

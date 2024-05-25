@@ -219,22 +219,22 @@ public class LecturerMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_CfmPresentReqActionPerformed
 
     private void viewSubsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSubsBtnActionPerformed
-        apu.y2s1.pms.projects.TableViewWindow viewSubs = new TableViewWindow();
+        apu.y2s1.pms.projects.TableViewWindow viewSubs = new TableViewWindow("allSubs");
         viewSubs.setVisible(true);
     }//GEN-LAST:event_viewSubsBtnActionPerformed
 
     private void viewAsssBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAsssBtnActionPerformed
-        apu.y2s1.pms.projects.TableViewWindow viewAsss = new TableViewWindow();
+        apu.y2s1.pms.projects.TableViewWindow viewAsss = new TableViewWindow("allAsss");
         viewAsss.setVisible(true);
     }//GEN-LAST:event_viewAsssBtnActionPerformed
 
     private void viewPresentSlotsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPresentSlotsActionPerformed
-        apu.y2s1.pms.projects.TableViewWindow presentSlotTable = new TableViewWindow();
+        apu.y2s1.pms.projects.TableViewWindow presentSlotTable = new TableViewWindow("allPres");
         presentSlotTable.setVisible(true);
     }//GEN-LAST:event_viewPresentSlotsActionPerformed
 
     private void viewSuperviseesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSuperviseesActionPerformed
-        apu.y2s1.pms.projects.TableViewWindow supervisees = new TableViewWindow();
+        apu.y2s1.pms.projects.TableViewWindow supervisees = new TableViewWindow("allSupervisees");
         supervisees.setVisible(true);
     }//GEN-LAST:event_viewSuperviseesActionPerformed
 

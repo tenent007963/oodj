@@ -4,6 +4,14 @@
  */
 package apu.y2s1.pms.projects;
 
+import java.security.cert.Extension;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.table.DefaultTableModel;
+
+import apu.y2s1.pms.DataAbstract;
+
 /**
  *
  * @author tenen
@@ -13,8 +21,38 @@ public class TableViewWindow extends javax.swing.JFrame {
     /**
      * Creates new form TableViewWindow
      */
-    public TableViewWindow() {
+    public TableViewWindow(String mode) {
         initComponents();
+        switch(mode){
+            case "allSubs":
+                jLabel1.setText("All Submissions");
+                showAllSubs();
+                break;
+            case "allPres":
+                jLabel1.setText("All Presentation Schedules");
+                showAllPres();
+                break;
+            case "allAsss":
+                jLabel1.setText("All Assessments");
+                showAllAsss();
+                break;
+            case "allSupervisees":
+                jLabel1.setText("All Supervisees");
+                showAllSupervisees();
+                break;
+            case "allSupervisors":
+                jLabel1.setText("All Supervisors");
+                showAllSupervisors();
+                break;
+            default:
+                jLabel1.setText("All Lecturers");
+                showAllLecturers();
+                break;
+        }
+    }
+
+    public TableViewWindow() {
+        javax.swing.JOptionPane.showMessageDialog(null,"Please provide at least one parameter to the constructor.");
     }
 
     /**
@@ -97,8 +135,74 @@ public class TableViewWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CloseActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_CloseActionPerformed
+
+    private void showAllSubs(){
+        String filename = "Submissions.txt";
+        int[] desiredColumns = {0, 1, 2, 3, 6, 7, 8, 11, 12, 13};
+        String colNames[] = {"Submission ID", "Student TP", "Assessment ID", "Submission Timestamp", "Status", "Result", "Feedback", "Request Extension days", "New Due Date", "Moodle Link" };
+        load_table(filename, desiredColumns, colNames);
+    }
+
+    private void showAllPres(){
+        String filename = "Submissions.txt";
+        int[] desiredColumns = {0, 1, 2, 4, 5};
+        String colNames[] = {"Assessment ID", "Student TP", "Assessment ID", "Presentation Date", "Presentation Status"};
+        load_table(filename, desiredColumns, colNames);
+    }
+
+    private void showAllAsss(){
+        String filename = "Assessments.txt";
+        int[] desiredColumns = {0, 1, 2, 3, 6, 7};
+        String colNames[] = {"Assessment ID", "Name", "Type", "Supervisor", "Hand Out Date", "Due Date"};
+        load_table(filename, desiredColumns, colNames);
+    }
+
+    private void showAllSupervisees(){
+        String filename = "Students.txt";
+        int[] desiredColumns = {0, 1, 4, 5};
+        String colNames[] = {"Student TP", "Name", "Intake Code", "Assessment ID"};
+        load_table(filename, desiredColumns, colNames);
+    } 
+
+    private void showAllSupervisors(){
+        String filename = "Assessments.txt";
+        int[] desiredColumns = {0, 1, 3};
+        String colNames[] = {"Assessment ID", "Name", "Supervisor"};
+        load_table(filename, desiredColumns, colNames);
+    }
+
+    private void showAllLecturers(){
+        String filename = "Lecturers.txt";
+        int[] desiredColumns = {0, 1, 3};
+        String colNames[] = {"ID Number", "Name", "Email"};
+        load_table(filename, desiredColumns, colNames);
+    }
+
+    private void load_table(String filename, int[] desiredColumns, String[] colNames){ 
+        DataAbstract db = new DataAbstract(filename);
+        List<String[]> db_list = db.getAllRows();
+
+        // Create a new list to store the desired columns
+        List<String[]> desiredData = new ArrayList<>();
+
+        // Iterate over each row in db_list and extract the desired columns
+        for (String[] row : db_list) {
+            String[] desiredRow = new String[desiredColumns.length];
+            for (int i = 0; i < desiredColumns.length; i++) {
+                desiredRow[i] = row[desiredColumns[i]];
+            }
+            desiredData.add(desiredRow);
+        }
+
+        // Populate jTable1 with the desired data
+        DefaultTableModel tableModel = new DefaultTableModel(colNames, 0);
+        for (String[] row : desiredData) {
+            tableModel.addRow(row);
+        }
+        jTable1.setModel(tableModel);
+    }
 
     /**
      * @param args the command line arguments
