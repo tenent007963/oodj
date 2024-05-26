@@ -20,6 +20,8 @@ import javax.swing.table.TableRowSorter;
 public class PM_ReportStatus extends javax.swing.JFrame {
     DataAbstract table = new DataAbstract("Submissions.txt");
     DataAbstract combobox = new DataAbstract("Students.txt");
+    DataAbstract lecturer = new DataAbstract("Lecturers.txt");
+    DataAbstract assessment = new DataAbstract("Assessments.txt");
     
     /**
      * Creates new form PM_Dashboard
@@ -30,9 +32,16 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         StatusBar.setMaximum(100);
         Sort.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                updateComboBox();
                 Table(SubmissionTable.getSelectedRow());
             }
-    });
+        });
+        Lecture.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                updateComboBox();
+                Table(SubmissionTable.getSelectedRow());
+            }
+        });
         LoadData();
         Table(-1);
     }
@@ -44,6 +53,12 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                 Sort.addItem(row[4]);
             }
         }
+        for (int l = 1; l<= 20;l++){
+            String[] row = lecturer.getRow(l);
+            if (row != null && row.length > 1) {
+                Lecture.addItem(row[1]);
+            }
+        }
     }
     
     private void Table(int selected) {
@@ -53,6 +68,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         List<String[]> allRows = table.getAllRows();
         
         String selectedSortItem = Sort.getSelectedItem().toString();
+        String selectedLecturerItem = Lecture.getSelectedItem().toString();
         List<String> matchedValues = new ArrayList<>();
         
         if (!allRows.isEmpty()) {
@@ -69,14 +85,14 @@ public class PM_ReportStatus extends javax.swing.JFrame {
             StatusBar.setValue(progress);
             
 
-            if (!allRows.isEmpty() && selectedSortItem.equals("All")) {
+            if (!allRows.isEmpty() && selectedSortItem.equals("All") && selectedLecturerItem.equals("All")) {
                 for (String[] row : allRows) {
                 String[] rowData = new String[9];
                 System.arraycopy(row, 0, rowData, 0, 7);
                 System.arraycopy(row, 11, rowData, 7, 2);
                 model.addRow(rowData);
                 }
-            } else {
+            } else if (!selectedSortItem.equals("All")){
                 for (int i = 1; i <= 20; i++) {
                     String[] row = combobox.getRow(i);
                     if (row != null && row.length > 4 && row[4].equals(selectedSortItem)) {
@@ -86,6 +102,22 @@ public class PM_ReportStatus extends javax.swing.JFrame {
             
                 for (String[] rowData : allRows) {
                     if (matchedValues.contains(rowData[1])) {
+                        String[] data = new String[9];
+                        System.arraycopy(rowData, 0, data, 0, 7);
+                        System.arraycopy(rowData, 11, data, 7, 2);
+                        model.addRow(data);
+                    }
+                }
+            } else if (!selectedLecturerItem.equals("All")){
+                for (int i = 1; i <= 20; i++) {
+                    String[] row = assessment.getRow(i);
+                    if (row != null && row.length > 5 && (row[3].equals(selectedLecturerItem) || row[4].equals(selectedLecturerItem) || row[5].equals(selectedLecturerItem))) {
+                        matchedValues.add(row[0]);
+                    }
+                }
+            
+                for (String[] rowData : allRows) {
+                    if (matchedValues.contains(rowData[2])) {
                         String[] data = new String[9];
                         System.arraycopy(rowData, 0, data, 0, 7);
                         System.arraycopy(rowData, 11, data, 7, 2);
@@ -109,6 +141,23 @@ public class PM_ReportStatus extends javax.swing.JFrame {
             }
         }
         return (int) Math.round(((double)nonNullCount / totalColumnsToCheck) * 100);
+    }
+    
+    private void updateComboBox() {
+        String selectedSortItem = Sort.getSelectedItem().toString();
+        String selectedLecturerItem = Lecture.getSelectedItem().toString();
+        
+        if (!selectedSortItem.equals("All")) {
+            Lecture.setEnabled(false);
+        } else {
+            Lecture.setEnabled(true);
+        }
+        
+        if (!selectedLecturerItem.equals("All")) {
+            Sort.setEnabled(false);
+        } else {
+            Sort.setEnabled(true);
+        }
     }
 
     /**
@@ -135,6 +184,8 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         Complete = new javax.swing.JButton();
+        Lecture = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -159,7 +210,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        jLabel3.setText("Filter By:");
+        jLabel3.setText("Intake:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
@@ -213,7 +264,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 930, 340));
 
         Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
-        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 140, -1));
+        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 140, -1));
 
         StatusBar.setBackground(new java.awt.Color(255, 178, 165));
         StatusBar.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
@@ -247,6 +298,13 @@ public class PM_ReportStatus extends javax.swing.JFrame {
             }
         });
         getContentPane().add(Complete, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 70, -1, -1));
+
+        Lecture.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
+        getContentPane().add(Lecture, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, 130, -1));
+
+        jLabel8.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        jLabel8.setText("Lecturer:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 650));
@@ -331,6 +389,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     private javax.swing.JTextField Amount;
     private javax.swing.JButton Complete;
     private javax.swing.JButton Home;
+    private javax.swing.JComboBox<String> Lecture;
     private javax.swing.JTextField Percentage;
     private javax.swing.JTextField Search;
     private javax.swing.JComboBox<String> Sort;
@@ -343,6 +402,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
