@@ -5,7 +5,7 @@ TP06444;Luciana;luciana$329;fae@gmail.com;FT-TT_APUMF1911_FIN;CP1
 TP06555;Jessi;jessiiiii$2;jesssss@gmail.com;APU2F2302AF(IA);Internship
 TP06666;Shiro Meda;shiro&437;shiro@mail.com;APU3F2305IR;Investigation Report
 TP06777;Elia Martino;eliaaa$1;dev@hotmail.com;APU2F2302BAF(FT);Internship
-TP06888;Archer Morales;archer$2190;archermorales@live.com;FT-TT_APUMF1911_ACC;CP2
+TP06888;Archer Morales;archer$2190;archermorales@live.com;FT-TT_APUMF1911_ACC;CP1
 TP06889;Alan Tan;alan23@23;alan45@gmail.com;FT-TT_APUMF1911_ACC;CP2
 TP06999;Annabeth;anna%39280;anna@yahoo.com;APD3F2302ANM;FYP
 U999;Devid;dev;dev@test.com

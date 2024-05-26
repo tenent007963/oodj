@@ -8,6 +8,7 @@ import apu.y2s1.pms.DataAbstract;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -18,11 +19,12 @@ import javax.swing.table.TableRowSorter;
  * @author Jeslyn
  */
 public class PM_ReportStatus extends javax.swing.JFrame {
+
     DataAbstract table = new DataAbstract("Submissions.txt");
     DataAbstract combobox = new DataAbstract("Students.txt");
     DataAbstract lecturer = new DataAbstract("Lecturers.txt");
     DataAbstract assessment = new DataAbstract("Assessments.txt");
-    
+
     /**
      * Creates new form PM_Dashboard
      */
@@ -45,32 +47,39 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         LoadData();
         Table(-1);
     }
-    
+
     private void LoadData() {
-        for (int i = 1; i<= 20; i++) {
+        HashSet<String> intakeSet = new HashSet<>();
+        for (int i = 1; i <= 20; i++) {
             String[] row = combobox.getRow(i);
             if (row != null && row.length > 4) {
-                Sort.addItem(row[4]);
+                String intake = row[4]; 
+                if (!intake.isEmpty() && !intakeSet.contains(intake)) {
+                    intakeSet.add(intake);
+                    Sort.addItem(intake);
+                }
             }
         }
-        for (int l = 1; l<= 20;l++){
-            String[] row = lecturer.getRow(l);
-            if (row != null && row.length > 1) {
-                Lecture.addItem(row[1]);
+            for (int l = 1; l <= 20; l++) {
+                String[] row = lecturer.getRow(l);
+                if (row != null && row.length > 1) {
+                    Lecture.addItem(row[1]);
+                }
             }
         }
-    }
     
+    
+
     private void Table(int selected) {
         DefaultTableModel model = (DefaultTableModel) SubmissionTable.getModel();
         model.setRowCount(0);
 
         List<String[]> allRows = table.getAllRows();
-        
+
         String selectedSortItem = Sort.getSelectedItem().toString();
         String selectedLecturerItem = Lecture.getSelectedItem().toString();
         List<String> matchedValues = new ArrayList<>();
-        
+
         if (!allRows.isEmpty()) {
             int progress;
             if (selected != -1) {
@@ -78,28 +87,27 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                 progress = calculateProgressForSelectedRow(selectedRowData);
                 Percentage.setText(progress + "%");
             } else {
-                progress = 0; 
+                progress = 0;
                 Percentage.setText("0%");
             }
 
             StatusBar.setValue(progress);
-            
 
             if (!allRows.isEmpty() && selectedSortItem.equals("All") && selectedLecturerItem.equals("All")) {
                 for (String[] row : allRows) {
-                String[] rowData = new String[9];
-                System.arraycopy(row, 0, rowData, 0, 7);
-                System.arraycopy(row, 11, rowData, 7, 2);
-                model.addRow(rowData);
+                    String[] rowData = new String[9];
+                    System.arraycopy(row, 0, rowData, 0, 7);
+                    System.arraycopy(row, 11, rowData, 7, 2);
+                    model.addRow(rowData);
                 }
-            } else if (!selectedSortItem.equals("All")){
+            } else if (!selectedSortItem.equals("All")) {
                 for (int i = 1; i <= 20; i++) {
                     String[] row = combobox.getRow(i);
                     if (row != null && row.length > 4 && row[4].equals(selectedSortItem)) {
                         matchedValues.add(row[0]);
                     }
                 }
-            
+
                 for (String[] rowData : allRows) {
                     if (matchedValues.contains(rowData[1])) {
                         String[] data = new String[9];
@@ -108,14 +116,14 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                         model.addRow(data);
                     }
                 }
-            } else if (!selectedLecturerItem.equals("All")){
+            } else if (!selectedLecturerItem.equals("All")) {
                 for (int i = 1; i <= 20; i++) {
                     String[] row = assessment.getRow(i);
                     if (row != null && row.length > 5 && (row[3].equals(selectedLecturerItem) || row[4].equals(selectedLecturerItem) || row[5].equals(selectedLecturerItem))) {
                         matchedValues.add(row[0]);
                     }
                 }
-            
+
                 for (String[] rowData : allRows) {
                     if (matchedValues.contains(rowData[2])) {
                         String[] data = new String[9];
@@ -128,31 +136,31 @@ public class PM_ReportStatus extends javax.swing.JFrame {
             Amount.setText(String.valueOf(model.getRowCount()));
         }
     }
-    
+
     private int calculateProgressForSelectedRow(String[] selectedRowData) {
         int totalColumnsToCheck = 11;
         int nonNullCount = 0;
-        
-        if(selectedRowData.length > totalColumnsToCheck) {
-            for (int i = 0; i < totalColumnsToCheck;i++) {
+
+        if (selectedRowData.length > totalColumnsToCheck) {
+            for (int i = 0; i < totalColumnsToCheck; i++) {
                 if (selectedRowData[i] != null && !selectedRowData[i].equals("-")) {
                     nonNullCount++;
                 }
             }
         }
-        return (int) Math.round(((double)nonNullCount / totalColumnsToCheck) * 100);
+        return (int) Math.round(((double) nonNullCount / totalColumnsToCheck) * 100);
     }
-    
+
     private void updateComboBox() {
         String selectedSortItem = Sort.getSelectedItem().toString();
         String selectedLecturerItem = Lecture.getSelectedItem().toString();
-        
+
         if (!selectedSortItem.equals("All")) {
             Lecture.setEnabled(false);
         } else {
             Lecture.setEnabled(true);
         }
-        
+
         if (!selectedLecturerItem.equals("All")) {
             Sort.setEnabled(false);
         } else {
@@ -264,7 +272,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 930, 340));
 
         Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
-        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 140, -1));
+        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 160, -1));
 
         StatusBar.setBackground(new java.awt.Color(255, 178, 165));
         StatusBar.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
@@ -300,11 +308,11 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         getContentPane().add(Complete, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 70, -1, -1));
 
         Lecture.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
-        getContentPane().add(Lecture, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, 130, -1));
+        getContentPane().add(Lecture, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, 120, -1));
 
         jLabel8.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel8.setText("Lecturer:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 70, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 650));
@@ -317,7 +325,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         TableRowSorter<DefaultTableModel> search = new TableRowSorter<>(table);
         SubmissionTable.setRowSorter(search);
         String field = Search.getText().toLowerCase();
-        search.setRowFilter(RowFilter.regexFilter("(?i)" + field,0,1,2));
+        search.setRowFilter(RowFilter.regexFilter("(?i)" + field, 0, 1, 2));
     }//GEN-LAST:event_SearchActionPerformed
 
     private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
@@ -329,14 +337,14 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     private void SubmissionTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SubmissionTableMouseClicked
         int selectedRow = SubmissionTable.getSelectedRow();
         if (selectedRow != -1) {
-            Table(selectedRow); 
+            Table(selectedRow);
         }
     }//GEN-LAST:event_SubmissionTableMouseClicked
 
     private void CompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompleteActionPerformed
         DefaultTableModel model = (DefaultTableModel) SubmissionTable.getModel();
         model.setRowCount(0);
-        
+
         List<String[]> allRows = table.getAllRows();
         for (String[] row : allRows) {
             if (row[6].equals("Graded")) {
@@ -348,7 +356,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         }
         Amount.setText(String.valueOf(model.getRowCount()));
     }//GEN-LAST:event_CompleteActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */

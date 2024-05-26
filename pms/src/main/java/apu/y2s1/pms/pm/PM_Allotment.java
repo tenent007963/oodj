@@ -7,6 +7,7 @@ package apu.y2s1.pms.pm;
 import apu.y2s1.pms.DataAbstract;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
 import java.util.List;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -35,16 +36,16 @@ public class PM_Allotment extends javax.swing.JFrame {
     }
     
     private void LoadData() {
+        HashSet<String> intakeSet = new HashSet<>(); 
         for (int i = 1; i <= 20; i++) {
             String[] row = table.getRow(i);
             if (row != null && row.length > 1) {
-                String[] data = new String[4];
-                data[0] = (row.length > 0) ? row[0] : "";
-                data[1] = (row.length > 1) ? row[1] : "";
-                data[2] = (row.length > 4) ? row[4] : "";
-                data[3] = (row.length > 5) ? row[5] : "";
-                Sort.addItem(data[2]);
-                Intake.addItem(data[2]);
+                String intake = (row.length > 4) ? row[4] : ""; 
+                if (!intake.isEmpty() && !intakeSet.contains(intake)) { 
+                    intakeSet.add(intake); 
+                    Sort.addItem(intake);
+                    Intake.addItem(intake); 
+                }
             }
         }
     }
@@ -141,38 +142,38 @@ public class PM_Allotment extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel3.setText("Filter By:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
-        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 150, -1));
+        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 170, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel4.setText("Search Name:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel5.setText("Assessment Type:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
 
-        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 150, -1));
+        getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 170, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel6.setText("Student Name:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel7.setText("Student Intake:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
         Name.setFocusable(false);
-        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 150, -1));
+        getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 170, -1));
 
         Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchActionPerformed(evt);
             }
         });
-        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 230, 150, -1));
+        getContentPane().add(Search, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 170, -1));
 
         Allot.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
         Allot.setText("ALLOT");
@@ -181,7 +182,7 @@ public class PM_Allotment extends javax.swing.JFrame {
                 AllotActionPerformed(evt);
             }
         });
-        getContentPane().add(Allot, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, -1, -1));
+        getContentPane().add(Allot, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, -1, -1));
 
         StudentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -219,10 +220,10 @@ public class PM_Allotment extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel2.setText("Student ID:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
         ID.setFocusable(false);
-        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 150, -1));
+        getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 170, -1));
 
         All.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
         All.setText("ALLOT ALL");
@@ -233,7 +234,7 @@ public class PM_Allotment extends javax.swing.JFrame {
         });
         getContentPane().add(All, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, -1, -1));
 
-        getContentPane().add(Intake, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 150, -1));
+        getContentPane().add(Intake, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 170, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 650));
