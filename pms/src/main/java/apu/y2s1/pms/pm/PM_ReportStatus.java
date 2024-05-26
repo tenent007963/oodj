@@ -36,7 +36,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         LoadData();
         Table(-1);
     }
-    
+    //test
     private void LoadData() {
         for (int i = 1; i<= 20; i++) {
             String[] row = combobox.getRow(i);
