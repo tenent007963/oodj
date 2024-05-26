@@ -1,4 +1,4 @@
 A23442;JavaGo;CP1;Sinon Lim;Uki Gazer;Luni Larry;23/2/2024;25/06/2024
 A35367;Rprogramming;CP2;Luni Larry;Uki Gazer;Ninym Hart;15/3/2024;21/07/2024
-A74050;SDM;Investigation Report;Ninym Hart;Sinon Lim;Luni Larry;02/04/2024;05/08/2024
+A74050;SDM;Investigation Report;Ninym Hart;Sinon Lim;-;02/04/2024;05/08/2024
 A70984;WebBeast;RMCP;Uki Gazer;Luni Larry;Sinon Lim;17/04/2024;13/05/2024
