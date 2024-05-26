@@ -281,7 +281,7 @@ public class PM_Assessment extends javax.swing.JFrame {
         String type = Type.getSelectedItem().toString();
         String supervisor = Supervisor.getSelectedItem().toString();
         String fmarker = FirstM.getSelectedItem().toString();
-        String smarker = SecondM.getSelectedItem().toString();
+        String smarker = (SecondM.getSelectedItem() != null) ? SecondM.getSelectedItem().toString() : "-";
         String id = AssessmentID();
         
         if (NameDuplicate(name)) {
@@ -360,7 +360,7 @@ public class PM_Assessment extends javax.swing.JFrame {
             String type = Type.getSelectedItem().toString();
             String supervisor = Supervisor.getSelectedItem().toString();
             String fmarker = FirstM.getSelectedItem().toString();
-            String smarker = SecondM.getSelectedItem().toString();
+            String smarker = (SecondM.getSelectedItem() != null) ? SecondM.getSelectedItem().toString() : "-";
             
             if (!ValidateLecturers(supervisor, fmarker, smarker)) {
                 return;
@@ -376,6 +376,10 @@ public class PM_Assessment extends javax.swing.JFrame {
             
             if (!ValidateDates(outDate, dueDate)) {
                 return;
+            }
+            
+            if (smarker == null) {
+                smarker = "-";
             }
             
             String[] update = {id, name, type, supervisor, fmarker, smarker, outD, due};

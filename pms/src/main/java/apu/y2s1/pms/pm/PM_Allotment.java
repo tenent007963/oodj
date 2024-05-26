@@ -18,8 +18,9 @@ import javax.swing.table.TableRowSorter;
  * @author Jeslyn
  */
 public class PM_Allotment extends javax.swing.JFrame {
+
     DataAbstract table = new DataAbstract("Students.txt");
-    
+
     /**
      * Creates new form PM_Allotment
      */
@@ -29,35 +30,35 @@ public class PM_Allotment extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 Table();
             }
-    });
+        });
         LoadData();
         Table();
         AssessmentType();
     }
-    
+
     private void LoadData() {
-        HashSet<String> intakeSet = new HashSet<>(); 
+        HashSet<String> intakeSet = new HashSet<>();
         for (int i = 1; i <= 20; i++) {
             String[] row = table.getRow(i);
             if (row != null && row.length > 1) {
-                String intake = (row.length > 4) ? row[4] : ""; 
-                if (!intake.isEmpty() && !intakeSet.contains(intake)) { 
-                    intakeSet.add(intake); 
+                String intake = (row.length > 4) ? row[4] : "";
+                if (!intake.isEmpty() && !intakeSet.contains(intake)) {
+                    intakeSet.add(intake);
                     Sort.addItem(intake);
-                    Intake.addItem(intake); 
+                    Intake.addItem(intake);
                 }
             }
         }
     }
-    
+
     private void Table() {
         DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
         model.setRowCount(0);
-        
+
         String sort = (String) Sort.getSelectedItem();
-        
+
         List<String[]> allRows = table.getAllRows();
-        
+
         if (!allRows.isEmpty()) {
             for (String[] row : allRows) {
                 if (row.length > 1) {
@@ -73,7 +74,7 @@ public class PM_Allotment extends javax.swing.JFrame {
             }
         }
     }
-    
+
     private void AssessmentType() {
         String intake = (String) Intake.getSelectedItem();
         Type.removeAllItems();
@@ -252,21 +253,21 @@ public class PM_Allotment extends javax.swing.JFrame {
 
     private void AllotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllotActionPerformed
         int selected = StudentTable.getSelectedRow();
-        
-        if (selected != -1) { 
+
+        if (selected != -1) {
             DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
             String id = model.getValueAt(selected, 0).toString();
             String name = model.getValueAt(selected, 1).toString();
             String intake = Intake.getSelectedItem().toString();
             String type = Type.getSelectedItem().toString();
-            
+
             String[] existed = table.getRow(selected + 1);
-            
+
             String pwd = existed[2];
             String email = existed[3];
-            
+
             String[] update = {id, name, pwd, email, intake, type};
-            
+
             if (table.updateRow(selected, update)) {
                 Table();
                 javax.swing.JOptionPane.showMessageDialog(null, "The data has been updated successfully.");
@@ -287,12 +288,12 @@ public class PM_Allotment extends javax.swing.JFrame {
     private void StudentTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StudentTableMouseClicked
         DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
         int row = StudentTable.getSelectedRow();
-        
+
         ID.setText(model.getValueAt(row, 0).toString());
-        Name.setText(model.getValueAt(row,1).toString());
+        Name.setText(model.getValueAt(row, 1).toString());
         Intake.setSelectedItem(model.getValueAt(row, 2).toString());
         Type.setSelectedItem(model.getValueAt(row, 3).toString());
-        
+
         AssessmentType();
     }//GEN-LAST:event_StudentTableMouseClicked
 
@@ -301,7 +302,7 @@ public class PM_Allotment extends javax.swing.JFrame {
         String type = Type.getSelectedItem().toString();
 
         List<String[]> allRows = table.getAllRows();
-        boolean update = false;
+        int update = 0;
 
         if (!allRows.isEmpty()) {
             for (int i = 0; i < allRows.size(); i++) {
@@ -309,21 +310,20 @@ public class PM_Allotment extends javax.swing.JFrame {
                 if (row.length > 4 && row[4].equals(intake)) {
                     row[5] = type;
                     if (table.updateRow(i, row)) {
-                        Table();
-                        update = true;
+                        update++;
                     } else {
                         javax.swing.JOptionPane.showMessageDialog(null, "An error occurred while updating assessment type.");
                     }
                 }
-                if (update)
-                    break;
             }
-            if (update)
+            if (update > 0) {
+                Table();
                 javax.swing.JOptionPane.showMessageDialog(null, "The data has been updated successfully.");
-            else
+            } else {
                 javax.swing.JOptionPane.showMessageDialog(null, "No matching data found to update.");
+            }
         } else {
-            javax.swing.JOptionPane.showMessageDialog(null, "No data to update.");
+        javax.swing.JOptionPane.showMessageDialog(null, "No data to update.");
         }
     }//GEN-LAST:event_AllActionPerformed
 
