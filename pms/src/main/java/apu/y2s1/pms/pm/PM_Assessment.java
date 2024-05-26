@@ -32,10 +32,27 @@ public class PM_Assessment extends javax.swing.JFrame {
      */
     public PM_Assessment() {
         initComponents();
+        Type.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TypeItem(evt);
+            }
+        });
         ID.setEditable(false);
         ID.setFocusable(false);
         LoadData();
         Table();
+    }
+    
+    private void TypeItem(java.awt.event.ItemEvent evt) {
+
+        String selectedType = Type.getSelectedItem().toString();
+
+        if (selectedType.equals("Investigation Report") || selectedType.equals("Internship")) {
+            SecondM.setEnabled(false);
+            SecondM.setSelectedItem(null);
+        } else {
+            SecondM.setEnabled(true);
+        }
     }
     
     private void LoadData() {
@@ -174,7 +191,7 @@ public class PM_Assessment extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
         getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 130, -1));
 
-        Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Internship", "Investigation Report", "CP1", "CP2", "RMCP", "FYP" }));
+        Type.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "FYP", "Internship", "Investigation Report", "CP1", "CP2", "RMCP" }));
         getContentPane().add(Type, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 130, -1));
 
         getContentPane().add(Supervisor, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 130, -1));
@@ -286,6 +303,10 @@ public class PM_Assessment extends javax.swing.JFrame {
         
         if (!ValidateDates(outDate, dueDate)) {
             return;
+        }
+        
+        if (smarker == null) {
+            smarker = "-";
         }
         
         String[] newData = {id, name, type, supervisor, fmarker, smarker, outD, due};

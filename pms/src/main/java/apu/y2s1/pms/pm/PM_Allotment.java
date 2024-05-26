@@ -44,6 +44,7 @@ public class PM_Allotment extends javax.swing.JFrame {
                 data[2] = (row.length > 4) ? row[4] : "";
                 data[3] = (row.length > 5) ? row[5] : "";
                 Sort.addItem(data[2]);
+                Intake.addItem(data[2]);
             }
         }
     }
@@ -73,7 +74,7 @@ public class PM_Allotment extends javax.swing.JFrame {
     }
     
     private void AssessmentType() {
-        String intake = Intake.getText().toUpperCase();
+        String intake = (String) Intake.getSelectedItem();
         Type.removeAllItems();
 
         if (intake.contains("APU3F") || intake.contains("APD3F")) {
@@ -107,13 +108,14 @@ public class PM_Allotment extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         Name = new javax.swing.JTextField();
-        Intake = new javax.swing.JTextField();
         Search = new javax.swing.JTextField();
         Allot = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         StudentTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         ID = new javax.swing.JTextField();
+        All = new javax.swing.JButton();
+        Intake = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -165,9 +167,6 @@ public class PM_Allotment extends javax.swing.JFrame {
         Name.setFocusable(false);
         getContentPane().add(Name, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 150, -1));
 
-        Intake.setFocusable(false);
-        getContentPane().add(Intake, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 150, -1));
-
         Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SearchActionPerformed(evt);
@@ -182,7 +181,7 @@ public class PM_Allotment extends javax.swing.JFrame {
                 AllotActionPerformed(evt);
             }
         });
-        getContentPane().add(Allot, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 500, -1, -1));
+        getContentPane().add(Allot, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 500, -1, -1));
 
         StudentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -225,6 +224,17 @@ public class PM_Allotment extends javax.swing.JFrame {
         ID.setFocusable(false);
         getContentPane().add(ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, 150, -1));
 
+        All.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
+        All.setText("ALLOT ALL");
+        All.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AllActionPerformed(evt);
+            }
+        });
+        getContentPane().add(All, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 500, -1, -1));
+
+        getContentPane().add(Intake, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 150, -1));
+
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 650));
 
@@ -246,7 +256,7 @@ public class PM_Allotment extends javax.swing.JFrame {
             DefaultTableModel model = (DefaultTableModel) StudentTable.getModel();
             String id = model.getValueAt(selected, 0).toString();
             String name = model.getValueAt(selected, 1).toString();
-            String intake = model.getValueAt(selected, 2).toString();
+            String intake = Intake.getSelectedItem().toString();
             String type = Type.getSelectedItem().toString();
             
             String[] existed = table.getRow(selected + 1);
@@ -279,11 +289,42 @@ public class PM_Allotment extends javax.swing.JFrame {
         
         ID.setText(model.getValueAt(row, 0).toString());
         Name.setText(model.getValueAt(row,1).toString());
-        Intake.setText(model.getValueAt(row, 2).toString());
+        Intake.setSelectedItem(model.getValueAt(row, 2).toString());
         Type.setSelectedItem(model.getValueAt(row, 3).toString());
         
         AssessmentType();
     }//GEN-LAST:event_StudentTableMouseClicked
+
+    private void AllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AllActionPerformed
+        String intake = Intake.getSelectedItem().toString();
+        String type = Type.getSelectedItem().toString();
+
+        List<String[]> allRows = table.getAllRows();
+        boolean update = false;
+
+        if (!allRows.isEmpty()) {
+            for (int i = 0; i < allRows.size(); i++) {
+                String[] row = allRows.get(i);
+                if (row.length > 4 && row[4].equals(intake)) {
+                    row[5] = type;
+                    if (table.updateRow(i, row)) {
+                        Table();
+                        update = true;
+                    } else {
+                        javax.swing.JOptionPane.showMessageDialog(null, "An error occurred while updating assessment type.");
+                    }
+                }
+                if (update)
+                    break;
+            }
+            if (update)
+                javax.swing.JOptionPane.showMessageDialog(null, "Assessment type updated successfully.");
+            else
+                javax.swing.JOptionPane.showMessageDialog(null, "No matching data found to update.");
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "No data to update.");
+        }
+    }//GEN-LAST:event_AllActionPerformed
 
     /**
      * @param args the command line arguments
@@ -321,10 +362,11 @@ public class PM_Allotment extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton All;
     private javax.swing.JButton Allot;
     private javax.swing.JButton Home;
     private javax.swing.JTextField ID;
-    private javax.swing.JTextField Intake;
+    private javax.swing.JComboBox<String> Intake;
     private javax.swing.JTextField Name;
     private javax.swing.JTextField Search;
     private javax.swing.JComboBox<String> Sort;
