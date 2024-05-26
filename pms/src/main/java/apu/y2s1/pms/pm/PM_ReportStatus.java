@@ -93,6 +93,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
                     }
                 }
             }
+            Amount.setText(String.valueOf(model.getRowCount()));
         }
     }
     
@@ -129,8 +130,11 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         Sort = new javax.swing.JComboBox<>();
         StatusBar = new javax.swing.JProgressBar();
         Percentage = new javax.swing.JTextField();
+        Amount = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        Complete = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -156,7 +160,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel3.setText("Filter By:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 70, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         jLabel4.setText("Search ID:");
@@ -209,23 +213,40 @@ public class PM_ReportStatus extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 930, 340));
 
         Sort.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "All" }));
-        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 70, 140, -1));
+        getContentPane().add(Sort, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 140, -1));
 
         StatusBar.setBackground(new java.awt.Color(255, 178, 165));
         StatusBar.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
-        getContentPane().add(StatusBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 540, 850, 20));
+        getContentPane().add(StatusBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 560, 850, 20));
 
         Percentage.setBackground(new java.awt.Color(239, 207, 186));
         Percentage.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        getContentPane().add(Percentage, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 570, 70, -1));
+        getContentPane().add(Percentage, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, 70, -1));
+
+        Amount.setBackground(new java.awt.Color(239, 207, 186));
+        Amount.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        getContentPane().add(Amount, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 500, 70, -1));
+
+        jLabel7.setFont(new java.awt.Font("Baskerville Old Face", 1, 18)); // NOI18N
+        jLabel7.setText("TOTAL AMOUNT OF REPORT");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 510, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Baskerville Old Face", 1, 18)); // NOI18N
         jLabel2.setText("SELECTED REPORT PROGRESS");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 510, -1, -1));
 
         jLabel6.setBackground(new java.awt.Color(239, 207, 186));
         jLabel6.setOpaque(true);
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, 930, 130));
+
+        Complete.setFont(new java.awt.Font("Segoe Print", 1, 10)); // NOI18N
+        Complete.setText("COMPLETED REPORT");
+        Complete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CompleteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Complete, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 70, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/pm/img/Functionpage.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 650));
@@ -253,6 +274,22 @@ public class PM_ReportStatus extends javax.swing.JFrame {
             Table(selectedRow); 
         }
     }//GEN-LAST:event_SubmissionTableMouseClicked
+
+    private void CompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CompleteActionPerformed
+        DefaultTableModel model = (DefaultTableModel) SubmissionTable.getModel();
+        model.setRowCount(0);
+        
+        List<String[]> allRows = table.getAllRows();
+        for (String[] row : allRows) {
+            if (row[6].equals("Graded")) {
+                String[] rowData = new String[9];
+                System.arraycopy(row, 0, rowData, 0, 7);
+                System.arraycopy(row, 11, rowData, 7, 2);
+                model.addRow(rowData);
+            }
+        }
+        Amount.setText(String.valueOf(model.getRowCount()));
+    }//GEN-LAST:event_CompleteActionPerformed
     
     /**
      * @param args the command line arguments
@@ -291,6 +328,8 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Amount;
+    private javax.swing.JButton Complete;
     private javax.swing.JButton Home;
     private javax.swing.JTextField Percentage;
     private javax.swing.JTextField Search;
@@ -303,6 +342,7 @@ public class PM_ReportStatus extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
