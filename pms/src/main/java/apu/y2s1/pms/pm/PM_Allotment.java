@@ -318,7 +318,7 @@ public class PM_Allotment extends javax.swing.JFrame {
                     break;
             }
             if (update)
-                javax.swing.JOptionPane.showMessageDialog(null, "Assessment type updated successfully.");
+                javax.swing.JOptionPane.showMessageDialog(null, "The data has been updated successfully.");
             else
                 javax.swing.JOptionPane.showMessageDialog(null, "No matching data found to update.");
         } else {
