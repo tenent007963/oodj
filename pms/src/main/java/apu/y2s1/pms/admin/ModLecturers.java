@@ -17,6 +17,9 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import apu.y2s1.pms.DataAbstract;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -179,6 +182,11 @@ public class ModLecturers extends javax.swing.JFrame {
                 RefBtnMouseClicked(evt);
             }
         });
+        RefBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RefBtnActionPerformed(evt);
+            }
+        });
         getContentPane().add(RefBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, -1, -1));
 
         LecturerTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -190,7 +198,7 @@ public class ModLecturers extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID Number", "Name", "Email", "Password"
+                "ID Number", "Name", "Password", "Email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -361,8 +369,32 @@ public class ModLecturers extends javax.swing.JFrame {
     }//GEN-LAST:event_SelectFileMouseClicked
 
     private void AddFileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddFileBtnMouseClicked
-        //TO-DO
+        if(SelFilePath.getText() == null){
+            javax.swing.JOptionPane.showMessageDialog(evt.getComponent(),"Select a file before adding in.");
+            return; 
+        }
+        DataAbstract fRead = new DataAbstract(SelFilePath.getText());
+        DataAbstract fDB = new DataAbstract("Lecturers.txt");
+        int counter = 0;
+        int fcounter = 0;
+        List<String[]> fReadRows = fRead.getAllRows();
+        if(fReadRows.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(evt.getComponent(),"Please check you file and try again later.");
+            return;
+        }
+        for(String[] row: fReadRows){
+            if (!fDB.writeTo(row)) {
+                javax.swing.JOptionPane.showMessageDialog(evt.getComponent(),"Error occured on line "+counter+", please check your input.");
+                fcounter += 1;
+            }
+            counter += 1;
+        }
+        javax.swing.JOptionPane.showMessageDialog(evt.getComponent(),"Imported "+counter+" lines successfully.");
     }//GEN-LAST:event_AddFileBtnMouseClicked
+
+    private void RefBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RefBtnActionPerformed
 
     /**
      * @param args the command line arguments

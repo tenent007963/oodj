@@ -4,12 +4,14 @@
  */
 package apu.y2s1.pms.admin;
 
+import apu.y2s1.pms.DataAbstract;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -114,7 +116,7 @@ public class ModStudents extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "TP Number", "Name", "Email", "Password", "Intake"
+                "TP Number", "Name", "Password", "Email", "Intake"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -349,7 +351,12 @@ public class ModStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_SelectFileMouseClicked
 
     private void AddFileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddFileBtnMouseClicked
-        // TODO add your handling code here:
+        DataAbstract fRead = new DataAbstract(SelFilePath.getText());
+        DataAbstract fDB = new DataAbstract("Lecturers.txt");
+        List<String[]> fReadRows = fRead.getAllRows();
+        for(String[] row: fReadRows){
+            fDB.writeTo(row);
+        }
     }//GEN-LAST:event_AddFileBtnMouseClicked
 
     private void HomeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBtnMouseClicked
