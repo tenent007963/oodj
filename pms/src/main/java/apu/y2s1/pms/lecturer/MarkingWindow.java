@@ -59,11 +59,8 @@ public class MarkingWindow extends javax.swing.JFrame {
 
                 boolean found = false;
                 // get the matching submission id 
-                for (int j = 0; j < db_assessments_list.size(); j++)
+                for (int j = 0; j < db_submissions_list.size(); j++)
                 {
-                    if (j >= db_submissions_list.size()){
-                        break;
-                    }
                     String[] db_submissions_row = db_submissions_list.get(j);
                     if (db_submissions_row[2].equals(assessment_id))
                     {
