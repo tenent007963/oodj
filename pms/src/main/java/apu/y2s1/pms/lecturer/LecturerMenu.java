@@ -192,12 +192,12 @@ public class LecturerMenu extends javax.swing.JFrame {
 
     private void SecondMarkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SecondMarkingActionPerformed
         MarkingWindow secondMark = new MarkingWindow("2");
-        secondMark.setVisible(true);
+        //secondMark.setVisible(true);
     }//GEN-LAST:event_SecondMarkingActionPerformed
 
     private void FirstMarkingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FirstMarkingActionPerformed
         MarkingWindow firstMark = new MarkingWindow("1");
-        firstMark.setVisible(true);
+        //firstMark.setVisible(true);
     }//GEN-LAST:event_FirstMarkingActionPerformed
 
     private void LogOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutBtnActionPerformed

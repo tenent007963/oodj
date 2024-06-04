@@ -3,12 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package apu.y2s1.pms.lecturer;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import apu.y2s1.pms.DataAbstract;
-import apu.y2s1.pms.projects.Assessment;
 
 /**
  *
@@ -63,6 +61,9 @@ public class MarkingWindow extends javax.swing.JFrame {
                 // get the matching submission id 
                 for (int j = 0; j < db_assessments_list.size(); j++)
                 {
+                    if (j >= db_submissions_list.size()){
+                        break;
+                    }
                     String[] db_submissions_row = db_submissions_list.get(j);
                     if (db_submissions_row[2].equals(assessment_id))
                     {
@@ -72,6 +73,7 @@ public class MarkingWindow extends javax.swing.JFrame {
 
                         found = true;
                         prevBtn.setEnabled(false);
+                        this.setVisible(found);
                         return;
                     }
                 }
@@ -79,7 +81,6 @@ public class MarkingWindow extends javax.swing.JFrame {
                 {
                     javax.swing.JOptionPane.showMessageDialog(null,"No submission found for marking.");
                     this.dispose();
-                    return;
                 }   
             }
         }
@@ -403,7 +404,7 @@ public class MarkingWindow extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MarkingWindow().setVisible(true);
+                new MarkingWindow().setVisible(false);
             }
         });
     }
