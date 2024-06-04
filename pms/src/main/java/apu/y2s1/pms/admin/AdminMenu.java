@@ -32,6 +32,7 @@ public class AdminMenu extends javax.swing.JFrame {
         ModStudentBtn1 = new javax.swing.JButton();
         LogOutBtn = new javax.swing.JButton();
         ModLecturersBtn1 = new javax.swing.JButton();
+        ModPManagersBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -55,7 +56,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 GenStatisticsBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(GenStatisticsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 210, 50));
+        getContentPane().add(GenStatisticsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 210, 50));
 
         ModStudentBtn1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         ModStudentBtn1.setText("Modify Students");
@@ -64,7 +65,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 ModStudentBtn1ActionPerformed(evt);
             }
         });
-        getContentPane().add(ModStudentBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(263, 156, 210, 50));
+        getContentPane().add(ModStudentBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 210, 50));
 
         LogOutBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         LogOutBtn.setText("Log Out");
@@ -73,7 +74,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 LogOutBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(LogOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 210, 50));
+        getContentPane().add(LogOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 210, 50));
 
         ModLecturersBtn1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         ModLecturersBtn1.setText("Modify Lecturers");
@@ -82,10 +83,19 @@ public class AdminMenu extends javax.swing.JFrame {
                 ModLecturersBtn1ActionPerformed(evt);
             }
         });
-        getContentPane().add(ModLecturersBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 220, 210, 50));
+        getContentPane().add(ModLecturersBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 210, 50));
+
+        ModPManagersBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        ModPManagersBtn.setText("Modify Project Managers");
+        ModPManagersBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ModPManagersBtnMouseClicked(evt);
+            }
+        });
+        getContentPane().add(ModPManagersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 210, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/MenuBG.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-140, -140, 880, 630));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, -140, 870, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -113,6 +123,12 @@ public class AdminMenu extends javax.swing.JFrame {
         add.setVisible(true);
         dispose();
     }//GEN-LAST:event_ModLecturersBtn1ActionPerformed
+
+    private void ModPManagersBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ModPManagersBtnMouseClicked
+        apu.y2s1.pms.admin.ModPManagers add = new apu.y2s1.pms.admin.ModPManagers();
+        add.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_ModPManagersBtnMouseClicked
 
     
     
@@ -163,6 +179,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton GenStatisticsBtn;
     private javax.swing.JButton LogOutBtn;
     private javax.swing.JButton ModLecturersBtn1;
+    private javax.swing.JButton ModPManagersBtn;
     private javax.swing.JButton ModStudentBtn1;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel jLabel1;
