@@ -18,7 +18,6 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import apu.y2s1.pms.DataAbstract;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -180,11 +179,6 @@ public class ModLecturers extends javax.swing.JFrame {
         RefBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RefBtnMouseClicked(evt);
-            }
-        });
-        RefBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RefBtnActionPerformed(evt);
             }
         });
         getContentPane().add(RefBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, -1, -1));
@@ -391,10 +385,6 @@ public class ModLecturers extends javax.swing.JFrame {
         }
         javax.swing.JOptionPane.showMessageDialog(evt.getComponent(),"Imported "+counter+" lines successfully.");
     }//GEN-LAST:event_AddFileBtnMouseClicked
-
-    private void RefBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RefBtnActionPerformed
 
     /**
      * @param args the command line arguments
