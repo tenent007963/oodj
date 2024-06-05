@@ -105,13 +105,13 @@ public class ModLecturers extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel7.setText("Lecturer Email:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, -1, -1));
-        getContentPane().add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 120, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
+        getContentPane().add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 120, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel3.setText("Lecturer Password:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, -1, -1));
-        getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 99, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, -1));
+        getContentPane().add(Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 99, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel4.setText("Lecturer Role:");
@@ -145,7 +145,7 @@ public class ModLecturers extends javax.swing.JFrame {
         getContentPane().add(DelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, -1, -1));
 
         SearchTxt.setText("T000");
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, 30));
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 80, 30));
 
         SearchBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         SearchBtn.setText("Search");
@@ -192,7 +192,7 @@ public class ModLecturers extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID Number", "Name", "Email", "Password"
+                "ID Number", "Name", "Password", "Email"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -243,12 +243,12 @@ public class ModLecturers extends javax.swing.JFrame {
     private void AddBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBtnMouseClicked
         String id = ID.getText();
         String name = Name.getText();
-        String email = Email.getText();
         char[] pwd = Password.getPassword();
         String pass = new String(pwd);
+        String email = Email.getText();
         boolean roleval = PMRole.isSelected();
 
-        if (id.isEmpty() || name.isEmpty() || email.isEmpty() || pass.isEmpty()) {
+        if (id.isEmpty() || name.isEmpty() || pass.isEmpty() || email.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error! Please ensure that all text fields are not empty.");
             return;
         }
@@ -258,7 +258,7 @@ public class ModLecturers extends javax.swing.JFrame {
                 FileWriter file = new FileWriter("Lecturers.txt", true);
                 BufferedWriter writer = new BufferedWriter(file);
 
-                writer.write(id + ";" + name + ";" + email + ";" + pass + ";" + "\n");
+                writer.write(id + ";" + name + ";" + pass + ";" + email + ";" + "\n");
                 writer.close();
                 JOptionPane.showMessageDialog(null, "New Lecturer user has successfully been added!");
             } catch (Exception e) {
@@ -269,7 +269,7 @@ public class ModLecturers extends javax.swing.JFrame {
                 FileWriter file = new FileWriter("ProjectManagers.txt", true);
                 BufferedWriter writer = new BufferedWriter(file);
 
-                writer.write(id + ";" + name + ";" + email + ";" + pass + ";" + "\n");
+                writer.write(id + ";" + name + ";" + pass + ";" + email + ";" + "\n");
                 writer.close();
                 JOptionPane.showMessageDialog(null, "New Project Manager user has successfully been added!");
             } catch (Exception e) {
@@ -283,13 +283,14 @@ public class ModLecturers extends javax.swing.JFrame {
         if (LecturerTable.getSelectedRowCount() == 1) {
             String id = ID.getText();
             String name = Name.getText();
-            String email = Email.getText();
             char[] pwd = Password.getPassword();
+            String pass = new String(pwd);
+            String email = Email.getText();
 
             model.setValueAt(id, LecturerTable.getSelectedRow(), 0);
             model.setValueAt(name, LecturerTable.getSelectedRow(), 1);
-            model.setValueAt(email, LecturerTable.getSelectedRow(), 2);
-            model.setValueAt(pwd, LecturerTable.getSelectedRow(), 3);
+            model.setValueAt(pass, LecturerTable.getSelectedRow(), 2);
+            model.setValueAt(email, LecturerTable.getSelectedRow(), 3);
 
             JOptionPane.showMessageDialog(this, "Lecturer Details have been edited succesfully!");
             Save(model);
@@ -303,14 +304,14 @@ public class ModLecturers extends javax.swing.JFrame {
         if (LecturerTable.getSelectedRowCount() == 1) {
             String id = ID.getText();
             String name = Name.getText();
-            String email = Email.getText();
             char[] pwd = Password.getPassword();
             String pass = new String(pwd);
+            String email = Email.getText();
 
             model.setValueAt(id, LecturerTable.getSelectedRow(), 0);
             model.setValueAt(name, LecturerTable.getSelectedRow(), 1);
-            model.setValueAt(email, LecturerTable.getSelectedRow(), 2);
-            model.setValueAt(pass, LecturerTable.getSelectedRow(), 3);
+            model.setValueAt(pass, LecturerTable.getSelectedRow(), 2);
+            model.setValueAt(email, LecturerTable.getSelectedRow(), 3);
 
             model.removeRow(LecturerTable.getSelectedRow());
             JOptionPane.showMessageDialog(this, "Lecturer Details have been deleted succesfully!");
