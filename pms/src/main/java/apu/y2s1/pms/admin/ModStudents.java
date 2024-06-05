@@ -100,12 +100,12 @@ public class ModStudents extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel7.setText("Student Email:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
-        getContentPane().add(SEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 128, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+        getContentPane().add(SEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 128, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel5.setText("Student Password:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
         STable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -134,7 +134,7 @@ public class ModStudents extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel6.setText("Intake Code:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
-        getContentPane().add(SPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 99, -1));
+        getContentPane().add(SPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 99, -1));
 
         AddBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         AddBtn.setText("Add");
@@ -164,7 +164,7 @@ public class ModStudents extends javax.swing.JFrame {
         getContentPane().add(DelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, -1, -1));
 
         SearchTxt.setText("TP000");
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, 30));
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 70, 30));
 
         SearchBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         SearchBtn.setText("Search");
@@ -173,7 +173,7 @@ public class ModStudents extends javax.swing.JFrame {
                 SearchBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
+        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, -1, -1));
 
         ResetBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         ResetBtn.setText("Reset");
@@ -182,7 +182,7 @@ public class ModStudents extends javax.swing.JFrame {
                 ResetBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(ResetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, -1, -1));
+        getContentPane().add(ResetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 280, 70, -1));
 
         RefBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         RefBtn.setText("Refresh");
@@ -236,12 +236,12 @@ public class ModStudents extends javax.swing.JFrame {
     private void AddBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBtnMouseClicked
         String tp = TP.getText();
         String name = SName.getText();
-        String email = SEmail.getText();
         char[] pwd = SPwd.getPassword();
         String pass = new String(pwd);
+        String email = SEmail.getText();
         String intake = SIntake.getText();
 
-        if (tp.isEmpty() || name.isEmpty() || email.isEmpty() || pwd.length==0 || intake.isEmpty()) {
+        if (tp.isEmpty() || name.isEmpty() ||  pass.isEmpty() || email.isEmpty() || intake.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error! Please ensure that all text fields are not empty.");
             return;
         }
@@ -250,7 +250,7 @@ public class ModStudents extends javax.swing.JFrame {
             FileWriter file = new FileWriter("Students.txt", true);
             BufferedWriter writer = new BufferedWriter(file);
 
-            writer.write(tp + ";" + name + ";" + email + ";" + pass + ";" + intake + ";" + "\n");
+            writer.write(tp + ";" + name + ";" + pass + ";" + email + ";" + intake + ";" + "\n");
             writer.close();
             JOptionPane.showMessageDialog(null,"New Student user has successfully been added!");
         }
@@ -265,14 +265,15 @@ public class ModStudents extends javax.swing.JFrame {
         if (STable.getSelectedRowCount()==1) {
             String tp = TP.getText();
             String name = SName.getText();
+            char[] pwd = SPwd.getPassword();            
+            String pass = new String(pwd);
             String email = SEmail.getText();
-            char[] pwd = SPwd.getPassword();
             String intake = SIntake.getText();
 
             model.setValueAt(tp, STable.getSelectedRow(),0);
             model.setValueAt(name, STable.getSelectedRow(),1);
-            model.setValueAt(email, STable.getSelectedRow(),2);
-            model.setValueAt(pwd, STable.getSelectedRow(),3);
+            model.setValueAt(pass, STable.getSelectedRow(),2);
+            model.setValueAt(email, STable.getSelectedRow(),3);
             model.setValueAt(intake, STable.getSelectedRow(),4);
 
             JOptionPane.showMessageDialog(this, "Student Details have been edited succesfully!");
@@ -289,14 +290,15 @@ public class ModStudents extends javax.swing.JFrame {
         if (STable.getSelectedRowCount()==1) {
             String tp = TP.getText();
             String name = SName.getText();
-            String email = SEmail.getText();
             char[] pwd = SPwd.getPassword();
+            String pass = new String(pwd);
+            String email = SEmail.getText();
             String intake = SIntake.getText();
 
             model.setValueAt(tp, STable.getSelectedRow(),0);
             model.setValueAt(name, STable.getSelectedRow(),1);
-            model.setValueAt(email, STable.getSelectedRow(),2);
-            model.setValueAt(pwd, STable.getSelectedRow(),3);
+            model.setValueAt(pass, STable.getSelectedRow(),2);
+            model.setValueAt(email, STable.getSelectedRow(),3);
             model.setValueAt(intake, STable.getSelectedRow(),4);
 
             model.removeRow(STable.getSelectedRow());
@@ -327,10 +329,8 @@ public class ModStudents extends javax.swing.JFrame {
 
         try {
             BufferedReader buffer = new BufferedReader(new FileReader(file));
-
             DefaultTableModel model = (DefaultTableModel) STable.getModel();
             model.setRowCount(0);
-
             String line;
             while ((line = buffer.readLine()) != null) {
                 String[] data = line.split(";");
@@ -352,7 +352,7 @@ public class ModStudents extends javax.swing.JFrame {
 
     private void AddFileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddFileBtnMouseClicked
         DataAbstract fRead = new DataAbstract(SelFilePath.getText());
-        DataAbstract fDB = new DataAbstract("Lecturers.txt");
+        DataAbstract fDB = new DataAbstract("Students.txt");
         List<String[]> fReadRows = fRead.getAllRows();
         for(String[] row: fReadRows){
             fDB.writeTo(row);
@@ -365,8 +365,6 @@ public class ModStudents extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_HomeBtnMouseClicked
 
-    
-    
     /**
      * @param args the command line arguments
      */

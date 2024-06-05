@@ -192,7 +192,7 @@ public class ModLecturers extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID Number", "Name", "Password", "Email"
+                "ID Number", "Name", "Email", "Password"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -246,15 +246,14 @@ public class ModLecturers extends javax.swing.JFrame {
         String email = Email.getText();
         char[] pwd = Password.getPassword();
         String pass = new String(pwd);
-        boolean roleval;
-        roleval = PMRole.isSelected();
+        boolean roleval = PMRole.isSelected();
 
-        if (id.isEmpty() || name.isEmpty() || email.isEmpty() || pwd.length == 0) {
+        if (id.isEmpty() || name.isEmpty() || email.isEmpty() || pass.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error! Please ensure that all text fields are not empty.");
             return;
         }
 
-        if (roleval = false) {
+        if (roleval == false) {
             try {
                 FileWriter file = new FileWriter("Lecturers.txt", true);
                 BufferedWriter writer = new BufferedWriter(file);
@@ -265,7 +264,7 @@ public class ModLecturers extends javax.swing.JFrame {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else if (roleval = true) {
+        } else if (roleval == true) {
             try {
                 FileWriter file = new FileWriter("ProjectManagers.txt", true);
                 BufferedWriter writer = new BufferedWriter(file);
@@ -306,11 +305,12 @@ public class ModLecturers extends javax.swing.JFrame {
             String name = Name.getText();
             String email = Email.getText();
             char[] pwd = Password.getPassword();
+            String pass = new String(pwd);
 
             model.setValueAt(id, LecturerTable.getSelectedRow(), 0);
             model.setValueAt(name, LecturerTable.getSelectedRow(), 1);
             model.setValueAt(email, LecturerTable.getSelectedRow(), 2);
-            model.setValueAt(pwd, LecturerTable.getSelectedRow(), 3);
+            model.setValueAt(pass, LecturerTable.getSelectedRow(), 3);
 
             model.removeRow(LecturerTable.getSelectedRow());
             JOptionPane.showMessageDialog(this, "Lecturer Details have been deleted succesfully!");

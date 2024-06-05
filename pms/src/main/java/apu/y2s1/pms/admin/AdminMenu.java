@@ -29,7 +29,7 @@ public class AdminMenu extends javax.swing.JFrame {
         Title = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         GenStatisticsBtn = new javax.swing.JButton();
-        ModStudentBtn1 = new javax.swing.JButton();
+        ModStudentBtn = new javax.swing.JButton();
         LogOutBtn = new javax.swing.JButton();
         ModLecturersBtn1 = new javax.swing.JButton();
         ModPManagersBtn = new javax.swing.JButton();
@@ -58,14 +58,14 @@ public class AdminMenu extends javax.swing.JFrame {
         });
         getContentPane().add(GenStatisticsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 210, 50));
 
-        ModStudentBtn1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
-        ModStudentBtn1.setText("Modify Students");
-        ModStudentBtn1.addActionListener(new java.awt.event.ActionListener() {
+        ModStudentBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
+        ModStudentBtn.setText("Modify Students");
+        ModStudentBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModStudentBtn1ActionPerformed(evt);
+                ModStudentBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(ModStudentBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 210, 50));
+        getContentPane().add(ModStudentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 210, 50));
 
         LogOutBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         LogOutBtn.setText("Log Out");
@@ -106,11 +106,11 @@ public class AdminMenu extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_GenStatisticsBtnActionPerformed
 
-    private void ModStudentBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModStudentBtn1ActionPerformed
+    private void ModStudentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModStudentBtnActionPerformed
         apu.y2s1.pms.admin.ModStudents add = new apu.y2s1.pms.admin.ModStudents();
         add.setVisible(true);
         dispose();
-    }//GEN-LAST:event_ModStudentBtn1ActionPerformed
+    }//GEN-LAST:event_ModStudentBtnActionPerformed
 
     private void LogOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutBtnActionPerformed
         apu.y2s1.pms.Login add = new apu.y2s1.pms.Login();
@@ -180,7 +180,7 @@ public class AdminMenu extends javax.swing.JFrame {
     private javax.swing.JButton LogOutBtn;
     private javax.swing.JButton ModLecturersBtn1;
     private javax.swing.JButton ModPManagersBtn;
-    private javax.swing.JButton ModStudentBtn1;
+    private javax.swing.JButton ModStudentBtn;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
