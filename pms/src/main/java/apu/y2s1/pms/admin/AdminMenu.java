@@ -95,7 +95,7 @@ public class AdminMenu extends javax.swing.JFrame {
         getContentPane().add(ModPManagersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 210, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/MenuBG.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, -140, 870, 630));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, -140, 1160, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

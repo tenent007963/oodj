@@ -43,13 +43,16 @@ public class LecturerMenu extends javax.swing.JFrame {
         viewSupervisees = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Title.setFont(new java.awt.Font("Franklin Gothic Heavy", 1, 36)); // NOI18N
         Title.setText("FUNCTION PAGE");
         Title.setToolTipText("");
+        getContentPane().add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 43, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel1.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTINUE:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(305, 102, -1, -1));
 
         SecondMarking.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         SecondMarking.setText("Second Marking");
@@ -58,6 +61,7 @@ public class LecturerMenu extends javax.swing.JFrame {
                 SecondMarkingActionPerformed(evt);
             }
         });
+        getContentPane().add(SecondMarking, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 210, 50));
 
         FirstMarking.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         FirstMarking.setText("First Marking");
@@ -66,6 +70,7 @@ public class LecturerMenu extends javax.swing.JFrame {
                 FirstMarkingActionPerformed(evt);
             }
         });
+        getContentPane().add(FirstMarking, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 210, 50));
 
         LogOutBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         LogOutBtn.setText("Log Out");
@@ -74,6 +79,7 @@ public class LecturerMenu extends javax.swing.JFrame {
                 LogOutBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(LogOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 470, 210, 50));
 
         ViewMarkFeedback.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         ViewMarkFeedback.setText("View Marking Feedback");
@@ -82,6 +88,7 @@ public class LecturerMenu extends javax.swing.JFrame {
                 ViewMarkFeedbackActionPerformed(evt);
             }
         });
+        getContentPane().add(ViewMarkFeedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 210, 50));
 
         CfmPresentReq.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         CfmPresentReq.setText("Confirm Presentation Request");
@@ -90,6 +97,7 @@ public class LecturerMenu extends javax.swing.JFrame {
                 CfmPresentReqActionPerformed(evt);
             }
         });
+        getContentPane().add(CfmPresentReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, -1, 50));
 
         viewSubsBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         viewSubsBtn.setText("View All Submissions");
@@ -98,6 +106,7 @@ public class LecturerMenu extends javax.swing.JFrame {
                 viewSubsBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(viewSubsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 210, 50));
 
         viewAsssBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         viewAsssBtn.setText("View All Assessments");
@@ -106,6 +115,7 @@ public class LecturerMenu extends javax.swing.JFrame {
                 viewAsssBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(viewAsssBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 180, 210, 50));
 
         viewPresentSlots.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         viewPresentSlots.setText("View Presentation Request");
@@ -114,6 +124,7 @@ public class LecturerMenu extends javax.swing.JFrame {
                 viewPresentSlotsActionPerformed(evt);
             }
         });
+        getContentPane().add(viewPresentSlots, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 210, 50));
 
         viewSupervisees.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         viewSupervisees.setText("View Supervisees");
@@ -122,70 +133,7 @@ public class LecturerMenu extends javax.swing.JFrame {
                 viewSuperviseesActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 147, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(165, 165, 165))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(233, 233, 233)
-                        .addComponent(Title))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(LogOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(viewPresentSlots, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(CfmPresentReq, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ViewMarkFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(FirstMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(SecondMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(viewSubsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(viewAsssBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(viewSupervisees, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(Title)
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewSubsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewAsssBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewSupervisees, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FirstMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SecondMarking, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ViewMarkFeedback, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewPresentSlots, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CfmPresentReq, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addComponent(LogOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(128, 128, 128))
-        );
+        getContentPane().add(viewSupervisees, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 180, 210, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

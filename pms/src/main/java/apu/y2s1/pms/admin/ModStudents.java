@@ -78,34 +78,34 @@ public class ModStudents extends javax.swing.JFrame {
         Title.setFont(new java.awt.Font("Georgia", 1, 18)); // NOI18N
         Title.setText("MODIFY STUDENTS");
         Title.setToolTipText("");
-        getContentPane().add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, -1, 40));
+        getContentPane().add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, -1, 40));
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel1.setText("Individual New Student:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 70, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel2.setText("Intake List Text File:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 70, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel3.setText("TP Number:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
-        getContentPane().add(TP, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 99, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
+        getContentPane().add(TP, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 120, 99, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel4.setText("Student Name:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, -1, -1));
-        getContentPane().add(SName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 128, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
+        getContentPane().add(SName, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 128, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel7.setText("Student Email:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
-        getContentPane().add(SEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 128, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
+        getContentPane().add(SEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 128, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel5.setText("Student Password:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
 
         STable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,12 +129,12 @@ public class ModStudents extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(STable);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 614, 162));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 410, 880, 200));
 
         jLabel6.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel6.setText("Intake Code:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
-        getContentPane().add(SPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 99, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
+        getContentPane().add(SPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 99, -1));
 
         AddBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         AddBtn.setText("Add");
@@ -143,7 +143,7 @@ public class ModStudents extends javax.swing.JFrame {
                 AddBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(AddBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 55, -1));
+        getContentPane().add(AddBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 290, 55, -1));
 
         EditBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         EditBtn.setText("Edit");
@@ -152,7 +152,7 @@ public class ModStudents extends javax.swing.JFrame {
                 EditBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(EditBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 70, -1));
+        getContentPane().add(EditBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 70, -1));
 
         DelBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         DelBtn.setText("Delete");
@@ -161,10 +161,10 @@ public class ModStudents extends javax.swing.JFrame {
                 DelBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(DelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, -1, -1));
+        getContentPane().add(DelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, -1, -1));
 
         SearchTxt.setText("TP000");
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 70, 30));
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, 30));
 
         SearchBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         SearchBtn.setText("Search");
@@ -173,7 +173,7 @@ public class ModStudents extends javax.swing.JFrame {
                 SearchBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 280, -1, -1));
+        getContentPane().add(SearchBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, -1, -1));
 
         ResetBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         ResetBtn.setText("Reset");
@@ -182,7 +182,7 @@ public class ModStudents extends javax.swing.JFrame {
                 ResetBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(ResetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(222, 280, 70, -1));
+        getContentPane().add(ResetBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 330, -1, -1));
 
         RefBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         RefBtn.setText("Refresh");
@@ -191,7 +191,7 @@ public class ModStudents extends javax.swing.JFrame {
                 RefBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(RefBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, -1, -1));
+        getContentPane().add(RefBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 350, -1, -1));
 
         SelectFile.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         SelectFile.setText("Select File");
@@ -200,8 +200,8 @@ public class ModStudents extends javax.swing.JFrame {
                 SelectFileMouseClicked(evt);
             }
         });
-        getContentPane().add(SelectFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
-        getContentPane().add(SelFilePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 269, -1));
+        getContentPane().add(SelectFile, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, -1, -1));
+        getContentPane().add(SelFilePath, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 269, -1));
 
         HomeBtn.setBackground(new java.awt.Color(153, 204, 255));
         HomeBtn.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
@@ -215,7 +215,7 @@ public class ModStudents extends javax.swing.JFrame {
 
         TopBG.setBackground(new java.awt.Color(153, 204, 255));
         TopBG.setForeground(new java.awt.Color(153, 204, 255));
-        getContentPane().add(TopBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 40));
+        getContentPane().add(TopBG, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 40));
 
         AddFileBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         AddFileBtn.setText("Add File");
@@ -224,11 +224,11 @@ public class ModStudents extends javax.swing.JFrame {
                 AddFileBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(AddFileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, -1, -1));
-        getContentPane().add(SIntake, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 80, -1));
+        getContentPane().add(AddFileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 170, -1, -1));
+        getContentPane().add(SIntake, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 80, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/AdminFnBG.jpg"))); // NOI18N
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 720, 480));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1030, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
