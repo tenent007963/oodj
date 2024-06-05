@@ -164,7 +164,7 @@ public class ModStudents extends javax.swing.JFrame {
         getContentPane().add(DelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 290, -1, -1));
 
         SearchTxt.setText("TP000");
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, -1, 30));
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 330, 80, 30));
 
         SearchBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         SearchBtn.setText("Search");
@@ -353,10 +353,21 @@ public class ModStudents extends javax.swing.JFrame {
     private void AddFileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddFileBtnMouseClicked
         DataAbstract fRead = new DataAbstract(SelFilePath.getText());
         DataAbstract fDB = new DataAbstract("Students.txt");
+        int counter = 0;
+        int fcounter = 0;
         List<String[]> fReadRows = fRead.getAllRows();
-        for(String[] row: fReadRows){
-            fDB.writeTo(row);
+        if(fReadRows.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(evt.getComponent(),"Please check you file and try again later.");
+            return;
         }
+        for(String[] row: fReadRows){
+            if (!fDB.writeTo(row)) {
+                javax.swing.JOptionPane.showMessageDialog(evt.getComponent(),"Error occured on line "+counter+", please check your input.");
+                fcounter += 1;
+            }
+            counter += 1;
+        }
+        javax.swing.JOptionPane.showMessageDialog(evt.getComponent(),"Imported "+counter+" lines successfully.");
     }//GEN-LAST:event_AddFileBtnMouseClicked
 
     private void HomeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBtnMouseClicked
