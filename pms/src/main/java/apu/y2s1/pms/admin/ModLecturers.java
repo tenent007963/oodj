@@ -26,6 +26,7 @@ import java.util.List;
  * @author Thinkpad
  */
 public class ModLecturers extends javax.swing.JFrame {
+    DataAbstract fDB = new DataAbstract("Lecturers.txt");
 
     /**
      * Creates new form ModLecturers
@@ -204,6 +205,11 @@ public class ModLecturers extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        LecturerTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LecturerTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(LecturerTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 870, 150));
@@ -244,8 +250,7 @@ public class ModLecturers extends javax.swing.JFrame {
     private void AddBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBtnMouseClicked
         String id = ID.getText();
         String name = Name.getText();
-        char[] pwd = Password.getPassword();
-        String pass = new String(pwd);
+        String pass = String.valueOf(Password.getPassword());
         String email = Email.getText();
         boolean roleval = PMRole.isSelected();
 
@@ -287,8 +292,7 @@ public class ModLecturers extends javax.swing.JFrame {
         if (LecturerTable.getSelectedRowCount() == 1) {
             String id = ID.getText();
             String name = Name.getText();
-            char[] pwd = Password.getPassword();
-            String pass = new String(pwd);
+            String pass = String.valueOf(Password.getPassword());
             String email = Email.getText();
 
             model.setValueAt(id, LecturerTable.getSelectedRow(), 0);
@@ -296,30 +300,29 @@ public class ModLecturers extends javax.swing.JFrame {
             model.setValueAt(pass, LecturerTable.getSelectedRow(), 2);
             model.setValueAt(email, LecturerTable.getSelectedRow(), 3);
 
-            JOptionPane.showMessageDialog(this, "Lecturer Details have been edited succesfully!");
-            Save(model);
+            if(fDB.updateRow(LecturerTable.getSelectedRow(), new String[] {id, name, pass, email})){
+                Save(model);
+                JOptionPane.showMessageDialog(this, "Lecturer Details have been edited succesfully!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Error occured while editing the details.");
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Please select the column you wish to edit before typing.");
+            JOptionPane.showMessageDialog(this, "Please select the row you wish to edit before typing.");
         }
     }//GEN-LAST:event_EditBtnMouseClicked
 
     private void DelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelBtnMouseClicked
         DefaultTableModel model = (DefaultTableModel) LecturerTable.getModel();
         if (LecturerTable.getSelectedRowCount() == 1) {
-            String id = ID.getText();
-            String name = Name.getText();
-            char[] pwd = Password.getPassword();
-            String pass = new String(pwd);
-            String email = Email.getText();
-
-            model.setValueAt(id, LecturerTable.getSelectedRow(), 0);
-            model.setValueAt(name, LecturerTable.getSelectedRow(), 1);
-            model.setValueAt(pass, LecturerTable.getSelectedRow(), 2);
-            model.setValueAt(email, LecturerTable.getSelectedRow(), 3);
-
-            model.removeRow(LecturerTable.getSelectedRow());
-            JOptionPane.showMessageDialog(this, "Lecturer Details have been deleted succesfully!");
-            Save(model);
+            if(fDB.deleteRow(LecturerTable.getSelectedRow())){
+                model.removeRow(LecturerTable.getSelectedRow());
+                Save(model);
+                JOptionPane.showMessageDialog(this, "Lecturer Details have been deleted succesfully!");
+            } else{
+                JOptionPane.showMessageDialog(this, "Error occured while deleting the details.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select the row you wish to delete.");
         }
     }//GEN-LAST:event_DelBtnMouseClicked
 
@@ -373,7 +376,6 @@ public class ModLecturers extends javax.swing.JFrame {
             return; 
         }
         DataAbstract fRead = new DataAbstract(SelFilePath.getText());
-        DataAbstract fDB = new DataAbstract("Lecturers.txt");
         int counter = 0;
         int fcounter = 0;
         List<String[]> fReadRows = fRead.getAllRows();
@@ -388,8 +390,18 @@ public class ModLecturers extends javax.swing.JFrame {
             }
             counter += 1;
         }
-        javax.swing.JOptionPane.showMessageDialog(evt.getComponent(),"Imported "+counter+" lines successfully.");
+        javax.swing.JOptionPane.showMessageDialog(evt.getComponent(),"Imported "+ (counter-fcounter) +" lines successfully.");
     }//GEN-LAST:event_AddFileBtnMouseClicked
+
+    private void LecturerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LecturerTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel) LecturerTable.getModel();
+        if (LecturerTable.getSelectedRowCount()==1) {
+            ID.setText(model.getValueAt(LecturerTable.getSelectedRow(),0).toString());
+            Name.setText(model.getValueAt(LecturerTable.getSelectedRow(),1).toString());
+            Password.setText(model.getValueAt(LecturerTable.getSelectedRow(),2).toString());
+            Email.setText(model.getValueAt(LecturerTable.getSelectedRow(),3).toString());
+        }
+    }//GEN-LAST:event_LecturerTableMouseClicked
 
     /**
      * @param args the command line arguments

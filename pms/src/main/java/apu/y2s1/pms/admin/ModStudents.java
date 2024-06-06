@@ -25,6 +25,7 @@ import javax.swing.table.TableRowSorter;
  * @author Thinkpad
  */
 public class ModStudents extends javax.swing.JFrame {
+    DataAbstract fDB = new DataAbstract("Students.txt");
 
     /**
      * Creates new form NewJDialog
@@ -96,12 +97,12 @@ public class ModStudents extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel4.setText("Student Name:");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, -1, -1));
-        getContentPane().add(SName, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 128, -1));
+        getContentPane().add(SName, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 170, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel7.setText("Student Email:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, -1, -1));
-        getContentPane().add(SEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 128, -1));
+        getContentPane().add(SEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 170, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel5.setText("Student Password:");
@@ -127,6 +128,11 @@ public class ModStudents extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        STable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                STableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(STable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 410, 880, 200));
@@ -134,7 +140,7 @@ public class ModStudents extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         jLabel6.setText("Intake Code:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, -1, -1));
-        getContentPane().add(SPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 99, -1));
+        getContentPane().add(SPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 170, -1));
 
         AddBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         AddBtn.setText("Add");
@@ -225,7 +231,7 @@ public class ModStudents extends javax.swing.JFrame {
             }
         });
         getContentPane().add(AddFileBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 170, -1, -1));
-        getContentPane().add(SIntake, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 80, -1));
+        getContentPane().add(SIntake, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 240, 170, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/AdminFnBG.jpg"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1030, 610));
@@ -236,8 +242,7 @@ public class ModStudents extends javax.swing.JFrame {
     private void AddBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddBtnMouseClicked
         String tp = TP.getText();
         String name = SName.getText();
-        char[] pwd = SPwd.getPassword();
-        String pass = new String(pwd);
+        String pass = String.valueOf(SPwd.getPassword());
         String email = SEmail.getText();
         String intake = SIntake.getText();
 
@@ -265,8 +270,7 @@ public class ModStudents extends javax.swing.JFrame {
         if (STable.getSelectedRowCount()==1) {
             String tp = TP.getText();
             String name = SName.getText();
-            char[] pwd = SPwd.getPassword();            
-            String pass = new String(pwd);
+            String pass = String.valueOf(SPwd.getPassword());
             String email = SEmail.getText();
             String intake = SIntake.getText();
 
@@ -276,34 +280,31 @@ public class ModStudents extends javax.swing.JFrame {
             model.setValueAt(email, STable.getSelectedRow(),3);
             model.setValueAt(intake, STable.getSelectedRow(),4);
 
-            JOptionPane.showMessageDialog(this, "Student Details have been edited succesfully!");
-            Save(model);
+            if(fDB.updateRow(STable.getSelectedRow(), new String[]{tp, name, pass, email, intake})){
+                Save(model);
+                JOptionPane.showMessageDialog(this, "Student Details have been edited succesfully!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Error occured while editing student details.");
+            }
         }
 
         else {
-            JOptionPane.showMessageDialog(this, "Please select the column you wish to edit before typing.");
+            JOptionPane.showMessageDialog(this, "Please select the row you wish to edit before typing.");
         }
     }//GEN-LAST:event_EditBtnMouseClicked
 
     private void DelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelBtnMouseClicked
         DefaultTableModel model = (DefaultTableModel) STable.getModel();
         if (STable.getSelectedRowCount()==1) {
-            String tp = TP.getText();
-            String name = SName.getText();
-            char[] pwd = SPwd.getPassword();
-            String pass = new String(pwd);
-            String email = SEmail.getText();
-            String intake = SIntake.getText();
-
-            model.setValueAt(tp, STable.getSelectedRow(),0);
-            model.setValueAt(name, STable.getSelectedRow(),1);
-            model.setValueAt(pass, STable.getSelectedRow(),2);
-            model.setValueAt(email, STable.getSelectedRow(),3);
-            model.setValueAt(intake, STable.getSelectedRow(),4);
-
-            model.removeRow(STable.getSelectedRow());
-            JOptionPane.showMessageDialog(this, "Student Details have been deleted succesfully!");
-            Save(model);
+            if(fDB.deleteRow(STable.getSelectedRow())){
+                model.removeRow(STable.getSelectedRow());
+                Save(model);
+                JOptionPane.showMessageDialog(this, "Student Details have been deleted succesfully!");                
+            } else {
+                JOptionPane.showMessageDialog(this, "Error occured while deleting student details.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select the row you wish to delete.");
         }
     }//GEN-LAST:event_DelBtnMouseClicked
 
@@ -352,7 +353,6 @@ public class ModStudents extends javax.swing.JFrame {
 
     private void AddFileBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddFileBtnMouseClicked
         DataAbstract fRead = new DataAbstract(SelFilePath.getText());
-        DataAbstract fDB = new DataAbstract("Students.txt");
         int counter = 0;
         int fcounter = 0;
         List<String[]> fReadRows = fRead.getAllRows();
@@ -367,7 +367,7 @@ public class ModStudents extends javax.swing.JFrame {
             }
             counter += 1;
         }
-        javax.swing.JOptionPane.showMessageDialog(evt.getComponent(),"Imported "+counter+" lines successfully.");
+        javax.swing.JOptionPane.showMessageDialog(evt.getComponent(),"Imported " + (counter-fcounter) + " lines successfully.");
     }//GEN-LAST:event_AddFileBtnMouseClicked
 
     private void HomeBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBtnMouseClicked
@@ -375,6 +375,17 @@ public class ModStudents extends javax.swing.JFrame {
         add.setVisible(true);
         dispose();
     }//GEN-LAST:event_HomeBtnMouseClicked
+
+    private void STableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_STableMouseClicked
+        DefaultTableModel model = (DefaultTableModel) STable.getModel();
+        if (STable.getSelectedRowCount()==1) {
+            TP.setText(model.getValueAt(STable.getSelectedRow(),0).toString());
+            SName.setText(model.getValueAt(STable.getSelectedRow(),1).toString());
+            SPwd.setText(model.getValueAt(STable.getSelectedRow(),2).toString());
+            SEmail.setText(model.getValueAt(STable.getSelectedRow(),3).toString());
+            SIntake.setText(model.getValueAt(STable.getSelectedRow(),4).toString());
+        }
+    }//GEN-LAST:event_STableMouseClicked
 
     /**
      * @param args the command line arguments

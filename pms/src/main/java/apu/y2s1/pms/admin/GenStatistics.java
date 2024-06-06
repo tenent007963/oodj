@@ -5,15 +5,6 @@
 package apu.y2s1.pms.admin;
 
 import apu.y2s1.pms.DataAbstract;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 
 /**
  *
@@ -26,6 +17,10 @@ public class GenStatistics extends javax.swing.JFrame {
      */
     public GenStatistics() {
         initComponents();
+        GenTotalStudNumMouseClicked(null);
+        GenTotalLectNumMouseClicked(null);
+        GenTotalAdmNumMouseClicked(null);
+        GenTotalPManagerNumMouseClicked(null);
     }
 
     /**
@@ -178,7 +173,6 @@ public class GenStatistics extends javax.swing.JFrame {
         } else {
             LectAmt.setText("Error");
         }
-
     }//GEN-LAST:event_GenTotalLectNumMouseClicked
 
     private void GenTotalGRepNumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenTotalGRepNumMouseClicked

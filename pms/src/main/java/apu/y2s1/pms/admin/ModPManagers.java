@@ -17,11 +17,14 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import apu.y2s1.pms.DataAbstract;
+
 /**
  *
  * @author Thinkpad
  */
 public class ModPManagers extends javax.swing.JFrame {
+    DataAbstract db = new DataAbstract("ProjectManagers.txt");
 
     /**
      * Creates new form ModPManagers
@@ -121,7 +124,7 @@ public class ModPManagers extends javax.swing.JFrame {
         getContentPane().add(DelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, -1, -1));
 
         SearchTxt.setText("PM000");
-        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, -1, 30));
+        getContentPane().add(SearchTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, 80, 30));
 
         SearchBtn.setFont(new java.awt.Font("Segoe Print", 2, 12)); // NOI18N
         SearchBtn.setText("Search");
@@ -161,6 +164,11 @@ public class ModPManagers extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        PMTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PMTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(PMTable);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 402, 614, 220));
@@ -191,36 +199,36 @@ public class ModPManagers extends javax.swing.JFrame {
         if (PMTable.getSelectedRowCount()==1) {
             String pid = PID.getText();
             String lid = LID.getText();
-            char[] pwd = PMPwd.getPassword();
+            String pwd = String.valueOf(PMPwd.getPassword());
 
             model.setValueAt(pid, PMTable.getSelectedRow(),0);
             model.setValueAt(lid, PMTable.getSelectedRow(),1);
             model.setValueAt(pwd, PMTable.getSelectedRow(),2);
-
-            JOptionPane.showMessageDialog(this, "Project Manager Details have been edited succesfully!");
-            Save(model);
-        }
-
-        else {
-            JOptionPane.showMessageDialog(this, "Please select the column you wish to edit before typing.");
+            
+            if (db.updateRow(PMTable.getSelectedRow(), new String[] {pid, lid, pwd})){
+                Save(model);
+                JOptionPane.showMessageDialog(this, "Project Manager Details have been edited succesfully!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Error editing Project Manager Details.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select the row you wish to edit before typing.");
         }
     }//GEN-LAST:event_EditBtnMouseClicked
 
     private void DelBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DelBtnMouseClicked
         DefaultTableModel model = (DefaultTableModel) PMTable.getModel();
         if (PMTable.getSelectedRowCount()==1) {
-            String pid = PID.getText();
-            String lid = LID.getText();
-            char[] pwd = PMPwd.getPassword();
-            System.out.println("Current line: "+PMTable.getSelectedRow());
-
-            model.setValueAt(pid, PMTable.getSelectedRow(),0);
-            model.setValueAt(lid, PMTable.getSelectedRow(),1);
-            model.setValueAt(pwd, PMTable.getSelectedRow(),2);
-
-            model.removeRow(PMTable.getSelectedRow());
-            JOptionPane.showMessageDialog(this, "Project Manager Details have been deleted succesfully!");
-            Save(model);
+            if (db.deleteRow(PMTable.getSelectedRow())) {
+                model.removeRow(PMTable.getSelectedRow());
+                Save(model);
+                JOptionPane.showMessageDialog(this, "Project Manager Details have been deleted succesfully!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Error deleting Project Manager Details.");
+            }
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select the row you wish to delete.");
         }
     }//GEN-LAST:event_DelBtnMouseClicked
 
@@ -260,6 +268,15 @@ public class ModPManagers extends javax.swing.JFrame {
             Logger.getLogger(ModStudents.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_RefBtnMouseClicked
+
+    private void PMTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PMTableMouseClicked
+        DefaultTableModel model = (DefaultTableModel) PMTable.getModel();
+        if (PMTable.getSelectedRowCount()==1) {
+            PID.setText(model.getValueAt(PMTable.getSelectedRow(),0).toString());
+            LID.setText(model.getValueAt(PMTable.getSelectedRow(),1).toString());
+            PMPwd.setText(model.getValueAt(PMTable.getSelectedRow(),2).toString());
+        } 
+    }//GEN-LAST:event_PMTableMouseClicked
 
     /**
      * @param args the command line arguments

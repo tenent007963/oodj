@@ -42,12 +42,12 @@ public class AdminMenu extends javax.swing.JFrame {
         Title.setForeground(new java.awt.Color(255, 255, 255));
         Title.setText("FUNCTION PAGE");
         Title.setToolTipText("");
-        getContentPane().add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 38, -1, -1));
+        getContentPane().add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Medium", 2, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("PLEASE SELECT AN ACTION YOU WANT TO CONTNUE:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 97, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
 
         GenStatisticsBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         GenStatisticsBtn.setText("Generate Statistics");
@@ -56,7 +56,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 GenStatisticsBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(GenStatisticsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 210, 50));
+        getContentPane().add(GenStatisticsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 390, 210, 50));
 
         ModStudentBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         ModStudentBtn.setText("Modify Students");
@@ -65,7 +65,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 ModStudentBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(ModStudentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 210, 50));
+        getContentPane().add(ModStudentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, 210, 50));
 
         LogOutBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         LogOutBtn.setText("Log Out");
@@ -74,7 +74,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 LogOutBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(LogOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 210, 50));
+        getContentPane().add(LogOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 210, 50));
 
         ModLecturersBtn1.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         ModLecturersBtn1.setText("Modify Lecturers");
@@ -83,7 +83,7 @@ public class AdminMenu extends javax.swing.JFrame {
                 ModLecturersBtn1ActionPerformed(evt);
             }
         });
-        getContentPane().add(ModLecturersBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 210, 50));
+        getContentPane().add(ModLecturersBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 210, 50));
 
         ModPManagersBtn.setFont(new java.awt.Font("Segoe Print", 1, 12)); // NOI18N
         ModPManagersBtn.setText("Modify Project Managers");
@@ -92,10 +92,10 @@ public class AdminMenu extends javax.swing.JFrame {
                 ModPManagersBtnMouseClicked(evt);
             }
         });
-        getContentPane().add(ModPManagersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 210, 50));
+        getContentPane().add(ModPManagersBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 330, 210, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/apu/y2s1/pms/admin/Img/MenuBG.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, -140, 1160, 780));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, -70, 1160, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
