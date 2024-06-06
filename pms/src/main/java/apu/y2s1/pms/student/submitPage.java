@@ -357,7 +357,6 @@ public class submitPage extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_submitTableMouseClicked
-  
 
     private void BTdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTdeleteActionPerformed
         int selectedRow = submitTable.getSelectedRow();
@@ -393,6 +392,8 @@ public class submitPage extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_BTdeleteActionPerformed
+
+    
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
