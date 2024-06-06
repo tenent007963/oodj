@@ -433,7 +433,7 @@ public class ModLecturers extends javax.swing.JFrame {
     private void LecturerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LecturerTableMouseClicked
         DefaultTableModel model = (DefaultTableModel) LecturerTable.getModel();
         if (LecturerTable.getSelectedRowCount()==1) {
-            PMRole.setEnabled(false);
+            //PMRole.setEnabled(false);
             ID.setText(model.getValueAt(LecturerTable.getSelectedRow(),0).toString());
             Name.setText(model.getValueAt(LecturerTable.getSelectedRow(),1).toString());
             Password.setText(model.getValueAt(LecturerTable.getSelectedRow(),2).toString());
