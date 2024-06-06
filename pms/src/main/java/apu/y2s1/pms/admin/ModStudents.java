@@ -245,6 +245,7 @@ public class ModStudents extends javax.swing.JFrame {
         String pass = String.valueOf(SPwd.getPassword());
         String email = SEmail.getText();
         String intake = SIntake.getText();
+        String assessType = "N/A";
 
         if (tp.isEmpty() || name.isEmpty() ||  pass.isEmpty() || email.isEmpty() || intake.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Error! Please ensure that all text fields are not empty.");
@@ -255,7 +256,7 @@ public class ModStudents extends javax.swing.JFrame {
             FileWriter file = new FileWriter("Students.txt", true);
             BufferedWriter writer = new BufferedWriter(file);
 
-            writer.write(tp + ";" + name + ";" + pass + ";" + email + ";" + intake + ";" + "\n");
+            writer.write(tp + ";" + name + ";" + pass + ";" + email + ";" + intake + ";" + assessType + "\n");
             writer.close();
             JOptionPane.showMessageDialog(null,"New Student user has successfully been added!");
         }
@@ -273,6 +274,7 @@ public class ModStudents extends javax.swing.JFrame {
             String pass = String.valueOf(SPwd.getPassword());
             String email = SEmail.getText();
             String intake = SIntake.getText();
+            String assessType = "N/A";
 
             model.setValueAt(tp, STable.getSelectedRow(),0);
             model.setValueAt(name, STable.getSelectedRow(),1);
@@ -280,7 +282,7 @@ public class ModStudents extends javax.swing.JFrame {
             model.setValueAt(email, STable.getSelectedRow(),3);
             model.setValueAt(intake, STable.getSelectedRow(),4);
 
-            if(fDB.updateRow(STable.getSelectedRow(), new String[]{tp, name, pass, email, intake})){
+            if(fDB.updateRow(STable.getSelectedRow(), new String[]{tp, name, pass, email, intake, assessType})){
                 Save(model);
                 JOptionPane.showMessageDialog(this, "Student Details have been edited succesfully!");
             } else {
