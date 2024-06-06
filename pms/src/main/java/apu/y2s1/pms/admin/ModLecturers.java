@@ -20,6 +20,7 @@ import javax.swing.table.TableRowSorter;
 import apu.y2s1.pms.DataAbstract;
 import java.util.List;
 
+
 /**
  *
  * @author Thinkpad
@@ -253,23 +254,26 @@ public class ModLecturers extends javax.swing.JFrame {
             return;
         }
 
-        if (roleval == false) {
-            try {
-                FileWriter file = new FileWriter("Lecturers.txt", true);
-                BufferedWriter writer = new BufferedWriter(file);
+        try {
+            FileWriter file = new FileWriter("Lecturers.txt", true);
+            BufferedWriter writer = new BufferedWriter(file);
 
-                writer.write(id + ";" + name + ";" + pass + ";" + email + ";" + "\n");
-                writer.close();
-                JOptionPane.showMessageDialog(null, "New Lecturer user has successfully been added!");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else if (roleval == true) {
+            writer.write(id + ";" + name + ";" + pass + ";" + email + ";" + "\n");
+            writer.close();
+            JOptionPane.showMessageDialog(null, "New Lecturer user has successfully been added!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (roleval) {
             try {
+                // get total row counts and use the counts to do auto incremental ID
+                DataAbstract db = new DataAbstract("ProjectManagers.txt");
+                int count = db.countLines();
+                String pid = "PM" + count;
                 FileWriter file = new FileWriter("ProjectManagers.txt", true);
                 BufferedWriter writer = new BufferedWriter(file);
-
-                writer.write(id + ";" + name + ";" + pass + ";" + email + ";" + "\n");
+                // need pmid, lecid, pwd
+                writer.write(pid + ";" + id + ";" + pass + "\n");
                 writer.close();
                 JOptionPane.showMessageDialog(null, "New Project Manager user has successfully been added!");
             } catch (Exception e) {

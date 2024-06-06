@@ -212,6 +212,7 @@ public class ModPManagers extends javax.swing.JFrame {
             String pid = PID.getText();
             String lid = LID.getText();
             char[] pwd = PMPwd.getPassword();
+            System.out.println("Current line: "+PMTable.getSelectedRow());
 
             model.setValueAt(pid, PMTable.getSelectedRow(),0);
             model.setValueAt(lid, PMTable.getSelectedRow(),1);

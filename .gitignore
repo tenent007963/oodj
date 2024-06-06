@@ -63,3 +63,10 @@ httpRequests/
 # Datasource local storage ignored files
 dataSources/
 dataSources.local.xml
+Admins.txt
+Assessments.txt
+Headings.txt
+Lecturers.txt
+ProjectManagers.txt
+Students.txt
+Submissions.txt
