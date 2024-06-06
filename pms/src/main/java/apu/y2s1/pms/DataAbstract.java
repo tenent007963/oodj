@@ -284,4 +284,26 @@ public class DataAbstract {
         } 
         return true;
     }
+    
+    /* findMatch() takes in a col number and a string to check against the file
+    *  it returns boolean true on match found and false if not
+    */
+    public boolean findMatch(int col, String match) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] values = line.split(this.regEx);
+                if (col >= 0 && col < values.length) {
+                    if (values[col].trim().equals(match)) {
+                        return true;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            javax.swing.JOptionPane.showMessageDialog(null,"An error occurred." + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
 }

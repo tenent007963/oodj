@@ -283,7 +283,6 @@ public class ModStudents extends javax.swing.JFrame {
             model.setValueAt(intake, STable.getSelectedRow(),4);
 
             if(fDB.updateRow(STable.getSelectedRow(), new String[]{tp, name, pass, email, intake, assessType})){
-                Save(model);
                 JOptionPane.showMessageDialog(this, "Student Details have been edited succesfully!");
             } else {
                 JOptionPane.showMessageDialog(this, "Error occured while editing student details.");
@@ -300,7 +299,6 @@ public class ModStudents extends javax.swing.JFrame {
         if (STable.getSelectedRowCount()==1) {
             if(fDB.deleteRow(STable.getSelectedRow())){
                 model.removeRow(STable.getSelectedRow());
-                Save(model);
                 JOptionPane.showMessageDialog(this, "Student Details have been deleted succesfully!");                
             } else {
                 JOptionPane.showMessageDialog(this, "Error occured while deleting student details.");
@@ -430,29 +428,6 @@ public class ModStudents extends javax.swing.JFrame {
                 frame.setVisible(true);
             }
         });
-    }
-    
-    private void Save(DefaultTableModel model) {
-       try {
-           BufferedWriter writer = new BufferedWriter(new FileWriter("Students.txt"));
-           
-           for (int row = 0; row < model.getRowCount(); row++) {
-               for (int col = 0; col < model.getColumnCount(); col++) {
-                   Object cellValue = model.getValueAt(row, col);
-                   if (cellValue != null) {
-                       String cellString = cellValue.toString();
-                       writer.write(cellString);
-                   }
-                   if (col < model.getColumnCount() - 1) {
-                       writer.write(";");
-                   }
-               }
-               writer.newLine();
-                   }
-           writer.close();
-       } catch (IOException e) {
-           e.printStackTrace();
-        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

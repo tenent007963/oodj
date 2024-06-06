@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>apu.y2s1</groupId>
     <artifactId>pms</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-final</version>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
@@ -24,4 +24,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <exec.mainClass>apu.y2s1.pms.Login</exec.mainClass>
     </properties>
+    <name>Project Management System</name>
+    <description>Project Management System by Group 39 (OODJ)</description>
 </project>

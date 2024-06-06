@@ -273,8 +273,8 @@ public class ModLecturers extends javax.swing.JFrame {
             try {
                 // get total row counts and use the counts to do auto incremental ID
                 DataAbstract db = new DataAbstract("ProjectManagers.txt");
-                int count = db.countLines();
-                String pid = "PM" + count;
+                int count = db.countLines() + 1;
+                String pid =  "PM" + String.format("%04d", count);
                 FileWriter file = new FileWriter("ProjectManagers.txt", true);
                 BufferedWriter writer = new BufferedWriter(file);
                 // need pmid, lecid, pwd
@@ -294,14 +294,35 @@ public class ModLecturers extends javax.swing.JFrame {
             String name = Name.getText();
             String pass = String.valueOf(Password.getPassword());
             String email = Email.getText();
+            boolean roleval = PMRole.isSelected();
 
             model.setValueAt(id, LecturerTable.getSelectedRow(), 0);
             model.setValueAt(name, LecturerTable.getSelectedRow(), 1);
             model.setValueAt(pass, LecturerTable.getSelectedRow(), 2);
             model.setValueAt(email, LecturerTable.getSelectedRow(), 3);
+            
+        if (roleval) {
+            try {
+                // get total row counts and use the counts to do auto incremental ID
+                DataAbstract db = new DataAbstract("ProjectManagers.txt");
+                if(db.findMatch(1,id)){
+                    JOptionPane.showMessageDialog(null, "Project Manager record exist.!");
+                    return;
+                }
+                int count = db.countLines() + 1;
+                String pid =  "PM" + String.format("%04d", count);
+                FileWriter file = new FileWriter("ProjectManagers.txt", true);
+                BufferedWriter writer = new BufferedWriter(file);
+                // need pmid, lecid, pwd
+                writer.write(pid + ";" + id + ";" + pass + "\n");
+                writer.close();
+                JOptionPane.showMessageDialog(null, "New Project Manager user has successfully been added!");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
             if(fDB.updateRow(LecturerTable.getSelectedRow(), new String[] {id, name, pass, email})){
-                Save(model);
                 JOptionPane.showMessageDialog(this, "Lecturer Details have been edited succesfully!");
             } else {
                 JOptionPane.showMessageDialog(this, "Error occured while editing the details.");
@@ -316,7 +337,6 @@ public class ModLecturers extends javax.swing.JFrame {
         if (LecturerTable.getSelectedRowCount() == 1) {
             if(fDB.deleteRow(LecturerTable.getSelectedRow())){
                 model.removeRow(LecturerTable.getSelectedRow());
-                Save(model);
                 JOptionPane.showMessageDialog(this, "Lecturer Details have been deleted succesfully!");
             } else{
                 JOptionPane.showMessageDialog(this, "Error occured while deleting the details.");
@@ -389,13 +409,31 @@ public class ModLecturers extends javax.swing.JFrame {
                 fcounter += 1;
             }
             counter += 1;
+            if (PMRole.isSelected()) {
+                try {
+                    // get total row counts and use the counts to do auto incremental ID
+                    DataAbstract db = new DataAbstract("ProjectManagers.txt");
+                    String[] data = row[counter].split(";");
+                    int count = db.countLines() + 1;
+                    String pid =  "PM" + String.format("%04d", count);
+                    FileWriter file = new FileWriter("ProjectManagers.txt", true);
+                    BufferedWriter writer = new BufferedWriter(file);
+                    writer.write(pid + ";" + data[0] + ";" + data[2] + "\n");
+                    writer.close();
+                    JOptionPane.showMessageDialog(null, "New Project Manager user has successfully been added!");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
+                
         javax.swing.JOptionPane.showMessageDialog(evt.getComponent(),"Imported "+ (counter-fcounter) +" lines successfully.");
     }//GEN-LAST:event_AddFileBtnMouseClicked
 
     private void LecturerTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LecturerTableMouseClicked
         DefaultTableModel model = (DefaultTableModel) LecturerTable.getModel();
         if (LecturerTable.getSelectedRowCount()==1) {
+            PMRole.setEnabled(false);
             ID.setText(model.getValueAt(LecturerTable.getSelectedRow(),0).toString());
             Name.setText(model.getValueAt(LecturerTable.getSelectedRow(),1).toString());
             Password.setText(model.getValueAt(LecturerTable.getSelectedRow(),2).toString());
