@@ -357,39 +357,6 @@ public class submitPage extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_submitTableMouseClicked
-    /*
-    int selectedRow = submitTable.getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a row to delete report details.");
-            return;
-        }
-        String ID = assessmentText.getText().trim();
-        String verifyLink = moodleText.getText().toLowerCase();
-        try {
-            List<String> lines = Files.readAllLines(Paths.get("Submissions.txt"), StandardCharsets.UTF_8);
-            boolean updated = false;
-            for (int i = 0; i < lines.size(); i++) {
-                String[] parts = lines.get(i).split(";");
-                if (parts[2].equals(ID)) {
-                    parts[13] = "-";
-                    lines.set(i, String.join(";", parts));
-                    updated = true;
-                    break;
-                }
-            }
-            if (updated) {
-                Files.write(Paths.get("Submissions.txt"), lines, StandardCharsets.UTF_8);
-                JOptionPane.showMessageDialog(this, "Submission details deleted successfully.");
-                assessmentText.setText("");
-                moodleText.setText("");
-                Table();
-            } else {
-                JOptionPane.showMessageDialog(this, "An error occurred while updating data.");
-            }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage());
-            e.printStackTrace();
-        }*/
 
     private void BTdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTdeleteActionPerformed
         int selectedRow = submitTable.getSelectedRow();
@@ -425,6 +392,8 @@ public class submitPage extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_BTdeleteActionPerformed
+
+    
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
