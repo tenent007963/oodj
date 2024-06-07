@@ -52,6 +52,11 @@ public class User {
     
     public final void getUserData(){
         String[] rawdata = db.getRow(this.intID);
+        if(rawdata.length <= 2){
+            this.userName = "";
+            this.password = "";
+            return;
+        }
         if(this.userID.equalsIgnoreCase(rawdata[0])){
             this.userName = rawdata[1];
             this.password = rawdata[2];
@@ -71,7 +76,8 @@ public class User {
     }
 
     public boolean PwdCheck(String pwd) {
-        return this.password.equals(pwd);
+        
+        return pwd.equals(this.password);
     }
 
 }

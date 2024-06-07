@@ -151,7 +151,7 @@ public class Login extends javax.swing.JFrame {
                 case "Lecturer":
                     session = new apu.y2s1.pms.lecturer.Lecturer(userid);
                     User.instance = session; //get the static instance
-                    JOptionPane.showMessageDialog(null,"Student Login Successful");
+                    JOptionPane.showMessageDialog(null,"Lecturer Login Successful");
                     apu.y2s1.pms.lecturer.LecturerMenu Lhome = new apu.y2s1.pms.lecturer.LecturerMenu();
                     Lhome.setVisible(true);
                     break;

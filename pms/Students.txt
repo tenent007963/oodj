@@ -9,4 +9,4 @@ TP06779;Lisa Mona;lisassss@21;lisa@gmail.com;APU3F2305IR;Investigation Report
 TP06888;Archer Morales;archer$2190;archermorales@live.com;FT-TT_APUMF1911_ACC;CP1
 TP06889;Alan Tan;alan23@23;alan45@gmail.com;FT-TT_APUMF1911_ACC;CP2
 TP06999;Annabeth;anna%39280;anna@yahoo.com;APD3F2302ANM;FYP
-U999;Devid;dev;dev@test.com
+U999;Devid;dev;dev@test.com;APD2402CS(CYB);N/A
